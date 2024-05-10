@@ -1,0 +1,23 @@
+extends Node
+
+@export var firstState:PackedScene
+var currentState:Node = null
+
+func changeState(state:PackedScene) -> void:
+	if state == null:
+		push_warning("No beginning state!")
+		return
+	if currentState != null:
+		currentState.queue_free()
+		
+	var newstate = state.instantiate()
+	add_child(newstate)
+	
+	currentState = newstate
+	print("Changed game state: ",currentState.name)
+
+func _ready() -> void:
+	changeState(firstState)
+
+func _process(_delta: float) -> void:
+	pass
