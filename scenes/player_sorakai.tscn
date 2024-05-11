@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dw40p48fqbsl2"]
+
+[ext_resource type="Script" path="res://scripts/player_sorakai.gd" id="1_6cmhp"]
+[ext_resource type="Environment" uid="uid://jyc65e1ajlll" path="res://assets/test_env.tres" id="2_slabj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_62ypt"]
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwdjj"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.129412)
+rim_enabled = true
+rim = 0.0
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1b6ui"]
+material = SubResource("StandardMaterial3D_cwdjj")
+height = 1.5
+
+[node name="Sorakai" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999365, 0.999365)
+script = ExtResource("1_6cmhp")
+camera = NodePath("Pivot/Arm/Camera")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_62ypt")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Arm" type="SpringArm3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.19209e-07)
+spring_length = 5.0
+margin = 0.3
+
+[node name="Camera" type="Camera3D" parent="Pivot/Arm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+environment = ExtResource("2_slabj")
+current = true
+
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="Debug" type="MeshInstance3D" parent="Visual"]
+mesh = SubResource("CapsuleMesh_1b6ui")
+skeleton = NodePath("../..")

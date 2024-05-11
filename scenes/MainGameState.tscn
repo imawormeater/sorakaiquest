@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmdi4mdm7qr5o"]
+
+[ext_resource type="Environment" uid="uid://jyc65e1ajlll" path="res://assets/test_env.tres" id="1_ywea7"]
+[ext_resource type="PackedScene" uid="uid://dw40p48fqbsl2" path="res://scenes/player_sorakai.tscn" id="2_ntxhb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5y5s6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_io3k6"]
+size = Vector3(4, 1, 4)
+
+[node name="MainGameState" type="Node3D"]
+transform = Transform3D(1.00064, 0, 0, 0, 1.00064, 0, 0, 0, 1.00064, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 0.5, 0, 0, 0, 1.3, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4.2, 0, 0, 0.615715)
+mesh = SubResource("BoxMesh_5y5s6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_io3k6")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 0.5, 0, 0, 0, 0.13, 0, 1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(4, 0, 0, 0, 0.999999, 0, 0, 0, 4.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_5y5s6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_io3k6")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 0.499999, 0, 0, 0, 0.5655, -0.0276466, 1.77961, -1.31188)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_5y5s6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+shape = SubResource("BoxShape3D_io3k6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_ywea7")
+
+[node name="Sorakai" parent="." instance=ExtResource("2_ntxhb")]
