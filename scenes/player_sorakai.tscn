@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw40p48fqbsl2"]
+[gd_scene load_steps=7 format=3 uid="uid://dw40p48fqbsl2"]
 
 [ext_resource type="Script" path="res://scripts/player_sorakai.gd" id="1_6cmhp"]
-[ext_resource type="Environment" uid="uid://jyc65e1ajlll" path="res://assets/test_env.tres" id="2_slabj"]
+[ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://assets/blob_shadow.png" id="2_yl6e5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_62ypt"]
+radius = 0.4
 height = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwdjj"]
@@ -16,10 +17,14 @@ backlight = Color(1, 1, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1b6ui"]
 material = SubResource("StandardMaterial3D_cwdjj")
+radius = 0.4
 height = 1.5
 
+[sub_resource type="PrismMesh" id="PrismMesh_s7bxo"]
+
 [node name="Sorakai" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.999365, 0.999365)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+floor_constant_speed = true
 script = ExtResource("1_6cmhp")
 camera = NodePath("Pivot/Arm/Camera")
 
@@ -29,13 +34,12 @@ shape = SubResource("CapsuleShape3D_62ypt")
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Arm" type="SpringArm3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.19209e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245521, -1.19209e-07)
 spring_length = 5.0
 margin = 0.3
 
 [node name="Camera" type="Camera3D" parent="Pivot/Arm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
-environment = ExtResource("2_slabj")
 current = true
 
 [node name="Visual" type="Node3D" parent="."]
@@ -43,3 +47,32 @@ current = true
 [node name="Debug" type="MeshInstance3D" parent="Visual"]
 mesh = SubResource("CapsuleMesh_1b6ui")
 skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 0.189228, 0, 0, 0, 0.0934916, 0.000155091, 0.260705, -0.438789)
+mesh = SubResource("PrismMesh_s7bxo")
+
+[node name="faceCast" type="RayCast3D" parent="Visual"]
+transform = Transform3D(1.464, 0, 0, 0, -4.37114e-08, -1.464, 0, 1, -6.39935e-08, 0, 0, 0)
+target_position = Vector3(0, -0.5, 0)
+
+[node name="Shadow" type="Decal" parent="Visual"]
+transform = Transform3D(1, 6.81509e-14, -3.82132e-15, -6.81509e-14, 1, 3.67332e-08, 3.82132e-15, -3.67332e-08, 1, -1.69476e-12, -25.8677, 9.1347e-07)
+size = Vector3(1.2, 50.8785, 1.2)
+texture_albedo = ExtResource("2_yl6e5")
+modulate = Color(1, 1, 1, 0.709804)
+upper_fade = 0.102454
+lower_fade = 0.0416088
+
+[node name="hangCasts" type="Node3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.145504, 0)
+
+[node name="TopCast" type="RayCast3D" parent="Visual/hangCasts"]
+transform = Transform3D(1.464, 0, 0, 0, 1, 0, 0, 3.55271e-15, 1.464, 0, 1, -0.5)
+target_position = Vector3(0, -0.5, 0)
+hit_from_inside = true
+
+[node name="FrontCast" type="RayCast3D" parent="Visual/hangCasts"]
+transform = Transform3D(1.464, 0, 0, 0, -4.37114e-08, -1.464, 0, 1, -6.39935e-08, 0, 0.5, 0)
+target_position = Vector3(0, -0.5, 0)
+hit_from_inside = true

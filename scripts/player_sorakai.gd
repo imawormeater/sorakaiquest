@@ -2,26 +2,60 @@ extends CharacterBody3D
 
 @export var camera:Camera3D
 
-const SPEED := 5.0
-const JUMP_VELOCITY := 4.5
-var _ACCEL:float = 1
+var SPEED := 5.0
+var _ACCEL:float = 25.0
+var _DEACCEL:float = 30.0
+
+var JUMPHEIGHT := 2.5
+var JUMPPEAKTIME := 0.5
+var JUMPDESCENTTIME := 0.35
+
+var jump_velo:float
+var jump_grav:float
+var fall_grav:float
 
 var cameraDistance := 2.7
-var scrollSpeed := 0.4
+const scrollSpeed := 0.4
 var mouseSens := 0.005
 var visual_y_direction := 0.0
 
 var camera_deg := Vector2(0,0)
 
+var jumping := false
+
+var DEACEL_mult := 1.0
+#timers
+var jumpbufferInit := 0.2
+var jumpbuffer := -1.0
+var coyotejumpInit := 0.2
+var coyotejump := -1.0
+var exitwallclimbinit := 0.5
+var exitwallclimb := -1.0
+
+enum States {Free, Wall}
+var state:= States.Free
+
 @onready var springarm := $Pivot/Arm
 @onready var pivot := $Pivot
 @onready var visual := $Visual
+@onready var facecast := $Visual/faceCast
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity: float = 16
+
+func setCorrectJumpVariables():
+	jump_velo = ((2.0 * JUMPHEIGHT) / JUMPPEAKTIME)
+	jump_grav = ((-2.0 * JUMPHEIGHT) / (JUMPPEAKTIME * JUMPPEAKTIME))
+	fall_grav= ((-2.0 * JUMPHEIGHT) / (JUMPDESCENTTIME* JUMPDESCENTTIME))
+	
+	print(jump_velo)
+	print(jump_grav)
+	print(fall_grav)
+	
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	setCorrectJumpVariables()
 
 func _process(delta: float) -> void:
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
@@ -43,37 +77,92 @@ func _process(delta: float) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if global_position.y < -30:
+	if global_position.y < -10:
 		global_position = Vector3(0,2.778,-2.248)
 	pivot.rotation.x = lerp(pivot.rotation.x,camera_deg[1],pow(_lerp_speed,0.2))
 	pivot.rotation.y = lerp(pivot.rotation.y,camera_deg[0],pow(_lerp_speed,0.2))
 	
 
+func do_timers(delta:float) -> void:
+	if jumpbuffer > 0:
+		jumpbuffer -= delta
+	if coyotejump > 0:
+		coyotejump -= delta
+	if exitwallclimb > 0:
+		exitwallclimb -= delta
+
+func getGravity(_pressingJump:bool) -> float:
+	return jump_grav if velocity.y > 0.0 and _pressingJump else fall_grav
+
+func jump() -> void:
+	velocity.y = jump_velo
+	exitwallclimb = 0.05
+	jumpbuffer = -1
+	jumping = true
+
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	do_timers(delta)
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
-	velocity.y -= gravity * delta
-
-	if Input.is_action_pressed("movement_jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	var input_dir = Input.get_vector("movement_left", "movement_right", "movement_up", "movement_down")
 	
-	var _pivot_rotation = pivot.rotation.x
-	pivot.rotation.x = 0
-	var direction:Vector3 = (pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	pivot.rotation.x = _pivot_rotation
+	if state == States.Free:
+		var onFloor := is_on_floor()
+		
+		var pressedJump = Input.is_action_just_pressed("movement_jump")
+		var pressingJump = Input.is_action_pressed("movement_jump")
 
-	if direction:
-		visual_y_direction = atan2(-direction.x, -direction.z)
-		visual.rotation.y = lerp_angle(visual.rotation.y,visual_y_direction,_lerp_speed/2)
-		velocity.x = move_toward(velocity.x,direction.x * SPEED,_ACCEL)
-		velocity.z = move_toward(velocity.z,direction.z * SPEED,_ACCEL)
-	else:
-		velocity.x = move_toward(velocity.x, 0, _ACCEL)
-		velocity.z = move_toward(velocity.z, 0, _ACCEL)
-	
-	move_and_slide()
+		velocity.y += getGravity(pressingJump) * delta
+			
+		if pressedJump:
+			jumpbuffer = jumpbufferInit
+			if coyotejump > 0:
+				jump()
+		if onFloor:
+			DEACEL_mult = 1.0
+			if jumpbuffer > 0:
+				jump()
+		
+		var input_dir := Input.get_vector("movement_left", "movement_right", "movement_up", "movement_down")
+		
+		var _pivot_rotation = pivot.rotation.x
+		pivot.rotation.x = 0
+		var direction:Vector3 = (pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		pivot.rotation.x = _pivot_rotation
+		
+		var _tempVelocity := Vector2(velocity.x,velocity.z)
+		if direction:
+			visual.rotation.y = lerp_angle(visual.rotation.y,atan2(-direction.x, -direction.z),_lerp_speed/2 * (DEACEL_mult)**2)
+			_tempVelocity = _tempVelocity.move_toward(Vector2(direction.x,direction.z) * SPEED,_ACCEL * delta * DEACEL_mult)
+		else:
+			_tempVelocity = _tempVelocity.move_toward(Vector2.ZERO,_DEACCEL * delta * DEACEL_mult)
+		velocity.x = _tempVelocity.x
+		velocity.z = _tempVelocity.y
+		
+		velocity.y = clampf(velocity.y,fall_grav*JUMPDESCENTTIME*1.1,9999)
+		move_and_slide()
+		if onFloor != is_on_floor() and velocity.y < 0:#was on floor but now not
+			coyotejump = coyotejumpInit
+		if facecast.is_colliding() and velocity.y != 0 and exitwallclimb < 0:
+			state = States.Wall
+
+
+	if state == States.Wall:
+		var facecastnormal = facecast.get_collision_normal()
+		visual.look_at(global_position - facecastnormal)
+		velocity.y += jump_grav * 0.5 * delta
+		velocity.y = clampf(velocity.y,jump_grav * 0.2,9999)
+		var pressedJump = Input.is_action_just_pressed("movement_jump")
+		move_and_slide()
+		if pressedJump:
+			visual.look_at(global_position + facecastnormal)
+			state = States.Free
+			DEACEL_mult = 0.5
+			jump()
+			velocity.x = facecastnormal.x * 7
+			velocity.z = facecastnormal.z * 7
+			return
+		if not facecast.is_colliding() or is_on_floor():
+			exitwallclimb = exitwallclimbinit
+			state = States.Free
 	
 func _input(event):
 	if event is InputEventMouseMotion:

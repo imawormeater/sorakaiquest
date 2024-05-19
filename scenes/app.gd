@@ -14,10 +14,12 @@ func changeState(state:PackedScene) -> void:
 	add_child(newstate)
 	
 	currentState = newstate
+	GameManager.CurrentState = currentState
 	print("Changed game state: ",currentState.name)
 
 func _ready() -> void:
 	changeState(firstState)
+	GameManager.App = self
 
 func _process(_delta: float) -> void:
 	pass
