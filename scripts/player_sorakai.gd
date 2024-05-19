@@ -105,6 +105,8 @@ func jump() -> void:
 	exitwallclimb = 0.05
 	griptimer = 0.05
 	jumpbuffer = -1
+	visual.rotation.x = 0
+	visual.rotation.z = 0
 	jumping = true
 	
 func checkHang() -> bool:
@@ -116,12 +118,13 @@ func checkHang() -> bool:
 	
 func hangInit() -> void:
 	if checkHang() and griptimer < 0 and velocity.y != 0:
-		var topPosition = hang_topCast.get_collision_point()
-		var frontPosition = hang_frontCast.get_collision_point()
-		visual.look_at(global_position - hang_frontCast.get_collision_normal())
-		global_position = Vector3(frontPosition.x,topPosition.y - 0.5,frontPosition.z) + (visual.global_basis.z * 0.45)
-		velocity = Vector3.ZERO
-		state = States.Hang
+		if absf(hang_frontCast.get_collision_normal().y) < 0.2:
+			var topPosition = hang_topCast.get_collision_point()
+			var frontPosition = hang_frontCast.get_collision_point()
+			visual.look_at(global_position - hang_frontCast.get_collision_normal())
+			global_position = Vector3(frontPosition.x,topPosition.y - 0.5,frontPosition.z) + (visual.global_basis.z * 0.45)
+			velocity = Vector3.ZERO
+			state = States.Hang
 
 func _physics_process(delta: float) -> void:
 	do_timers(delta)
@@ -165,12 +168,14 @@ func _physics_process(delta: float) -> void:
 		if onFloor != is_on_floor() and velocity.y < 0:#was on floor but now not
 			coyotejump = coyotejumpInit
 		if facecast.is_colliding() and velocity.y != 0 and exitwallclimb < 0:
-			state = States.Wall
+			if absf(facecast.get_collision_normal().y) < 0.2:
+				state = States.Wall
 		hangInit()
 
 
 	if state == States.Wall:
 		var facecastnormal = facecast.get_collision_normal()
+
 		visual.look_at(global_position - facecastnormal)
 		velocity.y += jump_grav * 0.5 * delta
 		velocity.y = clampf(velocity.y,jump_grav * 0.2,9999)
@@ -187,6 +192,8 @@ func _physics_process(delta: float) -> void:
 		if not facecast.is_colliding() or is_on_floor():
 			exitwallclimb = exitwallclimbinit
 			state = States.Free
+			visual.rotation.x = 0
+			visual.rotation.z = 0
 			return
 		hangInit()
 			
@@ -197,6 +204,8 @@ func _physics_process(delta: float) -> void:
 		if not checkHang():
 			griptimer = griptimerinit
 			state = States.Free
+			visual.rotation.x = 0
+			visual.rotation.z = 0
 			return
 		if pressedJump:
 			state = States.Free
