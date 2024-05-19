@@ -8,10 +8,21 @@
 transform = Transform3D(1.00064, 0, 0, 0, 1.00064, 0, 0, 0, 1.00064, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.749631, -0.517217, 0.411413, 0, 0.622117, 0.782108, -0.660889, -0.586668, 0.466656, 0, 15.9898, 0)
-light_color = Color(1, 1, 0.976471, 1)
+transform = Transform3D(0.749631, -0.517217, 0.411413, 0, 0.622117, 0.782108, -0.660889, -0.586668, 0.466657, 0, 15.9898, 4.9398)
+light_color = Color(0.986835, 0.962698, 0.965086, 1)
+light_energy = 1.161
+light_indirect_energy = 0.0
 shadow_enabled = true
 shadow_blur = 1.605
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.825019, -0.563124, 0.0309182, -0.542784, -0.777953, 0.314476, -0.153134, -0.276407, -0.948088, 0, 15.9898, -5.65541)
+light_color = Color(0.886361, 0.928922, 0.753787, 1)
+light_energy = 0.152
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_blur = 1.605
+sky_mode = 1
 
 [node name="Node3D" parent="." instance=ExtResource("1_moayy")]
 transform = Transform3D(52.1218, 0, 0, 0, 1, 0, 0, 0, 56.8821, 0.411, -1.25, 0.819)
