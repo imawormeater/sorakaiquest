@@ -31,14 +31,18 @@ var coyotejumpInit := 0.2
 var coyotejump := -1.0
 var exitwallclimbinit := 0.5
 var exitwallclimb := -1.0
+var griptimerinit := 0.5
+var griptimer := -1.0
 
-enum States {Free, Wall}
+enum States {Free, Wall, Hang}
 var state:= States.Free
 
 @onready var springarm := $Pivot/Arm
 @onready var pivot := $Pivot
 @onready var visual := $Visual
 @onready var facecast := $Visual/faceCast
+@onready var hang_frontCast := $Visual/hangCasts/FrontCast
+@onready var hang_topCast := $Visual/hangCasts/TopCast
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = 16
@@ -90,6 +94,8 @@ func do_timers(delta:float) -> void:
 		coyotejump -= delta
 	if exitwallclimb > 0:
 		exitwallclimb -= delta
+	if griptimer > 0:
+		griptimer -= delta
 
 func getGravity(_pressingJump:bool) -> float:
 	return jump_grav if velocity.y > 0.0 and _pressingJump else fall_grav
@@ -97,8 +103,25 @@ func getGravity(_pressingJump:bool) -> float:
 func jump() -> void:
 	velocity.y = jump_velo
 	exitwallclimb = 0.05
+	griptimer = 0.05
 	jumpbuffer = -1
 	jumping = true
+	
+func checkHang() -> bool:
+	if hang_frontCast.is_colliding() and hang_topCast.is_colliding():
+		if hang_topCast.get_collision_normal() == Vector3.ZERO:
+			return false
+		return true
+	return false
+	
+func hangInit() -> void:
+	if checkHang() and griptimer < 0 and velocity.y != 0:
+		var topPosition = hang_topCast.get_collision_point()
+		var frontPosition = hang_frontCast.get_collision_point()
+		visual.look_at(global_position - hang_frontCast.get_collision_normal())
+		global_position = Vector3(frontPosition.x,topPosition.y - 0.5,frontPosition.z) + (visual.global_basis.z * 0.45)
+		velocity = Vector3.ZERO
+		state = States.Hang
 
 func _physics_process(delta: float) -> void:
 	do_timers(delta)
@@ -143,6 +166,7 @@ func _physics_process(delta: float) -> void:
 			coyotejump = coyotejumpInit
 		if facecast.is_colliding() and velocity.y != 0 and exitwallclimb < 0:
 			state = States.Wall
+		hangInit()
 
 
 	if state == States.Wall:
@@ -163,6 +187,22 @@ func _physics_process(delta: float) -> void:
 		if not facecast.is_colliding() or is_on_floor():
 			exitwallclimb = exitwallclimbinit
 			state = States.Free
+			return
+		hangInit()
+			
+	if state == States.Hang:
+		var frontcastnormal = hang_frontCast.get_collision_normal()
+		var pressedJump = Input.is_action_just_pressed("movement_jump")
+		visual.look_at(global_position - frontcastnormal)
+		if not checkHang():
+			griptimer = griptimerinit
+			state = States.Free
+			return
+		if pressedJump:
+			state = States.Free
+			jump()
+			griptimer = griptimerinit
+		
 	
 func _input(event):
 	if event is InputEventMouseMotion:
