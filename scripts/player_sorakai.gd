@@ -44,6 +44,10 @@ var state:= States.Free
 @onready var hang_topCast := $Visual/hangCasts/TopCast 
 @onready var character := $Visual/loganchara
 
+@onready var animationtree := $Visual/loganchara/AnimationTree
+@onready var walkDust = $Visual/WalkDust
+var anim_st
+
 func setCorrectJumpVariables():
 	jump_velo = ((2.0 * JUMPHEIGHT) / JUMPPEAKTIME)
 	jump_grav = ((-2.0 * JUMPHEIGHT) / (JUMPPEAKTIME * JUMPPEAKTIME))
@@ -56,7 +60,9 @@ func setCorrectJumpVariables():
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	springarm.add_excluded_object(self)
 	setCorrectJumpVariables()
+	anim_st = animationtree.get("parameters/playback")
 
 func _process(delta: float) -> void:
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
@@ -100,11 +106,13 @@ func getGravity(_pressingJump:bool) -> float:
 func jump() -> void:
 	floor_snap_length = 0.1
 	velocity.y = jump_velo
-	exitwallclimb = 0.05
+	exitwallclimb = 0.1
 	griptimer = 0.05
 	jumpbuffer = -1
 	visual.rotation.x = 0
 	visual.rotation.z = 0
+	anim_st.travel("Jump")
+	
 	
 func checkHang() -> bool:
 	if hang_frontCast.is_colliding() and hang_topCast.is_colliding():
@@ -121,37 +129,65 @@ func hangInit() -> void:
 			visual.look_at(global_position - hang_frontCast.get_collision_normal())
 			global_position = Vector3(frontPosition.x,topPosition.y - 0.5,frontPosition.z) + (visual.global_basis.z * 0.45)
 			velocity = Vector3.ZERO
+			SPEED = baseSPEED
 			state = States.Hang
+			DEACEL_mult = 1.0
+			anim_st.travel("Grab")
+			print("Change State Grab")
 
 func get_pitch(normal:Vector3) -> float:
 	return asin(normal.cross(visual.global_basis.x).y)
 
-func set_momentum(pitch:float,delta:float,onFloor:bool) -> void:
-	var momentum = (pitch * signf(velocity.y))
+func set_animations(onfloor:bool,state:int):
+	var _velocity = sqrt(velocity.x**2 + velocity.z**2)/baseSPEED
+	var curanim = anim_st.get_current_node()
+	animationtree["parameters/IdleWalk/blend_position"] = Vector2(_velocity,0)
+	animationtree["parameters/conditions/onFloor"] = onfloor
+	animationtree["parameters/conditions/Fall"] = not onfloor
+	animationtree["parameters/conditions/OnWall"] = false
+	
+	if state == States.Wall:
+		animationtree["parameters/conditions/OnWall"] = true
+	
+	if (curanim == "Fall" or curanim == "OnWall") and onfloor:
+		anim_st.travel("Land")
+	
+	if _velocity == 0 or not onfloor:
+		walkDust.emitting = false
+	else:
+		walkDust.emitting = true
 
+func set_momentum(pitch:float,delta:float,onFloor:bool,direction:Vector2) -> void:
+	var hill = 0
+	if direction != Vector2.ZERO:
+		hill = -1
+	var momentum = pitch * hill
 	SPEED += momentum * delta * 5
 	SPEED =  clampf(SPEED,baseSPEED-absf(momentum)*2,999)
 	SNAPLENGTH = 0.1 * (SPEED/baseSPEED)
 		
 	if momentum == 0.0 and onFloor:
 		SPEED = move_toward(SPEED,baseSPEED,delta * 5)
-	if momentum == 0.0 and onFloor:
-			SPEED = move_toward(SPEED,baseSPEED,delta * 5)
 
 func _physics_process(delta: float) -> void:
 	do_timers(delta)
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
 	floor_snap_length = SNAPLENGTH
-	if state == States.Free:
-		var onFloor := is_on_floor()
+	
+	var onFloor := is_on_floor()
+	var input_dir := Input.get_vector("movement_left", "movement_right", "movement_up", "movement_down")
+	var pressedJump := Input.is_action_just_pressed("movement_jump")
+	var pressingJump := Input.is_action_pressed("movement_jump")
 		
-		var pressedJump := Input.is_action_just_pressed("movement_jump")
-		var pressingJump := Input.is_action_pressed("movement_jump")
-
-		velocity.y += getGravity(pressingJump) * delta
+	set_animations(onFloor,state)
+	
+	if state == States.Free:
 		
 		var pitch := get_pitch(get_floor_normal())
-		set_momentum(pitch,delta,onFloor)
+		set_momentum(pitch,delta,onFloor,input_dir)
+		
+		velocity.y += getGravity(pressingJump) * delta
+		
 		#character.rotation.z = pitch
 
 		if pressedJump:
@@ -162,8 +198,6 @@ func _physics_process(delta: float) -> void:
 			DEACEL_mult = 1.0
 			if jumpbuffer > 0:
 				jump()
-		
-		var input_dir := Input.get_vector("movement_left", "movement_right", "movement_up", "movement_down")
 		
 		var _pivot_rotation = pivot.rotation.x
 		pivot.rotation.x = 0
@@ -185,7 +219,10 @@ func _physics_process(delta: float) -> void:
 			coyotejump = coyotejumpInit
 		if facecast.is_colliding() and velocity.y != 0 and exitwallclimb < 0:
 			if absf(facecast.get_collision_normal().y) < 0.2:
+				SPEED = baseSPEED
 				state = States.Wall
+				print("Change State Wall")
+				anim_st.travel("OnWall")
 		hangInit()
 
 
@@ -195,7 +232,6 @@ func _physics_process(delta: float) -> void:
 		visual.look_at(global_position - facecastnormal)
 		velocity.y += jump_grav * 0.5 * delta
 		velocity.y = clampf(velocity.y,jump_grav * 0.2,9999)
-		var pressedJump = Input.is_action_just_pressed("movement_jump")
 		move_and_slide()
 		if pressedJump:
 			visual.look_at(global_position + facecastnormal)
@@ -204,19 +240,22 @@ func _physics_process(delta: float) -> void:
 			jump()
 			velocity.x = facecastnormal.x * 7
 			velocity.z = facecastnormal.z * 7
+			animationtree["parameters/conditions/OnWall"] = false
+			anim_st.travel("Jump")
 			return
 		if not facecast.is_colliding() or is_on_floor():
 			exitwallclimb = exitwallclimbinit
 			state = States.Free
 			visual.rotation.x = 0
 			visual.rotation.z = 0
+			animationtree["parameters/conditions/OnWall"] = false
 			return
 		hangInit()
 			
 	if state == States.Hang:
 		var frontcastnormal = hang_frontCast.get_collision_normal()
-		var pressedJump = Input.is_action_just_pressed("movement_jump")
 		visual.look_at(global_position - frontcastnormal)
+		exitwallclimb = 0.5
 		if not checkHang():
 			griptimer = griptimerinit
 			state = States.Free
