@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/player_sorakai.gd" id="1_6cmhp"]
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://assets/blob_shadow.png" id="2_yl6e5"]
-[ext_resource type="Script" path="res://scripts/get_player_variables_for_fun.gd" id="3_glswf"]
 [ext_resource type="PackedScene" uid="uid://cauyp1btx8io" path="res://assets/loganchara.glb" id="3_t2ofv"]
+[ext_resource type="Script" path="res://scripts/get_player_variables_for_fun.gd" id="4_uvf24"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_62ypt"]
 radius = 0.4
@@ -21,8 +21,6 @@ backlight = Color(1, 1, 1, 1)
 material = SubResource("StandardMaterial3D_cwdjj")
 radius = 0.4
 height = 1.5
-
-[sub_resource type="PrismMesh" id="PrismMesh_s7bxo"]
 
 [sub_resource type="Animation" id="Animation_q11hw"]
 resource_name = "Idle"
@@ -462,3 +460,11 @@ collision_base_size = 0.0
 visibility_aabb = AABB(-0.203111, -0.0686203, -0.180086, 0.406222, 0.137241, 0.360171)
 process_material = SubResource("ParticleProcessMaterial_12an1")
 draw_pass_1 = SubResource("SphereMesh_h8alc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer" node_paths=PackedStringArray("logan")]
+offset_right = 342.0
+offset_bottom = 165.0
+script = ExtResource("4_uvf24")
+logan = NodePath("../..")
