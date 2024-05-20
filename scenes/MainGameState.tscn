@@ -15,6 +15,42 @@ light_indirect_energy = 0.0
 shadow_blur = 1.605
 sky_mode = 1
 
+[node name="Sorakai" parent="." instance=ExtResource("2_ntxhb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00746029, 0.999)
+
+[node name="Armature" parent="Sorakai/Visual/loganchara" index="0"]
+transform = Transform3D(3.72083, 0, 0, 0, 3.72083, 0, 0, 0, 3.72083, -2.62473, 12.0173, 0.0415326)
+
+[node name="Skeleton3D" parent="Sorakai/Visual/loganchara/Armature" index="0"]
+bones/0/position = Vector3(-0.0543279, -1.47981, -0.304354)
+bones/0/rotation = Quaternion(0.993351, 0.0237799, -0.112165, -0.0103252)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(0.00639839, 0.112458, 0.170616, 0.978878)
+bones/2/rotation = Quaternion(0.549012, 0.44563, -0.549012, 0.445631)
+bones/3/position = Vector3(-0.045908, -1.47981, 0.337209)
+bones/3/rotation = Quaternion(0.990498, 0.0789015, -0.112565, -0.00408105)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.00947936, 0.11224, 0.197392, 0.973832)
+bones/5/rotation = Quaternion(0.544586, 0.451028, -0.544586, 0.451028)
+bones/6/position = Vector3(-0.0781445, -1.52291, -0.00108111)
+bones/6/rotation = Quaternion(9.31131e-10, 1.19206e-07, -0.00781089, 0.999969)
+bones/7/rotation = Quaternion(-0.00328224, -0.0555944, -0.0726275, 0.995803)
+bones/8/position = Vector3(-0.0239583, 0.602603, 0.00283578)
+bones/8/rotation = Quaternion(0.00353367, 0.0556236, 0.0770877, 0.995465)
+bones/9/rotation = Quaternion(0.0640697, 0.428585, 0.897823, 0.0782523)
+bones/10/rotation = Quaternion(-0.110908, 0.117529, 0.220348, 0.961942)
+bones/11/rotation = Quaternion(-0.100787, 0.96615, 0.153133, 0.181509)
+bones/12/rotation = Quaternion(0.0181025, 0.588216, 0.807416, -0.0418797)
+bones/13/rotation = Quaternion(0.209991, 0.781056, 0.23008, 0.54122)
+bones/14/rotation = Quaternion(0.72034, -0.383323, 0.536928, -0.214202)
+bones/15/rotation = Quaternion(0.167301, -0.0814801, -0.0987522, 0.977558)
+bones/16/rotation = Quaternion(-0.179544, 0.712432, 0.0877477, -0.672685)
+bones/17/rotation = Quaternion(-0.761307, -0.00813958, 0.273992, 0.5876)
+bones/18/rotation = Quaternion(-0.320628, 0.54518, 0.0172301, 0.77439)
+
+[node name="AnimationTree" parent="Sorakai/Visual/loganchara" index="2"]
+parameters/IdleWalk/blend_position = Vector2(-0.0128, -0.0158731)
+
 [node name="Node3D" parent="." instance=ExtResource("1_moayy")]
 transform = Transform3D(52.1218, 0, 0, 0, 1, 0, 0, 0, 56.8821, 0.411, -1.25, 0.819)
 
@@ -71,26 +107,6 @@ transform = Transform3D(-7.53965, 2.15996, 0, -1.18068, -13.7932, 0, 0, 0, -4.70
 
 [node name="Node3D18" parent="." instance=ExtResource("1_moayy")]
 transform = Transform3D(-6.39572, 0, -4.11459e-07, 0, 0.139508, 0, 5.59131e-07, 0, -4.70655, 10.8934, 11.7396, 16.8143)
-
-[node name="Sorakai" parent="." instance=ExtResource("2_ntxhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.999)
-
-[node name="Skeleton3D" parent="Sorakai/Visual/loganchara/Armature" index="0"]
-bones/0/position = Vector3(-0.0543279, -1.37756, -0.304354)
-bones/0/rotation = Quaternion(0.99337, 0.0229928, -0.112157, -0.0104141)
-bones/1/rotation = Quaternion(0.0540897, 0.0988026, 0.574596, 0.810649)
-bones/2/rotation = Quaternion(0.277714, 0.650288, -0.277715, 0.650288)
-bones/3/position = Vector3(-0.045908, -1.37756, 0.337209)
-bones/3/rotation = Quaternion(0.927113, 0.359454, -0.104097, 0.0204744)
-bones/4/rotation = Quaternion(-0.0101027, 0.112185, 0.0257511, 0.993302)
-bones/5/rotation = Quaternion(0.484432, 0.518716, -0.48258, 0.513202)
-bones/6/position = Vector3(-0.0781445, -1.45311, -0.00108111)
-bones/7/rotation = Quaternion(-0.00558137, -0.0554339, -0.106247, 0.992778)
-bones/8/rotation = Quaternion(0.0043772, 0.0555385, 0.0922389, 0.994177)
-bones/9/rotation = Quaternion(0.0180863, 0.485224, 0.873784, 0.0270775)
-bones/10/rotation = Quaternion(-0.370126, 0.279172, 0.00976672, 0.885988)
-bones/14/rotation = Quaternion(0.8464, -0.218331, 0.208107, -0.438896)
-bones/15/rotation = Quaternion(0.273167, 0.0150806, -0.40538, 0.87225)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_ywea7")
