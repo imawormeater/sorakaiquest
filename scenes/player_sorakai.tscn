@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player_sorakai.gd" id="1_6cmhp"]
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://assets/blob_shadow.png" id="2_yl6e5"]
+[ext_resource type="Script" path="res://scripts/get_player_variables_for_fun.gd" id="3_glswf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_62ypt"]
 radius = 0.4
@@ -19,8 +20,6 @@ backlight = Color(1, 1, 1, 1)
 material = SubResource("StandardMaterial3D_cwdjj")
 radius = 0.4
 height = 1.5
-
-[sub_resource type="PrismMesh" id="PrismMesh_s7bxo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0s7c"]
 vertex_color_use_as_albedo = true
@@ -468,12 +467,9 @@ current = true
 [node name="Visual" type="Node3D" parent="."]
 
 [node name="Debug" type="MeshInstance3D" parent="Visual"]
+visible = false
 mesh = SubResource("CapsuleMesh_1b6ui")
 skeleton = NodePath("../..")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual"]
-transform = Transform3D(1, 0, 0, 0, 0.189228, 0, 0, 0, 0.0934916, 0.000155091, 0.260705, -0.438789)
-mesh = SubResource("PrismMesh_s7bxo")
 
 [node name="faceCast" type="RayCast3D" parent="Visual"]
 transform = Transform3D(1.464, 0, 0, 0, -4.37114e-08, -1.464, 0, 1, -6.39935e-08, 0, 0, 0)
@@ -506,6 +502,7 @@ transform = Transform3D(-0.000468449, 0, 0.0691742, 0, 0.0691758, 0, -0.0691742,
 transform = Transform3D(3.72083, 0, 0, 0, 3.72083, 0, 0, 0, 3.72083, -2.62473, 12.0173, 0.0415326)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Visual/loganchara/Armature"]
+transform = Transform3D(1, 0, 9.31323e-10, 0, 1, 0, -9.31323e-10, 0, 1, 0, 0, 0)
 bones/0/name = "LLegUp"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0.974269, -0.043724, -0.221107, -0.0368994, -0.998709, 0.0349046, -0.222348, -0.0258477, -0.974625, -0.0543279, -1.45639, -0.304354)
@@ -539,7 +536,7 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(0.974838, 0.0158954, 0.222348, -0.0221917, 0.999419, 0.0258477, -0.221808, -0.0301316, 0.974625, 2.98023e-08, 0.641317, -7.45058e-09)
 bones/4/enabled = true
 bones/4/position = Vector3(2.98023e-08, 0.641317, -7.45058e-09)
-bones/4/rotation = Quaternion(-0.0140851, 0.111755, -0.00958321, 0.99359)
+bones/4/rotation = Quaternion(-0.0140851, 0.111755, -0.00958322, 0.99359)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "RFoot"
 bones/5/parent = 4
@@ -553,20 +550,20 @@ bones/6/parent = -1
 bones/6/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, -0.0781444, -1.50295, -0.00108111)
 bones/6/enabled = true
 bones/6/position = Vector3(-0.0781444, -1.50295, -0.00108111)
-bones/6/rotation = Quaternion(9.31131e-10, 1.19206e-07, -0.00781089, 0.999969)
-bones/6/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(9.31132e-10, 1.19206e-07, -0.00781089, 0.99997)
+bones/6/scale = Vector3(1.00048, 1.00048, 1.00048)
 bones/7/name = "UppTorso"
 bones/7/parent = 6
 bones/7/rest = Transform3D(0.987616, 0.111199, -0.110679, -0.110679, 0.993797, 0.0108458, 0.111199, 0.00153843, 0.993797, -2.40352e-09, 0.80456, -5.50912e-10)
 bones/7/enabled = true
-bones/7/position = Vector3(-2.40352e-09, 0.80456, -5.50912e-10)
+bones/7/position = Vector3(-5.19635e-09, 0.80456, -8.99993e-10)
 bones/7/rotation = Quaternion(-0.00233408, -0.0556422, -0.0556421, 0.996896)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/name = "Head"
 bones/8/parent = 7
 bones/8/rest = Transform3D(0.987616, -0.110679, 0.111199, 0.111199, 0.993797, 0.0015384, -0.110679, 0.0108458, 0.993797, -4.56348e-08, 0.702747, 6.51926e-09)
 bones/8/enabled = true
-bones/8/position = Vector3(-4.56348e-08, 0.702747, 6.51926e-09)
+bones/8/position = Vector3(-6.03298e-08, 0.702747, 8.04936e-09)
 bones/8/rotation = Quaternion(0.00233409, 0.0556421, 0.0556421, 0.996896)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "RArmUpp"
@@ -630,7 +627,7 @@ bones/17/parent = 16
 bones/17/rest = Transform3D(0.848924, 0.00320946, 0.528505, -0.171357, 0.947634, 0.269492, -0.499964, -0.319341, 0.80502, -1.93715e-07, 0.461021, -3.57628e-07)
 bones/17/enabled = true
 bones/17/position = Vector3(-1.93715e-07, 0.461021, -3.57628e-07)
-bones/17/rotation = Quaternion(-0.761307, -0.00813956, 0.273992, 0.5876)
+bones/17/rotation = Quaternion(-0.761307, -0.00813957, 0.273992, 0.5876)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "LThumb"
 bones/18/parent = 16
@@ -660,3 +657,14 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_wt1rb")
 anim_player = NodePath("../AnimationPlayer")
 parameters/IdleWalk/blend_position = Vector2(0, -0.00440526)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer" node_paths=PackedStringArray("logan")]
+offset_right = 312.0
+offset_bottom = 23.0
+text = "LOGAN NEAL STATS:
+Dick
+Chese"
+script = ExtResource("3_glswf")
+logan = NodePath("../..")

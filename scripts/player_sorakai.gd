@@ -2,10 +2,13 @@ extends CharacterBody3D
 
 @export var camera:Camera3D
 
-var SPEED := 5.0
+var baseSPEED := 5.0
+var SPEED := baseSPEED
 var _ACCEL:float = 25.0
 var _DEACCEL:float = 30.0
-
+var DEACEL_mult := 1.0
+var SNAPLENGTH := 0.1
+#JUMP SHIT
 var JUMPHEIGHT := 2.5
 var JUMPPEAKTIME := 0.5
 var JUMPDESCENTTIME := 0.35
@@ -13,17 +16,13 @@ var JUMPDESCENTTIME := 0.35
 var jump_velo:float
 var jump_grav:float
 var fall_grav:float
-
+#CAMERA SHIT
 var cameraDistance := 2.7
 const scrollSpeed := 0.4
 var mouseSens := 0.005
 var visual_y_direction := 0.0
-
 var camera_deg := Vector2(0,0)
 
-var jumping := false
-
-var DEACEL_mult := 1.0
 #timers
 var jumpbufferInit := 0.2
 var jumpbuffer := -1.0
@@ -33,7 +32,7 @@ var exitwallclimbinit := 0.5
 var exitwallclimb := -1.0
 var griptimerinit := 0.5
 var griptimer := -1.0
-
+#STATE SHIT
 enum States {Free, Wall, Hang}
 var state:= States.Free
 
@@ -42,10 +41,8 @@ var state:= States.Free
 @onready var visual := $Visual
 @onready var facecast := $Visual/faceCast
 @onready var hang_frontCast := $Visual/hangCasts/FrontCast
-@onready var hang_topCast := $Visual/hangCasts/TopCast
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity: float = 16
+@onready var hang_topCast := $Visual/hangCasts/TopCast 
+@onready var character := $Visual/loganchara
 
 func setCorrectJumpVariables():
 	jump_velo = ((2.0 * JUMPHEIGHT) / JUMPPEAKTIME)
@@ -101,13 +98,13 @@ func getGravity(_pressingJump:bool) -> float:
 	return jump_grav if velocity.y > 0.0 and _pressingJump else fall_grav
 
 func jump() -> void:
+	floor_snap_length = 0.1
 	velocity.y = jump_velo
 	exitwallclimb = 0.05
 	griptimer = 0.05
 	jumpbuffer = -1
 	visual.rotation.x = 0
 	visual.rotation.z = 0
-	jumping = true
 	
 func checkHang() -> bool:
 	if hang_frontCast.is_colliding() and hang_topCast.is_colliding():
@@ -126,18 +123,37 @@ func hangInit() -> void:
 			velocity = Vector3.ZERO
 			state = States.Hang
 
+func get_pitch(normal:Vector3) -> float:
+	return asin(normal.cross(visual.global_basis.x).y)
+
+func set_momentum(pitch:float,delta:float,onFloor:bool) -> void:
+	var momentum = (pitch * signf(velocity.y))
+
+	SPEED += momentum * delta * 5
+	SPEED =  clampf(SPEED,baseSPEED-absf(momentum)*2,999)
+	SNAPLENGTH = 0.1 * (SPEED/baseSPEED)
+		
+	if momentum == 0.0 and onFloor:
+		SPEED = move_toward(SPEED,baseSPEED,delta * 5)
+	if momentum == 0.0 and onFloor:
+			SPEED = move_toward(SPEED,baseSPEED,delta * 5)
+
 func _physics_process(delta: float) -> void:
 	do_timers(delta)
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
-	
+	floor_snap_length = SNAPLENGTH
 	if state == States.Free:
 		var onFloor := is_on_floor()
 		
-		var pressedJump = Input.is_action_just_pressed("movement_jump")
-		var pressingJump = Input.is_action_pressed("movement_jump")
+		var pressedJump := Input.is_action_just_pressed("movement_jump")
+		var pressingJump := Input.is_action_pressed("movement_jump")
 
 		velocity.y += getGravity(pressingJump) * delta
-			
+		
+		var pitch := get_pitch(get_floor_normal())
+		set_momentum(pitch,delta,onFloor)
+		#character.rotation.z = pitch
+
 		if pressedJump:
 			jumpbuffer = jumpbufferInit
 			if coyotejump > 0:
@@ -153,11 +169,11 @@ func _physics_process(delta: float) -> void:
 		pivot.rotation.x = 0
 		var direction:Vector3 = (pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		pivot.rotation.x = _pivot_rotation
-		
+			
 		var _tempVelocity := Vector2(velocity.x,velocity.z)
 		if direction:
 			visual.rotation.y = lerp_angle(visual.rotation.y,atan2(-direction.x, -direction.z),_lerp_speed/2 * (DEACEL_mult)**2)
-			_tempVelocity = _tempVelocity.move_toward(Vector2(direction.x,direction.z) * SPEED,_ACCEL * delta * DEACEL_mult)
+			_tempVelocity = _tempVelocity.move_toward(Vector2(direction.x,direction.z) * SPEED ,_ACCEL * delta * DEACEL_mult)
 		else:
 			_tempVelocity = _tempVelocity.move_toward(Vector2.ZERO,_DEACCEL * delta * DEACEL_mult)
 		velocity.x = _tempVelocity.x
