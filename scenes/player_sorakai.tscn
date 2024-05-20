@@ -1,9 +1,9 @@
-[gd_scene load_steps=46 format=3 uid="uid://dw40p48fqbsl2"]
+[gd_scene load_steps=49 format=3 uid="uid://dw40p48fqbsl2"]
 
 [ext_resource type="Script" path="res://scripts/player_sorakai.gd" id="1_6cmhp"]
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://assets/blob_shadow.png" id="2_yl6e5"]
 [ext_resource type="PackedScene" uid="uid://cauyp1btx8io" path="res://assets/loganchara.glb" id="3_t2ofv"]
-[ext_resource type="Shader" path="res://assets/ursc/spatial/basic_opaque.gdshader" id="4_fuvpu"]
+[ext_resource type="Shader" path="res://scenes/celshaded.gdshader" id="4_4f8ao"]
 [ext_resource type="Script" path="res://scripts/get_player_variables_for_fun.gd" id="4_uvf24"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_62ypt"]
@@ -23,11 +23,29 @@ material = SubResource("StandardMaterial3D_cwdjj")
 radius = 0.4
 height = 1.5
 
+[sub_resource type="Gradient" id="Gradient_4m4d1"]
+offsets = PackedFloat32Array(0, 0.99187)
+colors = PackedColorArray(0.422198, 0.377187, 0.37781, 1, 0.419608, 0.376471, 0.376471, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oftfw"]
+gradient = SubResource("Gradient_4m4d1")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_to2gc"]
 render_priority = 0
-shader = ExtResource("4_fuvpu")
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/cull_distance_override = 0.0
+shader = ExtResource("4_4f8ao")
+shader_parameter/ToonRampOffset = 0.15
+shader_parameter/ToonRampSmoothness = 0.395
+shader_parameter/ToonRampTinting = Color(0.82606, 0.82606, 0.82606, 1)
+shader_parameter/RimPower = 0.0
+shader_parameter/RimCutOff = 1.0
+shader_parameter/RimSmoothness = 0.0
+shader_parameter/RimLightBrightness = 0.0
+shader_parameter/SubSurfDistortion = 0.768
+shader_parameter/SubSurfTint = null
+shader_parameter/SubSurfBrightness = 2.073
+shader_parameter/SubSurfCutoff = 0.5
+shader_parameter/SubSurfSmoothness = 0.05
+shader_parameter/Texture = SubResource("GradientTexture1D_oftfw")
 
 [sub_resource type="Animation" id="Animation_q11hw"]
 resource_name = "Idle"
@@ -436,6 +454,22 @@ states/Start/position = Vector2(245, 127)
 transitions = ["Start", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_0xiqw"), "IdleWalk", "Jump", SubResource("AnimationNodeStateMachineTransition_kvuaj"), "Jump", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_bo3ss"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_aeggj"), "IdleWalk", "Fall", SubResource("AnimationNodeStateMachineTransition_40cqi"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_d3f7f"), "Land", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_4mg3k"), "Jump", "Grab", SubResource("AnimationNodeStateMachineTransition_hsh7h"), "Grab", "GrabIdle", SubResource("AnimationNodeStateMachineTransition_llqxh"), "GrabIdle", "Jump", SubResource("AnimationNodeStateMachineTransition_5p4ba")]
 graph_offset = Vector2(-131, 6)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p41kx"]
+render_priority = 0
+shader = ExtResource("4_4f8ao")
+shader_parameter/ToonRampOffset = 0.672
+shader_parameter/ToonRampSmoothness = 0.129
+shader_parameter/ToonRampTinting = Color(0.329412, 0.329412, 0.329412, 1)
+shader_parameter/RimPower = 0.0
+shader_parameter/RimCutOff = 0.0
+shader_parameter/RimSmoothness = 0.0
+shader_parameter/RimLightBrightness = 0.0
+shader_parameter/SubSurfDistortion = 1.0
+shader_parameter/SubSurfTint = null
+shader_parameter/SubSurfBrightness = 3.0
+shader_parameter/SubSurfCutoff = 0.5
+shader_parameter/SubSurfSmoothness = 0.05
+
 [sub_resource type="Curve" id="Curve_j27lv"]
 max_value = 13.66
 _data = [Vector2(0, 2.10385), 0.0, -2.10385, 0, 0, Vector2(1, 0), -2.24176, 0.0, 0, 0]
@@ -517,32 +551,32 @@ target_position = Vector3(0, -0.5, 0)
 transform = Transform3D(0.000715101, 0, 0.0831059, 0, 0.083109, 0, -0.0831059, 0, 0.000715101, 0, -0.744453, -0.257608)
 
 [node name="Skeleton3D" parent="Visual/loganchara/Armature" index="0"]
-bones/0/position = Vector3(-0.0543279, -1.37718, -0.304354)
-bones/0/rotation = Quaternion(0.826648, -0.551331, -0.0858659, -0.072902)
-bones/1/rotation = Quaternion(-0.00104297, 0.112635, 0.105592, 0.988009)
-bones/2/rotation = Quaternion(0.259485, 0.657774, -0.259485, 0.657775)
+bones/0/position = Vector3(-0.0543279, -1.37728, -0.304354)
+bones/0/rotation = Quaternion(0.871741, -0.476844, -0.0919185, -0.0651049)
+bones/1/rotation = Quaternion(0.0111729, 0.112084, 0.212072, 0.970741)
+bones/2/rotation = Quaternion(0.226076, 0.669992, -0.226076, 0.669993)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/position = Vector3(-0.045908, -1.37718, 0.337209)
-bones/3/rotation = Quaternion(0.866089, 0.487137, -0.103594, 0.0430717)
-bones/4/rotation = Quaternion(-0.0105334, 0.112146, 0.021937, 0.993394)
+bones/3/position = Vector3(-0.045908, -1.37728, 0.337209)
+bones/3/rotation = Quaternion(0.869939, 0.480509, -0.103137, 0.0409884)
+bones/4/rotation = Quaternion(-0.0105103, 0.112148, 0.0221418, 0.993389)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.492984, 0.510566, -0.489553, 0.506583)
+bones/5/rotation = Quaternion(0.492423, 0.511106, -0.48921, 0.506915)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/position = Vector3(-0.0781445, -1.36271, -0.00108111)
+bones/6/position = Vector3(-0.0781445, -1.37064, -0.00108111)
 bones/6/rotation = Quaternion(9.31131e-10, 1.19206e-07, -0.00781089, 0.999969)
-bones/7/rotation = Quaternion(-0.00317975, -0.055604, -0.0655505, 0.996294)
-bones/8/rotation = Quaternion(0.00402608, 0.0555651, 0.085949, 0.994741)
+bones/7/rotation = Quaternion(-0.00395536, -0.0555686, -0.0696642, 0.996014)
+bones/8/rotation = Quaternion(0.00406989, 0.0555619, 0.0867339, 0.994673)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.278911, 0.369827, 0.680297, 0.568007)
-bones/10/rotation = Quaternion(-0.277351, 0.0941788, 0.144458, 0.945166)
+bones/9/rotation = Quaternion(0.24805, 0.397033, 0.724752, 0.50554)
+bones/10/rotation = Quaternion(-0.274514, 0.104154, 0.0444148, 0.954893)
 bones/11/rotation = Quaternion(-0.100787, 0.96615, 0.153133, 0.181509)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(0.0181024, 0.588216, 0.807416, -0.0418797)
 bones/13/rotation = Quaternion(0.20999, 0.781056, 0.23008, 0.54122)
 bones/13/scale = Vector3(1, 1, 1)
-bones/14/rotation = Quaternion(0.778775, 0.173266, 0.173529, -0.577387)
+bones/14/rotation = Quaternion(0.794185, 0.126727, 0.166319, -0.570569)
 bones/14/scale = Vector3(1, 1, 1)
-bones/15/rotation = Quaternion(0.163653, -0.0278579, -0.407628, 0.897931)
+bones/15/rotation = Quaternion(0.236683, 0.027517, -0.410646, 0.88011)
 bones/16/rotation = Quaternion(-0.179544, 0.712432, 0.0877478, -0.672685)
 bones/17/rotation = Quaternion(-0.761307, -0.00813958, 0.273992, 0.5876)
 bones/17/scale = Vector3(1, 1, 1)
@@ -551,6 +585,7 @@ bones/18/scale = Vector3(1, 1, 1)
 bones/19/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="logan" parent="Visual/loganchara/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_to2gc")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Visual/loganchara"]
@@ -566,6 +601,7 @@ parameters/IdleWalk/blend_position = Vector2(0.000942469, 1.2963)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.729597, 0.0224319)
+material_override = SubResource("ShaderMaterial_p41kx")
 lifetime = 0.24
 speed_scale = 0.5
 explosiveness = 0.11
@@ -580,7 +616,7 @@ draw_pass_1 = SubResource("SphereMesh_h8alc")
 [node name="Label" type="Label" parent="CanvasLayer" node_paths=PackedStringArray("logan")]
 offset_right = 280.0
 offset_bottom = 135.0
-scale = Vector2(0.55, 0.55)
+scale = Vector2(0.825, 0.825)
 script = ExtResource("4_uvf24")
 logan = NodePath("../..")
 

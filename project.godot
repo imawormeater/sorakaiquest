@@ -23,8 +23,8 @@ GameManager="*res://scripts/game_manager.gd"
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=240
+window/size/viewport_width=640
+window/size/viewport_height=480
 window/stretch/mode="viewport"
 
 [input]
@@ -89,5 +89,25 @@ texture_filtering={
 }
 vertex_snap_intensity={
 "type": "int",
-"value": 2
+"value": 1
+}
+diffuse_curve={
+"type": "sampler2D",
+"value": ""
+}
+specular_smoothness={
+"type": "float",
+"value": 0.05
+}
+fresnel_smoothness={
+"type": "float",
+"value": 0.05
+}
+outline_width={
+"type": "float",
+"value": 0.0
+}
+outline_color={
+"type": "color",
+"value": Color(0, 0, 0, 1)
 }
