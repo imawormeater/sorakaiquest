@@ -1,11 +1,4 @@
-[gd_resource type="Environment" load_steps=5 format=3 uid="uid://jyc65e1ajlll"]
-
-[sub_resource type="Gradient" id="Gradient_anapq"]
-offsets = PackedFloat32Array(0, 0.537313, 1)
-colors = PackedColorArray(0.0901916, 0.0740589, 0.05451, 1, 0.556753, 0.533268, 0.510462, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_n8iul"]
-gradient = SubResource("Gradient_anapq")
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://jyc65e1ajlll"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fa0ef"]
 sky_top_color = Color(0.546255, 0.41349, 0.367301, 1)
@@ -16,10 +9,9 @@ ground_horizon_color = Color(0.742795, 0.750589, 0.762896, 1)
 sky_material = SubResource("ProceduralSkyMaterial_fa0ef")
 
 [resource]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.0352941, 0.376471, 0.588235, 1)
+background_energy_multiplier = 0.9
 sky = SubResource("Sky_j1hyb")
-ambient_light_source = 3
-reflected_light_source = 2
-glow_enabled = true
-adjustment_enabled = true
-adjustment_color_correction = SubResource("GradientTexture1D_n8iul")
+ambient_light_source = 1
+reflected_light_source = 1
