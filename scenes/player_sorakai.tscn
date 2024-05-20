@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dw40p48fqbsl2"]
+[gd_scene load_steps=28 format=3 uid="uid://dw40p48fqbsl2"]
 
 [ext_resource type="Script" path="res://scripts/player_sorakai.gd" id="1_6cmhp"]
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://assets/blob_shadow.png" id="2_yl6e5"]
@@ -361,6 +361,30 @@ states/Start/position = Vector2(207, 120)
 transitions = ["Start", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_0xiqw")]
 graph_offset = Vector2(-137, -27)
 
+[sub_resource type="Curve" id="Curve_j27lv"]
+max_value = 13.66
+_data = [Vector2(0, 2.10385), 0.0, -2.10385, 0, 0, Vector2(1, 0), -2.24176, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x74ye"]
+curve = SubResource("Curve_j27lv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_12an1"]
+lifetime_randomness = 0.09
+spread = 35.997
+gravity = Vector3(0, 1, 0)
+linear_accel_min = 3.55
+linear_accel_max = 9.07
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_x74ye")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mlvw1"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_h8alc"]
+material = SubResource("StandardMaterial3D_mlvw1")
+radius = 0.1
+height = 0.2
+
 [node name="Sorakai" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 floor_constant_speed = true
@@ -429,3 +453,14 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_wt1rb")
 anim_player = NodePath("../AnimationPlayer")
 parameters/IdleWalk/blend_position = Vector2(0.00395882, 0.015873)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.729597, 0.0224319)
+lifetime = 0.24
+speed_scale = 0.5
+explosiveness = 0.11
+randomness = 0.7
+collision_base_size = 0.0
+visibility_aabb = AABB(-0.203111, -0.0686203, -0.180086, 0.406222, 0.137241, 0.360171)
+process_material = SubResource("ParticleProcessMaterial_12an1")
+draw_pass_1 = SubResource("SphereMesh_h8alc")
