@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmdi4mdm7qr5o"]
+[gd_scene load_steps=7 format=3 uid="uid://dmdi4mdm7qr5o"]
 
 [ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://assets/plains_1.tscn" id="1_d4dns"]
 [ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://scenes/basicassplatform.tscn" id="1_moayy"]
 [ext_resource type="Environment" uid="uid://jyc65e1ajlll" path="res://assets/test_env.tres" id="1_ywea7"]
 [ext_resource type="Material" uid="uid://fy0ibi6x3jnj" path="res://assets/materials/basicassplatform.tres" id="2_66r6v"]
 [ext_resource type="PackedScene" uid="uid://dw40p48fqbsl2" path="res://scenes/player_sorakai.tscn" id="2_ntxhb"]
+[ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="6_qgbhh"]
 
 [node name="MainGameState" type="Node3D"]
 transform = Transform3D(1.00064, 0, 0, 0, 1.00064, 0, 0, 0, 1.00064, 0, 0, 0)
@@ -87,5 +88,8 @@ transform = Transform3D(-6.39572, 0, -4.11459e-07, 0, 0.139508, 0, 5.59131e-07, 
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_ywea7")
+
+[node name="Smoother" type="Node" parent="."]
+script = ExtResource("6_qgbhh")
 
 [editable path="plains2"]

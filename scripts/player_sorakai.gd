@@ -25,7 +25,7 @@ const scrollSpeed := 0.4
 var mouseSens := 0.005
 var visual_y_direction := 0.0
 var camera_deg := Vector2(0,0)
-
+var old_camera_pos := Vector3.ZERO
 #timers
 var jumpbufferInit := 0.2
 var jumpbuffer := -1.0
@@ -49,6 +49,7 @@ var state:= States.Free
 @onready var hang_topCast := $Visual/hangCasts/TopCast 
 @onready var character := $Visual/loganchara
 @onready var character_mesh := $Visual/loganchara/Armature/Skeleton3D/logan
+@onready var targetCamera := $Pivot/Arm/Target
 
 @onready var animationtree := $Visual/loganchara/AnimationTree
 @onready var walkDust := $Visual/WalkDust
@@ -110,8 +111,10 @@ func _process(delta: float) -> void:#Camera shit
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if global_position.y < -10:
 		global_position = Vector3(0,2.778,-2.248)
-	pivot.rotation.x = lerp(pivot.rotation.x,camera_deg[1],pow(_lerp_speed,0.2))
-	pivot.rotation.y = lerp(pivot.rotation.y,camera_deg[0],pow(_lerp_speed,0.2))
+	pivot.rotation.x = lerp(pivot.rotation.x,camera_deg[1],_lerp_speed**0.2)
+	pivot.rotation.y = lerp(pivot.rotation.y,camera_deg[0],_lerp_speed**0.2)
+	
+	camera.global_transform = camera.global_transform.interpolate_with(targetCamera.global_transform,_lerp_speed)
 	
 
 func do_timers(delta:float) -> void: ##Does the Timers

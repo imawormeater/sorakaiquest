@@ -283,7 +283,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 floor_constant_speed = true
 floor_max_angle = 1.0472
 script = ExtResource("1_6cmhp")
-camera = NodePath("Pivot/Arm/Camera")
+camera = NodePath("Camera")
 _face_mat = "surface_material_override/1"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -296,11 +296,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.245521, -1.19209e-07)
 spring_length = 5.0
 margin = 0.3
 
-[node name="Camera" type="Camera3D" parent="Pivot/Arm"]
+[node name="Target" type="Node3D" parent="Pivot/Arm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
-v_offset = 0.255
-current = true
-fov = 98.7
 
 [node name="Visual" type="Node3D" parent="."]
 
@@ -417,5 +414,12 @@ logan = NodePath("../..")
 [node name="WalkrideConnection" type="Timer" parent="Timers"]
 process_callback = 0
 wait_time = 0.1
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24552, 5)
+top_level = true
+v_offset = 0.28
+current = true
+fov = 98.7
 
 [editable path="Visual/loganchara"]
