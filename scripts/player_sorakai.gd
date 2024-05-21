@@ -43,12 +43,22 @@ var state:= States.Free
 @onready var hang_frontCast := $Visual/hangCasts/FrontCast
 @onready var hang_topCast := $Visual/hangCasts/TopCast 
 @onready var character := $Visual/loganchara
+@onready var character_mesh := $Visual/loganchara/Armature/Skeleton3D/logan
 
 @onready var animationtree := $Visual/loganchara/AnimationTree
-@onready var walkDust = $Visual/WalkDust
+@onready var walkDust := $Visual/WalkDust
+
+@export var _face_mat: String
+@onready var face = character_mesh.get(_face_mat)
+
+var faces_textures = {
+	"normal" : preload("res://assets/loganchara_loganface1.png"),
+	"blink" : preload("res://assets/loganface2.png")
+}
+
 var anim_st
 
-func setCorrectJumpVariables():
+func setCorrectJumpVariables() -> void:
 	jump_velo = ((2.0 * JUMPHEIGHT) / JUMPPEAKTIME)
 	jump_grav = ((-2.0 * JUMPHEIGHT) / (JUMPPEAKTIME * JUMPPEAKTIME))
 	fall_grav= ((-2.0 * JUMPHEIGHT) / (JUMPDESCENTTIME* JUMPDESCENTTIME))
@@ -56,6 +66,13 @@ func setCorrectJumpVariables():
 	print(jump_velo)
 	print(jump_grav)
 	print(fall_grav)
+
+func changeFace(whichface:String) -> void:
+	var currentface = faces_textures[whichface]
+	if currentface == null:
+		faces_textures["normal"]
+	face["shader_parameter/Texture"] = currentface
+	print('face changed')
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -141,7 +158,7 @@ func get_pitch(normal:Vector3) -> float:
 	return asin(normal.cross(visual.global_basis.x).y)
 
 #MOST ANIMATIONS FUNCTION
-func set_animations(onfloor:bool,_state:int):
+func set_animations(onfloor:bool,_state:int) -> void:
 	var _velocity = sqrt(velocity.x**2 + velocity.z**2)/baseSPEED
 	var curanim = anim_st.get_current_node()
 	animationtree["parameters/IdleWalk/blend_position"] = Vector2(_velocity,0)
@@ -188,6 +205,10 @@ func _physics_process(delta: float) -> void:
 		
 	set_animations(onFloor,state)
 	
+	if pressingJump:
+		changeFace('blink')
+	else:
+		changeFace('normal')
 	#FREE STATE (RUNNING, JUMPING, BASIC)
 	
 	if state == States.Free:
@@ -279,7 +300,7 @@ func _physics_process(delta: float) -> void:
 			griptimer = griptimerinit
 		
 	
-func _input(event):
+func _input(event) -> void:
 	if event is InputEventMouseMotion:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			camera_deg += event.relative * -mouseSens
