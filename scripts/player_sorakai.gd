@@ -72,7 +72,6 @@ func changeFace(whichface:String) -> void:
 	if currentface == null:
 		faces_textures["normal"]
 	face["shader_parameter/Texture"] = currentface
-	print('face changed')
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
