@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qbj48iekwu5d"
+path="res://.godot/imported/dvd bump.mp3-03680a8c1670e2ef119b1b592d51d03b.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/dvd bump.mp3"
+dest_files=["res://.godot/imported/dvd bump.mp3-03680a8c1670e2ef119b1b592d51d03b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

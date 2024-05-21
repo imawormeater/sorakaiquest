@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dpmpk03bq50du"
+path="res://.godot/imported/appear sudden.mp3-e274a1995d35111507c752c842221a2f.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/appear sudden.mp3"
+dest_files=["res://.godot/imported/appear sudden.mp3-e274a1995d35111507c752c842221a2f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

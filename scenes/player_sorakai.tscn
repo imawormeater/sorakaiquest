@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dw40p48fqbsl2"]
+[gd_scene load_steps=58 format=3 uid="uid://dw40p48fqbsl2"]
 
 [ext_resource type="Script" path="res://scripts/player_sorakai.gd" id="1_6cmhp"]
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://assets/blob_shadow.png" id="2_yl6e5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/get_player_variables_for_fun.gd" id="4_uvf24"]
 [ext_resource type="Texture2D" uid="uid://bhywkec3n6plo" path="res://assets/loganchara_LoganTex.png" id="5_pobn2"]
 [ext_resource type="Texture2D" uid="uid://bntjxa37b77sc" path="res://assets/loganchara_loganface1.png" id="6_ya3t1"]
+[ext_resource type="PackedScene" uid="uid://cwry764tybyvv" path="res://scenes/player_sfx.tscn" id="7_0u647"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_62ypt"]
 radius = 0.3
@@ -272,7 +273,7 @@ states/OnWall/node = SubResource("AnimationNodeAnimation_dae5x")
 states/OnWall/position = Vector2(516, 323)
 states/Start/position = Vector2(378, -32)
 transitions = ["Start", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_0xiqw"), "IdleWalk", "Jump", SubResource("AnimationNodeStateMachineTransition_kvuaj"), "Jump", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_bo3ss"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_aeggj"), "IdleWalk", "Fall", SubResource("AnimationNodeStateMachineTransition_40cqi"), "Land", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_4mg3k"), "Jump", "Grab", SubResource("AnimationNodeStateMachineTransition_hsh7h"), "Grab", "GrabIdle", SubResource("AnimationNodeStateMachineTransition_llqxh"), "GrabIdle", "Jump", SubResource("AnimationNodeStateMachineTransition_5p4ba"), "Grab", "Jump", SubResource("AnimationNodeStateMachineTransition_8no8a"), "Fall", "Grab", SubResource("AnimationNodeStateMachineTransition_j6jby"), "Jump", "OnWall", SubResource("AnimationNodeStateMachineTransition_8fkg6"), "Fall", "OnWall", SubResource("AnimationNodeStateMachineTransition_w7h72"), "OnWall", "Land", SubResource("AnimationNodeStateMachineTransition_7qlsl"), "OnWall", "Jump", SubResource("AnimationNodeStateMachineTransition_ifxl8"), "Jump", "Land", SubResource("AnimationNodeStateMachineTransition_01icu"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_d3f7f")]
-graph_offset = Vector2(-177, -56)
+graph_offset = Vector2(-380, -29)
 
 [node name="Sorakai" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -344,33 +345,33 @@ draw_pass_1 = SubResource("SphereMesh_h8alc")
 transform = Transform3D(0.000715101, 0, 0.0831059, 0, 0.083109, 0, -0.0831059, 0, 0.000715101, 0, -0.744453, -0.257608)
 
 [node name="Skeleton3D" parent="Visual/loganchara/Armature" index="0"]
-bones/0/position = Vector3(-0.0543279, -1.46342, -0.304354)
-bones/0/rotation = Quaternion(0.993611, -0.00706631, -0.111791, -0.013802)
-bones/1/rotation = Quaternion(-0.00146307, 0.11263, 0.101907, 0.988396)
-bones/2/rotation = Quaternion(0.536502, 0.460614, -0.536502, 0.460614)
+bones/0/position = Vector3(-0.0543279, -1.48166, -0.304354)
+bones/0/rotation = Quaternion(0.993255, 0.0275271, -0.112203, -0.00990201)
+bones/1/rotation = Quaternion(0.00735095, 0.112399, 0.178903, 0.977398)
+bones/2/rotation = Quaternion(0.550503, 0.443786, -0.550503, 0.443786)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/position = Vector3(-0.045908, -1.46342, 0.337209)
-bones/3/rotation = Quaternion(0.99247, 0.0481172, -0.112385, -0.00757324)
-bones/4/rotation = Quaternion(0.00456453, 0.112547, 0.154639, 0.981529)
+bones/3/position = Vector3(-0.045908, -1.48166, 0.337209)
+bones/3/rotation = Quaternion(0.990194, 0.0826375, -0.11258, -0.00365637)
+bones/4/rotation = Quaternion(0.0100753, 0.112188, 0.202561, 0.97277)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.535877, 0.461341, -0.535877, 0.461342)
+bones/5/rotation = Quaternion(0.545631, 0.449763, -0.545631, 0.449763)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/position = Vector3(-0.0781445, -1.50894, -0.00108111)
+bones/6/position = Vector3(-0.0781445, -1.5245, -0.00108111)
 bones/6/rotation = Quaternion(9.31131e-10, 1.19206e-07, -0.00781089, 0.999969)
-bones/7/rotation = Quaternion(-0.00218978, -0.0556481, -0.0530568, 0.997037)
+bones/7/rotation = Quaternion(-0.00341493, -0.0555864, -0.0750043, 0.995627)
 bones/8/position = Vector3(-0.0239583, 0.602603, 0.00283578)
-bones/8/rotation = Quaternion(0.00260888, 0.0556746, 0.0605086, 0.99661)
+bones/8/rotation = Quaternion(0.00363847, 0.0556169, 0.0789663, 0.995318)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.066043, 0.420855, 0.90134, 0.0781431)
-bones/10/rotation = Quaternion(-0.113092, 0.0914596, 0.207788, 0.9673)
+bones/9/rotation = Quaternion(0.0638518, 0.429436, 0.897431, 0.078264)
+bones/10/rotation = Quaternion(-0.110636, 0.12069, 0.221862, 0.961234)
 bones/11/rotation = Quaternion(-0.100787, 0.96615, 0.153133, 0.181509)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(0.0181025, 0.588216, 0.807416, -0.0418797)
 bones/13/rotation = Quaternion(0.20999, 0.781056, 0.23008, 0.54122)
 bones/13/scale = Vector3(1, 1, 1)
-bones/14/rotation = Quaternion(0.72239, -0.376158, 0.541988, -0.20714)
+bones/14/rotation = Quaternion(0.720087, -0.38418, 0.536316, -0.215048)
 bones/14/scale = Vector3(1, 1, 1)
-bones/15/rotation = Quaternion(0.166897, -0.080592, -0.104378, 0.977116)
+bones/15/rotation = Quaternion(0.167356, -0.0816014, -0.0979826, 0.977616)
 bones/16/rotation = Quaternion(-0.179544, 0.712432, 0.0877478, -0.672685)
 bones/17/rotation = Quaternion(-0.761307, -0.0081396, 0.273992, 0.5876)
 bones/17/scale = Vector3(1, 1, 1)
@@ -390,6 +391,8 @@ parameters/conditions/OnWall = false
 parameters/conditions/jump = false
 parameters/conditions/onFloor = false
 parameters/IdleWalk/blend_position = Vector2(0, 0)
+
+[node name="PlayerSFX" parent="Visual" instance=ExtResource("7_0u647")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

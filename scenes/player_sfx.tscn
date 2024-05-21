@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cwry764tybyvv"]
+
+[node name="PlayerSFX" type="Node3D"]
+
+[node name="Steps" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Grab" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Walkriding" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Land" type="AudioStreamPlayer3D" parent="."]

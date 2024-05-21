@@ -56,7 +56,6 @@ func setCorrectJumpVariables():
 	print(jump_velo)
 	print(jump_grav)
 	print(fall_grav)
-	
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -64,7 +63,7 @@ func _ready() -> void:
 	setCorrectJumpVariables()
 	anim_st = animationtree.get("parameters/playback")
 
-func _process(delta: float) -> void:
+func _process(delta: float) -> void:#Camera shit
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
 	camera_deg[1] = clamp(camera_deg[1],-PI/3,PI/3)
 	
@@ -90,7 +89,7 @@ func _process(delta: float) -> void:
 	pivot.rotation.y = lerp(pivot.rotation.y,camera_deg[0],pow(_lerp_speed,0.2))
 	
 
-func do_timers(delta:float) -> void:
+func do_timers(delta:float) -> void: ##Does the Timers
 	if jumpbuffer > 0:
 		jumpbuffer -= delta
 	if coyotejump > 0:
@@ -103,6 +102,7 @@ func do_timers(delta:float) -> void:
 func getGravity(_pressingJump:bool) -> float:
 	return jump_grav if velocity.y > 0.0 and _pressingJump else fall_grav
 
+#JUMP
 func jump() -> void:
 	floor_snap_length = 0.1
 	velocity.y = jump_velo
@@ -113,20 +113,22 @@ func jump() -> void:
 	visual.rotation.z = 0
 	anim_st.travel("Jump")
 	
-	
+#CHECKS FOR HANG STATE
 func checkHang() -> bool:
 	if hang_frontCast.is_colliding() and hang_topCast.is_colliding():
 		if hang_topCast.get_collision_normal() == Vector3.ZERO:
 			return false
 		return true
 	return false
-	
+#INITATES HANG STATE
 func hangInit() -> void:
 	if checkHang() and griptimer < 0 and velocity.y != 0:
-		if absf(hang_frontCast.get_collision_normal().y) < 0.2:
+		var frontNORMAL:Vector3 = hang_frontCast.get_collision_normal()
+		var topNORMAL:Vector3 = hang_topCast.get_collision_normal()
+		if absf(frontNORMAL.y) < 0.2 and absf(topNORMAL.x) < 0.3:
 			var topPosition = hang_topCast.get_collision_point()
 			var frontPosition = hang_frontCast.get_collision_point()
-			visual.look_at(global_position - hang_frontCast.get_collision_normal())
+			visual.look_at(global_position - frontNORMAL)
 			global_position = Vector3(frontPosition.x,topPosition.y - 0.5,frontPosition.z) + (visual.global_basis.z * 0.45)
 			velocity = Vector3.ZERO
 			SPEED = baseSPEED
@@ -138,7 +140,8 @@ func hangInit() -> void:
 func get_pitch(normal:Vector3) -> float:
 	return asin(normal.cross(visual.global_basis.x).y)
 
-func set_animations(onfloor:bool,state:int):
+#MOST ANIMATIONS FUNCTION
+func set_animations(onfloor:bool,_state:int):
 	var _velocity = sqrt(velocity.x**2 + velocity.z**2)/baseSPEED
 	var curanim = anim_st.get_current_node()
 	animationtree["parameters/IdleWalk/blend_position"] = Vector2(_velocity,0)
@@ -146,17 +149,20 @@ func set_animations(onfloor:bool,state:int):
 	animationtree["parameters/conditions/Fall"] = not onfloor
 	animationtree["parameters/conditions/OnWall"] = false
 	
-	if state == States.Wall:
+	if _state == States.Wall:
 		animationtree["parameters/conditions/OnWall"] = true
 	
 	if (curanim == "Fall" or curanim == "OnWall") and onfloor:
 		anim_st.travel("Land")
+	if curanim == "OnWall" and not animationtree["parameters/conditions/OnWall"]:
+		anim_st.travel("Fall")
 	
 	if _velocity == 0 or not onfloor:
 		walkDust.emitting = false
 	else:
 		walkDust.emitting = true
 
+#MOMENTUM
 func set_momentum(pitch:float,delta:float,onFloor:bool,direction:Vector2) -> void:
 	var hill = 0
 	if direction != Vector2.ZERO:
@@ -169,6 +175,7 @@ func set_momentum(pitch:float,delta:float,onFloor:bool,direction:Vector2) -> voi
 	if momentum == 0.0 and onFloor:
 		SPEED = move_toward(SPEED,baseSPEED,delta * 5)
 
+#EVERYTHING
 func _physics_process(delta: float) -> void:
 	do_timers(delta)
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
@@ -181,15 +188,15 @@ func _physics_process(delta: float) -> void:
 		
 	set_animations(onFloor,state)
 	
+	#FREE STATE (RUNNING, JUMPING, BASIC)
+	
 	if state == States.Free:
 		
 		var pitch := get_pitch(get_floor_normal())
 		set_momentum(pitch,delta,onFloor,input_dir)
 		
 		velocity.y += getGravity(pressingJump) * delta
-		
 		#character.rotation.z = pitch
-
 		if pressedJump:
 			jumpbuffer = jumpbufferInit
 			if coyotejump > 0:
@@ -226,6 +233,7 @@ func _physics_process(delta: float) -> void:
 		hangInit()
 
 
+	#WALL RIDE STATE
 	if state == States.Wall:
 		var facecastnormal = facecast.get_collision_normal()
 
@@ -252,6 +260,9 @@ func _physics_process(delta: float) -> void:
 			return
 		hangInit()
 			
+			
+	#HANG STATE
+	
 	if state == States.Hang:
 		var frontcastnormal = hang_frontCast.get_collision_normal()
 		visual.look_at(global_position - frontcastnormal)
