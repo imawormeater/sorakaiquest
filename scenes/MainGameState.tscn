@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmdi4mdm7qr5o"]
+[gd_scene load_steps=6 format=3 uid="uid://dmdi4mdm7qr5o"]
 
+[ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://assets/plains_1.tscn" id="1_d4dns"]
 [ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://scenes/basicassplatform.tscn" id="1_moayy"]
 [ext_resource type="Environment" uid="uid://jyc65e1ajlll" path="res://assets/test_env.tres" id="1_ywea7"]
+[ext_resource type="Material" uid="uid://fy0ibi6x3jnj" path="res://assets/materials/basicassplatform.tres" id="2_66r6v"]
 [ext_resource type="PackedScene" uid="uid://dw40p48fqbsl2" path="res://scenes/player_sorakai.tscn" id="2_ntxhb"]
 
 [node name="MainGameState" type="Node3D"]
@@ -15,35 +17,19 @@ light_indirect_energy = 0.0
 shadow_blur = 1.605
 sky_mode = 1
 
+[node name="plains2" parent="." instance=ExtResource("1_d4dns")]
+transform = Transform3D(0.157232, 0, 0, 0, 0.157232, 0, 0, 0, 0.157232, 1.88997, -0.736862, 8.24827)
+
+[node name="Plane" parent="plains2" index="0"]
+transform = Transform3D(368.488, 0, 0, 0, 368.488, 0, 0, 0, 368.488, 6.29452, -0.0480943, -42.6289)
+material_override = ExtResource("2_66r6v")
+surface_material_override/1 = ExtResource("2_66r6v")
+
 [node name="Sorakai" parent="." instance=ExtResource("2_ntxhb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00746029, 0.999)
-
-[node name="Armature" parent="Sorakai/Visual/loganchara" index="0"]
-transform = Transform3D(3.72083, 0, 0, 0, 3.72083, 0, 0, 0, 3.72083, -2.62473, 12.0173, 0.0415326)
-
-[node name="Skeleton3D" parent="Sorakai/Visual/loganchara/Armature" index="0"]
-bones/0/position = Vector3(-0.0543279, -1.48207, -0.304354)
-bones/0/rotation = Quaternion(0.993222, 0.0286888, -0.112215, -0.00977077)
-bones/1/rotation = Quaternion(0.00779027, 0.11237, 0.182723, 0.976691)
-bones/2/rotation = Quaternion(0.550965, 0.443213, -0.550965, 0.443214)
-bones/3/position = Vector3(-0.045908, -1.48207, 0.337209)
-bones/3/rotation = Quaternion(0.990096, 0.0837956, -0.112584, -0.0035247)
-bones/4/rotation = Quaternion(0.01026, 0.112171, 0.204162, 0.972435)
-bones/5/rotation = Quaternion(0.546066, 0.449235, -0.546066, 0.449235)
-bones/6/position = Vector3(-0.0781445, -1.52484, -0.00108111)
-bones/6/rotation = Quaternion(9.31131e-10, 1.19206e-07, -0.00781089, 0.999969)
-bones/7/rotation = Quaternion(-0.00347025, -0.0555829, -0.0759951, 0.995552)
-bones/8/rotation = Quaternion(0.00366111, 0.0556154, 0.0793721, 0.995286)
-bones/9/rotation = Quaternion(0.0637157, 0.429966, 0.897186, 0.0782713)
-bones/10/rotation = Quaternion(-0.110551, 0.12167, 0.22233, 0.961012)
-bones/14/rotation = Quaternion(0.720035, -0.384356, 0.53619, -0.215222)
-bones/15/rotation = Quaternion(0.167333, -0.0815504, -0.098306, 0.977592)
-
-[node name="AnimationTree" parent="Sorakai/Visual/loganchara" index="2"]
-parameters/IdleWalk/blend_position = Vector2(-0.0128, -0.0158731)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000330713, 0.999)
 
 [node name="Node3D" parent="." instance=ExtResource("1_moayy")]
-transform = Transform3D(52.1218, 0, 0, 0, 1, 0, 0, 0, 56.8821, 0.411, -1.25, 0.819)
+transform = Transform3D(53.4914, 0, 0, 0, 1.02628, 0, 0, 0, 58.3768, 0.411, -1.25, 0.819)
 
 [node name="Node3D9" parent="." instance=ExtResource("1_moayy")]
 transform = Transform3D(9.555, 0, 0, 0, 1.5, 0, 0, 0, 11.115, -8, 0, 0.819)
@@ -102,5 +88,4 @@ transform = Transform3D(-6.39572, 0, -4.11459e-07, 0, 0.139508, 0, 5.59131e-07, 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_ywea7")
 
-[editable path="Sorakai"]
-[editable path="Sorakai/Visual/loganchara"]
+[editable path="plains2"]
