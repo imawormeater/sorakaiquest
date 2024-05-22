@@ -148,6 +148,7 @@ func checkHang() -> bool:
 			return false
 		return true
 	return false
+	
 #INITATES STATES
 func wallInit(_delta:float) -> void:
 	if facecast.is_colliding() and velocity.y != 0 and exitwallclimb < 0:
@@ -176,7 +177,7 @@ func hangInit() -> void:
 			baseDEACEL = 1.0
 			anim_st.travel("Grab")
 			print("Change State Grab")
-
+#
 func get_pitch(normal:Vector3) -> float:
 	return asin(normal.cross(visual.global_basis.x).y)
 
@@ -192,7 +193,7 @@ func set_animations(onfloor:bool,_state:int) -> void:
 	if _state == States.Wall:
 		animationtree["parameters/conditions/OnWall"] = true
 	
-	if (curanim == "Fall" or curanim == "OnWall") and onfloor:
+	if (curanim != "IdleWalk") and onfloor:
 		anim_st.travel("Land")
 	if curanim == "OnWall" and not animationtree["parameters/conditions/OnWall"]:
 		anim_st.travel("Fall")
