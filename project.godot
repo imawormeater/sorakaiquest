@@ -15,7 +15,7 @@ config/version="1.0"
 config/tags=PackedStringArray("yay")
 run/main_scene="res://scenes/app.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://assets/icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 

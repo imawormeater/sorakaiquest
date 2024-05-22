@@ -382,6 +382,7 @@ bones/18/scale = Vector3(1, 1, 1)
 bones/19/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="logan" parent="Visual/loganchara/Armature/Skeleton3D" index="0"]
+cast_shadow = 0
 surface_material_override/0 = SubResource("ShaderMaterial_ouxd8")
 surface_material_override/1 = SubResource("ShaderMaterial_2nnn4")
 

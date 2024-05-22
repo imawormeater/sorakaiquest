@@ -1,0 +1,146 @@
+[gd_scene load_steps=12 format=3 uid="uid://cnwa27rkx7oju"]
+
+[ext_resource type="Script" path="res://scripts/level_class.gd" id="1_geecc"]
+[ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://assets/plains_1.tscn" id="2_kh2so"]
+[ext_resource type="AudioStream" uid="uid://crl8t16yby32v" path="res://assets/music/vanishing_paradise.mp3" id="2_mmfqs"]
+[ext_resource type="Material" uid="uid://fy0ibi6x3jnj" path="res://assets/materials/basicassplatform.tres" id="3_0i8cp"]
+[ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://scenes/basicassplatform.tscn" id="4_n473g"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fa0ef"]
+sky_top_color = Color(0.546255, 0.41349, 0.367301, 1)
+sky_horizon_color = Color(0.910127, 0.839073, 0.713556, 1)
+ground_horizon_color = Color(0.742795, 0.750589, 0.762896, 1)
+
+[sub_resource type="Sky" id="Sky_j1hyb"]
+sky_material = SubResource("ProceduralSkyMaterial_fa0ef")
+
+[sub_resource type="Environment" id="Environment_duycw"]
+resource_local_to_scene = true
+background_mode = 1
+background_color = Color(0.0352941, 0.376471, 0.588235, 1)
+background_energy_multiplier = 0.9
+sky = SubResource("Sky_j1hyb")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.2
+reflected_light_source = 2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0706
+volumetric_fog_ambient_inject = 1.75
+adjustment_enabled = true
+
+[sub_resource type="GDScript" id="GDScript_5seu6"]
+resource_name = "TESTLEVELLOADING"
+script/source = "extends Area3D
+
+func _on_body_entered(body: Node3D) -> void:
+	if body == GameManager.CurrentState.Sorakai:
+		GameManager.CurrentState.load_level(\"res://scenes/levels/test_level.tscn\")
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1h2me"]
+size = Vector3(9.93231, 2.47961, 4.52637)
+
+[sub_resource type="TextMesh" id="TextMesh_o1h36"]
+text = "IM CUMMING WITH EASE"
+
+[node name="Level" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
+script = ExtResource("1_geecc")
+Name = "test level"
+Song = ExtResource("2_mmfqs")
+Logan_Spawn = NodePath("loganSpawn")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.825812, 0.527723, -0.195613, 0.02899, 0.386766, 0.921028, 0.562063, 0.755409, -0.334909, 0, 15.9898, -5.65541)
+light_color = Color(0.804743, 0.804743, 0.804743, 1)
+light_energy = 0.405
+shadow_enabled = true
+shadow_opacity = 0.15
+shadow_blur = 0.051
+sky_mode = 1
+
+[node name="plains2" parent="." instance=ExtResource("2_kh2so")]
+transform = Transform3D(0.157232, 0, 0, 0, 0.157232, 0, 0, 0, 0.157232, 1.88997, -0.736862, 8.24827)
+
+[node name="Plane" parent="plains2" index="0"]
+transform = Transform3D(368.488, 0, 0, 0, 368.488, 0, 0, 0, 368.488, 6.29452, -0.0480943, -42.6289)
+material_override = ExtResource("3_0i8cp")
+surface_material_override/1 = ExtResource("3_0i8cp")
+
+[node name="Node3D" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(53.4914, 0, 0, 0, 1.02628, 0, 0, 0, 58.3768, 0.411, -1.25, 0.819)
+
+[node name="Node3D9" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(9.555, 0, 0, 0, 1.5, 0, 0, 0, 11.115, -8, 0, 0.819)
+
+[node name="Node3D10" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(2.87783, 0, 0, 0, 1.50593, 0, 0, 0, 4.46357, -4.6629, 1.5, 0.819)
+
+[node name="Node3D11" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(6.04345, 0, 0, 0, 0.150593, 0, 0, 0, 4.46357, -3.07534, 2.32043, 0.819)
+
+[node name="Node3D2" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(9.555, 0, 0, 0, 0.649752, 0, 0, 0, 2.09589, 0.410692, 0.511683, -4.48496)
+
+[node name="Node3D3" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(9.555, 0, 0, 0, 5.26299, 0, 0, 0, 0.907954, -0.112415, 2.74244, -7.64214)
+
+[node name="Node3D12" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(9.555, 0, 0, 0, 10.2466, 0, 0, 0, 0.907955, -0.113365, 2.69087, -11.4974)
+
+[node name="Node3D4" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(1.94431, 5.14889, 0, -1.94431, 5.14889, 0, 0, 0, 5.62932, 4.97785, -0.319414, 0.852464)
+
+[node name="Node3D19" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(-0.743081, 31.926, 0, 0.743081, 31.926, 0, 0, 0, 5.62932, 6.34505, -0.319414, -10.2529)
+
+[node name="Node3D5" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(3.0576, 0, 0, 0, 5.26299, 0, 0, 0, 5.62932, 8.10768, 0.590814, 0.860819)
+
+[node name="Node3D6" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(3.0576, 0, 0, 0, 5.26299, 0, 0, 0, 5.62932, 11.6733, 1.1366, 0.90365)
+
+[node name="Node3D7" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(3.0576, 0, 0, 0, 5.26299, 0, 0, 0, 5.62932, 14.9638, 2.26099, 0.90365)
+
+[node name="Node3D8" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(3.0576, 0, 0, 0, 5.26299, 0, 0, 0, 5.62932, 18.2378, 4.90663, 0.90365)
+
+[node name="Node3D13" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(3.75098, -2.66268, 0, 0.959949, 10.4044, 0, 0, 0, 5.62932, -12.5121, 4.90663, 0.90365)
+
+[node name="Node3D14" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(3.89562, 0.171495, 0, 0.996965, -0.670113, 0, 0, 0, 7.18154, -8.60942, 2.73156, 6.89429)
+
+[node name="Node3D15" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(3.75813, 0.18919, -1.63352, 0.986474, -0.663062, -1.03906, 1.03591, -0.054935, 6.91567, -5.42307, 5.07229, 6.89429)
+
+[node name="Node3D16" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(-7.53965, 2.15996, 0, -1.18068, -13.7932, 0, 0, 0, -4.70655, 2.12791, 5.49425, 16.9114)
+
+[node name="Node3D17" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(-7.53965, 2.15996, 0, -1.18068, -13.7932, 0, 0, 0, -4.70655, 12.5815, 5.49425, 16.8143)
+
+[node name="Node3D18" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(-6.39572, 0, -4.11459e-07, 0, 0.139508, 0, 5.59131e-07, 0, -4.70655, 10.8934, 11.7396, 16.8143)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_duycw")
+
+[node name="loganSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.1997, 16.117)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8118, 0, 19.1223)
+script = SubResource("GDScript_5seu6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.963135, 0.739807, 1.76318)
+shape = SubResource("BoxShape3D_1h2me")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(4.81944, 0, 0, 0, 3.76987, 0, 0, 0, 1.03291, -1.24092, 2.44206, 1.98017)
+mesh = SubResource("TextMesh_o1h36")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+
+[editable path="plains2"]

@@ -1,8 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://eleajfuwfpur"]
 
-[ext_resource type="Script" path="res://scenes/app.gd" id="1_d1n4j"]
+[ext_resource type="Script" path="res://scripts/app.gd" id="1_d1n4j"]
 [ext_resource type="PackedScene" uid="uid://dmdi4mdm7qr5o" path="res://scenes/MainGameState.tscn" id="2_w6e81"]
 
 [node name="App" type="Node"]
 script = ExtResource("1_d1n4j")
 firstState = ExtResource("2_w6e81")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

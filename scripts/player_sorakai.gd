@@ -72,9 +72,9 @@ func setCorrectJumpVariables() -> void:
 	jump_grav = ((-2.0 * JUMPHEIGHT) / (JUMPPEAKTIME * JUMPPEAKTIME))
 	fall_grav= ((-2.0 * JUMPHEIGHT) / (JUMPDESCENTTIME* JUMPDESCENTTIME))
 	
-	print("JUMP VELOCITY:",jump_velo)
-	print("JUMP GRAVITY:",jump_grav)
-	print("FALL GRAVITY:",fall_grav)
+	#print("JUMP VELOCITY:",jump_velo)
+	#print("JUMP GRAVITY:",jump_grav)
+	#print("FALL GRAVITY:",fall_grav)
 
 func changeFace(whichface:String) -> void:
 	var currentface:CompressedTexture2D = faces_textures[whichface]
@@ -109,8 +109,8 @@ func _process(delta: float) -> void:#Camera shit
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if global_position.y < -10:
-		global_position = Vector3(0,2.778,-2.248)
+	#if global_position.y < -10:
+	#	global_position = Vector3(0,2.778,-2.248)
 	pivot.rotation.x = lerp(pivot.rotation.x,camera_deg[1],_lerp_speed**0.2)
 	pivot.rotation.y = lerp(pivot.rotation.y,camera_deg[0],_lerp_speed**0.2)
 	
@@ -157,7 +157,7 @@ func wallInit(_delta:float) -> void:
 			if wallconcetioncount > 0.05:
 				SPEED = baseSPEED
 				state = States.Wall
-				print("Change State Wall")
+				#print("Change State Wall")
 				anim_st.travel("OnWall")
 	else:
 		wallconcetioncount = 0.0
@@ -176,7 +176,7 @@ func hangInit() -> void:
 			state = States.Hang
 			baseDEACEL = 1.0
 			anim_st.travel("Grab")
-			print("Change State Grab")
+			#print("Change State Grab")
 #
 func get_pitch(normal:Vector3) -> float:
 	return asin(normal.cross(visual.global_basis.x).y)
@@ -218,7 +218,7 @@ func set_momentum(pitch:float,delta:float,onFloor:bool,direction:Vector2) -> voi
 	var lerpSpeed:float =  clampf((_velocity**2),1,999) * 5
 	#print(lerpSpeed,"  ",_velocity)
 	if _velocity < 1:
-		lerpSpeed = 20
+		lerpSpeed = 100
 	
 	if momentum == 0.0 and onFloor:
 		SPEED = move_toward(SPEED,baseSPEED,delta * lerpSpeed)

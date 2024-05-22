@@ -9,9 +9,14 @@ ground_horizon_color = Color(0.742795, 0.750589, 0.762896, 1)
 sky_material = SubResource("ProceduralSkyMaterial_fa0ef")
 
 [resource]
+resource_local_to_scene = true
 background_mode = 1
 background_color = Color(0.0352941, 0.376471, 0.588235, 1)
 background_energy_multiplier = 0.9
 sky = SubResource("Sky_j1hyb")
-ambient_light_source = 1
-reflected_light_source = 1
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.2
+reflected_light_source = 2
+volumetric_fog_density = 0.0706
+volumetric_fog_ambient_inject = 1.75
+adjustment_enabled = true
