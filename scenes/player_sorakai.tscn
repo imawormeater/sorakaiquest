@@ -310,14 +310,6 @@ skeleton = NodePath("../..")
 transform = Transform3D(1.464, 0, 0, 0, -4.37114e-08, -1.464, 0, 1, -6.39935e-08, 0, 0, 0)
 target_position = Vector3(0, -0.5, 0)
 
-[node name="Shadow" type="Decal" parent="Visual"]
-transform = Transform3D(1, 6.81509e-14, -3.82132e-15, -6.81509e-14, 1, 3.67332e-08, 3.82132e-15, -3.67332e-08, 1, -4.09827e-13, -7.01346, 2.20893e-07)
-size = Vector3(0.8, 12.5667, 0.8)
-texture_albedo = ExtResource("2_yl6e5")
-modulate = Color(1, 1, 1, 0.709804)
-upper_fade = 0.102454
-lower_fade = 0.0416088
-
 [node name="hangCasts" type="Node3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.145504, 0)
 
@@ -382,7 +374,6 @@ bones/18/scale = Vector3(1, 1, 1)
 bones/19/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="logan" parent="Visual/loganchara/Armature/Skeleton3D" index="0"]
-cast_shadow = 0
 surface_material_override/0 = SubResource("ShaderMaterial_ouxd8")
 surface_material_override/1 = SubResource("ShaderMaterial_2nnn4")
 
@@ -400,6 +391,14 @@ parameters/conditions/onFloor = false
 parameters/IdleWalk/blend_position = Vector2(0, 0)
 
 [node name="PlayerSFX" parent="Visual" instance=ExtResource("7_0u647")]
+
+[node name="Shadow" type="Decal" parent="."]
+transform = Transform3D(1, 6.81509e-14, -3.82132e-15, -6.81509e-14, 1, 3.67332e-08, 3.82132e-15, -3.67332e-08, 1, -4.09827e-13, -7.01346, 2.20893e-07)
+size = Vector3(0.8, 12.5667, 0.8)
+texture_albedo = ExtResource("2_yl6e5")
+modulate = Color(1, 1, 1, 0.709804)
+upper_fade = 0.102454
+lower_fade = 0.0416088
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
