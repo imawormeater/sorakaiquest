@@ -62,10 +62,10 @@ transform = Transform3D(2.30171, 0, 0, 0, 3.45456, 0, 0, 0, 2.32045, 3.86694, 46
 transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 9.7104, 2.49551, 22.9114, -20.1356)
 
 [node name="Node3D31" parent="bigtower" instance=ExtResource("4_n473g")]
-transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 2.49551, 36.1327, -16.568)
+transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 2.49551, 35.3732, -16.568)
 
 [node name="Node3D32" parent="bigtower" instance=ExtResource("4_n473g")]
-transform = Transform3D(7.79189, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 4.75488, 36.2726, -24.5811)
+transform = Transform3D(7.79189, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 4.75488, 35.5131, -24.5811)
 
 [node name="Node3D35" parent="bigtower" instance=ExtResource("4_n473g")]
 transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 9.68982, 43.2343, -24.5811)
@@ -80,10 +80,10 @@ transform = Transform3D(0.792129, 0, 0, 0, 5.30971, 0, 0, 0, 2.84163, 5.60575, 4
 transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 9.76842, 24.7927, -16.568)
 
 [node name="Node3D30" parent="bigtower" instance=ExtResource("4_n473g")]
-transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 9.76842, 34.1028, -16.568)
+transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 9.76842, 33.4816, -16.568)
 
 [node name="Node3D36" parent="." instance=ExtResource("4_n473g")]
-transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 10.202, 28.8625, -12.2886)
+transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 10.202, 28.3985, -12.2886)
 
 [node name="Node3D" parent="." instance=ExtResource("4_n473g")]
 transform = Transform3D(3.0023, 0, 0, 0, 3.15506, 0, 0, 0, 3.02937, 10.3432, 0.0496383, 25.6935)
@@ -140,7 +140,7 @@ transform = Transform3D(4.17905, 0, 0, 0, 17.0707, 0, 0, 0, 4.04588, -17.1164, 1
 transform = Transform3D(4.17905, 0, 0, 0, 17.0707, 0, 0, 0, 4.04588, 1.07813, 13.2497, -10.5015)
 
 [node name="Node3D20" parent="." instance=ExtResource("4_n473g")]
-transform = Transform3D(4.17905, 0, 0, 0, 20.279, 0, 0, 0, 4.04588, 10.326, 21.5701, -10.4276)
+transform = Transform3D(4.17905, 0, 0, 0, 21.2953, 0, 0, 0, 4.04588, 10.326, 21.5701, -10.4276)
 
 [node name="loganSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.21617, 0.351428, 31.275)
