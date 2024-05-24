@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/level_class.gd" id="1_geecc"]
 [ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://assets/plains_1.tscn" id="2_kh2so"]
-[ext_resource type="AudioStream" uid="uid://crl8t16yby32v" path="res://assets/music/vanishing_paradise.mp3" id="2_mmfqs"]
+[ext_resource type="AudioStream" uid="uid://ctx5nhlg31caj" path="res://assets/music/the_time_flys.mp3" id="2_mtiea"]
 [ext_resource type="Material" uid="uid://fy0ibi6x3jnj" path="res://assets/materials/basicassplatform.tres" id="3_0i8cp"]
 [ext_resource type="PackedScene" uid="uid://d0wtjv210el32" path="res://assets/plains_2.tscn" id="3_kerdl"]
 [ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://scenes/basicassplatform.tscn" id="4_n473g"]
@@ -21,12 +21,14 @@ func _on_body_entered(body: Node3D) -> void:
 size = Vector3(9.93231, 2.47961, 4.52637)
 
 [sub_resource type="TextMesh" id="TextMesh_o1h36"]
-text = "IM CUMMING WITH EASE"
+text = "also i made my teacher play this level he
+couldnt get past the first jumps hes not even that old"
+font_size = 12
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
 script = ExtResource("1_geecc")
 Name = "test level"
-Song = ExtResource("2_mmfqs")
+Song = ExtResource("2_mtiea")
 Logan_Spawn = NodePath("loganSpawn")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
@@ -86,10 +88,13 @@ transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 9.76842, 3
 transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 10.202, 28.3985, -12.2886)
 
 [node name="Node3D" parent="." instance=ExtResource("4_n473g")]
-transform = Transform3D(3.0023, 0, 0, 0, 3.15506, 0, 0, 0, 3.02937, 10.3432, 0.0496383, 25.6935)
+transform = Transform3D(3.0023, 0, 0, 0, 3.15506, 0, 0, 0, 3.02937, 4.49782, 0.0496383, 26.3094)
+
+[node name="Node3D19" parent="." instance=ExtResource("4_n473g")]
+transform = Transform3D(3.0023, 0, 0, 0, 5.52585, 0, 0, 0, 3.02937, 8.31546, 0.0496383, 24.2436)
 
 [node name="Node3D2" parent="." instance=ExtResource("4_n473g")]
-transform = Transform3D(3.0023, 0, 0, 0, 8.00058, 0, 0, 0, 3.02937, 13.2422, -0.0879075, 21.0664)
+transform = Transform3D(3.0023, 0, 0, 0, 8.00058, 0, 0, 0, 6.38392, 11.6316, -0.0879075, 18.7564)
 
 [node name="Node3D3" parent="." instance=ExtResource("4_n473g")]
 transform = Transform3D(4.34622, 0, 0, 0, 18.9953, 0, 0, 0, 4.27527, 11.7362, 7.54414, 14.657)
@@ -104,7 +109,7 @@ transform = Transform3D(0.323229, 2.76595, 0, -0.706255, 1.26588, 0, 0, 0, 4.148
 transform = Transform3D(-0.34402, 6.97496, 0, -0.570513, -4.2059, 0, 0, 0, 3.97237, -11.6902, 22.8815, -10.4937)
 
 [node name="Node3D4" parent="." instance=ExtResource("4_n473g")]
-transform = Transform3D(4.61605, 0, 0, 0, 6.61867, 0, 0, 0, 0.762339, 11.7948, 11.5309, 19.3969)
+transform = Transform3D(4.61605, 0, 0, 0, 6.77972, 0, 0, 0, 0.762339, 11.7948, 11.5309, 19.3969)
 
 [node name="Node3D5" parent="." instance=ExtResource("4_n473g")]
 transform = Transform3D(4.34622, 0, 0, 0, 18.9953, 0, 0, 0, 4.27527, -6.38088, 7.68635, 12.0901)

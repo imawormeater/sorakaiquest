@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/get_player_variables_for_fun.gd" id="4_uvf24"]
 [ext_resource type="Texture2D" uid="uid://bhywkec3n6plo" path="res://assets/loganchara_LoganTex.png" id="5_pobn2"]
 [ext_resource type="Texture2D" uid="uid://bntjxa37b77sc" path="res://assets/loganchara_loganface1.png" id="6_ya3t1"]
-[ext_resource type="PackedScene" uid="uid://cwry764tybyvv" path="res://scenes/player_sfx.tscn" id="7_0u647"]
+[ext_resource type="PackedScene" uid="uid://bdc2nui0hm8y8" path="res://scenes/player_sfx.tscn" id="7_0u647"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_62ypt"]
 radius = 0.3

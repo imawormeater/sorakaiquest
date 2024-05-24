@@ -205,6 +205,7 @@ func set_animations(onfloor:bool,_state:int) -> void:
 	
 	if _velocity == 0 or not onfloor:
 		walkDust.emitting = false
+		sfx.stop_sound("Steps")
 	else:
 		if sfx.get_sound("Steps").playing == false:
 			sfx.play_sound("Steps")
