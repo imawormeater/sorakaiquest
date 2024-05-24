@@ -53,6 +53,7 @@ var state:= States.Free
 
 @onready var animationtree := $Visual/loganchara/AnimationTree
 @onready var walkDust := $Visual/WalkDust
+@onready var sfx := $PlayerSFX
 
 @export var _face_mat: String
 @onready var face:ShaderMaterial = character_mesh.get(_face_mat)
@@ -140,6 +141,7 @@ func jump() -> void:
 	visual.rotation.x = 0
 	visual.rotation.z = 0
 	anim_st.travel("Jump")
+	sfx.play_sound("Jump")
 	
 #CHECKS FOR HANG STATE
 func checkHang() -> bool:
@@ -159,6 +161,7 @@ func wallInit(_delta:float) -> void:
 				state = States.Wall
 				#print("Change State Wall")
 				anim_st.travel("OnWall")
+				sfx.play_sound("Walkriding")
 	else:
 		wallconcetioncount = 0.0
 		
@@ -176,6 +179,7 @@ func hangInit() -> void:
 			state = States.Hang
 			baseDEACEL = 1.0
 			anim_st.travel("Grab")
+			sfx.play_sound("Grab")
 			#print("Change State Grab")
 #
 func get_pitch(normal:Vector3) -> float:
@@ -195,12 +199,15 @@ func set_animations(onfloor:bool,_state:int) -> void:
 	
 	if (curanim != "IdleWalk") and onfloor:
 		anim_st.travel("Land")
+		sfx.play_sound("Land")
 	if curanim == "OnWall" and not animationtree["parameters/conditions/OnWall"]:
 		anim_st.travel("Fall")
 	
 	if _velocity == 0 or not onfloor:
 		walkDust.emitting = false
 	else:
+		if sfx.get_sound("Steps").playing == false:
+			sfx.play_sound("Steps")
 		walkDust.emitting = true
 
 #MOMENTUM
@@ -290,6 +297,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = clampf(velocity.y,jump_grav * 0.2,9999)
 		move_and_slide()
 		if pressedJump:
+			sfx.stop_sound("Walkriding")
 			visual.look_at(global_position + facecastnormal)
 			state = States.Free
 			baseDEACEL = 0.5
@@ -300,6 +308,7 @@ func _physics_process(delta: float) -> void:
 			anim_st.travel("Jump")
 			return
 		if not facecast.is_colliding() or is_on_floor():
+			sfx.stop_sound("Walkriding")
 			exitwallclimb = exitwallclimbinit
 			state = States.Free
 			visual.rotation.x = 0

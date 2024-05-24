@@ -1,13 +1,40 @@
-[gd_scene format=3 uid="uid://cwry764tybyvv"]
+[gd_scene load_steps=7 format=3 uid="uid://cwry764tybyvv"]
+
+[ext_resource type="Script" path="res://scenes/sfx_player.gd" id="1_g04ci"]
+[ext_resource type="AudioStream" uid="uid://bg7xje1lthxjp" path="res://assets/sounds/footstep2.wav" id="1_vog0l"]
+[ext_resource type="AudioStream" uid="uid://jbotarmhud8i" path="res://assets/sounds/grab.wav" id="2_rg1ph"]
+[ext_resource type="AudioStream" uid="uid://bkyy1wc4x3t0m" path="res://assets/sounds/slide3.WAV" id="3_68jaq"]
+[ext_resource type="AudioStream" uid="uid://w5hkgsyy3g08" path="res://assets/sounds/jump.ogg" id="5_efsu2"]
+[ext_resource type="AudioStream" uid="uid://dl0ih8alis1kw" path="res://assets/sounds/land.wav" id="5_nk6cq"]
 
 [node name="PlayerSFX" type="Node3D"]
+script = ExtResource("1_g04ci")
 
 [node name="Steps" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_vog0l")
+volume_db = -24.845
+pitch_scale = 0.1
+bus = &"SFX"
+metadata/StopOtherSounds = false
 
 [node name="Grab" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_rg1ph")
+bus = &"SFX"
+metadata/StopOtherSounds = true
 
 [node name="Walkriding" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_68jaq")
+volume_db = -17.38
+bus = &"SFX"
+metadata/StopOtherSounds = true
 
 [node name="Jump" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_efsu2")
+bus = &"SFX"
+metadata/StopOtherSounds = false
 
 [node name="Land" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_nk6cq")
+volume_db = -20.279
+bus = &"SFX"
+metadata/StopOtherSounds = false

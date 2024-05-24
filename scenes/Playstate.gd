@@ -24,7 +24,6 @@ func _ready() -> void:
 
 func set_level_stuff()->void:
 	print("Setting Up Level: ",currentLevel.name)
-	var prevproperties = smoother.properties
 	if currentLevel.Song != null:#CHANGE ALL OF THESE TO FADE ONE DAY
 		MusicStream.stop()
 		MusicStream.stream = currentLevel.Song
@@ -32,6 +31,7 @@ func set_level_stuff()->void:
 	if currentLevel.Mute_Music:
 		MusicStream.stop()
 	Sorakai.velocity = Vector3.ZERO
+	Sorakai.SPEED = 5
 	if currentLevel.Logan_Spawn != null:
 		#Sorakai.global_rotation = currentLevel.Logan_Spawn.global_rotation fix this someday
 		Sorakai.global_position = currentLevel.Logan_Spawn.global_position
