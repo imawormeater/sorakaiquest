@@ -25,8 +25,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_home"):
+		$CanvasLayer/VideoStreamPlayer.play()
+
+func play_transition(which:String) -> void:
 	pass
-
-
-func _on_timer_timeout() -> void:#test thing
-	changeState(firstState)

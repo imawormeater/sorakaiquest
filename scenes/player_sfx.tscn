@@ -12,7 +12,7 @@ script = ExtResource("1_g04ci")
 
 [node name="Steps" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_lx15n")
-pitch_scale = 0.81
+pitch_scale = 0.82
 bus = &"SFX"
 metadata/StopOtherSounds = false
 
@@ -38,6 +38,7 @@ metadata/StopOtherSounds = false
 
 [node name="Land" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_nk6cq")
-volume_db = -12.614
+volume_db = -16.64
+pitch_scale = 1.47
 bus = &"SFX"
 metadata/StopOtherSounds = false

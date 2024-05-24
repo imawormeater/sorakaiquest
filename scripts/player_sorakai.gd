@@ -189,13 +189,16 @@ func get_pitch(normal:Vector3) -> float:
 func set_animations(onfloor:bool,_state:int) -> void:
 	var _velocity := sqrt(velocity.x**2 + velocity.z**2)/baseSPEED
 	var curanim := anim_st.get_current_node()
-	animationtree["parameters/IdleWalk/blend_position"] = Vector2(_velocity,0)
+	var stepsound:AudioStreamPlayer3D = sfx.get_sound("Steps")
+	animationtree["parameters/IdleWalk/animation/blend_position"] = Vector2(_velocity,0)
 	animationtree["parameters/conditions/onFloor"] = onfloor
 	animationtree["parameters/conditions/Fall"] = not onfloor
 	animationtree["parameters/conditions/OnWall"] = false
 	
 	if _state == States.Wall:
 		animationtree["parameters/conditions/OnWall"] = true
+	
+	animationtree["parameters/IdleWalk/TimeScale/scale"] = sqrt(_velocity)
 	
 	if (curanim != "IdleWalk") and onfloor:
 		anim_st.travel("Land")
@@ -207,7 +210,8 @@ func set_animations(onfloor:bool,_state:int) -> void:
 		walkDust.emitting = false
 		sfx.stop_sound("Steps")
 	else:
-		if sfx.get_sound("Steps").playing == false:
+		stepsound.pitch_scale = sqrt(_velocity) * 0.82
+		if stepsound.playing == false:
 			sfx.play_sound("Steps")
 		walkDust.emitting = true
 

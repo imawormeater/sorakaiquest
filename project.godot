@@ -30,7 +30,6 @@ window/stretch/mode="viewport"
 [editor]
 
 movie_writer/movie_file="C:/Users/dsalv/Desktop/protogens/movies/f.avi"
-movie_writer/fps=165
 
 [input]
 

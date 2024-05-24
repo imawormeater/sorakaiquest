@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://p3tbs46mi8p3"]
 
 [ext_resource type="Script" path="res://scripts/level_class.gd" id="1_aufyl"]
-[ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://assets/plains_1.tscn" id="2_d7730"]
+[ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://assets/objects/plains_1.tscn" id="2_tbe0s"]
 [ext_resource type="Material" uid="uid://fy0ibi6x3jnj" path="res://assets/materials/basicassplatform.tres" id="3_wk7ds"]
 [ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://scenes/basicassplatform.tscn" id="4_eadt3"]
-[ext_resource type="Environment" uid="uid://jyc65e1ajlll" path="res://assets/test_env.tres" id="5_cgewq"]
+[ext_resource type="Environment" uid="uid://jyc65e1ajlll" path="res://assets/ursc/test_env.tres" id="5_356hj"]
 [ext_resource type="AudioStream" uid="uid://cu7ty4ay2nlw5" path="res://assets/sounds/mario64ambience.ogg" id="7_x3xfm"]
 
 [sub_resource type="GDScript" id="GDScript_5seu6"]
@@ -37,7 +37,7 @@ shadow_opacity = 0.15
 shadow_blur = 0.051
 sky_mode = 1
 
-[node name="plains2" parent="." instance=ExtResource("2_d7730")]
+[node name="plains2" parent="." instance=ExtResource("2_tbe0s")]
 transform = Transform3D(0.157232, 0, 0, 0, 0.157232, 0, 0, 0, 0.157232, 1.88997, -0.736862, 8.24827)
 
 [node name="Plane" parent="plains2" index="0"]
@@ -103,7 +103,7 @@ transform = Transform3D(-7.53965, 2.15996, 0, -1.18068, -13.7932, 0, 0, 0, -4.70
 transform = Transform3D(-6.39572, 0, -4.11459e-07, 0, 0.139508, 0, 5.59131e-07, 0, -4.70655, 10.8934, 11.7396, 16.8143)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("5_cgewq")
+environment = ExtResource("5_356hj")
 
 [node name="loganSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9561, 0)
