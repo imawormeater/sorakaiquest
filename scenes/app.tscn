@@ -1,8 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://eleajfuwfpur"]
+[gd_scene load_steps=8 format=3 uid="uid://eleajfuwfpur"]
 
 [ext_resource type="Script" path="res://scripts/app.gd" id="1_d1n4j"]
 [ext_resource type="PackedScene" uid="uid://dmdi4mdm7qr5o" path="res://scenes/MainGameState.tscn" id="2_w6e81"]
 [ext_resource type="VideoStream" path="res://assets/videos/jerma.ogv" id="3_vj886"]
+[ext_resource type="Material" uid="uid://bixuwp1cbjepr" path="res://assets/ursc/circle_trans.tres" id="4_kytrq"]
+
+[sub_resource type="Animation" id="Animation_bc7ut"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CircleTrans:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_aur8l"]
+resource_name = "circletransin"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CircleTrans:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3j6nd"]
+_data = {
+"RESET": SubResource("Animation_bc7ut"),
+"circletransfull": SubResource("Animation_aur8l")
+}
 
 [node name="App" type="Node"]
 script = ExtResource("1_d1n4j")
@@ -16,3 +54,31 @@ offset_right = 544.0
 offset_bottom = 544.0
 stream = ExtResource("3_vj886")
 bus = &"Ambience"
+
+[node name="Transitions" type="ColorRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0)
+
+[node name="CircleTrans" type="ColorRect" parent="CanvasLayer/Transitions"]
+material = ExtResource("4_kytrq")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -100.0
+offset_right = 620.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Transitions"]
+libraries = {
+"": SubResource("AnimationLibrary_3j6nd")
+}
+
+[node name="Timer" type="Timer" parent="."]

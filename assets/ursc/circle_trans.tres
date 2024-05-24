@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bixuwp1cbjepr"]
+
+[ext_resource type="Shader" path="res://assets/ursc/canvas_item/circle_trans.gdshader" id="1_osdcm"]
+
+[resource]
+shader = ExtResource("1_osdcm")
+shader_parameter/circle_size = 1.0

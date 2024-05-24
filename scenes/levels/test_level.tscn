@@ -1,26 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://p3tbs46mi8p3"]
+[gd_scene load_steps=8 format=3 uid="uid://p3tbs46mi8p3"]
 
 [ext_resource type="Script" path="res://scripts/level_class.gd" id="1_aufyl"]
 [ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://assets/objects/plains_1.tscn" id="2_tbe0s"]
 [ext_resource type="Material" uid="uid://fy0ibi6x3jnj" path="res://assets/materials/basicassplatform.tres" id="3_wk7ds"]
 [ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://scenes/basicassplatform.tscn" id="4_eadt3"]
 [ext_resource type="Environment" uid="uid://jyc65e1ajlll" path="res://assets/ursc/test_env.tres" id="5_356hj"]
+[ext_resource type="PackedScene" uid="uid://cabix5vgaakof" path="res://assets/objects/level_switcher.tscn" id="7_owx7p"]
 [ext_resource type="AudioStream" uid="uid://cu7ty4ay2nlw5" path="res://assets/sounds/mario64ambience.ogg" id="7_x3xfm"]
-
-[sub_resource type="GDScript" id="GDScript_5seu6"]
-resource_name = "TESTLEVELLOADING"
-script/source = "extends Area3D
-
-func _on_body_entered(body: Node3D) -> void:
-	if body == GameManager.CurrentState.Sorakai:
-		GameManager.CurrentState.load_level(\"res://scenes/levels/test_level_2.tscn\")
-"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1h2me"]
-size = Vector3(9.93231, 2.47961, 4.52637)
-
-[sub_resource type="TextMesh" id="TextMesh_o1h36"]
-text = "IM CUMMING WITH EASE"
 
 [node name="Level" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
 script = ExtResource("1_aufyl")
@@ -114,18 +100,8 @@ volume_db = -17.525
 autoplay = true
 bus = &"Ambience"
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3666, 0, -10.72)
-script = SubResource("GDScript_5seu6")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.963135, 0.739807, 1.76318)
-shape = SubResource("BoxShape3D_1h2me")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-transform = Transform3D(4.81944, 0, 0, 0, 3.76987, 0, 0, 0, 1.03291, -1.24092, 2.44206, 1.98017)
-mesh = SubResource("TextMesh_o1h36")
-
-[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[node name="LevelSwitch" parent="." instance=ExtResource("7_owx7p")]
+transform = Transform3D(3.65528, 0, 0, 0, 1, 0, 0, 0, 2.54221, -14.6616, 0.501049, -8.89673)
+levelpath = "res://scenes/levels/test_level_2.tscn"
 
 [editable path="plains2"]

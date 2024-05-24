@@ -327,7 +327,8 @@ func _physics_process(delta: float) -> void:
 	
 	if state == States.Hang:
 		var frontcastnormal:Vector3 = hang_frontCast.get_collision_normal()
-		visual.look_at(global_position - frontcastnormal)
+		if frontcastnormal.dot(Vector3.UP) > 0.001:
+			visual.look_at(global_position - frontcastnormal)
 		exitwallclimb = 0.5
 		if not checkHang():
 			griptimer = griptimerinit
