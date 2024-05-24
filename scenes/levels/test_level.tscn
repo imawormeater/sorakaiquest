@@ -20,7 +20,7 @@ func _on_body_entered(body: Node3D) -> void:
 size = Vector3(9.93231, 2.47961, 4.52637)
 
 [sub_resource type="TextMesh" id="TextMesh_o1h36"]
-text = "im working on this at school and im tired of people pointing this out "
+text = "IM CUMMING WITH EASE"
 
 [node name="Level" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
 script = ExtResource("1_aufyl")
