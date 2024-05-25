@@ -25,5 +25,5 @@ skeleton = NodePath("../..")
 [node name="debounceTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="body_entered" from="tpArea" to="." method="_on_body_entered"]
 [connection signal="body_entered" from="tpArea" to="." method="_on_tp_area_body_entered"]
+[connection signal="body_entered" from="tpArea" to="." method="_on_body_entered"]

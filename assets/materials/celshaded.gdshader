@@ -6,16 +6,17 @@ shader_type spatial;
 #define USE_SMOOTH_PIXELART 1
 
 #define USE_ALPHA 1
-#define USE_DISABLE_CULL 1
+#define USE_DISABLE_CULL 0
 
 #define USE_SUBSURFACESCATTERING 1
 
+group_uniforms Dithering;
+uniform bool UseFade;
+uniform float MinDistance;
+uniform float MaxDistance;
+
 render_mode 
-	#if USE_DISABLE_CULL
-		cull_disabled;
-	#else
-		cull_back;
-	#endif
+	depth_draw_always,cull_back;
 
 group_uniforms Toon;
 uniform float     ToonRampOffset:     hint_range(0.0, 1.0) = 0.5;
@@ -73,6 +74,10 @@ group_uniforms Texture;
 	}
 #endif
 
+uniform sampler2D ditherpattern;
+uniform int dithersize = 1;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
 void fragment() {
 	vec4 textureColor;
 	
@@ -86,8 +91,37 @@ void fragment() {
 
 	#if USE_ALPHA
 		ALPHA = textureColor.a;
-		ALPHA_SCISSOR_THRESHOLD = 0.5;
+		//ALPHA_HASH_SCALE = 1.0;
 	#endif
+	
+	if (UseFade){
+		
+		float dist = distance(NODE_POSITION_WORLD, CAMERA_POSITION_WORLD);
+		float input_range = MinDistance-MaxDistance;
+		float gay = -1.0 * ((dist-MinDistance)/input_range);
+		
+		//float funworld = clamp(smoothstep(0.0, 1.0,gay),0.0,1.0);
+		float transparency = gay * textureColor.a  * 0.5;
+		
+		if(transparency >= 1.0) {
+			ALPHA = 1.0;
+		} else if (transparency <= 0.0){
+			ALPHA = 0.0;
+		} else {
+			ivec2 screen_res = textureSize(SCREEN_TEXTURE, 0);
+			ivec2 dither_res = textureSize(ditherpattern, 0);
+			ivec2 screen_pos = ivec2(SCREEN_UV * vec2(screen_res));
+			int dither_pos = int(floor(transparency * float(dither_res.y)));
+					
+			ivec2 ditheruv = ivec2(
+				screen_pos.x % dithersize, 
+				dither_pos - (screen_pos.y % dithersize)
+			);
+					
+			ALPHA = texelFetch(ditherpattern, ditheruv, 0).r > 0.0 ? 1.0 : 0.0;
+		}
+	}
+	
 }
 
 void light() {
