@@ -376,6 +376,9 @@ parameters/conditions/onFloor = false
 parameters/IdleWalk/TimeScale/scale = 1.0
 parameters/IdleWalk/animation/blend_position = Vector2(0, 0)
 
+[node name="FollowPoint" type="Node3D" parent="Visual/loganchara"]
+transform = Transform3D(0.103531, 0, -12.0319, 0, 12.0324, 0, 12.0319, 0, 0.103531, -2.56675, 15.3836, 8.41576)
+
 [node name="Shadow" type="Decal" parent="."]
 transform = Transform3D(1, 6.81509e-14, -3.82132e-15, -6.81509e-14, 1, 3.67332e-08, 3.82132e-15, -3.67332e-08, 1, -4.09827e-13, -7.01346, 2.20893e-07)
 size = Vector3(0.8, 12.5667, 0.8)
@@ -407,8 +410,5 @@ current = true
 fov = 98.7
 
 [node name="PlayerSFX" parent="." instance=ExtResource("7_0u647")]
-
-[node name="FollowPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.583136, 0.0736153, 0.337729)
 
 [editable path="Visual/loganchara"]

@@ -54,6 +54,7 @@ var state:= States.Free
 @onready var animationtree := $Visual/loganchara/AnimationTree
 @onready var walkDust := $Visual/WalkDust
 @onready var sfx := $PlayerSFX
+@onready var followPoint := $Visual/loganchara/FollowPoint
 
 @export var _face_mat: String
 @onready var face:ShaderMaterial = character_mesh.get(_face_mat)
@@ -301,8 +302,9 @@ func _physics_process(delta: float) -> void:
 		hangInit()
 
 	if currentKey:
-		var tween = create_tween()
-		tween.tween_property(currentKey, "position", self.get_node("FollowPoint").get_global_position(), 0.25)
+		var tween = create_tween().set_parallel(true)
+		tween.tween_property(currentKey, "position", followPoint.get_global_position(), 0.25)
+		tween.tween_property(currentKey, "rotation", followPoint.get_global_rotation(), 0.5)
 
 	#WALL RIDE STATE
 	if state == States.Wall:
@@ -364,6 +366,9 @@ func _on_key_touched(key) -> void:
 		currentKey = key
 	
 func refresh() -> void:
+	
+	currentKey = null
+	
 	for key in get_tree().get_nodes_in_group("Keys"):
 		key.key_touched.connect(_on_key_touched)
 		
