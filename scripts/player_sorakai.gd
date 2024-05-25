@@ -246,6 +246,7 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("movement_left", "movement_right", "movement_up", "movement_down")
 	var pressedJump := Input.is_action_just_pressed("movement_jump")
 	var pressingJump := Input.is_action_pressed("movement_jump")
+	var pressedAction := Input.is_action_pressed("movement_action")
 		
 	set_animations(onFloor,state)
 	
@@ -301,7 +302,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += jump_grav * 0.5 * delta
 		velocity.y = clampf(velocity.y,jump_grav * 0.2,9999)
 		move_and_slide()
-		if pressedJump:
+		if pressedJump or jumpbuffer > 0:
 			sfx.stop_sound("Walkriding")
 			visual.look_at(global_position + facecastnormal)
 			state = States.Free
@@ -312,7 +313,7 @@ func _physics_process(delta: float) -> void:
 			animationtree["parameters/conditions/OnWall"] = false
 			anim_st.travel("Jump")
 			return
-		if not facecast.is_colliding() or is_on_floor():
+		if not facecast.is_colliding() or is_on_floor() or pressedAction:
 			sfx.stop_sound("Walkriding")
 			exitwallclimb = exitwallclimbinit
 			state = States.Free
@@ -337,7 +338,7 @@ func _physics_process(delta: float) -> void:
 			visual.rotation.z = 0
 			anim_st.travel("Fall")
 			return
-		if pressedJump:
+		if pressedJump or jumpbuffer > 0:
 			state = States.Free
 			jump()
 			griptimer = griptimerinit

@@ -278,7 +278,7 @@ mesh = SubResource("CapsuleMesh_1b6ui")
 skeleton = NodePath("../..")
 
 [node name="faceCast" type="RayCast3D" parent="Visual"]
-transform = Transform3D(1.464, 0, 0, 0, -4.37114e-08, -1.464, 0, 1, -6.39935e-08, 0, 0, 0)
+transform = Transform3D(1.464, 0, 0, 0, -4.37114e-08, -1.464, 0, 1, -6.39935e-08, 0, 0.208773, 0)
 target_position = Vector3(0, -0.5, 0)
 
 [node name="hangCasts" type="Node3D" parent="Visual"]
