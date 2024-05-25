@@ -11,9 +11,11 @@ shader_type spatial;
 #define USE_SUBSURFACESCATTERING 1
 
 group_uniforms Dithering;
-uniform bool UseFade;
-uniform float MinDistance;
-uniform float MaxDistance;
+uniform bool UseFade = false;
+uniform float MinDistance = 0.2;
+uniform float MaxDistance = 5;
+uniform sampler2D ditherpattern;
+uniform int dithersize = 6;
 
 render_mode 
 	depth_draw_always,cull_back;
@@ -74,8 +76,6 @@ group_uniforms Texture;
 	}
 #endif
 
-uniform sampler2D ditherpattern;
-uniform int dithersize = 1;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
 void fragment() {

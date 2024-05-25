@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://q2dt7dcu4bdy"]
+[gd_scene load_steps=14 format=3 uid="uid://q2dt7dcu4bdy"]
 
 [ext_resource type="Script" path="res://scripts/level_class.gd" id="1_geecc"]
 [ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://assets/objects/plains_1.tscn" id="2_kh2so"]
@@ -6,23 +6,39 @@
 [ext_resource type="Material" uid="uid://fy0ibi6x3jnj" path="res://assets/materials/basicassplatform.tres" id="3_0i8cp"]
 [ext_resource type="PackedScene" uid="uid://d0wtjv210el32" path="res://assets/objects/plains_2.tscn" id="3_kerdl"]
 [ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://scenes/basicassplatform.tscn" id="4_n473g"]
-[ext_resource type="Environment" uid="uid://jyc65e1ajlll" path="res://assets/ursc/test_env.tres" id="6_1y2uh"]
+[ext_resource type="Environment" uid="uid://bn8ohqm75mqkj" path="res://assets/ursc/test_env_dusk.tres" id="7_oauc0"]
 [ext_resource type="PackedScene" uid="uid://cabix5vgaakof" path="res://assets/objects/level_switcher.tscn" id="8_b5a3n"]
-[ext_resource type="Shader" uid="uid://n0liv7ra6xwv" path="res://assets/materials/visualshadertest.tres" id="9_tjcxn"]
+[ext_resource type="Shader" path="res://assets/materials/celshaded.gdshader" id="9_1qvqj"]
+[ext_resource type="Texture2D" uid="uid://oq23ffi88t2f" path="res://assets/images/ExampleDitherRamp.png" id="10_g6kua"]
 
 [sub_resource type="TextMesh" id="TextMesh_o1h36"]
 text = "also i made my teacher play this level he
 couldnt get past the first jumps hes not even that old"
 font_size = 12
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ueqe"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmx54"]
 render_priority = 0
-shader = ExtResource("9_tjcxn")
-shader_parameter/MinDistance = null
-shader_parameter/MaxDistance = null
+shader = ExtResource("9_1qvqj")
+shader_parameter/UseFade = true
+shader_parameter/MinDistance = 0.2
+shader_parameter/MaxDistance = 15.0
+shader_parameter/dithersize = 6
+shader_parameter/ditherpattern = ExtResource("10_g6kua")
+shader_parameter/ToonRampOffset = 0.5
+shader_parameter/ToonRampSmoothness = 0.05
+shader_parameter/ToonRampTinting = null
+shader_parameter/RimPower = 1.0
+shader_parameter/RimCutOff = 0.5
+shader_parameter/RimSmoothness = 0.05
+shader_parameter/RimLightBrightness = 20.0
+shader_parameter/SubSurfDistortion = 1.0
+shader_parameter/SubSurfTint = null
+shader_parameter/SubSurfBrightness = 3.0
+shader_parameter/SubSurfCutoff = 0.5
+shader_parameter/SubSurfSmoothness = 0.05
 
 [sub_resource type="SphereMesh" id="SphereMesh_nu6i2"]
-material = SubResource("ShaderMaterial_1ueqe")
+material = SubResource("ShaderMaterial_vmx54")
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
 script = ExtResource("1_geecc")
@@ -150,7 +166,7 @@ transform = Transform3D(4.17905, 0, 0, 0, 21.2953, 0, 0, 0, 4.04588, 10.326, 21.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.21617, 0.351428, 31.275)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("6_1y2uh")
+environment = ExtResource("7_oauc0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(4.81944, 0, 0, 0, 3.76987, 0, 0, 0, 1.03291, -11.0527, 2.44206, 21.1025)

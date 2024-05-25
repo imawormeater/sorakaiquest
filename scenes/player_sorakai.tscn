@@ -30,9 +30,10 @@ height = 1.5
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p41kx"]
 render_priority = 0
 shader = ExtResource("3_j3lss")
-shader_parameter/UseFade = null
-shader_parameter/MinDistance = null
-shader_parameter/MaxDistance = null
+shader_parameter/UseFade = false
+shader_parameter/MinDistance = 0.2
+shader_parameter/MaxDistance = 5.0
+shader_parameter/dithersize = 8
 shader_parameter/ToonRampOffset = 0.672
 shader_parameter/ToonRampSmoothness = 0.129
 shader_parameter/ToonRampTinting = Color(0.821789, 0.821789, 0.821789, 1)
@@ -45,7 +46,6 @@ shader_parameter/SubSurfTint = null
 shader_parameter/SubSurfBrightness = 3.0
 shader_parameter/SubSurfCutoff = 0.5
 shader_parameter/SubSurfSmoothness = 0.05
-shader_parameter/dithersize = 8
 
 [sub_resource type="Curve" id="Curve_j27lv"]
 max_value = 13.66
@@ -77,6 +77,8 @@ shader = ExtResource("3_j3lss")
 shader_parameter/UseFade = true
 shader_parameter/MinDistance = 0.2
 shader_parameter/MaxDistance = 6.0
+shader_parameter/dithersize = 6
+shader_parameter/ditherpattern = ExtResource("5_jcomn")
 shader_parameter/ToonRampOffset = 0.523
 shader_parameter/ToonRampSmoothness = 0.219
 shader_parameter/ToonRampTinting = Color(0.821788, 0.821789, 0.821789, 1)
@@ -89,9 +91,7 @@ shader_parameter/SubSurfTint = null
 shader_parameter/SubSurfBrightness = 0.0
 shader_parameter/SubSurfCutoff = 0.0
 shader_parameter/SubSurfSmoothness = 0.0
-shader_parameter/dithersize = 6
 shader_parameter/Texture = ExtResource("5_pobn2")
-shader_parameter/ditherpattern = ExtResource("5_jcomn")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2nnn4"]
 render_priority = 0
@@ -99,6 +99,8 @@ shader = ExtResource("3_j3lss")
 shader_parameter/UseFade = true
 shader_parameter/MinDistance = 0.2
 shader_parameter/MaxDistance = 6.0
+shader_parameter/dithersize = 6
+shader_parameter/ditherpattern = ExtResource("5_jcomn")
 shader_parameter/ToonRampOffset = 0.523
 shader_parameter/ToonRampSmoothness = 0.219
 shader_parameter/ToonRampTinting = Color(0.838897, 0.838897, 0.838897, 1)
@@ -111,9 +113,7 @@ shader_parameter/SubSurfTint = null
 shader_parameter/SubSurfBrightness = 0.0
 shader_parameter/SubSurfCutoff = 0.0
 shader_parameter/SubSurfSmoothness = 0.0
-shader_parameter/dithersize = 6
 shader_parameter/Texture = ExtResource("6_ya3t1")
-shader_parameter/ditherpattern = ExtResource("5_jcomn")
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ra5mc"]
 animation = &"Fall"
