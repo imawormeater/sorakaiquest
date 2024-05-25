@@ -59,17 +59,14 @@ var state:= States.Free
 @export var _face_mat: String
 @onready var face:ShaderMaterial = character_mesh.get(_face_mat)
 
-@onready var timers := $Timers
-@onready var wallride_til_Timer := $Timers/WalkrideConnection
-
-var faces_textures := {
+@export var faces_textures := {
 	"normal" : preload("res://assets/loganchara_loganface1.png"),
 	"blink" : preload("res://assets/loganface2.png")
 }
 
 var anim_st:AnimationNodeStateMachinePlayback
 
-var currentKey
+var currentKey:Node3D
 
 func setCorrectJumpVariables() -> void:
 	jump_velo = ((2.0 * JUMPHEIGHT) / JUMPPEAKTIME)
@@ -122,6 +119,9 @@ func _process(delta: float) -> void:#Camera shit
 	pivot.rotation.y = lerp(pivot.rotation.y,camera_deg[0],_lerp_speed**0.2)
 	
 	camera.global_transform = camera.global_transform.interpolate_with(targetCamera.global_transform,_lerp_speed)
+	
+	if currentKey:
+		currentKey.global_transform = currentKey.global_transform.interpolate_with(followPoint.global_transform,_lerp_speed * 0.2)
 	
 
 func do_timers(delta:float) -> void: ##Does the Timers
@@ -300,11 +300,6 @@ func _physics_process(delta: float) -> void:
 			coyotejump = coyotejumpInit
 		wallInit(delta)
 		hangInit()
-
-	if currentKey:
-		var tween = create_tween().set_parallel(true)
-		tween.tween_property(currentKey, "position", followPoint.get_global_position(), 0.25)
-		tween.tween_property(currentKey, "rotation", followPoint.get_global_rotation(), 0.5)
 
 	#WALL RIDE STATE
 	if state == States.Wall:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dw40p48fqbsl2"]
+[gd_scene load_steps=51 format=3 uid="uid://dw40p48fqbsl2"]
 
 [ext_resource type="Script" path="res://scripts/player_sorakai.gd" id="1_6cmhp"]
 [ext_resource type="Shader" path="res://assets/materials/celshaded.gdshader" id="3_j3lss"]
@@ -12,19 +12,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_62ypt"]
 radius = 0.3
-height = 1.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwdjj"]
-transparency = 1
-albedo_color = Color(0, 1, 1, 0.129412)
-rim_enabled = true
-rim = 0.0
-backlight_enabled = true
-backlight = Color(1, 1, 1, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_1b6ui"]
-material = SubResource("StandardMaterial3D_cwdjj")
-radius = 0.4
 height = 1.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p41kx"]
@@ -287,11 +274,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
 [node name="Visual" type="Node3D" parent="."]
 
-[node name="Debug" type="MeshInstance3D" parent="Visual"]
-visible = false
-mesh = SubResource("CapsuleMesh_1b6ui")
-skeleton = NodePath("../..")
-
 [node name="faceCast" type="RayCast3D" parent="Visual"]
 transform = Transform3D(1.464, 0, 0, 0, -4.37114e-08, -1.464, 0, 1, -6.39935e-08, 0, 0.208773, 0)
 target_position = Vector3(0, -0.5, 0)
@@ -395,12 +377,6 @@ offset_bottom = 135.0
 scale = Vector2(0.825, 0.825)
 script = ExtResource("4_uvf24")
 logan = NodePath("../..")
-
-[node name="Timers" type="Node" parent="."]
-
-[node name="WalkrideConnection" type="Timer" parent="Timers"]
-process_callback = 0
-wait_time = 0.1
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24552, 5)

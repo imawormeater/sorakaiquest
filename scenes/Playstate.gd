@@ -11,7 +11,6 @@ signal new_level_loaded
 
 var loganScene = preload("res://scenes/player_sorakai.tscn")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	new_level_loaded.connect(set_level_stuff)
 	for i in get_children():
