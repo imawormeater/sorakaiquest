@@ -68,6 +68,8 @@ var faces_textures := {
 
 var anim_st:AnimationNodeStateMachinePlayback
 
+var currentKey
+
 func setCorrectJumpVariables() -> void:
 	jump_velo = ((2.0 * JUMPHEIGHT) / JUMPPEAKTIME)
 	jump_grav = ((-2.0 * JUMPHEIGHT) / (JUMPPEAKTIME * JUMPPEAKTIME))
@@ -89,6 +91,9 @@ func _ready() -> void:
 	setCorrectJumpVariables()
 	animationtree.active = true
 	anim_st = animationtree.get("parameters/playback")
+	
+	for key in get_tree().get_nodes_in_group("Keys"):
+		key.key_touched.connect(_on_key_touched)
 
 func _process(delta: float) -> void:#Camera shit
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
@@ -293,6 +298,9 @@ func _physics_process(delta: float) -> void:
 		wallInit(delta)
 		hangInit()
 
+	if currentKey:
+		var tween = create_tween()
+		tween.tween_property(currentKey, "position", self.get_node("FollowPoint").get_global_position(), 0.25)
 
 	#WALL RIDE STATE
 	if state == States.Wall:
@@ -348,3 +356,14 @@ func _input(event) -> void:
 	if event is InputEventMouseMotion:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			camera_deg += event.relative * -mouseSens
+
+func _on_key_touched(key) -> void:
+	if not currentKey:
+		currentKey = key
+	
+func refresh() -> void:
+	for key in get_tree().get_nodes_in_group("Keys"):
+		key.key_touched.connect(_on_key_touched)
+		
+func wait(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout
