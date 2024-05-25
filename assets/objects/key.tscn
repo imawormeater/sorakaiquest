@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bn35hu6xtwj7q"]
+
+[ext_resource type="Texture2D" uid="uid://dh4lvqcs1ktj" path="res://assets/keyColor.png" id="1_kro43"]
+[ext_resource type="Script" path="res://scripts/key_handler.gd" id="1_n3xml"]
+[ext_resource type="ArrayMesh" uid="uid://buyrvvah6lmxa" path="res://assets/meshes/sorakaiKey.obj" id="2_h0xll"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atabq"]
+albedo_texture = ExtResource("1_kro43")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w1ih1"]
+size = Vector3(0.221252, 0.562988, 1.10986)
+
+[node name="Key" type="Node3D" groups=["Keys"]]
+script = ExtResource("1_n3xml")
+
+[node name="Key" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_atabq")
+mesh = ExtResource("2_h0xll")
+
+[node name="Area3D" type="Area3D" parent="Key"]
+transform = Transform3D(4.54545, 0, 0, 0, 4.54545, 0, 0, 0, 4.54545, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Key/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00375366, 0.0314941, -0.0549316)
+shape = SubResource("BoxShape3D_w1ih1")
+
+[connection signal="body_entered" from="Key/Area3D" to="." method="_on_key_entered"]
