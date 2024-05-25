@@ -1,9 +1,10 @@
-[gd_scene load_steps=52 format=3 uid="uid://dw40p48fqbsl2"]
+[gd_scene load_steps=53 format=3 uid="uid://dw40p48fqbsl2"]
 
 [ext_resource type="Script" path="res://scripts/player_sorakai.gd" id="1_6cmhp"]
 [ext_resource type="Shader" path="res://assets/materials/celshaded.gdshader" id="3_j3lss"]
 [ext_resource type="PackedScene" uid="uid://cauyp1btx8io" path="res://assets/loganchara.glb" id="3_t2ofv"]
 [ext_resource type="Script" path="res://scripts/get_player_variables_for_fun.gd" id="4_uvf24"]
+[ext_resource type="Texture2D" uid="uid://oq23ffi88t2f" path="res://assets/images/ExampleDitherRamp.png" id="5_jcomn"]
 [ext_resource type="Texture2D" uid="uid://bhywkec3n6plo" path="res://assets/loganchara_LoganTex.png" id="5_pobn2"]
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://assets/images/blob_shadow.png" id="6_b517e"]
 [ext_resource type="Texture2D" uid="uid://bntjxa37b77sc" path="res://assets/loganchara_loganface1.png" id="6_ya3t1"]
@@ -29,6 +30,10 @@ height = 1.5
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p41kx"]
 render_priority = 0
 shader = ExtResource("3_j3lss")
+shader_parameter/UseFade = false
+shader_parameter/MinDistance = 0.2
+shader_parameter/MaxDistance = 5.0
+shader_parameter/dithersize = 8
 shader_parameter/ToonRampOffset = 0.672
 shader_parameter/ToonRampSmoothness = 0.129
 shader_parameter/ToonRampTinting = Color(0.821789, 0.821789, 0.821789, 1)
@@ -69,6 +74,11 @@ height = 0.2
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ouxd8"]
 render_priority = 0
 shader = ExtResource("3_j3lss")
+shader_parameter/UseFade = true
+shader_parameter/MinDistance = 0.2
+shader_parameter/MaxDistance = 6.0
+shader_parameter/dithersize = 6
+shader_parameter/ditherpattern = ExtResource("5_jcomn")
 shader_parameter/ToonRampOffset = 0.523
 shader_parameter/ToonRampSmoothness = 0.219
 shader_parameter/ToonRampTinting = Color(0.821788, 0.821789, 0.821789, 1)
@@ -86,6 +96,11 @@ shader_parameter/Texture = ExtResource("5_pobn2")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2nnn4"]
 render_priority = 0
 shader = ExtResource("3_j3lss")
+shader_parameter/UseFade = true
+shader_parameter/MinDistance = 0.2
+shader_parameter/MaxDistance = 6.0
+shader_parameter/dithersize = 6
+shader_parameter/ditherpattern = ExtResource("5_jcomn")
 shader_parameter/ToonRampOffset = 0.523
 shader_parameter/ToonRampSmoothness = 0.219
 shader_parameter/ToonRampTinting = Color(0.838897, 0.838897, 0.838897, 1)
@@ -344,6 +359,7 @@ bones/18/rotation = Quaternion(-0.320628, 0.54518, 0.0172301, 0.77439)
 bones/18/scale = Vector3(1, 1, 1)
 
 [node name="logan" parent="Visual/loganchara/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 0, 1.86265e-09, 0, 1, 0, 0, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_ouxd8")
 surface_material_override/1 = SubResource("ShaderMaterial_2nnn4")
 

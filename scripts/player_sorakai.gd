@@ -204,6 +204,8 @@ func set_animations(onfloor:bool,_state:int) -> void:
 		animationtree["parameters/conditions/OnWall"] = true
 	
 	animationtree["parameters/IdleWalk/TimeScale/scale"] = sqrt(_velocity)
+	if animationtree["parameters/IdleWalk/animation/blend_position"].x < 0.1:
+		animationtree["parameters/IdleWalk/TimeScale/scale"] = 1.0
 	
 	if (curanim != "IdleWalk") and onfloor:
 		anim_st.travel("Land")

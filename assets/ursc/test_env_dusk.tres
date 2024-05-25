@@ -1,10 +1,19 @@
-[gd_resource type="Environment" load_steps=6 format=3 uid="uid://jyc65e1ajlll"]
+[gd_resource type="Environment" load_steps=8 format=3 uid="uid://bn8ohqm75mqkj"]
+
+[sub_resource type="Gradient" id="Gradient_oxiev"]
+offsets = PackedFloat32Array(0, 0.528529, 1)
+colors = PackedColorArray(0.277756, 0.00843001, 0, 1, 0.667355, 0.461972, 0.298109, 1, 0.991606, 1, 0.496144, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ikbk5"]
+gradient = SubResource("Gradient_oxiev")
 
 [sub_resource type="Gradient" id="Gradient_bdev1"]
-offsets = PackedFloat32Array(0, 0.608833, 0.839117)
-colors = PackedColorArray(0.36067, 0.380682, 0.819996, 1, 0.541721, 0.690846, 1, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.66877, 0.958991)
+colors = PackedColorArray(0.999912, 0.359615, 0.364353, 1, 0.934387, 0.683327, 0.336731, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_q14d0"]
+noise_type = 4
+seed = 200
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sv1r0"]
 generate_mipmaps = false
@@ -25,9 +34,10 @@ background_color = Color(0.0352941, 0.376471, 0.588235, 1)
 background_energy_multiplier = 0.9
 sky = SubResource("Sky_j1hyb")
 ambient_light_source = 2
-ambient_light_color = Color(0.244776, 0.244776, 0.244776, 1)
+ambient_light_color = Color(0.515015, 0.15848, 0.153644, 1)
 ambient_light_sky_contribution = 0.2
 reflected_light_source = 2
 volumetric_fog_density = 0.0706
 volumetric_fog_ambient_inject = 1.75
 adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture1D_ikbk5")
