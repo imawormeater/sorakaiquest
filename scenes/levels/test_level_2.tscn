@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://ctx5nhlg31caj" path="res://assets/music/the_time_flys.mp3" id="2_mtiea"]
 [ext_resource type="Material" uid="uid://fy0ibi6x3jnj" path="res://assets/materials/basicassplatform.tres" id="3_0i8cp"]
 [ext_resource type="PackedScene" uid="uid://d0wtjv210el32" path="res://assets/objects/plains_2.tscn" id="3_kerdl"]
-[ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://scenes/basicassplatform.tscn" id="4_n473g"]
+[ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://assets/objects/basicassplatform.tscn" id="4_n473g"]
 [ext_resource type="Environment" uid="uid://bn8ohqm75mqkj" path="res://assets/ursc/test_env_dusk.tres" id="7_oauc0"]
 [ext_resource type="PackedScene" uid="uid://cabix5vgaakof" path="res://assets/objects/level_switcher.tscn" id="8_b5a3n"]
 [ext_resource type="Shader" path="res://assets/materials/celshaded.gdshader" id="9_1qvqj"]
