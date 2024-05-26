@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bn35hu6xtwj7q"]
 
-[ext_resource type="Texture2D" uid="uid://dh4lvqcs1ktj" path="res://assets/keyColor.png" id="1_kro43"]
+[ext_resource type="Texture2D" uid="uid://dh4lvqcs1ktj" path="res://assets/images/keyColor.png" id="1_kro43"]
 [ext_resource type="Script" path="res://scripts/key_handler.gd" id="1_n3xml"]
 [ext_resource type="ArrayMesh" uid="uid://buyrvvah6lmxa" path="res://assets/meshes/sorakaiKey.obj" id="2_h0xll"]
 

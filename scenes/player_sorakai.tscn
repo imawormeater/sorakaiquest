@@ -369,14 +369,14 @@ modulate = Color(1, 1, 1, 0.709804)
 upper_fade = 0.102454
 lower_fade = 0.0416088
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PlayerUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("logan") groups=["UI"]]
+script = ExtResource("4_uvf24")
+logan = NodePath("..")
 
-[node name="Label" type="Label" parent="CanvasLayer" node_paths=PackedStringArray("logan")]
+[node name="Label" type="Label" parent="PlayerUI"]
 offset_right = 280.0
 offset_bottom = 135.0
 scale = Vector2(0.825, 0.825)
-script = ExtResource("4_uvf24")
-logan = NodePath("../..")
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24552, 5)

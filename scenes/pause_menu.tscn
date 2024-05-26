@@ -1,0 +1,143 @@
+[gd_scene load_steps=5 format=3 uid="uid://bexrd87t846hr"]
+
+[ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="1_4b5h7"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_iyps8"]
+[ext_resource type="Material" uid="uid://cfs4axkv37ppd" path="res://assets/ursc/checkerboard.tres" id="2_0ccle"]
+[ext_resource type="AudioStream" uid="uid://1y2l7ieysg8x" path="res://assets/sounds/up.wav" id="4_0kdnt"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_iyps8")
+
+[node name="BG" type="ColorRect" parent="."]
+material = ExtResource("2_0ccle")
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 0.796078)
+
+[node name="PausedLabel" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -127.0
+offset_right = 150.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4b5h7")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center][wave]PAUSED[/wave]"
+fit_content = true
+scroll_active = false
+
+[node name="AudioSliders" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -42.0
+offset_right = 146.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Master" type="HSlider" parent="AudioSliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 6.0
+
+[node name="Label" type="Label" parent="AudioSliders/Master"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -32.5
+offset_right = 59.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4b5h7")
+text = "master volume"
+horizontal_alignment = 1
+
+[node name="Music" type="HSlider" parent="AudioSliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="Label" type="Label" parent="AudioSliders/Music"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -32.5
+offset_right = 59.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4b5h7")
+text = "music volume"
+horizontal_alignment = 1
+
+[node name="SFX" type="HSlider" parent="AudioSliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="Label" type="Label" parent="AudioSliders/SFX"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -32.5
+offset_right = 59.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4b5h7")
+text = "sfx volume"
+horizontal_alignment = 1
+
+[node name="Ambience" type="HSlider" parent="AudioSliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="Label" type="Label" parent="AudioSliders/Ambience"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -32.5
+offset_right = 59.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4b5h7")
+text = "ambience volume"
+horizontal_alignment = 1
+
+[node name="PauseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0kdnt")
+pitch_scale = 0.45
+bus = &"SFX"

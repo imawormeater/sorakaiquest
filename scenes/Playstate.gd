@@ -1,6 +1,7 @@
 extends Node3D
 
 signal new_level_loaded
+signal game_paused
 
 @export var Sorakai:CharacterBody3D
 @export var MusicStream:AudioStreamPlayer

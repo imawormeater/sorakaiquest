@@ -83,6 +83,9 @@ func changeFace(whichface:String) -> void:
 		face["shader_parameter/Texture"] = faces_textures["normal"]
 	face["shader_parameter/Texture"] = currentface
 
+#func test()->void:
+#	print('poop')
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	springarm.add_excluded_object(self)
@@ -92,6 +95,9 @@ func _ready() -> void:
 	
 	for key in get_tree().get_nodes_in_group("Keys"):
 		key.key_touched.connect(_on_key_touched)
+		
+	#await get_tree().create_timer(0.1).timeout
+	#GameManager.CurrentState.new_level_loaded.connect(test)
 
 func _process(delta: float) -> void:#Camera shit
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
@@ -101,7 +107,7 @@ func _process(delta: float) -> void:#Camera shit
 		cameraDistance -= scrollSpeed
 	elif Input.is_action_just_released('mw_down'):
 		cameraDistance += scrollSpeed
-	cameraDistance = clamp(cameraDistance,1,5)	
+	cameraDistance = clamp(cameraDistance,1.4,5)	
 	springarm.spring_length = lerp(springarm.spring_length,cameraDistance,_lerp_speed)
 	if springarm.spring_length < 0.1:
 		visual.visible = false

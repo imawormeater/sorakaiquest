@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cfs4axkv37ppd"]
+
+[ext_resource type="Shader" path="res://assets/ursc/canvas_item/checkerboard.gdshader" id="1_bx1j5"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_bx1j5")
+shader_parameter/cells = 6.0
+shader_parameter/uiscale = Vector2(2, 1.5)
+shader_parameter/offset = Vector2(0, 0)
