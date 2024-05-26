@@ -4,8 +4,7 @@ extends Node
 var currentState:Node = null
 var inTransition := false
 
-#@onready var circleTrans := $CanvasLayer/Transitions/CircleTrans
-@onready var animPlayer := $CanvasLayer/Transitions/AnimationPlayer
+@onready var animPlayer := $Main/Transitions/AnimationPlayer
 
 func changeState(state:PackedScene) -> void:
 	if state == null:

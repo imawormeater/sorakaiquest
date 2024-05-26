@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://eleajfuwfpur"]
+[gd_scene load_steps=12 format=3 uid="uid://eleajfuwfpur"]
 
-[ext_resource type="Script" path="res://scripts/app.gd" id="1_d1n4j"]
+[ext_resource type="Script" path="res://scripts/classes/app.gd" id="1_d1n4j"]
 [ext_resource type="PackedScene" uid="uid://dmdi4mdm7qr5o" path="res://scenes/scenes/MainGameState.tscn" id="2_w6e81"]
 [ext_resource type="VideoStream" path="res://assets/videos/jerma.ogv" id="3_vj886"]
-[ext_resource type="Material" uid="uid://bixuwp1cbjepr" path="res://assets/ursc/circle_trans.tres" id="4_kytrq"]
+[ext_resource type="Material" uid="uid://bixuwp1cbjepr" path="res://assets/materials/ursc/circle_trans.tres" id="4_kytrq"]
 [ext_resource type="AudioStream" uid="uid://hcr0rb3h3por" path="res://assets/sounds/fadein.wav" id="5_sva3u"]
 [ext_resource type="AudioStream" uid="uid://45vsqs36eye6" path="res://assets/sounds/fadeout.wav" id="6_y87jn"]
+[ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="7_2arx1"]
 
 [sub_resource type="Animation" id="Animation_bc7ut"]
 length = 0.001
@@ -92,25 +93,34 @@ _data = {
 "circletransfull": SubResource("Animation_aur8l")
 }
 
+[sub_resource type="GDScript" id="GDScript_j0cdk"]
+resource_name = "fpstimer"
+script/source = "extends Label
+
+func _process(_delta: float) -> void:
+	
+	text = \"FPS: \" + str(Engine.get_frames_per_second())
+"
+
 [node name="App" type="Node"]
 script = ExtResource("1_d1n4j")
 firstState = ExtResource("2_w6e81")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Main" type="CanvasLayer" parent="."]
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer"]
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Main"]
 self_modulate = Color(0.268541, 0.842352, 0, 1)
 offset_right = 544.0
 offset_bottom = 544.0
 stream = ExtResource("3_vj886")
 bus = &"Ambience"
 
-[node name="Transitions" type="ColorRect" parent="CanvasLayer"]
+[node name="Transitions" type="ColorRect" parent="Main"]
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(1, 1, 1, 0)
 
-[node name="CircleTrans" type="ColorRect" parent="CanvasLayer/Transitions"]
+[node name="CircleTrans" type="ColorRect" parent="Main/Transitions"]
 material = ExtResource("4_kytrq")
 layout_mode = 1
 anchors_preset = 8
@@ -126,12 +136,25 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Transitions"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main/Transitions"]
 libraries = {
 "": SubResource("AnimationLibrary_3j6nd")
 }
 
-[node name="TransitionSound" type="AudioStreamPlayer" parent="CanvasLayer/Transitions"]
+[node name="TransitionSound" type="AudioStreamPlayer" parent="Main/Transitions"]
 bus = &"SFX"
+
+[node name="FPS" type="Label" parent="Main"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -142.0
+offset_right = -3.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme = ExtResource("7_2arx1")
+text = "FPS: 60"
+horizontal_alignment = 2
+script = SubResource("GDScript_j0cdk")
 
 [node name="Timer" type="Timer" parent="."]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cabix5vgaakof"]
 
 [ext_resource type="Script" path="res://scripts/level_switcher.gd" id="1_vnne3"]
-[ext_resource type="Material" uid="uid://dboxaay5wtknv" path="res://assets/ursc/testing_mat.tres" id="2_wei10"]
+[ext_resource type="Material" uid="uid://dboxaay5wtknv" path="res://assets/materials/ursc/testing_mat.tres" id="2_wei10"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1h2me"]
 size = Vector3(2, 2, 2)

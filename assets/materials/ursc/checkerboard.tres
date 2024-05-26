@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cfs4axkv37ppd"]
 
-[ext_resource type="Shader" path="res://assets/ursc/canvas_item/checkerboard.gdshader" id="1_bx1j5"]
+[ext_resource type="Shader" path="res://assets/materials/ursc/canvas_item/checkerboard.gdshader" id="1_bx1j5"]
 
 [resource]
 resource_local_to_scene = true

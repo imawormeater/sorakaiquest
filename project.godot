@@ -19,7 +19,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameManager="*res://scripts/game_manager.gd"
+GameManager="*res://scripts/classes/game_manager.gd"
 
 [display]
 

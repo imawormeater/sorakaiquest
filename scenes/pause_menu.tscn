@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bexrd87t846hr"]
 
 [ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="1_4b5h7"]
-[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_iyps8"]
-[ext_resource type="Material" uid="uid://cfs4axkv37ppd" path="res://assets/ursc/checkerboard.tres" id="2_0ccle"]
+[ext_resource type="Script" path="res://scripts/classes/pause_menu.gd" id="1_iyps8"]
+[ext_resource type="Material" uid="uid://cfs4axkv37ppd" path="res://assets/materials/ursc/checkerboard.tres" id="2_0ccle"]
 [ext_resource type="AudioStream" uid="uid://1y2l7ieysg8x" path="res://assets/sounds/up.wav" id="4_0kdnt"]
 
 [node name="PauseMenu" type="CanvasLayer"]
