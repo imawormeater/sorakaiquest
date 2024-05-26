@@ -25,11 +25,10 @@ func save_settings() -> void:
 	ResourceSaver.save(settings,SAVE_DIR + SETTINGS_FILE_NAME)
 	
 func load_settings() -> void:
-	var file = ResourceLoader.load(SAVE_DIR + SETTINGS_FILE_NAME)
-	if file == null:
+	if ResourceLoader.exists(SAVE_DIR + SETTINGS_FILE_NAME,"GameSettings") == false:
 		save_settings()
 	else:
-		settings = file.duplicate(true)
+		settings = ResourceLoader.load(SAVE_DIR + SETTINGS_FILE_NAME).duplicate(true)
 		
 	for i in settings.audioVolume:
 		var value = settings.audioVolume[i]
