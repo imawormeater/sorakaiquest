@@ -1,0 +1,223 @@
+[gd_scene load_steps=3 format=3 uid="uid://bph2t5j3vdwd4"]
+
+[ext_resource type="Script" path="res://scripts/settingsUI.gd" id="1_ldb08"]
+[ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="1_uwi3f"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ldb08")
+
+[node name="AudioSliders" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.0
+offset_top = -144.0
+offset_right = -20.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uwi3f")
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Master" type="HSlider" parent="AudioSliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 6.0
+
+[node name="Label" type="Label" parent="AudioSliders/Master"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -32.5
+offset_right = 59.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uwi3f")
+text = "master volume"
+horizontal_alignment = 1
+
+[node name="Music" type="HSlider" parent="AudioSliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="Label" type="Label" parent="AudioSliders/Music"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -32.5
+offset_right = 59.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uwi3f")
+text = "music volume"
+horizontal_alignment = 1
+
+[node name="SFX" type="HSlider" parent="AudioSliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="Label" type="Label" parent="AudioSliders/SFX"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -32.5
+offset_right = 59.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uwi3f")
+text = "sfx volume"
+horizontal_alignment = 1
+
+[node name="Ambience" type="HSlider" parent="AudioSliders"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+
+[node name="Label" type="Label" parent="AudioSliders/Ambience"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -32.5
+offset_right = 59.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uwi3f")
+text = "ambience volume"
+horizontal_alignment = 1
+
+[node name="WindowList" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -144.0
+offset_right = 274.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uwi3f")
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Resolution" type="OptionButton" parent="WindowList"]
+layout_mode = 2
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "placeholder"
+popup/item_0/id = 4
+
+[node name="Label" type="Label" parent="WindowList/Resolution"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -39.5
+offset_right = 57.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uwi3f")
+text = "resolution"
+horizontal_alignment = 1
+
+[node name="Window" type="OptionButton" parent="WindowList"]
+layout_mode = 2
+alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = "placeholder"
+popup/item_0/id = 0
+
+[node name="Label" type="Label" parent="WindowList/Window"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -39.5
+offset_right = 57.0
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uwi3f")
+text = "window"
+horizontal_alignment = 1
+
+[node name="Vsync" type="CheckBox" parent="WindowList"]
+layout_mode = 2
+text = "V-Sync"
+
+[node name="FPS" type="HSlider" parent="WindowList"]
+layout_mode = 2
+min_value = 30.0
+max_value = 310.0
+step = 10.0
+value = 310.0
+
+[node name="Label" type="Label" parent="WindowList/FPS"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -32.5
+offset_right = 59.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uwi3f")
+text = "fps cap (unlimited)"
+horizontal_alignment = 1
+
+[connection signal="item_selected" from="WindowList/Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="item_selected" from="WindowList/Window" to="." method="_on_window_item_selected"]
+[connection signal="pressed" from="WindowList/Vsync" to="." method="_on_vsync_pressed"]

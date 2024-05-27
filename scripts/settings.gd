@@ -8,5 +8,6 @@ class_name GameSettings
 	2 : 0.0,
 	3 : 0.0,
 }
-@export var vysnc := true
+@export var vsync := true
 @export var maxfps := 0
+@export var windowmode := DisplayServer.WINDOW_MODE_WINDOWED
