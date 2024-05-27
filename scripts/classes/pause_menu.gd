@@ -27,6 +27,8 @@ func init_sliders() -> void:#CHANGE THIS TO NOT BE SHIT LATER
 func update_slider(value,index) -> void:
 	AudioServer.set_bus_volume_db(index,value)
 	GameManager.settings_set_audiovolume()
+	if OS.get_name() == "Web" or OS.get_name() == "iOS":
+		GameManager.save_settings()
 	
 
 func _process(delta: float) -> void:
