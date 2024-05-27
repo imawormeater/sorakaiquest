@@ -46,7 +46,7 @@ metadata/StopOtherSounds = false
 
 [node name="Pickup" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_iu04t")
-volume_db = -12.07
+volume_db = -17.0
 pitch_scale = 1.17
 bus = &"SFX"
 metadata/StopOtherSounds = false

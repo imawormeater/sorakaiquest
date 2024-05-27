@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scripts/skybox_rotater.gd" id="8_2tpgv"]
 [ext_resource type="PackedScene" uid="uid://cabix5vgaakof" path="res://assets/objects/level_switcher.tscn" id="8_b5a3n"]
 [ext_resource type="PackedScene" uid="uid://bn35hu6xtwj7q" path="res://assets/objects/key.tscn" id="11_kmf4q"]
-[ext_resource type="PackedScene" uid="uid://cxj06vyaaeobr" path="res://assets/objects/locked_door.tscn" id="11_u3gf4"]
+[ext_resource type="PackedScene" path="res://assets/objects/locked_door.tscn" id="11_u3gf4"]
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
 script = ExtResource("1_geecc")
