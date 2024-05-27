@@ -1,8 +1,51 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ddus5rq1nvkdk"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ddus5rq1nvkdk"]
 
 [ext_resource type="FontFile" uid="uid://c63riwf1oe6p4" path="res://assets/fonts/GothicA1-SemiBold.ttf" id="1_s3r1i"]
+[ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="1_wwdnc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_118yt"]
+bg_color = Color(0, 0, 0, 0.858824)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbddi"]
+bg_color = Color(0, 0, 0, 0.858824)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4htux"]
+bg_color = Color(0, 0, 0, 0.858824)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvx03"]
+bg_color = Color(0, 0, 0, 0.858824)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djwsv"]
+bg_color = Color(0, 0, 0, 0.858824)
+corner_radius_top_left = 35
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
 
 [resource]
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_wwdnc")
+Button/styles/disabled = SubResource("StyleBoxFlat_118yt")
+Button/styles/focus = SubResource("StyleBoxFlat_tbddi")
+Button/styles/hover = SubResource("StyleBoxFlat_4htux")
+Button/styles/normal = SubResource("StyleBoxFlat_bvx03")
+Button/styles/pressed = SubResource("StyleBoxFlat_djwsv")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.145098)
 Label/constants/outline_size = 0
