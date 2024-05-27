@@ -42,4 +42,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70869, -3.7923)
 mesh = SubResource("CylinderMesh_fr2oh")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Node3D"]
-aabb = AABB(-0.598875, -1.07714, -0.695921, 1.19775, 2.15428, 1.39184)
+aabb = AABB(-0.001, -1, -0.00100095, 0.002, 2, 0.002)
