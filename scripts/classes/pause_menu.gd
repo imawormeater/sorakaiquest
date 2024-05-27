@@ -53,3 +53,16 @@ func refresh() -> void:
 		hide()
 		Input.mouse_mode = oldmousemode
 		get_tree().paused = false
+
+
+func _on_restart_pressed() -> void:
+	refresh()
+	GameManager.CurrentState.reload_player()
+
+
+func _on_resume_pressed() -> void:
+	refresh()
+
+func _on_exit_pressed() -> void:
+	#get_tree().unload_current_scene()
+	pass
