@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://douw2p6ggl56h"]
+
+[ext_resource type="Script" path="res://scripts/classes/pause_menu.gd" id="1_bjfdi"]
+[ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="3_6hcxw"]
+[ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="4_klter"]
+[ext_resource type="AudioStream" uid="uid://1y2l7ieysg8x" path="res://assets/sounds/up.wav" id="5_aa5qh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t43ki"]
+bg_color = Color(0.105882, 0.145098, 0.180392, 1)
+corner_radius_top_left = 55
+corner_radius_top_right = 55
+corner_radius_bottom_right = 55
+corner_radius_bottom_left = 55
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_bjfdi")
+
+[node name="DialogBoundary" type="CanvasGroup" parent="."]
+self_modulate = Color(1, 1, 1, 0.839216)
+
+[node name="Frame" type="Panel" parent="DialogBoundary"]
+offset_left = 37.0
+offset_top = 331.0
+offset_right = 618.0
+offset_bottom = 448.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t43ki")
+
+[node name="Tail" type="Polygon2D" parent="DialogBoundary/Frame"]
+position = Vector2(290.615, 107.857)
+scale = Vector2(1.03846, 1.09524)
+color = Color(0.105882, 0.145098, 0.180392, 1)
+antialiased = true
+polygon = PackedVector2Array(10, -93, -3, -156, -16, -93, -3.49443, -93)
+
+[node name="DialogText" type="RichTextLabel" parent="."]
+clip_contents = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = 122.0
+offset_right = 250.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_6hcxw")
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 0
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("4_klter")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Here is some [color=57C8DB]dialog.[/color] Heh..."
+fit_content = true
+scroll_active = false
+
+[node name="PauseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_aa5qh")
+pitch_scale = 0.45
+bus = &"SFX"
