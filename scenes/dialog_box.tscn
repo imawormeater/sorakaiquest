@@ -27,10 +27,10 @@ script = ExtResource("1_xyjux")
 self_modulate = Color(1, 1, 1, 0.839216)
 
 [node name="Frame" type="Panel" parent="DialogBoundary"]
-offset_left = 37.0
-offset_top = 331.0
-offset_right = 618.0
-offset_bottom = 448.0
+offset_left = 32.0
+offset_top = 336.0
+offset_right = 613.0
+offset_bottom = 453.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t43ki")
 
 [node name="Tail" type="Polygon2D" parent="DialogBoundary/Frame"]
@@ -47,10 +47,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -234.0
-offset_top = 124.0
-offset_right = 250.0
-offset_bottom = 176.0
+offset_left = -239.0
+offset_top = 129.0
+offset_right = 245.0
+offset_bottom = 181.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_6hcxw")
