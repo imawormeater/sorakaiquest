@@ -94,7 +94,10 @@ func _ready() -> void:
 	anim_st = animationtree.get("parameters/playback")
 	
 	for key in get_tree().get_nodes_in_group("Keys"):
-		key.key_touched.connect(_on_key_touched)
+		key.key_touched.connect(key_touched)
+	
+	for lockedDoor in get_tree().get_nodes_in_group("LockedDoors"):
+		lockedDoor.lockedDoor_touched.connect(lockedDoor_touched)
 		
 	#await get_tree().create_timer(0.1).timeout
 	#GameManager.CurrentState.new_level_loaded.connect(test)
@@ -362,16 +365,26 @@ func _input(event) -> void:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			camera_deg += event.relative * -mouseSens
 
-func _on_key_touched(key) -> void:
+func key_touched(key) -> void:
 	if not currentKey:
 		currentKey = key
+		sfx.play_sound("Pickup")
 	
+func lockedDoor_touched(door) -> void:
+	if currentKey:
+		currentKey.queue_free()
+		door.queue_free()
+		
+		currentKey = null
+
 func refresh() -> void:
-	
 	currentKey = null
 	
 	for key in get_tree().get_nodes_in_group("Keys"):
-		key.key_touched.connect(_on_key_touched)
+		key.key_touched.connect(key_touched)
+	
+	for lockedDoor in get_tree().get_nodes_in_group("LockedDoors"):
+		lockedDoor.lockedDoor_touched.connect(lockedDoor_touched)
 		
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout

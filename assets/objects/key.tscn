@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dh4lvqcs1ktj" path="res://assets/images/keyColor.png" id="1_kro43"]
 [ext_resource type="Script" path="res://scripts/key_handler.gd" id="1_n3xml"]
-[ext_resource type="ArrayMesh" uid="uid://buyrvvah6lmxa" path="res://assets/meshes/sorakaiKey.obj" id="2_h0xll"]
+[ext_resource type="ArrayMesh" uid="uid://b1nc7ng2qo8ku" path="res://assets/meshes/sorakaiKeyy.obj" id="3_a4rlb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atabq"]
 albedo_texture = ExtResource("1_kro43")
@@ -16,7 +16,7 @@ script = ExtResource("1_n3xml")
 [node name="Key" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_atabq")
-mesh = ExtResource("2_h0xll")
+mesh = ExtResource("3_a4rlb")
 
 [node name="Area3D" type="Area3D" parent="Key"]
 transform = Transform3D(4.54545, 0, 0, 0, 4.54545, 0, 0, 0, 4.54545, 0, 0, 0)

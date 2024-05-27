@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxj06vyaaeobr"]
+
+[ext_resource type="Script" path="res://scripts/key_handler.gd" id="1_n1tdb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ohtsa"]
+lightmap_size_hint = Vector2i(14, 21)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f2hns"]
+radius = 1.19668
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1h2me"]
+size = Vector3(1.00557, 0.996354, 1.00494)
+
+[node name="Door" type="Node3D" groups=["LockedDoors"]]
+script = ExtResource("1_n1tdb")
+
+[node name="Door" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ohtsa")
+
+[node name="Area3D" type="Area3D" parent="Door"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/Area3D"]
+shape = SubResource("SphereShape3D_f2hns")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Door"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00642252, -0.000669956, -0.000396729)
+shape = SubResource("BoxShape3D_1h2me")
+
+[connection signal="body_entered" from="Door/Area3D" to="." method="_on_lockeddoor_entered"]

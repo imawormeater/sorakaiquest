@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdc2nui0hm8y8"]
+[gd_scene load_steps=8 format=3 uid="uid://bdc2nui0hm8y8"]
 
 [ext_resource type="Script" path="res://scenes/sfx_player.gd" id="1_g04ci"]
 [ext_resource type="AudioStream" uid="uid://c88r57os2e58h" path="res://assets/sounds/footstep.mp3" id="2_lx15n"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bkyy1wc4x3t0m" path="res://assets/sounds/slide3.WAV" id="3_68jaq"]
 [ext_resource type="AudioStream" uid="uid://dl0ih8alis1kw" path="res://assets/sounds/land.wav" id="5_nk6cq"]
 [ext_resource type="AudioStream" uid="uid://dgqelf2da1gj6" path="res://assets/sounds/jump.mp3" id="5_rucon"]
+[ext_resource type="AudioStream" uid="uid://cln4tuetq55vg" path="res://assets/sounds/pickup.wav" id="7_iu04t"]
 
 [node name="PlayerSFX" type="Node3D"]
 script = ExtResource("1_g04ci")
@@ -40,5 +41,12 @@ metadata/StopOtherSounds = false
 stream = ExtResource("5_nk6cq")
 volume_db = -16.64
 pitch_scale = 1.47
+bus = &"SFX"
+metadata/StopOtherSounds = false
+
+[node name="Pickup" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_iu04t")
+volume_db = -12.07
+pitch_scale = 1.17
 bus = &"SFX"
 metadata/StopOtherSounds = false
