@@ -2,12 +2,12 @@ shader_type canvas_item;
 
 uniform float cells = 8.0;
 uniform vec2 uiscale = vec2(0.0,0.0);
-uniform vec2 offset = vec2(0.0,0.0);
 uniform sampler2D texcolor: source_color;
+
 
 void vertex() {
 	UV *= uiscale;
-	UV += offset;
+	UV += TIME/10.0;
 }
 
 void fragment() {

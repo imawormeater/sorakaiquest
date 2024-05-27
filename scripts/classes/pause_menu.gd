@@ -33,10 +33,12 @@ func update_slider(value,index) -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_pause"):
-		refresh() 
-	if paused:
-		BG.material["shader_parameter/offset"] += (Vector2(-0.1,0.1) * delta)
-		pass
+		if GameManager.canPause:
+			refresh() 
+	if not paused: return
+	
+	if Input.is_action_just_pressed("quick_restart"):
+		_on_restart_pressed()
 	
 func refresh() -> void:
 

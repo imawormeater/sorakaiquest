@@ -1,6 +1,6 @@
 extends Node
 
-var test_var := true
+var canPause := true
 
 var App:Node
 var CurrentState:Node
@@ -33,6 +33,10 @@ func update_settings() -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ADAPTIVE)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_MAILBOX)
+	var oldres = DisplayServer.window_get_size()
+	DisplayServer.window_set_size(settings.resolution)
+	var difference:Vector2i = Vector2i(oldres.x-settings.resolution.x,oldres.y-settings.resolution.y)/2
+	DisplayServer.window_set_position(DisplayServer.window_get_position() + difference)
 	
 func load_settings() -> void:
 	if ResourceLoader.exists(SAVE_DIR + SETTINGS_FILE_NAME,"GameSettings") == false:

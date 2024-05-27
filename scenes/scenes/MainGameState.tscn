@@ -33,6 +33,7 @@ bus = &"Music"
 layer = 128
 
 [node name="DialogBox" parent="." node_paths=PackedStringArray("currentspeaker") instance=ExtResource("6_ne7gu")]
+visible = false
 currentspeaker = NodePath("../Node3D")
 
 [node name="Node3D" type="Node3D" parent="."]
