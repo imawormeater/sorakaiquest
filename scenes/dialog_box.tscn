@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://douw2p6ggl56h"]
+[gd_scene load_steps=7 format=3 uid="uid://douw2p6ggl56h"]
 
 [ext_resource type="Script" path="res://scripts/classes/pause_menu.gd" id="1_bjfdi"]
 [ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="3_6hcxw"]
@@ -11,6 +11,13 @@ corner_radius_top_left = 55
 corner_radius_top_right = 55
 corner_radius_bottom_right = 55
 corner_radius_bottom_left = 55
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s5su"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -41,7 +48,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -234.0
-offset_top = 122.0
+offset_top = 124.0
 offset_right = 250.0
 offset_bottom = 176.0
 grow_horizontal = 2
@@ -53,11 +60,19 @@ theme_override_constants/shadow_outline_size = 0
 theme_override_constants/line_separation = 0
 theme_override_constants/outline_size = 0
 theme_override_fonts/normal_font = ExtResource("4_klter")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "Here is some [color=57C8DB]dialog.[/color] Heh..."
+text = "[center]Here is some [color=57C8DB]dialog.[/color] Heh..."
 fit_content = true
 scroll_active = false
+
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 560.0
+offset_top = 410.0
+offset_right = 568.0
+offset_bottom = 418.0
+scale = Vector2(2.59189, 2.59189)
+theme_override_styles/normal = SubResource("StyleBoxFlat_1s5su")
 
 [node name="PauseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_aa5qh")
