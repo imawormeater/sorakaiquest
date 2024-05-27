@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://q2dt7dcu4bdy"]
+[gd_scene load_steps=11 format=3 uid="uid://q2dt7dcu4bdy"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_geecc"]
 [ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://assets/objects/plains_1.tscn" id="2_kh2so"]
@@ -9,42 +9,7 @@
 [ext_resource type="Environment" uid="uid://bn8ohqm75mqkj" path="res://assets/materials/ursc/test_env_dusk.tres" id="7_oauc0"]
 [ext_resource type="Script" path="res://scripts/skybox_rotater.gd" id="8_2tpgv"]
 [ext_resource type="PackedScene" uid="uid://cabix5vgaakof" path="res://assets/objects/level_switcher.tscn" id="8_b5a3n"]
-[ext_resource type="Shader" path="res://assets/materials/celshaded.gdshader" id="9_1qvqj"]
-[ext_resource type="Texture2D" uid="uid://oq23ffi88t2f" path="res://assets/images/ExampleDitherRamp.png" id="10_g6kua"]
 [ext_resource type="PackedScene" uid="uid://bn35hu6xtwj7q" path="res://assets/objects/key.tscn" id="11_kmf4q"]
-
-[sub_resource type="TextMesh" id="TextMesh_t83py"]
-text = "also i made my teacher play this level he
- couldnt get past the first jumps hes not even that old"
-
-[sub_resource type="TextMesh" id="TextMesh_o1h36"]
-text = "the key is scary and will probably break your game
-"
-font_size = 12
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmx54"]
-render_priority = 0
-shader = ExtResource("9_1qvqj")
-shader_parameter/UseFade = true
-shader_parameter/MinDistance = 0.2
-shader_parameter/MaxDistance = 15.0
-shader_parameter/dithersize = 6
-shader_parameter/ditherpattern = ExtResource("10_g6kua")
-shader_parameter/ToonRampOffset = 0.5
-shader_parameter/ToonRampSmoothness = 0.05
-shader_parameter/ToonRampTinting = null
-shader_parameter/RimPower = 1.0
-shader_parameter/RimCutOff = 0.5
-shader_parameter/RimSmoothness = 0.05
-shader_parameter/RimLightBrightness = 20.0
-shader_parameter/SubSurfDistortion = 1.0
-shader_parameter/SubSurfTint = null
-shader_parameter/SubSurfBrightness = 3.0
-shader_parameter/SubSurfCutoff = 0.5
-shader_parameter/SubSurfSmoothness = 0.05
-
-[sub_resource type="SphereMesh" id="SphereMesh_nu6i2"]
-material = SubResource("ShaderMaterial_vmx54")
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
 script = ExtResource("1_geecc")
@@ -175,23 +140,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.21617, 0.351428, 31.275)
 environment = ExtResource("7_oauc0")
 script = ExtResource("8_2tpgv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.81944, 0, 0, 0, 3.76987, 0, 0, 0, 1.03291, -11.0527, 2.44206, 21.1025)
-mesh = SubResource("TextMesh_t83py")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.10664e-07, 0, -1.03291, 0, 3.76987, 0, 4.81944, 0, -4.51499e-08, 15.9066, 2.44206, 30.7503)
-mesh = SubResource("TextMesh_o1h36")
-skeleton = NodePath("")
-
 [node name="LevelSwitch" parent="." instance=ExtResource("8_b5a3n")]
 transform = Transform3D(4.76148, 0, 0, 0, 1, 0, 0, 0, 2.83563, -10.0569, 0.221125, 21.2372)
 levelpath = "res://scenes/levels/test_level.tscn"
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.5064, -2.50493)
-mesh = SubResource("SphereMesh_nu6i2")
 
 [node name="Key" parent="." instance=ExtResource("11_kmf4q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8726, -0.241975, 30.3888)
