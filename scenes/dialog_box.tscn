@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://douw2p6ggl56h"]
 
-[ext_resource type="Script" path="res://scripts/classes/pause_menu.gd" id="1_bjfdi"]
+[ext_resource type="Script" path="res://scenes/dialog_box.gd" id="1_xyjux"]
 [ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="3_6hcxw"]
 [ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="4_klter"]
 [ext_resource type="AudioStream" uid="uid://1y2l7ieysg8x" path="res://assets/sounds/up.wav" id="5_aa5qh"]
@@ -19,9 +19,9 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="PauseMenu" type="CanvasLayer"]
+[node name="DialogBox" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_bjfdi")
+script = ExtResource("1_xyjux")
 
 [node name="DialogBoundary" type="CanvasGroup" parent="."]
 self_modulate = Color(1, 1, 1, 0.839216)
@@ -34,11 +34,11 @@ offset_bottom = 448.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_t43ki")
 
 [node name="Tail" type="Polygon2D" parent="DialogBoundary/Frame"]
-position = Vector2(290.615, 107.857)
+position = Vector2(290, 108)
 scale = Vector2(1.03846, 1.09524)
 color = Color(0.105882, 0.145098, 0.180392, 1)
 antialiased = true
-polygon = PackedVector2Array(10, -93, -3, -156, -16, -93, -3.49443, -93)
+polygon = PackedVector2Array(16, -93, 0, -156, -16, -93)
 
 [node name="DialogText" type="RichTextLabel" parent="."]
 clip_contents = false
