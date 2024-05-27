@@ -15,7 +15,10 @@ config/version="1.0"
 config/tags=PackedStringArray("yay")
 run/main_scene="res://scenes/scenes/app.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="res://assets/images/gamelogo.png"
 config/icon="res://icon.png"
+boot_splash/minimum_display_time=100
 
 [autoload]
 
