@@ -27,9 +27,9 @@ var ExampleDialog:Array
 func _ready() -> void:
 	set_speaker(currentspeaker)
 	ExampleDialog = [
-		[currentspeaker,"I have frickin [color=blue]autisim"],
-		['player',"I'm sorry for your loss."],
-		[currentspeaker,"Me too"]
+		[currentspeaker,"Welcome to [color=57C8DB]Sorakai Quest!!!"],
+		['player',"Woah... This is the coolest thing ever created."],
+		[currentspeaker,"I know."]
 	]
 	
 func appear() -> void:
