@@ -4,11 +4,14 @@ extends Node
 var currentState:Node = null
 var inTransition := false
 
+@export var PlayState:PackedScene
+@export var MainMenu:PackedScene
+
 @onready var animPlayer := $Main/Transitions/AnimationPlayer
 
 func changeState(state:PackedScene) -> void:
 	if state == null:
-		push_warning("No beginning state!")
+		push_warning("State is Null!")
 		return
 	if currentState != null:
 		currentState.queue_free()
@@ -38,10 +41,12 @@ func play_transition(which:String,speed:float) -> void:
 		return
 	if speed == 0: return
 	inTransition = true
+	GameManager.canPause = false
 	animPlayer.speed_scale = 1/speed
 	print(which,speed)
 
 	if which.to_lower() == 'circle':
 		animPlayer.play("circletransfull")
 	await get_tree().create_timer(animPlayer.current_animation_length).timeout
+	GameManager.canPause = true
 	inTransition = false

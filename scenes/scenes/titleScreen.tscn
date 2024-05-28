@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://demg1ljadhtwn"]
+
+[ext_resource type="Texture2D" uid="uid://byix24k02ayaj" path="res://assets/loganchara_loganchara_loganface1.png" id="1_8nss0"]
+
+[node name="TitleScreen" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(334, 178)
+scale = Vector2(3.15323, 2.42742)
+texture = ExtResource("1_8nss0")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 92.0
+offset_top = 341.0
+offset_right = 624.0
+offset_bottom = 487.0
+text = "This is the main menu, You can have fun here!"

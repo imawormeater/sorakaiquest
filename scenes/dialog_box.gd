@@ -63,7 +63,6 @@ func disappear() -> void:
 	ending = true
 	dialogText.text = ""
 	continueButton.hide()
-	var newpos = frame.position + Vector2(0,100)
 	var tweent = get_tree().create_tween().set_parallel().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	tweent.tween_property(frame,"position",Vector2(264,376),0.4)
 	tweent.tween_property(frame,"size",Vector2(112,0),0.4)
@@ -111,12 +110,12 @@ func doCurIndex() -> void:
 		
 	continueButton.hide()
 	var curTable:Array = Dialog[curIndex]
-	var speaker = curTable[0]
+	var _speaker = curTable[0]
 	var msg = curTable[1]
 	stagnant = true
-	if str(speaker) == "player":
-		speaker = GameManager.CurrentState.Sorakai
-	set_speaker(speaker)
+	if str(_speaker) == "player":
+		_speaker = GameManager.CurrentState.Sorakai
+	set_speaker(_speaker)
 	dialogText.text = "[center]" + msg
 	msgIndex = 0
 	dialogText.visible_characters = msgIndex

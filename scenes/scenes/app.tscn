@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://eleajfuwfpur"]
+[gd_scene load_steps=13 format=3 uid="uid://eleajfuwfpur"]
 
 [ext_resource type="Script" path="res://scripts/classes/app.gd" id="1_d1n4j"]
 [ext_resource type="PackedScene" uid="uid://dmdi4mdm7qr5o" path="res://scenes/scenes/MainGameState.tscn" id="2_w6e81"]
+[ext_resource type="PackedScene" uid="uid://demg1ljadhtwn" path="res://scenes/scenes/titleScreen.tscn" id="3_r3ptw"]
 [ext_resource type="VideoStream" path="res://assets/videos/jerma.ogv" id="3_vj886"]
 [ext_resource type="Material" uid="uid://bixuwp1cbjepr" path="res://assets/materials/ursc/circle_trans.tres" id="4_kytrq"]
 [ext_resource type="AudioStream" uid="uid://hcr0rb3h3por" path="res://assets/sounds/fadein.wav" id="5_sva3u"]
@@ -104,8 +105,12 @@ func _process(_delta: float) -> void:
 [node name="App" type="Node"]
 script = ExtResource("1_d1n4j")
 firstState = ExtResource("2_w6e81")
+PlayState = ExtResource("2_w6e81")
+MainMenu = ExtResource("3_r3ptw")
 
 [node name="Main" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 120
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Main"]
 self_modulate = Color(0.268541, 0.842352, 0, 1)

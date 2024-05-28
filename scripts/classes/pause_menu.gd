@@ -21,12 +21,14 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("quick_restart"):
 		_on_restart_pressed()
 	
-func refresh() -> void:
+func refresh(playSound:bool = true) -> void:
 
 	paused = !paused
 	get_tree().call_group("UI","gamepause",paused)
 	GameManager.CurrentState.game_paused.emit(paused)
-	pauseSound.play(0.06)
+	
+	if playSound:
+		pauseSound.play(0.06)
 	
 	var inhub = GameManager.CurrentState.inHub
 	if inhub:
@@ -55,9 +57,12 @@ func _on_resume_pressed() -> void:
 	refresh()
 
 func _on_exit_pressed() -> void:
+	hide()
+	GameManager.App.play_transition('circle',1)
+	await get_tree().create_timer(1).timeout
 	if GameManager.CurrentState.inHub:
-		pass
+		GameManager.App.changeState(GameManager.App.MainMenu)
 	else:
 		GameManager.CurrentState.load_level(GameManager.CurrentState.hubLevel)
-	refresh()
-	pass
+		refresh(false)
+	
