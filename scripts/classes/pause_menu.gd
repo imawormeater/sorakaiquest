@@ -4,6 +4,7 @@ var paused:bool = false
 var oldmousemode
 
 @onready var pauseSound := $PauseSound
+@onready var exitButton := $Exit
 
 var audiosliders:Dictionary
 
@@ -26,6 +27,13 @@ func refresh() -> void:
 	get_tree().call_group("UI","gamepause",paused)
 	GameManager.CurrentState.game_paused.emit(paused)
 	pauseSound.play(0.06)
+	
+	var inhub = GameManager.CurrentState.inHub
+	if inhub:
+		exitButton.text = "Main Menu"
+	else:
+		exitButton.text = "Exit to Hub"
+		
 	if paused:
 		show()
 		oldmousemode = Input.mouse_mode
@@ -47,5 +55,9 @@ func _on_resume_pressed() -> void:
 	refresh()
 
 func _on_exit_pressed() -> void:
-	#get_tree().unload_current_scene()
+	if GameManager.CurrentState.inHub:
+		pass
+	else:
+		GameManager.CurrentState.load_level(GameManager.CurrentState.hubLevel)
+	refresh()
 	pass

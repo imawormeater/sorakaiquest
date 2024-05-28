@@ -28,14 +28,12 @@ script = ExtResource("6_qgbhh")
 volume_db = -15.32
 bus = &"Music"
 
-[node name="Level" parent="." instance=ExtResource("3_bv8ma")]
-
 [node name="PauseMenu" parent="." instance=ExtResource("5_rp537")]
 layer = 128
 
-[node name="DialogBox" parent="." node_paths=PackedStringArray("currentspeaker") instance=ExtResource("6_ne7gu")]
+[node name="DialogBox" parent="." node_paths=PackedStringArray("speaker") instance=ExtResource("6_ne7gu")]
 visible = false
-currentspeaker = NodePath("../Node3D")
+speaker = NodePath("../Node3D")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70869, -3.7923)

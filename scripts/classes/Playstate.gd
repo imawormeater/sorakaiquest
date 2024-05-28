@@ -11,7 +11,9 @@ signal game_paused
 @export var first_level:PackedScene
 @export var currentLevel:Level
 
-var loganScene = preload("res://scenes/player_sorakai.tscn")
+@export var hubLevel:String = "res://scenes/levels/test_level.tscn"
+var inHub := false
+var loganScene:PackedScene = preload("res://scenes/player_sorakai.tscn")
 
 func _ready() -> void:
 	new_level_loaded.connect(set_level_stuff)
@@ -25,21 +27,20 @@ func _ready() -> void:
 	init_level(first_level)
 
 func set_level_stuff()->void:
-	print("Setting Up Level: ",currentLevel.name)
 	if currentLevel.Song != null:#CHANGE ALL OF THESE TO FADE ONE DAY
 		MusicStream.stop()
 		MusicStream.stream = currentLevel.Song
 		MusicStream.play()
 	if currentLevel.Mute_Music:
 		MusicStream.stop()
+		
 	Sorakai.velocity = Vector3.ZERO
 	Sorakai.SPEED = 5
 	if currentLevel.Logan_Spawn != null:
 		#Sorakai.global_rotation = currentLevel.Logan_Spawn.global_rotation fix this someday
 		Sorakai.global_position = currentLevel.Logan_Spawn.global_position
 	else:
-		print("Logan Spawn doesn't exist! Setting player to (0,0,0)")
-		Sorakai.global_position = Vector3.ZERO
+		push_warning("Logan Spawn doesn't exist!")
 	smoother.reset_node(Sorakai)
 
 func load_level(loaded_level_path:String) -> void:
@@ -52,6 +53,10 @@ func load_level(loaded_level_path:String) -> void:
 func init_level(loaded_level:PackedScene) -> void:
 	if currentLevel != null:
 		currentLevel.queue_free()
+	inHub = false
+	print()
+	if loaded_level.resource_path == hubLevel:
+		inHub = true
 	var newlevel:Level = loaded_level.instantiate()
 	add_child(newlevel)
 	currentLevel = newlevel

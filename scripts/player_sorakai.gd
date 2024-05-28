@@ -246,8 +246,10 @@ func set_momentum(pitch:float,delta:float,onFloor:bool,direction:Vector2) -> voi
 	
 	var lerpSpeed:float =  clampf((_velocity**2),1,999) * 5
 	#print(lerpSpeed,"  ",_velocity)
-	if _velocity < 1:
+	if _velocity < 1.0:
 		lerpSpeed = 100
+	if _velocity < 0.3:
+		SPEED = move_toward(SPEED,baseSPEED,delta * 100)
 	
 	if momentum == 0.0 and onFloor:
 		SPEED = move_toward(SPEED,baseSPEED,delta * lerpSpeed)

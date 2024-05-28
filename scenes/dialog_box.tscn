@@ -26,19 +26,20 @@ script = ExtResource("1_xyjux")
 [node name="DialogBoundary" type="CanvasGroup" parent="."]
 self_modulate = Color(1, 1, 1, 0.839216)
 
+[node name="Tail" type="Polygon2D" parent="DialogBoundary"]
+position = Vector2(322, 444)
+scale = Vector2(1.03846, 1.09524)
+color = Color(0.105882, 0.145098, 0.180392, 1)
+antialiased = true
+polygon = PackedVector2Array(16, -93, 0, -156, -16, -93)
+
 [node name="Frame" type="Panel" parent="DialogBoundary"]
 offset_left = 32.0
 offset_top = 336.0
 offset_right = 613.0
 offset_bottom = 453.0
+pivot_offset = Vector2(290, 58)
 theme_override_styles/panel = SubResource("StyleBoxFlat_t43ki")
-
-[node name="Tail" type="Polygon2D" parent="DialogBoundary/Frame"]
-position = Vector2(290, 108)
-scale = Vector2(1.03846, 1.09524)
-color = Color(0.105882, 0.145098, 0.180392, 1)
-antialiased = true
-polygon = PackedVector2Array(16, -93, 0, -156, -16, -93)
 
 [node name="DialogText" type="RichTextLabel" parent="."]
 clip_contents = false
