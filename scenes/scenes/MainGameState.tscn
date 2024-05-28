@@ -9,12 +9,13 @@
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_fr2oh"]
 
-[node name="MainGameState" type="Node3D" node_paths=PackedStringArray("Sorakai", "MusicStream", "smoother")]
+[node name="MainGameState" type="Node3D" node_paths=PackedStringArray("Sorakai", "MusicStream", "smoother", "Dialog")]
 transform = Transform3D(1.00064, 0, 0, 0, 1.00064, 0, 0, 0, 1.00064, 0, 0, 0)
 script = ExtResource("1_kcow4")
 Sorakai = NodePath("Sorakai")
 MusicStream = NodePath("Music")
 smoother = NodePath("Smoother")
+Dialog = NodePath("DialogBox")
 first_level = ExtResource("3_bv8ma")
 
 [node name="Sorakai" parent="." instance=ExtResource("2_ntxhb")]

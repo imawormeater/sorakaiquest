@@ -19,7 +19,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="DialogBox" type="CanvasLayer"]
+[node name="DialogBox" type="CanvasLayer" groups=["UI"]]
 process_mode = 3
 script = ExtResource("1_xyjux")
 
@@ -78,3 +78,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1s5su")
 stream = ExtResource("5_aa5qh")
 pitch_scale = 0.45
 bus = &"SFX"
+
+[node name="Increment" type="Timer" parent="."]
+wait_time = 0.06
+
+[connection signal="timeout" from="Increment" to="." method="_on_increment_timeout"]

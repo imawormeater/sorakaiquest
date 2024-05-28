@@ -6,6 +6,7 @@ signal game_paused
 @export var Sorakai:CharacterBody3D
 @export var MusicStream:AudioStreamPlayer
 @export var smoother:Smoother
+@export var Dialog:DialogBox
 
 @export var first_level:PackedScene
 @export var currentLevel:Level
@@ -66,5 +67,10 @@ func reload_player() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	#print(smoother.excludes)
+	if (Engine.max_fps < 60 and !Engine.max_fps == 0):
+		smoother.add_exclude_node(Sorakai)
+	elif smoother.excludes != []:
+		smoother.remove_exclude_node(Sorakai)
 	if Input.is_action_just_pressed("ui_page_up"):
-		reload_player()
+		Dialog.play_dialog([])
