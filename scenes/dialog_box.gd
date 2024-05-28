@@ -66,7 +66,7 @@ func doCurIndex() -> void:
 	if str(speaker) == "player":
 		speaker = GameManager.CurrentState.Sorakai
 	set_speaker(speaker)
-	dialogText.text = msg
+	dialogText.text = "[center]" + msg
 	msgIndex = 0
 	dialogText.visible_characters = msgIndex
 	incTimer.start()
