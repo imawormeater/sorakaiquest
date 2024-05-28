@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://cfs4axkv37ppd" path="res://assets/materials/ursc/checkerboard.tres" id="2_0ccle"]
 [ext_resource type="AudioStream" uid="uid://1y2l7ieysg8x" path="res://assets/sounds/up.wav" id="4_0kdnt"]
 [ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="4_byj5r"]
-[ext_resource type="PackedScene" uid="uid://bph2t5j3vdwd4" path="res://scenes/settingsUI.tscn" id="6_4b87o"]
+[ext_resource type="PackedScene" uid="uid://ds5rt4cupnt7t" path="res://scenes/settingsUI.tscn" id="6_4b87o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t43ki"]
 bg_color = Color(0, 0, 0, 0.713726)
@@ -119,6 +119,7 @@ offset_bottom = 221.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4b5h7")
+theme_override_fonts/font = ExtResource("4_byj5r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1ljj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jnfa7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1ljj4")
@@ -139,6 +140,7 @@ offset_bottom = 221.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4b5h7")
+theme_override_fonts/font = ExtResource("4_byj5r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kemgr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_28jp4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_kemgr")
@@ -159,6 +161,7 @@ offset_bottom = 221.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4b5h7")
+theme_override_fonts/font = ExtResource("4_byj5r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ur5wy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tdkxe")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ur5wy")

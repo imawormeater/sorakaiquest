@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bph2t5j3vdwd4"]
+[gd_scene load_steps=4 format=3 uid="uid://ds5rt4cupnt7t"]
 
 [ext_resource type="Script" path="res://scripts/settingsUI.gd" id="1_ldb08"]
 [ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="1_uwi3f"]
+[ext_resource type="FontFile" uid="uid://csjw5posryyf3" path="res://assets/fonts/GothicA1-Bold.ttf" id="3_t1w1r"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -47,13 +48,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = -32.5
-offset_right = 59.0
-offset_bottom = 13.5
+offset_left = -69.0
+offset_top = -30.5
+offset_right = 58.0
+offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_uwi3f")
+theme_override_fonts/font = ExtResource("3_t1w1r")
 text = "master volume"
 horizontal_alignment = 1
 
@@ -69,13 +71,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = -32.5
-offset_right = 59.0
-offset_bottom = 13.5
+offset_left = -64.0
+offset_top = -30.5
+offset_right = 53.0
+offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_uwi3f")
+theme_override_fonts/font = ExtResource("3_t1w1r")
 text = "music volume"
 horizontal_alignment = 1
 
@@ -91,13 +94,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = -32.5
-offset_right = 59.0
-offset_bottom = 13.5
+offset_left = -64.0
+offset_top = -30.5
+offset_right = 53.0
+offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_uwi3f")
+theme_override_fonts/font = ExtResource("3_t1w1r")
 text = "sfx volume"
 horizontal_alignment = 1
 
@@ -113,13 +117,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = -32.5
-offset_right = 59.0
-offset_bottom = 13.5
+offset_left = -81.0
+offset_top = -30.5
+offset_right = 70.0
+offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_uwi3f")
+theme_override_fonts/font = ExtResource("3_t1w1r")
 text = "ambience volume"
 horizontal_alignment = 1
 
@@ -155,13 +160,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -39.5
-offset_right = 57.0
-offset_bottom = 6.5
+offset_left = -66.0
+offset_top = -37.5
+offset_right = 51.0
+offset_bottom = 8.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_uwi3f")
+theme_override_fonts/font = ExtResource("3_t1w1r")
 text = "resolution"
 horizontal_alignment = 1
 
@@ -180,13 +186,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -39.5
-offset_right = 57.0
-offset_bottom = 6.5
+offset_left = -64.0
+offset_top = -32.5
+offset_right = 53.0
+offset_bottom = 13.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_uwi3f")
+theme_override_fonts/font = ExtResource("3_t1w1r")
 text = "window"
 horizontal_alignment = 1
 
@@ -208,10 +215,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = -32.5
-offset_right = 59.0
-offset_bottom = 13.5
+offset_left = -80.0
+offset_top = -28.0
+offset_right = 82.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_uwi3f")
