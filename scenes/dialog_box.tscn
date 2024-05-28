@@ -65,7 +65,7 @@ bbcode_enabled = true
 text = "[center]Here is some [color=57C8DB]dialog.[/color] Heh..."
 fit_content = true
 scroll_active = false
-visible_characters_behavior = 3
+visible_characters_behavior = 1
 
 [node name="ContinueButton" type="Button" parent="."]
 offset_left = 560.0

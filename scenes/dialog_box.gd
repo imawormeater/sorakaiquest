@@ -114,7 +114,7 @@ func set_speaker(speaker:Node3D) -> void:
 func _process(delta: float) -> void:
 	if not active: return
 	
-	if Input.is_action_just_pressed("movement_jump"):
+	if Input.is_action_just_pressed("movement_jump") or Input.is_action_just_pressed("movement_action"):
 		if stagnant:
 			msgIndex = 5555
 			_on_increment_timeout()
