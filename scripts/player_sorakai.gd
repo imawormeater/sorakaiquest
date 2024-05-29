@@ -98,9 +98,6 @@ func _ready() -> void:
 	
 	for lockedDoor in get_tree().get_nodes_in_group("LockedDoors"):
 		lockedDoor.lockedDoor_touched.connect(lockedDoor_touched)
-		
-	#await get_tree().create_timer(0.1).timeout
-	#GameManager.CurrentState.new_level_loaded.connect(test)
 
 func _process(delta: float) -> void:#Camera shit
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
@@ -387,6 +384,6 @@ func refresh() -> void:
 	
 	for lockedDoor in get_tree().get_nodes_in_group("LockedDoors"):
 		lockedDoor.lockedDoor_touched.connect(lockedDoor_touched)
-		
+
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout

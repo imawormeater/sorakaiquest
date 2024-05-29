@@ -149,16 +149,14 @@ libraries = {
 bus = &"SFX"
 
 [node name="FPS" type="Label" parent="Main"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -142.0
-offset_right = -3.0
-offset_bottom = 23.0
-grow_horizontal = 0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 108.0
+grow_vertical = 0
 theme = ExtResource("7_2arx1")
 text = "FPS: 60"
-horizontal_alignment = 2
 script = SubResource("GDScript_j0cdk")
 
 [node name="Timer" type="Timer" parent="."]

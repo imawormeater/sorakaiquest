@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwcq58y06ilm0"]
+
+[ext_resource type="Script" path="res://scenes/moneyCollectable.gd" id="1_ylbw0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o7q70"]
+radius = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_ebn51"]
+radius = 0.4
+height = 0.8
+
+[node name="MoneyCollectable" type="Node3D"]
+script = ExtResource("1_ylbw0")
+
+[node name="Range" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Range"]
+shape = SubResource("SphereShape3D_o7q70")
+
+[node name="placeholder" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ebn51")
+
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]

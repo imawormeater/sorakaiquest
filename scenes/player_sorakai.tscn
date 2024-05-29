@@ -185,7 +185,7 @@ point_count = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8fkg6"]
 xfade_time = 0.1
 xfade_curve = SubResource("Curve_2w6ps")
-advance_mode = 2
+advance_mode = 0
 advance_condition = &"OnWall"
 
 [sub_resource type="Curve" id="Curve_g6ign"]
@@ -195,7 +195,7 @@ point_count = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w7h72"]
 xfade_time = 0.1
 xfade_curve = SubResource("Curve_g6ign")
-advance_mode = 2
+advance_mode = 0
 advance_condition = &"OnWall"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7qlsl"]
@@ -249,7 +249,7 @@ states/OnWall/node = SubResource("AnimationNodeAnimation_dae5x")
 states/OnWall/position = Vector2(516, 323)
 states/Start/position = Vector2(378, -32)
 transitions = ["Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_aeggj"), "Jump", "Grab", SubResource("AnimationNodeStateMachineTransition_hsh7h"), "Grab", "GrabIdle", SubResource("AnimationNodeStateMachineTransition_llqxh"), "GrabIdle", "Jump", SubResource("AnimationNodeStateMachineTransition_5p4ba"), "Grab", "Jump", SubResource("AnimationNodeStateMachineTransition_8no8a"), "Fall", "Grab", SubResource("AnimationNodeStateMachineTransition_j6jby"), "Jump", "OnWall", SubResource("AnimationNodeStateMachineTransition_8fkg6"), "Fall", "OnWall", SubResource("AnimationNodeStateMachineTransition_w7h72"), "OnWall", "Land", SubResource("AnimationNodeStateMachineTransition_7qlsl"), "OnWall", "Jump", SubResource("AnimationNodeStateMachineTransition_ifxl8"), "Jump", "Land", SubResource("AnimationNodeStateMachineTransition_01icu"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_d3f7f"), "Start", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_xwwbw"), "IdleWalk", "Fall", SubResource("AnimationNodeStateMachineTransition_1gpea"), "Land", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_kvlu0")]
-graph_offset = Vector2(-65, -59)
+graph_offset = Vector2(-104, -33)
 
 [node name="Sorakai" type="CharacterBody3D" node_paths=PackedStringArray("camera") groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

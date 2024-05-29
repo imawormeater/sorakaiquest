@@ -2,6 +2,8 @@ extends Node3D
 
 signal new_level_loaded
 signal game_paused
+signal receiveMoney
+signal loganGetMoney
 
 @export var Sorakai:CharacterBody3D
 @export var MusicStream:AudioStreamPlayer
@@ -14,6 +16,8 @@ signal game_paused
 @export var hubLevel:String = "res://scenes/levels/test_level.tscn"
 var inHub := false
 var loganScene:PackedScene = preload("res://scenes/player_sorakai.tscn")
+
+var bankMoney := 0.0
 
 func _ready() -> void:
 	new_level_loaded.connect(set_level_stuff)
@@ -79,3 +83,12 @@ func _process(_delta: float) -> void:
 		smoother.remove_exclude_node(Sorakai)
 	if Input.is_action_just_pressed("ui_page_up"):
 		Dialog.play_dialog([])
+
+
+func _on_receive_money(dollar:moneyCollectable) -> void:
+	var dictInfo := {
+		"value" : dollar.value
+	}
+	bankMoney += dictInfo["value"]
+	dollar.queue_free()
+	loganGetMoney.emit(dictInfo)

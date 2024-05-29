@@ -1,19 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmdi4mdm7qr5o"]
+[gd_scene load_steps=8 format=3 uid="uid://dmdi4mdm7qr5o"]
 
 [ext_resource type="Script" path="res://scripts/classes/Playstate.gd" id="1_kcow4"]
 [ext_resource type="PackedScene" uid="uid://dw40p48fqbsl2" path="res://scenes/player_sorakai.tscn" id="2_ntxhb"]
 [ext_resource type="PackedScene" uid="uid://p3tbs46mi8p3" path="res://scenes/levels/test_level.tscn" id="3_bv8ma"]
 [ext_resource type="PackedScene" uid="uid://bexrd87t846hr" path="res://scenes/pause_menu.tscn" id="5_rp537"]
-[ext_resource type="Script" path="res://scripts/GeneralUI.gd" id="6_4l82h"]
-[ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="6_bttkk"]
 [ext_resource type="PackedScene" uid="uid://douw2p6ggl56h" path="res://scenes/dialog_box.tscn" id="6_ne7gu"]
 [ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="6_qgbhh"]
-[ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="7_4tv4m"]
-[ext_resource type="Texture2D" uid="uid://sc0koml0wb4j" path="res://assets/images/piggybankPlaceholder.png" id="8_yehtr"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_fr2oh"]
 
 [node name="MainGameState" type="Node3D" node_paths=PackedStringArray("Sorakai", "MusicStream", "smoother", "Dialog")]
+transform = Transform3D(1.00064, 0, 0, 0, 1.00064, 0, 0, 0, 1.00064, 0, 0, 0)
 script = ExtResource("1_kcow4")
 Sorakai = NodePath("Sorakai")
 MusicStream = NodePath("Music")
@@ -33,46 +30,10 @@ bus = &"Music"
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_rp537")]
 layer = 128
-visible = false
 
 [node name="DialogBox" parent="." node_paths=PackedStringArray("speaker") instance=ExtResource("6_ne7gu")]
 visible = false
 speaker = NodePath("../Node3D")
-
-[node name="GeneralUI" type="CanvasLayer" parent="." groups=["UI"]]
-script = ExtResource("6_4l82h")
-
-[node name="Bank" type="Control" parent="GeneralUI"]
-layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
-
-[node name="moneyAmm" type="RichTextLabel" parent="GeneralUI/Bank"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -436.0
-offset_bottom = 57.0
-grow_horizontal = 0
-pivot_offset = Vector2(436, 0)
-theme = ExtResource("6_bttkk")
-theme_override_constants/shadow_offset_y = 3
-theme_override_fonts/normal_font = ExtResource("7_4tv4m")
-theme_override_font_sizes/normal_font_size = 30
-bbcode_enabled = true
-text = "[right]0.00 "
-
-[node name="TextureRect" type="TextureRect" parent="GeneralUI/Bank"]
-layout_mode = 1
-offset_left = -228.0
-offset_top = 2.0
-offset_right = -125.0
-offset_bottom = 73.0
-texture = ExtResource("8_yehtr")
-expand_mode = 1
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70869, -3.7923)
