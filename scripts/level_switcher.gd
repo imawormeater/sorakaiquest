@@ -14,15 +14,17 @@ func _ready() -> void:
 
 func _on_tp_area_body_entered(body: Node3D) -> void:
 	if debounce: return
-	if body == GameManager.CurrentState.Sorakai:
-		debounce = true
-		if transitiontime == 0.0:
-			GameManager.CurrentState.load_level(levelpath)
-			debounce = false
-			return
-		GameManager.App.play_transition(transition,transitiontime)
-		debouncetimer.wait_time = transitiontime
-		debouncetimer.start()
-		await debouncetimer.timeout
+	if not body.is_in_group("Player"):
+		return
+		
+	debounce = true
+	if transitiontime == 0.0:
 		GameManager.CurrentState.load_level(levelpath)
 		debounce = false
+		return
+	GameManager.App.play_transition(transition,transitiontime)
+	debouncetimer.wait_time = transitiontime
+	debouncetimer.start()
+	await debouncetimer.timeout
+	GameManager.CurrentState.load_level(levelpath)
+	debounce = false

@@ -20,6 +20,8 @@ mesh = ExtResource("3_a4rlb")
 
 [node name="Area3D" type="Area3D" parent="Key"]
 transform = Transform3D(4.54545, 0, 0, 0, 4.54545, 0, 0, 0, 4.54545, 0, 0, 0)
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Key/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00375366, 0.0314941, -0.0549316)
