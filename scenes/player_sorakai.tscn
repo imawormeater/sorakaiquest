@@ -252,10 +252,11 @@ states/OnWallStart/node = SubResource("AnimationNodeAnimation_lnhmh")
 states/OnWallStart/position = Vector2(619, 315)
 states/Start/position = Vector2(378, -32)
 transitions = ["Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_aeggj"), "Jump", "Grab", SubResource("AnimationNodeStateMachineTransition_hsh7h"), "Grab", "GrabIdle", SubResource("AnimationNodeStateMachineTransition_llqxh"), "GrabIdle", "Jump", SubResource("AnimationNodeStateMachineTransition_5p4ba"), "Grab", "Jump", SubResource("AnimationNodeStateMachineTransition_8no8a"), "Fall", "Grab", SubResource("AnimationNodeStateMachineTransition_j6jby"), "OnWall", "Land", SubResource("AnimationNodeStateMachineTransition_7qlsl"), "OnWall", "Jump", SubResource("AnimationNodeStateMachineTransition_ifxl8"), "Jump", "Land", SubResource("AnimationNodeStateMachineTransition_01icu"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_d3f7f"), "Start", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_xwwbw"), "IdleWalk", "Fall", SubResource("AnimationNodeStateMachineTransition_1gpea"), "Land", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_kvlu0"), "Jump", "OnWallStart", SubResource("AnimationNodeStateMachineTransition_hjw6e"), "OnWallStart", "OnWall", SubResource("AnimationNodeStateMachineTransition_5md5v"), "OnWallStart", "Jump", SubResource("AnimationNodeStateMachineTransition_npcqq"), "Fall", "OnWallStart", SubResource("AnimationNodeStateMachineTransition_3tvi2")]
-graph_offset = Vector2(-133, 77)
+graph_offset = Vector2(-128, 110)
 
-[node name="Sorakai" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+[node name="Sorakai" type="CharacterBody3D" node_paths=PackedStringArray("camera") groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
 floor_constant_speed = true
 floor_max_angle = 1.0472
 script = ExtResource("1_6cmhp")

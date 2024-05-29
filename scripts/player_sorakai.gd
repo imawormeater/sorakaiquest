@@ -172,7 +172,7 @@ func wallInit(_delta:float) -> void:
 				SPEED = baseSPEED
 				state = States.Wall
 				#print("Change State Wall")
-				anim_st.travel("OnWall")
+				anim_st.travel("OnWallStart")
 				sfx.play_sound("Walkriding")
 	else:
 		wallconcetioncount = 0.0
