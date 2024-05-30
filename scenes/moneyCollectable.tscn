@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwcq58y06ilm0"]
+[gd_scene load_steps=12 format=3 uid="uid://0lu754qntb0m"]
 
 [ext_resource type="Script" path="res://scenes/moneyCollectable.gd" id="1_ylbw0"]
 [ext_resource type="PackedScene" uid="uid://boks6msesku8v" path="res://assets/meshes/coin.glb" id="2_2omoo"]
 [ext_resource type="PackedScene" uid="uid://dncdrtqog6vxl" path="res://assets/meshes/bill.glb" id="3_hfkx2"]
+[ext_resource type="Shader" path="res://assets/materials/celshaded.gdshader" id="4_u57gv"]
+[ext_resource type="Texture2D" uid="uid://ppsurb4ik7x5" path="res://assets/meshes/bill_moneytex.png" id="5_p7k82"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wkxjc"]
 margin = 0.0
@@ -10,6 +12,54 @@ radius = 0.05
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o7q70"]
 radius = 0.8
+
+[sub_resource type="Gradient" id="Gradient_gadsb"]
+colors = PackedColorArray(0.426699, 0.321894, 0.106715, 1, 0.427451, 0.321569, 0.105882, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ptgqn"]
+gradient = SubResource("Gradient_gadsb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xv0nd"]
+render_priority = 0
+shader = ExtResource("4_u57gv")
+shader_parameter/UseFade = false
+shader_parameter/MinDistance = 0.2
+shader_parameter/MaxDistance = 5.0
+shader_parameter/dithersize = 6
+shader_parameter/ToonRampOffset = 0.0
+shader_parameter/ToonRampSmoothness = 0.0
+shader_parameter/ToonRampTinting = null
+shader_parameter/RimPower = 1.259
+shader_parameter/RimCutOff = 0.0
+shader_parameter/RimSmoothness = 0.013
+shader_parameter/RimLightBrightness = 45.828
+shader_parameter/SubSurfDistortion = 0.0
+shader_parameter/SubSurfTint = null
+shader_parameter/SubSurfBrightness = 0.0
+shader_parameter/SubSurfCutoff = 0.0
+shader_parameter/SubSurfSmoothness = 0.05
+shader_parameter/Texture = SubResource("GradientTexture1D_ptgqn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8xax"]
+render_priority = 0
+shader = ExtResource("4_u57gv")
+shader_parameter/UseFade = false
+shader_parameter/MinDistance = 0.2
+shader_parameter/MaxDistance = 5.0
+shader_parameter/dithersize = 6
+shader_parameter/ToonRampOffset = 0.0
+shader_parameter/ToonRampSmoothness = 0.0
+shader_parameter/ToonRampTinting = null
+shader_parameter/RimPower = 5.828
+shader_parameter/RimCutOff = 0.0
+shader_parameter/RimSmoothness = 0.013
+shader_parameter/RimLightBrightness = 9.735
+shader_parameter/SubSurfDistortion = 0.0
+shader_parameter/SubSurfTint = null
+shader_parameter/SubSurfBrightness = 0.0
+shader_parameter/SubSurfCutoff = 0.0
+shader_parameter/SubSurfSmoothness = 0.05
+shader_parameter/Texture = ExtResource("5_p7k82")
 
 [node name="MoneyCollectable" type="Node3D"]
 script = ExtResource("1_ylbw0")
@@ -29,14 +79,24 @@ collision_mask = 2
 shape = SubResource("SphereShape3D_o7q70")
 
 [node name="Visual" type="Node3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+transform = Transform3D(-0.540748, 0, -0.589966, 0, 0.8, 0, 0.589966, 0, -0.540748, 0, 0, 0)
 
 [node name="coin" parent="Visual" instance=ExtResource("2_2omoo")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -0.00130003, -0.477498, -0.00156331)
+visible = false
+
+[node name="coin" parent="Visual/coin" index="0"]
+material_override = SubResource("ShaderMaterial_xv0nd")
 
 [node name="bill" parent="Visual" instance=ExtResource("3_hfkx2")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.00244844, -0.477812, 0.0337853)
 
+[node name="bill" parent="Visual/bill" index="0"]
+material_override = SubResource("ShaderMaterial_k8xax")
+
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_entered" from="NearRange" to="." method="_on_near_range_body_entered"]
 [connection signal="body_exited" from="NearRange" to="." method="_on_near_range_body_exited"]
+
+[editable path="Visual/coin"]
+[editable path="Visual/bill"]
