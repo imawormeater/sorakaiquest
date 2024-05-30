@@ -163,6 +163,42 @@ value = 0.1
 transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 10.5691, 17.5327, 14.0443)
 value = 0.1
 
+[node name="MoneyCollectable36" parent="Money" instance=ExtResource("10_agn2l")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.30873, 20.7093, 6.73403)
+value = 0.1
+
+[node name="MoneyCollectable37" parent="Money" instance=ExtResource("10_agn2l")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.21137, 19.9644, 5.53213)
+value = 0.1
+
+[node name="MoneyCollectable40" parent="Money" instance=ExtResource("10_agn2l")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.10806, 19.1386, 4.41172)
+value = 0.1
+
+[node name="MoneyCollectable41" parent="Money" instance=ExtResource("10_agn2l")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.09761, 18.3933, 3.26284)
+value = 0.1
+
+[node name="MoneyCollectable42" parent="Money" instance=ExtResource("10_agn2l")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.0909, 17.6269, 2.03664)
+value = 0.1
+
+[node name="MoneyCollectable43" parent="Money" instance=ExtResource("10_agn2l")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.08299, 16.6933, 0.573547)
+value = 0.1
+
+[node name="MoneyCollectable44" parent="Money" instance=ExtResource("10_agn2l")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.07755, 16.0802, -0.415779)
+value = 0.1
+
+[node name="MoneyCollectable45" parent="Money" instance=ExtResource("10_agn2l")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.07076, 15.1884, -1.7256)
+value = 0.1
+
+[node name="MoneyCollectable46" parent="Money" instance=ExtResource("10_agn2l")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.08568, 17.1113, 1.13092)
+value = 0.1
+
 [node name="Platforms" type="Node3D" parent="."]
 
 [node name="plains4" parent="Platforms" instance=ExtResource("3_kerdl")]
@@ -241,6 +277,9 @@ transform = Transform3D(4.34622, 0, 0, 0, 18.9953, 0, 0, 0, 4.27527, -6.38088, 7
 
 [node name="Node3D6" parent="Platforms" instance=ExtResource("4_n473g")]
 transform = Transform3D(4.34622, 0, 0, 0, 10.5262, -3.55881, 0, 15.812, 2.36913, -6.38088, 13.6857, 0.998284)
+
+[node name="Node3D21" parent="Platforms" instance=ExtResource("4_n473g")]
+transform = Transform3D(4.34622, 0, 0, 0, -0.342766, -5.04809, 0, -0.363912, 4.75476, -6.38088, 18.0706, 9.93642)
 
 [node name="Node3D7" parent="Platforms" instance=ExtResource("4_n473g")]
 transform = Transform3D(8.34427, 0, 0, 0, 0.965095, 0, 0, 0, 3.99499, -2.38274, 7.98994, 13.3658)

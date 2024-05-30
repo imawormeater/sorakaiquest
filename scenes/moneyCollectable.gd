@@ -7,7 +7,8 @@ var meshToUse:Node3D
 @onready var visual := $Visual
 
 var chasePlayer:Node3D = null#CHASE HUNTER
-var chaseSpeed := 5.0
+var chaseSpeed := 0.0
+var chaseAccel := 45.0
 
 func _ready() -> void:
 	for i in visual.get_children():
@@ -20,11 +21,11 @@ func _ready() -> void:
 	visual.rotation = Vector3.ZERO
 	rotation = Vector3.ZERO
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	visual.rotate_y(delta)
 	visual.position.y = sin(GameManager.sinTick*2)/9
 	if chasePlayer != null:
-		#global_position = global_position.slerp(chasePlayer.global_position,_lerp_speed * 0.3)
+		chaseSpeed += chaseAccel * delta
 		global_position += (chasePlayer.global_position - global_position)*delta*chaseSpeed
 
 func _on_range_body_entered(body: Node3D) -> void:
@@ -35,8 +36,3 @@ func _on_range_body_entered(body: Node3D) -> void:
 func _on_near_range_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
 		chasePlayer = body
-
-
-func _on_near_range_body_exited(body: Node3D) -> void:
-	if body.is_in_group("Player"):
-		chasePlayer = null
