@@ -87,7 +87,8 @@ func _process(_delta: float) -> void:
 
 func _on_receive_money(dollar:moneyCollectable) -> void:
 	var dictInfo := {
-		"value" : dollar.value
+		"value" : dollar.value,
+		"global_pos" : dollar.global_position
 	}
 	bankMoney += dictInfo["value"]
 	dollar.queue_free()
