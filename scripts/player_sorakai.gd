@@ -173,7 +173,8 @@ func wallInit(_delta:float) -> void:
 				state = States.Wall
 				#print("Change State Wall")
 				anim_st.travel("OnWallStart")
-				sfx.play_sound("Walkriding")
+				sfx.play_sound_into("Wallridebegin","Walkriding")
+				#sfx.play_sound("Walkriding")
 	else:
 		wallconcetioncount = 0.0
 		
@@ -319,6 +320,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		if pressedJump or jumpbuffer > 0:
 			sfx.stop_sound("Walkriding")
+			sfx.stop_sound("Wallridebegin")
 			visual.look_at(global_position + facecastnormal)
 			state = States.Free
 			baseDEACEL = 0.5
@@ -330,6 +332,7 @@ func _physics_process(delta: float) -> void:
 			return
 		if not facecast.is_colliding() or is_on_floor() or pressedAction:
 			sfx.stop_sound("Walkriding")
+			sfx.stop_sound("Wallridebegin")
 			exitwallclimb = exitwallclimbinit
 			state = States.Free
 			visual.rotation.x = 0
