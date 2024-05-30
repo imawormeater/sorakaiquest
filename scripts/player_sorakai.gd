@@ -217,7 +217,7 @@ func set_animations(onfloor:bool,_state:int) -> void:
 	if (curanim != "IdleWalk") and onfloor:
 		anim_st.travel("Land")
 		sfx.play_sound("Land")
-	if curanim == "OnWall" and not animationtree["parameters/conditions/OnWall"]:
+	if (curanim.begins_with("OnWall")) and not animationtree["parameters/conditions/OnWall"]:
 		anim_st.travel("Fall")
 	
 	if _velocity == 0 or not onfloor:
