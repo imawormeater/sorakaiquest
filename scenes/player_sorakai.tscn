@@ -1,6 +1,7 @@
-[gd_scene load_steps=54 format=3 uid="uid://dw40p48fqbsl2"]
+[gd_scene load_steps=53 format=3 uid="uid://dw40p48fqbsl2"]
 
 [ext_resource type="Script" path="res://scripts/player_sorakai.gd" id="1_6cmhp"]
+[ext_resource type="ArrayMesh" uid="uid://csjqnycfeybq" path="res://assets/meshes/smoke.obj" id="3_50lya"]
 [ext_resource type="Shader" path="res://assets/materials/celshaded.gdshader" id="3_j3lss"]
 [ext_resource type="PackedScene" uid="uid://cauyp1btx8io" path="res://assets/loganchara.glb" id="3_t2ofv"]
 [ext_resource type="Script" path="res://scripts/get_player_variables_for_fun.gd" id="4_uvf24"]
@@ -50,13 +51,6 @@ linear_accel_min = 3.55
 linear_accel_max = 9.07
 scale_min = 0.5
 scale_curve = SubResource("CurveTexture_x74ye")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mlvw1"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_h8alc"]
-material = SubResource("StandardMaterial3D_mlvw1")
-radius = 0.1
-height = 0.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ouxd8"]
 render_priority = 0
@@ -316,7 +310,7 @@ randomness = 0.7
 collision_base_size = 0.0
 visibility_aabb = AABB(-0.203111, -0.0686203, -0.180086, 0.406222, 0.137241, 0.360171)
 process_material = SubResource("ParticleProcessMaterial_12an1")
-draw_pass_1 = SubResource("SphereMesh_h8alc")
+draw_pass_1 = ExtResource("3_50lya")
 
 [node name="loganchara" parent="Visual" instance=ExtResource("3_t2ofv")]
 transform = Transform3D(0.000715101, 0, 0.0831059, 0, 0.083109, 0, -0.0831059, 0, 0.000715101, 0, -0.744453, -0.257608)
