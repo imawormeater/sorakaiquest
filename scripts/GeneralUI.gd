@@ -1,8 +1,10 @@
 extends CanvasLayer
 @export var bankDollars := 0.0
+@export var collectSoundSFX:Array[Resource] = []
 
 @onready var moneyLabel := $Bank/moneyAmm
 @onready var bankControl := $Bank
+@onready var collectSound := $CollectSound
 
 var isBankHere := false
 var goAwayTimer := -1.0
@@ -10,9 +12,11 @@ var goAwayTimerInit := 5.0
 
 var goodbyePos := Vector2(640,-90)
 var helloPos := Vector2(640,0)
+var defaultTextMoneySize:Vector2
 
 func _ready() -> void:
 	get_parent().loganGetMoney.connect(recievedMoney)
+	defaultTextMoneySize = moneyLabel.scale
 	
 func goodBye() -> void:
 	if not isBankHere: return
@@ -37,7 +41,7 @@ func _process(delta: float) -> void:
 		
 	var funstring = str(bankDollars).pad_decimals(2)
 	moneyLabel.text = "[right]" + funstring + " "
-	moneyLabel.scale = moneyLabel.scale.lerp(Vector2.ONE,_lerp_speed*0.3)
+	moneyLabel.scale = moneyLabel.scale.lerp(defaultTextMoneySize,_lerp_speed*0.3)
 
 func recievedMoney(dictMom:Dictionary) -> void:
 	goAwayTimer = goAwayTimerInit
@@ -47,7 +51,8 @@ func recievedMoney(dictMom:Dictionary) -> void:
 	var tween1 = get_tree().create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	tween1.tween_property(self,"bankDollars",newBankMoney,0.3)
 	moneyLabel.scale += Vector2(0.2,0.2)
-
+	collectSound.stream = collectSoundSFX.pick_random()
+	collectSound.play()
 	
 func doTimers(delta:float) -> void:
 	if goAwayTimer > 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dmdi4mdm7qr5o"]
+[gd_scene load_steps=16 format=3 uid="uid://dmdi4mdm7qr5o"]
 
 [ext_resource type="Script" path="res://scripts/classes/Playstate.gd" id="1_kcow4"]
 [ext_resource type="PackedScene" uid="uid://dw40p48fqbsl2" path="res://scenes/player_sorakai.tscn" id="2_ntxhb"]
@@ -8,8 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://douw2p6ggl56h" path="res://scenes/dialog_box.tscn" id="6_ne7gu"]
 [ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="6_qgbhh"]
 [ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="7_4tv4m"]
+[ext_resource type="AudioStream" uid="uid://d3xrse4yw41p1" path="res://assets/sounds/coin/CoinA.wav" id="8_3ss5d"]
 [ext_resource type="FontFile" uid="uid://csjw5posryyf3" path="res://assets/fonts/GothicA1-Bold.ttf" id="8_kaa32"]
-[ext_resource type="Texture2D" uid="uid://sc0koml0wb4j" path="res://assets/images/piggybankPlaceholder.png" id="8_yehtr"]
+[ext_resource type="AudioStream" uid="uid://d2sljvx351vjo" path="res://assets/sounds/coin/CoinB.wav" id="9_2nh86"]
+[ext_resource type="AudioStream" uid="uid://kr1putpoorm1" path="res://assets/sounds/coin/CoinDropG.wav" id="10_ar2hd"]
+[ext_resource type="AudioStream" uid="uid://djso6gy1aghfw" path="res://assets/sounds/coin/CoinDropS.wav" id="11_aa4mg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_liab6"]
 bg_color = Color(0.105882, 0.145098, 0.180392, 0.839216)
@@ -48,6 +51,7 @@ speaker = NodePath("../Node3D")
 
 [node name="GeneralUI" type="CanvasLayer" parent="." groups=["UI"]]
 script = ExtResource("6_4l82h")
+collectSoundSFX = Array[Resource]([ExtResource("8_3ss5d"), ExtResource("9_2nh86"), ExtResource("10_ar2hd"), ExtResource("11_aa4mg")])
 
 [node name="Bank" type="Control" parent="GeneralUI"]
 layout_mode = 3
@@ -63,7 +67,7 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -215.0
-offset_top = 12.0
+offset_top = 11.0
 offset_right = 16.0
 offset_bottom = 64.0
 grow_horizontal = 0
@@ -77,13 +81,13 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -462.577
-offset_top = 26.2543
-offset_right = -26.5766
-offset_bottom = 51.2543
+offset_left = -168.0
+offset_top = 26.0
+offset_right = -29.0
+offset_bottom = 52.0
 grow_horizontal = 0
-scale = Vector2(0.868021, 0.868021)
-pivot_offset = Vector2(436, 0)
+scale = Vector2(0.88, 0.88)
+pivot_offset = Vector2(138.95, 0)
 theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/normal_font = ExtResource("8_kaa32")
 theme_override_font_sizes/normal_font_size = 30
@@ -109,15 +113,7 @@ theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "$"
 
-[node name="TextureRect" type="TextureRect" parent="GeneralUI/Bank"]
-visible = false
-layout_mode = 1
-offset_left = -196.152
-offset_top = 15.0025
-offset_right = -132.152
-offset_bottom = 67.0025
-texture = ExtResource("8_yehtr")
-expand_mode = 1
+[node name="CollectSound" type="AudioStreamPlayer" parent="GeneralUI"]
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70869, -3.7923)
