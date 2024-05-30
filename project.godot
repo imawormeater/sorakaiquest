@@ -95,6 +95,7 @@ quick_restart={
 
 [layer_names]
 
+3d_render/layer_20="BankSubViewport"
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Collectable"

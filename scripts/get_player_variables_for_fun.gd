@@ -12,6 +12,9 @@ func _ready() -> void:
 		label.visible = false
 
 func _process(_delta: float) -> void:
+	label.visible = is_debug
+	if Input.is_action_just_pressed("ui_page_down"):
+		is_debug = !is_debug
 	if is_debug:
 		var format_string = "velocity:%s\nspeed:%s\nstate:%s\naccel_mult:%s\nposition:%s\nhp:%s"
 		var actual_string = format_string % [logan.velocity, logan.SPEED,logan.state,logan.DEACEL_mult,logan.global_position,1]

@@ -58,7 +58,6 @@ func init_level(loaded_level:PackedScene) -> void:
 	if currentLevel != null:
 		currentLevel.queue_free()
 	inHub = false
-	print()
 	if loaded_level.resource_path == hubLevel:
 		inHub = true
 	var newlevel:Level = loaded_level.instantiate()
@@ -76,7 +75,6 @@ func reload_player() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	#print(smoother.excludes)
 	if (Engine.max_fps < 60 and !Engine.max_fps == 0):
 		smoother.add_exclude_node(Sorakai)
 	elif smoother.excludes != []:
@@ -88,7 +86,8 @@ func _process(_delta: float) -> void:
 func _on_receive_money(dollar:moneyCollectable) -> void:
 	var dictInfo := {
 		"value" : dollar.value,
-		"global_pos" : dollar.global_position
+		"global_pos" : dollar.global_position,
+		"global_trans" : dollar.global_transform,
 	}
 	bankMoney += dictInfo["value"]
 	dollar.queue_free()

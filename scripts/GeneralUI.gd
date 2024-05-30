@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var moneyLabel := $Bank/moneyAmm
 @onready var bankControl := $Bank
 @onready var collectSound := $CollectSound
+@onready var sprite2dtest := $SubViewportContainer/Sprite2D
 
 var isBankHere := false
 var goAwayTimer := -1.0
@@ -43,13 +44,26 @@ func _process(delta: float) -> void:
 	moneyLabel.text = "[right]" + funstring + " "
 	moneyLabel.scale = moneyLabel.scale.lerp(defaultTextMoneySize,_lerp_speed*0.3)
 
+func createMoneyImage() -> Sprite2D:
+	var new := sprite2dtest.duplicate()
+	new.visible = true
+	$SubViewportContainer.add_child(new)
+	return new
+
 func recievedMoney(dictMom:Dictionary) -> void:
 	goAwayTimer = goAwayTimerInit
-	var value = dictMom["value"]
 	var newBankMoney = GameManager.CurrentState.bankMoney
-	print(value, "  ", newBankMoney)
-	var tween1 = get_tree().create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	tween1.tween_property(self,"bankDollars",newBankMoney,0.3)
+	
+	var image := createMoneyImage()
+	image.position = get_viewport().get_camera_3d().unproject_position(dictMom["global_pos"])
+
+	var tween1 = get_tree().create_tween()
+	tween1.tween_property(image,"position",Vector2(547,36),0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	$CollectSound2.play()
+	await get_tree().create_timer(0.41).timeout
+	image.queue_free()
+	var tween2 = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	tween2.tween_property(self,"bankDollars",newBankMoney,0.3)
 	moneyLabel.scale += Vector2(0.2,0.2)
 	collectSound.stream = collectSoundSFX.pick_random()
 	collectSound.play()

@@ -96,9 +96,9 @@ func set_dialog_box() -> void:
 	var oldsize = frame.size
 	var newpos = frame.position + (Vector2(oldsize.x-vector.x,oldsize.y-vector.y)/2)
 
-	var tweent = get_tree().create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-	tweent.tween_property(frame,"size",vector,0.7)
-	tweent.tween_property(frame,"position",newpos,0.7)
+	var tweent = get_tree().create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tweent.tween_property(frame,"size",vector,0.5)
+	tweent.tween_property(frame,"position",newpos,0.5)
 	pass
 
 #INITIATES THE CURRENT INDEX IN THE DIALOG
