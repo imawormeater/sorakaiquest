@@ -1,15 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmdi4mdm7qr5o"]
+[gd_scene load_steps=13 format=3 uid="uid://dmdi4mdm7qr5o"]
 
 [ext_resource type="Script" path="res://scripts/classes/Playstate.gd" id="1_kcow4"]
 [ext_resource type="PackedScene" uid="uid://dw40p48fqbsl2" path="res://scenes/player_sorakai.tscn" id="2_ntxhb"]
 [ext_resource type="PackedScene" uid="uid://p3tbs46mi8p3" path="res://scenes/levels/test_level.tscn" id="3_bv8ma"]
 [ext_resource type="PackedScene" uid="uid://bexrd87t846hr" path="res://scenes/pause_menu.tscn" id="5_rp537"]
 [ext_resource type="Script" path="res://scripts/GeneralUI.gd" id="6_4l82h"]
-[ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="6_bttkk"]
 [ext_resource type="PackedScene" uid="uid://douw2p6ggl56h" path="res://scenes/dialog_box.tscn" id="6_ne7gu"]
 [ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="6_qgbhh"]
 [ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="7_4tv4m"]
+[ext_resource type="FontFile" uid="uid://csjw5posryyf3" path="res://assets/fonts/GothicA1-Bold.ttf" id="8_kaa32"]
 [ext_resource type="Texture2D" uid="uid://sc0koml0wb4j" path="res://assets/images/piggybankPlaceholder.png" id="8_yehtr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_liab6"]
+bg_color = Color(0.105882, 0.145098, 0.180392, 0.839216)
+corner_radius_top_left = 55
+corner_radius_top_right = 55
+corner_radius_bottom_right = 55
+corner_radius_bottom_left = 55
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_fr2oh"]
 
@@ -48,29 +55,67 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
+scale = Vector2(0.799868, 0.799868)
 
-[node name="moneyAmm" type="RichTextLabel" parent="GeneralUI/Bank"]
+[node name="Frame" type="Panel" parent="GeneralUI/Bank"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -436.0
-offset_bottom = 57.0
+offset_left = -215.0
+offset_top = 12.0
+offset_right = 16.0
+offset_bottom = 64.0
 grow_horizontal = 0
+scale = Vector2(0.750835, 0.750835)
+pivot_offset = Vector2(90, 25.705)
+theme_override_styles/panel = SubResource("StyleBoxFlat_liab6")
+
+[node name="moneyAmm" type="RichTextLabel" parent="GeneralUI/Bank"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -462.577
+offset_top = 26.2543
+offset_right = -26.5766
+offset_bottom = 51.2543
+grow_horizontal = 0
+scale = Vector2(0.868021, 0.868021)
 pivot_offset = Vector2(436, 0)
-theme = ExtResource("6_bttkk")
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/normal_font = ExtResource("8_kaa32")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[right]0.00 "
+scroll_active = false
+
+[node name="Sign" type="RichTextLabel" parent="GeneralUI/Bank"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -180.03
+offset_top = 13.7523
+offset_right = -146.03
+offset_bottom = 56.7523
+grow_horizontal = 0
+scale = Vector2(1.04893, 1.04893)
 theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/normal_font = ExtResource("7_4tv4m")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[right]0.00 "
+text = "$"
 
 [node name="TextureRect" type="TextureRect" parent="GeneralUI/Bank"]
+visible = false
 layout_mode = 1
-offset_left = -228.0
-offset_top = 2.0
-offset_right = -125.0
-offset_bottom = 73.0
+offset_left = -196.152
+offset_top = 15.0025
+offset_right = -132.152
+offset_bottom = 67.0025
 texture = ExtResource("8_yehtr")
 expand_mode = 1
 
