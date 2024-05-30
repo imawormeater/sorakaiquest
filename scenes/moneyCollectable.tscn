@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwcq58y06ilm0"]
+[gd_scene load_steps=6 format=3 uid="uid://bwcq58y06ilm0"]
 
 [ext_resource type="Script" path="res://scenes/moneyCollectable.gd" id="1_ylbw0"]
+[ext_resource type="PackedScene" uid="uid://boks6msesku8v" path="res://assets/meshes/coin.glb" id="2_2omoo"]
+[ext_resource type="PackedScene" uid="uid://dncdrtqog6vxl" path="res://assets/meshes/bill.glb" id="3_hfkx2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wkxjc"]
+margin = 0.0
+radius = 0.05
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o7q70"]
-radius = 0.4
-
-[sub_resource type="SphereMesh" id="SphereMesh_ebn51"]
-radius = 0.4
-height = 0.8
+radius = 0.8
 
 [node name="MoneyCollectable" type="Node3D"]
 script = ExtResource("1_ylbw0")
@@ -17,9 +19,24 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Range"]
+shape = SubResource("SphereShape3D_wkxjc")
+
+[node name="NearRange" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NearRange"]
 shape = SubResource("SphereShape3D_o7q70")
 
-[node name="placeholder" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_ebn51")
+[node name="Visual" type="Node3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="coin" parent="Visual" instance=ExtResource("2_2omoo")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -0.00130003, -0.477498, -0.00156331)
+
+[node name="bill" parent="Visual" instance=ExtResource("3_hfkx2")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.00244844, -0.477812, 0.0337853)
 
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_entered" from="NearRange" to="." method="_on_near_range_body_entered"]
+[connection signal="body_exited" from="NearRange" to="." method="_on_near_range_body_exited"]

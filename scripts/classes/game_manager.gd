@@ -1,9 +1,11 @@
 extends Node
 
 @export var canPause := true
+@export var sinTick := 0.0
 
 @export var App:Node
 @export var CurrentState:Node
+
 
 const SAVE_DIR = "user://save/"
 const SETTINGS_FILE_NAME = "settings.tres"#tres so people can edit their settings as they please :)
@@ -19,6 +21,10 @@ func _ready() -> void:
 	load_settings()
 	settings_update_resolution()
 	settings_update_window_mode()
+
+func _process(delta: float) -> void:
+	sinTick += delta
+	sinTick = fmod(sinTick,2*PI)
 	
 func verify_save_directory(path:String) -> void:
 	DirAccess.make_dir_absolute(path)
