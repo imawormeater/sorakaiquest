@@ -174,7 +174,6 @@ func wallInit(_delta:float) -> void:
 				#print("Change State Wall")
 				anim_st.travel("OnWallStart")
 				sfx.play_sound_into("Wallridebegin","Walkriding")
-				#sfx.play_sound("Walkriding")
 	else:
 		wallconcetioncount = 0.0
 		
