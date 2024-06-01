@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhywkec3n6plo"
-path.s3tc="res://.godot/imported/loganchara_LoganTex.png-6586902723e9c759cb45194ccefcb7e6.s3tc.ctex"
+uid="uid://smwljtj7ysub"
+path.s3tc="res://.godot/imported/loganface2.png-fea0fd175e8192f9db20f7359990754c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "e2656edec8cbb2fe42bba81da6b0ea4c"
-}
 
 [deps]
 
-source_file="res://assets/loganchara_LoganTex.png"
-dest_files=["res://.godot/imported/loganchara_LoganTex.png-6586902723e9c759cb45194ccefcb7e6.s3tc.ctex"]
+source_file="res://assets/images/loganface2.png"
+dest_files=["res://.godot/imported/loganface2.png-fea0fd175e8192f9db20f7359990754c.s3tc.ctex"]
 
 [params]
 

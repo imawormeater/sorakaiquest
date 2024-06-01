@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="balloonSpring" load_steps=2 format=3 uid="uid://c8mcrj031ixon"]
+
+[ext_resource type="Script" path="res://scripts/classes/resources/balloonSpringResource.gd" id="1_f0fsr"]
+
+[resource]
+script = ExtResource("1_f0fsr")
+time_to_come_back = 5.0

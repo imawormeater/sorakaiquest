@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://tkx7xql8w272"
-path="res://.godot/imported/plains2.glb-fe8f1be15ab651be62269ede2d453a4c.scn"
+uid="uid://6lqlpemofd3m"
+path="res://.godot/imported/plains1.glb-e9c784e4d4b707e83e51910a711b4b83.scn"
 
 [deps]
 
-source_file="res://assets/plains2.glb"
-dest_files=["res://.godot/imported/plains2.glb-fe8f1be15ab651be62269ede2d453a4c.scn"]
+source_file="res://assets/meshes/plains1.glb"
+dest_files=["res://.godot/imported/plains1.glb-e9c784e4d4b707e83e51910a711b4b83.scn"]
 
 [params]
 
@@ -29,13 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Plane_001": {
-"generate/physics": true,
-"physics/shape_type": 2
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

@@ -26,10 +26,15 @@ func onBounce(body:Node3D) -> void:
 	if vardebounce: return
 	if not body.is_in_group("Player"): return
 	
+	body.springCombo += 1
+	body.springCombo = clampi(body.springCombo,0,6)
+	
 	vardebounce = true
 	debounce.start()
 	bounceSound.play()
 	body.velocity.y = bouncePower
+	
+	bounceSound.pitch_scale = float(body.springCombo)**0.1
 	resource.on_bounce(self,area,body)
 	pass
 

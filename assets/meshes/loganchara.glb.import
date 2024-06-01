@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cauyp1btx8io"
-path="res://.godot/imported/loganchara.glb-d7a3df4bbc82f1e503fe06b2fd1e12f9.scn"
+path="res://.godot/imported/loganchara.glb-fb27144bab7f53b4ddd934ed961f154c.scn"
 
 [deps]
 
-source_file="res://assets/loganchara.glb"
-dest_files=["res://.godot/imported/loganchara.glb-d7a3df4bbc82f1e503fe06b2fd1e12f9.scn"]
+source_file="res://assets/meshes/loganchara.glb"
+dest_files=["res://.godot/imported/loganchara.glb-fb27144bab7f53b4ddd934ed961f154c.scn"]
 
 [params]
 

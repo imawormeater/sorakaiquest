@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d0wtjv210el32"]
 
-[ext_resource type="PackedScene" uid="uid://tkx7xql8w272" path="res://assets/plains2.glb" id="1_jpaht"]
+[ext_resource type="PackedScene" uid="uid://tkx7xql8w272" path="res://assets/meshes/plains2.glb" id="1_jpaht"]
 [ext_resource type="Material" uid="uid://fy0ibi6x3jnj" path="res://assets/materials/basicassplatform.tres" id="2_tj4n3"]
 
 [node name="plains2" instance=ExtResource("1_jpaht")]

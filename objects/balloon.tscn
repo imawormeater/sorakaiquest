@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmlr6c778pobt"]
+
+[ext_resource type="Script" path="res://scripts/classes/spring_class.gd" id="1_wgym6"]
+[ext_resource type="Resource" uid="uid://c8mcrj031ixon" path="res://objects/resources/balloonSpringResLong.tres" id="2_csb5q"]
+[ext_resource type="AudioStream" uid="uid://cqn2jpgblcpf" path="res://assets/sounds/balloon_pop.mp3" id="3_tkc81"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w6e00"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_3634b"]
+
+[node name="balloon" type="Node3D" node_paths=PackedStringArray("bounceSound", "area", "debounce")]
+script = ExtResource("1_wgym6")
+bounceSound = NodePath("Spring")
+area = NodePath("Area3D")
+debounce = NodePath("Debounce")
+resource = ExtResource("2_csb5q")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_w6e00")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_3634b")
+
+[node name="Spring" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_tkc81")
+volume_db = -9.572
+bus = &"SFX"
+
+[node name="Debounce" type="Timer" parent="."]
+one_shot = true

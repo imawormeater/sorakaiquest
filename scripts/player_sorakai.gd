@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var camera:Camera3D
 
+#GAMEPLAY SHIT
 var baseSPEED := 5.0
 var SPEED := baseSPEED
 var _ACCEL:float = 25.0
@@ -26,7 +27,7 @@ var mouseSens := 0.005
 var visual_y_direction := 0.0
 var camera_deg := Vector2(0,0)
 var old_camera_pos := Vector3.ZERO
-#timers
+#TIMER SHIT
 var jumpbufferInit := 0.2
 var jumpbuffer := -1.0
 var coyotejumpInit := 0.2
@@ -40,7 +41,10 @@ var wallconcetioncount := 0.0
 #STATE SHIT
 enum States {Free, Wall, Hang}
 var state:= States.Free
+#OTHER SHIT
+var springCombo := 0
 
+#
 @onready var springarm := $Pivot/Arm
 @onready var pivot := $Pivot
 @onready var visual := $Visual
@@ -60,8 +64,8 @@ var state:= States.Free
 @onready var face:ShaderMaterial = character_mesh.get(_face_mat)
 
 @export var faces_textures := {
-	"normal" : preload("res://assets/loganchara_loganface1.png"),
-	"blink" : preload("res://assets/loganface2.png")
+	"normal" : preload("res://assets/images/loganchara_loganface1.png"),
+	"blink" : preload("res://assets/images/loganface2.png")
 }
 
 var anim_st:AnimationNodeStateMachinePlayback
@@ -215,6 +219,7 @@ func set_animations(onfloor:bool,_state:int) -> void:
 		animationtree["parameters/IdleWalk/TimeScale/scale"] = 1.0
 	
 	if (curanim != "IdleWalk") and onfloor:
+		springCombo = 0
 		anim_st.travel("Land")
 		sfx.play_sound("Land")
 	if (curanim.begins_with("OnWall")) and not animationtree["parameters/conditions/OnWall"]:

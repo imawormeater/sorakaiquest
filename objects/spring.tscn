@@ -60,6 +60,7 @@ mesh = SubResource("CylinderMesh_d5tdf")
 
 [node name="Spring" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_ayqg4")
+bus = &"SFX"
 
 [node name="Debounce" type="Timer" parent="."]
 one_shot = true

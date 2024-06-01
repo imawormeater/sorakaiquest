@@ -107,8 +107,10 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_8456y")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="CollectSound2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_pa3oa")
 volume_db = -12.059
 pitch_scale = 0.75
+bus = &"SFX"

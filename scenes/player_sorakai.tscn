@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://scripts/player_sorakai.gd" id="1_6cmhp"]
 [ext_resource type="ArrayMesh" uid="uid://csjqnycfeybq" path="res://assets/meshes/smoke.obj" id="3_50lya"]
 [ext_resource type="Shader" path="res://assets/materials/celshaded.gdshader" id="3_j3lss"]
-[ext_resource type="PackedScene" uid="uid://cauyp1btx8io" path="res://assets/loganchara.glb" id="3_t2ofv"]
+[ext_resource type="PackedScene" uid="uid://cauyp1btx8io" path="res://assets/meshes/loganchara.glb" id="4_a3uk4"]
 [ext_resource type="Script" path="res://scripts/get_player_variables_for_fun.gd" id="4_uvf24"]
+[ext_resource type="Texture2D" uid="uid://bhywkec3n6plo" path="res://assets/images/loganchara_LoganTex.png" id="5_c63eo"]
 [ext_resource type="Texture2D" uid="uid://oq23ffi88t2f" path="res://assets/images/ExampleDitherRamp.png" id="5_jcomn"]
-[ext_resource type="Texture2D" uid="uid://bhywkec3n6plo" path="res://assets/loganchara_LoganTex.png" id="5_pobn2"]
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://assets/images/blob_shadow.png" id="6_b517e"]
-[ext_resource type="Texture2D" uid="uid://bntjxa37b77sc" path="res://assets/loganchara_loganface1.png" id="6_ya3t1"]
 [ext_resource type="PackedScene" uid="uid://bdc2nui0hm8y8" path="res://scenes/player_sfx.tscn" id="7_0u647"]
+[ext_resource type="Texture2D" uid="uid://bntjxa37b77sc" path="res://assets/images/loganchara_loganface1.png" id="7_qrgm5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_62ypt"]
 radius = 0.3
@@ -72,7 +72,7 @@ shader_parameter/SubSurfTint = null
 shader_parameter/SubSurfBrightness = 0.0
 shader_parameter/SubSurfCutoff = 0.0
 shader_parameter/SubSurfSmoothness = 0.0
-shader_parameter/Texture = ExtResource("5_pobn2")
+shader_parameter/Texture = ExtResource("5_c63eo")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2nnn4"]
 render_priority = 0
@@ -94,7 +94,7 @@ shader_parameter/SubSurfTint = null
 shader_parameter/SubSurfBrightness = 0.0
 shader_parameter/SubSurfCutoff = 0.0
 shader_parameter/SubSurfSmoothness = 0.0
-shader_parameter/Texture = ExtResource("6_ya3t1")
+shader_parameter/Texture = ExtResource("7_qrgm5")
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ra5mc"]
 animation = &"Fall"
@@ -312,35 +312,35 @@ visibility_aabb = AABB(-0.203111, -0.0686203, -0.180086, 0.406222, 0.137241, 0.3
 process_material = SubResource("ParticleProcessMaterial_12an1")
 draw_pass_1 = ExtResource("3_50lya")
 
-[node name="loganchara" parent="Visual" instance=ExtResource("3_t2ofv")]
+[node name="loganchara" parent="Visual" instance=ExtResource("4_a3uk4")]
 transform = Transform3D(0.000715101, 0, 0.0831059, 0, 0.083109, 0, -0.0831059, 0, 0.000715101, 0, -0.744453, -0.257608)
 
 [node name="Skeleton3D" parent="Visual/loganchara/Armature" index="0"]
-bones/0/position = Vector3(-0.0543279, -1.45746, -0.304354)
-bones/0/rotation = Quaternion(0.993465, -0.0184504, -0.111625, -0.0150819)
-bones/1/rotation = Quaternion(-0.00436215, 0.112555, 0.0764275, 0.990692)
-bones/2/rotation = Quaternion(0.531781, 0.466056, -0.531781, 0.466057)
-bones/3/position = Vector3(-0.045908, -1.45746, 0.337209)
-bones/3/rotation = Quaternion(0.992956, 0.0367426, -0.11229, -0.00886042)
-bones/4/rotation = Quaternion(0.00274831, 0.112606, 0.138785, 0.983896)
+bones/0/position = Vector3(-0.0543279, -1.461, -0.304354)
+bones/0/rotation = Quaternion(0.993568, -0.0116173, -0.111726, -0.0143139)
+bones/1/rotation = Quaternion(-0.00262274, 0.112609, 0.0917238, 0.989393)
+bones/2/rotation = Quaternion(0.534622, 0.462795, -0.534622, 0.462796)
+bones/3/position = Vector3(-0.045908, -1.461, 0.337209)
+bones/3/rotation = Quaternion(0.99268, 0.0435709, -0.112349, -0.00808792)
+bones/4/rotation = Quaternion(0.00383852, 0.112574, 0.148305, 0.982506)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.53266, 0.465051, -0.53266, 0.465052)
+bones/5/rotation = Quaternion(0.534575, 0.462849, -0.534575, 0.462849)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/position = Vector3(-0.0781445, -1.50382, -0.00108111)
+bones/6/position = Vector3(-0.0781445, -1.50688, -0.00108111)
 bones/6/rotation = Quaternion(9.31131e-10, 1.19206e-07, -0.00781089, 0.999969)
-bones/7/rotation = Quaternion(-0.00178819, -0.0556624, -0.0458612, 0.997394)
+bones/7/rotation = Quaternion(-0.00202852, -0.0556542, -0.0501673, 0.997187)
 bones/8/position = Vector3(-0.0239583, 0.602603, 0.00283578)
-bones/8/rotation = Quaternion(0.00227232, 0.0556894, 0.054474, 0.996958)
+bones/8/rotation = Quaternion(0.00247237, 0.0556809, 0.058061, 0.996756)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.0667692, 0.417997, 0.902619, 0.0781013)
-bones/10/rotation = Quaternion(-0.113874, 0.081817, 0.203107, 0.969065)
+bones/9/rotation = Quaternion(0.0663644, 0.419591, 0.901907, 0.0781247)
+bones/10/rotation = Quaternion(-0.113406, 0.0876062, 0.20592, 0.968019)
 bones/11/rotation = Quaternion(-0.100787, 0.96615, 0.153133, 0.181509)
 bones/12/rotation = Quaternion(0.0181025, 0.588216, 0.807416, -0.0418797)
 bones/13/rotation = Quaternion(0.20999, 0.781056, 0.23008, 0.54122)
 bones/13/scale = Vector3(1, 1, 1)
-bones/14/rotation = Quaternion(0.723122, -0.373505, 0.543834, -0.20453)
+bones/14/rotation = Quaternion(0.72268, -0.375115, 0.542715, -0.206113)
 bones/14/scale = Vector3(1, 1, 1)
-bones/15/rotation = Quaternion(0.166753, -0.0802775, -0.106365, 0.976952)
+bones/15/rotation = Quaternion(0.166839, -0.0804653, -0.105178, 0.977051)
 bones/16/rotation = Quaternion(-0.179544, 0.712432, 0.0877478, -0.672685)
 bones/17/rotation = Quaternion(-0.761307, -0.0081396, 0.273992, 0.5876)
 bones/17/scale = Vector3(1, 1, 1)

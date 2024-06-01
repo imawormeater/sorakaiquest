@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://beyb2jiv1jaol"]
 
-[ext_resource type="Texture2D" uid="uid://bntjxa37b77sc" path="res://assets/loganchara_loganface1.png" id="1_d0q0s"]
+[ext_resource type="Texture2D" uid="uid://bntjxa37b77sc" path="res://assets/images/loganchara_loganface1.png" id="1_d0q0s"]
 
 [resource]
 resource_name = "face"
