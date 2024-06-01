@@ -203,7 +203,7 @@ text = "V-Sync"
 
 [node name="FPS" type="HSlider" parent="WindowList"]
 layout_mode = 2
-min_value = 30.0
+min_value = 60.0
 max_value = 310.0
 step = 10.0
 value = 310.0

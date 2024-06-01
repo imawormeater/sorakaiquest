@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://douw2p6ggl56h"]
 
-[ext_resource type="Script" path="res://scenes/dialog_box.gd" id="1_xyjux"]
+[ext_resource type="Script" path="res://scripts/dialog_box.gd" id="1_xyjux"]
 [ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="3_6hcxw"]
 [ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="4_klter"]
 [ext_resource type="AudioStream" uid="uid://1y2l7ieysg8x" path="res://assets/sounds/up.wav" id="5_aa5qh"]

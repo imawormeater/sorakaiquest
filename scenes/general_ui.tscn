@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dem3mo2wlnxg1"]
+[gd_scene load_steps=11 format=3 uid="uid://dem3mo2wlnxg1"]
 
 [ext_resource type="Script" path="res://scripts/GeneralUI.gd" id="1_jeuno"]
 [ext_resource type="AudioStream" uid="uid://d3xrse4yw41p1" path="res://assets/sounds/coin/CoinA.wav" id="2_pa3oa"]
 [ext_resource type="AudioStream" uid="uid://d2sljvx351vjo" path="res://assets/sounds/coin/CoinB.wav" id="3_8rf82"]
 [ext_resource type="AudioStream" uid="uid://kr1putpoorm1" path="res://assets/sounds/coin/CoinDropG.wav" id="4_rrm7c"]
 [ext_resource type="AudioStream" uid="uid://djso6gy1aghfw" path="res://assets/sounds/coin/CoinDropS.wav" id="5_faqo0"]
-[ext_resource type="Texture2D" uid="uid://dj6bl8tf4f0iu" path="res://assets/images/icon.svg" id="6_3r2sn"]
 [ext_resource type="FontFile" uid="uid://csjw5posryyf3" path="res://assets/fonts/GothicA1-Bold.ttf" id="6_rtbj8"]
 [ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="7_lmtsl"]
+[ext_resource type="Texture2D" uid="uid://dlitaxjmqrcxo" path="res://assets/images/dollarUI.png" id="8_63x73"]
+[ext_resource type="Texture2D" uid="uid://s8m64sur16lr" path="res://assets/images/coinUI.png" id="9_8456y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_liab6"]
 bg_color = Color(0.105882, 0.145098, 0.180392, 0.839216)
@@ -93,12 +94,17 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 cull_mask = 524288
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer"]
+[node name="dollar" type="Sprite2D" parent="SubViewportContainer"]
 visible = false
-modulate = Color(1, 1, 1, 0.403922)
 position = Vector2(348, 222)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("6_3r2sn")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_63x73")
+
+[node name="coin" type="Sprite2D" parent="SubViewportContainer"]
+visible = false
+position = Vector2(348, 222)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_8456y")
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="."]
 

@@ -88,6 +88,7 @@ func _on_receive_money(dollar:moneyCollectable) -> void:
 		"value" : dollar.value,
 		"global_pos" : dollar.global_position,
 		"global_trans" : dollar.global_transform,
+		"which" : dollar.meshToUse.name
 	}
 	bankMoney += dictInfo["value"]
 	dollar.queue_free()

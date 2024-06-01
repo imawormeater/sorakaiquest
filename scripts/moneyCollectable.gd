@@ -3,7 +3,8 @@ extends Node3D
 class_name moneyCollectable
 
 @export var value := 1.0
-var meshToUse:Node3D
+@export var meshToUse:Node3D
+
 @onready var visual := $Visual
 
 var chasePlayer:Node3D = null#CHASE HUNTER

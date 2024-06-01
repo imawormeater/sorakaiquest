@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="springResource" load_steps=2 format=3 uid="uid://raj0wx6d0rpb"]
+
+[ext_resource type="Script" path="res://scripts/classes/resources/springResourceClass.gd" id="1_ndchk"]
+
+[resource]
+script = ExtResource("1_ndchk")

@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://cy6j2ail7h7vt"]
+
+[ext_resource type="Script" path="res://scripts/classes/spring_class.gd" id="1_b2jbr"]
+[ext_resource type="Resource" uid="uid://raj0wx6d0rpb" path="res://objects/resources/baseSpringRes.tres" id="2_7wna0"]
+[ext_resource type="Shader" path="res://assets/materials/celshaded.gdshader" id="2_evs4q"]
+[ext_resource type="AudioStream" uid="uid://w5hkgsyy3g08" path="res://assets/sounds/jump.ogg" id="3_ayqg4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lpjbb"]
+height = 0.5
+radius = 1.0
+
+[sub_resource type="Gradient" id="Gradient_mdwc8"]
+colors = PackedColorArray(0.698039, 0, 0, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3qcxh"]
+gradient = SubResource("Gradient_mdwc8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_15nob"]
+render_priority = 0
+shader = ExtResource("2_evs4q")
+shader_parameter/UseFade = false
+shader_parameter/MinDistance = 0.2
+shader_parameter/MaxDistance = 5.0
+shader_parameter/dithersize = 6
+shader_parameter/ToonRampOffset = 0.5
+shader_parameter/ToonRampSmoothness = 0.05
+shader_parameter/ToonRampTinting = null
+shader_parameter/RimPower = 3.428
+shader_parameter/RimCutOff = 0.345
+shader_parameter/RimSmoothness = 0.0
+shader_parameter/RimLightBrightness = 2.2
+shader_parameter/SubSurfDistortion = 1.0
+shader_parameter/SubSurfTint = null
+shader_parameter/SubSurfBrightness = 3.0
+shader_parameter/SubSurfCutoff = 0.5
+shader_parameter/SubSurfSmoothness = 0.05
+shader_parameter/Texture = SubResource("GradientTexture1D_3qcxh")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d5tdf"]
+material = SubResource("ShaderMaterial_15nob")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.5
+
+[node name="spring" type="Node3D" node_paths=PackedStringArray("bounceSound", "area", "debounce")]
+script = ExtResource("1_b2jbr")
+bounceSound = NodePath("Spring")
+area = NodePath("Area3D")
+debounce = NodePath("Debounce")
+resource = ExtResource("2_7wna0")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_lpjbb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_d5tdf")
+
+[node name="Spring" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_ayqg4")
+
+[node name="Debounce" type="Timer" parent="."]
+one_shot = true

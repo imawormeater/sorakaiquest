@@ -5,7 +5,8 @@ extends CanvasLayer
 @onready var moneyLabel := $Bank/moneyAmm
 @onready var bankControl := $Bank
 @onready var collectSound := $CollectSound
-@onready var sprite2dtest := $SubViewportContainer/Sprite2D
+@onready var dollarImage := $SubViewportContainer/dollar
+@onready var coinImage := $SubViewportContainer/coin
 
 var isBankHere := false
 var goAwayTimer := -1.0
@@ -44,8 +45,12 @@ func _process(delta: float) -> void:
 	moneyLabel.text = "[right]" + funstring + " "
 	moneyLabel.scale = moneyLabel.scale.lerp(defaultTextMoneySize,_lerp_speed*0.3)
 
-func createMoneyImage() -> Sprite2D:
-	var new := sprite2dtest.duplicate()
+func createMoneyImage(which:String) -> Sprite2D:
+	var sprite2d:Sprite2D = dollarImage
+	if which == "coin":
+		sprite2d = coinImage
+		
+	var new := sprite2d.duplicate()
 	new.visible = true
 	$SubViewportContainer.add_child(new)
 	return new
@@ -53,8 +58,9 @@ func createMoneyImage() -> Sprite2D:
 func recievedMoney(dictMom:Dictionary) -> void:
 	goAwayTimer = goAwayTimerInit
 	var newBankMoney = GameManager.CurrentState.bankMoney
+	var which = dictMom["which"]
 	
-	var image := createMoneyImage()
+	var image := createMoneyImage(which)
 	image.position = get_viewport().get_camera_3d().unproject_position(dictMom["global_pos"])
 
 	var tween1 = get_tree().create_tween()

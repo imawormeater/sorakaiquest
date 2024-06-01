@@ -15,6 +15,8 @@ var windowModes:Dictionary = {
 	"fullscreen" : DisplayServer.WINDOW_MODE_FULLSCREEN
 }
 
+var platform := 0 #1 is ios and mobile
+
 var resolutions:Dictionary = {
 	"640x480" : Vector2i(640,480),
 	"800x600" : Vector2i(800,600),
@@ -30,7 +32,16 @@ var resolutions:Dictionary = {
 
 func _ready() -> void:
 	init_sliders()
-	
+	if OS.get_name() == "Web" or OS.get_name() == "iOS":
+		platform = 1
+	if platform == 1:
+		windowdrop.queue_free()
+		resolution.queue_free()
+
+func checktosave() -> void:
+	if platform == 1:
+		GameManager.save_settings()
+
 func init_sliders() -> void:
 	for i in audioSliders.get_children():
 		if i is HSlider:
@@ -65,19 +76,21 @@ func init_sliders() -> void:
 func update_audio_slider(value,index) -> void:
 	AudioServer.set_bus_volume_db(index,value)
 	GameManager.settings_set_audiovolume()
-	if OS.get_name() == "Web" or OS.get_name() == "iOS":
-		GameManager.save_settings()
+	checktosave()
 
 func update_fps(value) -> void:
 	var stringValue := str(value)
 	if value > 300 or value == 0:
 		stringValue = "unlimited"
 		value = 0
+		fpsSlider.value = 310
 	fpsSlider.get_child(0).text = "fps cap (" + stringValue + ")"
-	GameManager.settings.maxfps = value 
+	GameManager.settings.maxfps = value
+	checktosave()
 	
 func _on_vsync_pressed() -> void:
 	GameManager.settings.vsync = vsync.button_pressed
+	checktosave()
 
 func _on_window_item_selected(index: int) -> void:
 	var shitberries = windowModes[windowdrop.get_item_text(index)]

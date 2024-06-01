@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://0lu754qntb0m"]
 
-[ext_resource type="Script" path="res://scenes/moneyCollectable.gd" id="1_ylbw0"]
+[ext_resource type="Script" path="res://scripts/moneyCollectable.gd" id="1_ylbw0"]
 [ext_resource type="PackedScene" uid="uid://boks6msesku8v" path="res://assets/meshes/coin.glb" id="2_2omoo"]
 [ext_resource type="PackedScene" uid="uid://dncdrtqog6vxl" path="res://assets/meshes/bill.glb" id="3_hfkx2"]
 [ext_resource type="Shader" path="res://assets/materials/celshaded.gdshader" id="4_u57gv"]
@@ -61,8 +61,9 @@ shader_parameter/SubSurfCutoff = 0.0
 shader_parameter/SubSurfSmoothness = 0.05
 shader_parameter/Texture = ExtResource("5_p7k82")
 
-[node name="MoneyCollectable" type="Node3D"]
+[node name="MoneyCollectable" type="Node3D" node_paths=PackedStringArray("meshToUse")]
 script = ExtResource("1_ylbw0")
+meshToUse = NodePath("Visual/bill")
 
 [node name="Range" type="Area3D" parent="."]
 collision_layer = 4
@@ -79,7 +80,7 @@ collision_mask = 2
 shape = SubResource("SphereShape3D_o7q70")
 
 [node name="Visual" type="Node3D" parent="."]
-transform = Transform3D(0.800293, 0, 0, 0, 0.8, 0, 0, 0, 0.800293, 0, 0, 0)
+transform = Transform3D(0.571754, 0, 0.560127, 0, 0.8, 0, -0.560127, 0, 0.571754, 0, 0, 0)
 
 [node name="coin" parent="Visual" instance=ExtResource("2_2omoo")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -0.00130003, -0.477498, -0.00156331)
