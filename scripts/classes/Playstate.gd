@@ -64,7 +64,8 @@ func init_level(loaded_level:PackedScene) -> void:
 	add_child(newlevel)
 	currentLevel = newlevel
 	new_level_loaded.emit()
-	Sorakai.refresh()
+	reload_player()
+	#Sorakai.refresh()
 
 func reload_player() -> void:
 	Sorakai.queue_free()

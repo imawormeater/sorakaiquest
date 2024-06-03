@@ -1,10 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://ckt45meg027ab"]
+[gd_scene load_steps=10 format=3 uid="uid://ckt45meg027ab"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_vblvp"]
 [ext_resource type="AudioStream" uid="uid://dr480fcl7ltkd" path="res://assets/music/a VICious groove.mp3" id="2_mp76h"]
-[ext_resource type="PackedScene" uid="uid://d0wtjv210el32" path="res://objects/plains_2.tscn" id="3_76bw7"]
-[ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://objects/plains_1.tscn" id="4_wnt83"]
-[ext_resource type="Material" uid="uid://fy0ibi6x3jnj" path="res://assets/materials/basicassplatform.tres" id="5_oaovd"]
 [ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://objects/basicassplatform.tscn" id="6_4n3d3"]
 [ext_resource type="Environment" uid="uid://bn8ohqm75mqkj" path="res://assets/materials/ursc/test_env_dusk.tres" id="7_jaw51"]
 [ext_resource type="Script" path="res://scripts/skybox_rotater.gd" id="8_yfyt5"]
@@ -27,17 +24,6 @@ shadow_enabled = true
 shadow_opacity = 0.15
 shadow_blur = 0.051
 sky_mode = 1
-
-[node name="plains4" parent="." instance=ExtResource("3_76bw7")]
-transform = Transform3D(-0.179586, 0, -1.56999e-08, 0, 0.179586, 0, 1.56999e-08, 0, -0.179586, -0.881304, -0.844355, -35.4229)
-
-[node name="plains2" parent="." instance=ExtResource("4_wnt83")]
-transform = Transform3D(0.157232, 0, 0, 0, 0.157232, 0, 0, 0, 0.157232, 1.88997, -0.736862, 13.0222)
-
-[node name="Plane" parent="plains2" index="0"]
-transform = Transform3D(368.488, 0, 0, 0, 368.488, 0, 0, 0, 368.488, 1.96871, -0.0480943, -42.6289)
-material_override = ExtResource("5_oaovd")
-surface_material_override/1 = ExtResource("5_oaovd")
 
 [node name="bigtower" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.30659)
@@ -131,13 +117,8 @@ transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -23.4475
 [node name="Door" parent="." instance=ExtResource("11_4qyr5")]
 transform = Transform3D(-4.35074e-08, 0, 6.32603, 0, 3.98133, 0, -0.995332, 0, -2.7652e-07, 10.3922, 15.3502, 32.5971)
 
-[node name="DeathPlane" parent="." instance=ExtResource("12_62k7l")]
-transform = Transform3D(300, 0, 0, 0, 17.936, 0, 0, 0, 83.5896, 0, 6.57417, -33.8098)
-
 [node name="DeathPlane3" parent="." instance=ExtResource("12_62k7l")]
 transform = Transform3D(300, 0, 0, 0, 26.0896, 0, 0, 0, 83.5896, 0.611629, 22.0173, -76.0182)
 
 [node name="DeathPlane2" parent="." instance=ExtResource("12_62k7l")]
-transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 83.5896, -7.02946, 4.20365, 45.2114)
-
-[editable path="plains2"]
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 240.044, -7.02946, 4.20365, 45.2114)
