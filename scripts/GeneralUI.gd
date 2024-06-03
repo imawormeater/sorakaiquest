@@ -35,7 +35,7 @@ func hello() -> void:
 func _process(delta: float) -> void:
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
 	doTimers(delta)
-	if goAwayTimer < 0 and not GameManager.CurrentState.inHub:
+	if goAwayTimer < 0 and not get_parent().inHub:
 		goodBye()
 		return
 	else:

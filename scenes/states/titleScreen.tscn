@@ -1,0 +1,214 @@
+[gd_scene load_steps=15 format=3 uid="uid://demg1ljadhtwn"]
+
+[ext_resource type="Texture2D" uid="uid://dypyhqscgc0rp" path="res://assets/images/gamelogo.png" id="1_e5acb"]
+[ext_resource type="Script" path="res://scripts/titleScreen.gd" id="1_k3mqt"]
+[ext_resource type="PackedScene" uid="uid://dmdi4mdm7qr5o" path="res://scenes/states/MainGameState.tscn" id="2_dhqq7"]
+[ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="2_oe3yi"]
+[ext_resource type="AudioStream" uid="uid://54ta2nex1swr" path="res://assets/music/BotB+23659+shinichi+-+No+Juice_+A+Fruitless+Endeavor.vt.mp3" id="3_jgwdx"]
+[ext_resource type="Material" uid="uid://cfs4axkv37ppd" path="res://assets/materials/ursc/checkerboard.tres" id="4_ipdlo"]
+[ext_resource type="PackedScene" uid="uid://ds5rt4cupnt7t" path="res://scenes/settingsUI.tscn" id="5_ueoup"]
+[ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="6_qgclh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik824"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcrxk"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjlll"]
+bg_color = Color(0.341176, 0.784314, 0.858824, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds3cu"]
+bg_color = Color(0.891896, 0, 0.454501, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ln8ob"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 15
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uy0r7"]
+bg_color = Color(1, 1, 1, 0.392157)
+corner_radius_top_left = 15
+corner_radius_top_right = 35
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 15
+
+[node name="TitleScreen" type="CanvasLayer"]
+script = ExtResource("1_k3mqt")
+transTime = 1.0
+continueState = ExtResource("2_dhqq7")
+
+[node name="BG" type="Panel" parent="."]
+offset_right = 640.0
+offset_bottom = 480.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ik824")
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(316, 155)
+scale = Vector2(0.291455, 0.291455)
+texture = ExtResource("1_e5acb")
+
+[node name="Splash" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="Label" parent="Splash"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 375.0
+offset_right = 638.0
+offset_bottom = 412.0
+theme_override_colors/font_color = Color(0.341176, 0.784314, 0.858824, 1)
+theme_override_fonts/font = ExtResource("2_oe3yi")
+theme_override_font_sizes/font_size = 25
+text = "PRESS ANY KEY
+"
+horizontal_alignment = 1
+
+[node name="BottomText" type="Label" parent="Splash"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 443.0
+offset_right = 637.0
+offset_bottom = 468.0
+theme_override_colors/font_color = Color(0.105882, 0.145098, 0.180392, 1)
+text = "© 2024 Larvae Studios"
+horizontal_alignment = 1
+
+[node name="Select" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 20.0
+offset_bottom = 23.0
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Select"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 241.0
+offset_top = 308.5
+offset_right = 379.0
+offset_bottom = 421.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Start" type="Button" parent="Select/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.341176, 0.784314, 0.858824, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oe3yi")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_pcrxk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sjlll")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ds3cu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sjlll")
+text = "New.Game
+"
+
+[node name="Continue" type="Button" parent="Select/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.341176, 0.784314, 0.858824, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oe3yi")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_pcrxk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sjlll")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ds3cu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sjlll")
+text = "Continue"
+
+[node name="Options" type="Button" parent="Select/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.341176, 0.784314, 0.858824, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oe3yi")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_pcrxk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sjlll")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ds3cu")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sjlll")
+text = "Options"
+
+[node name="Options" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Options"]
+material = ExtResource("4_ipdlo")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 600.0
+offset_bottom = 440.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.780392)
+
+[node name="settingsUI" parent="Options" instance=ExtResource("5_ueoup")]
+layout_mode = 1
+offset_left = 280.0
+offset_top = 200.0
+offset_right = 320.0
+offset_bottom = 240.0
+
+[node name="Exit" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 430.0
+offset_top = 406.0
+offset_right = 607.0
+offset_bottom = 449.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_qgclh")
+theme_override_fonts/font = ExtResource("2_oe3yi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ln8ob")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uy0r7")
+text = "Back"
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jgwdx")
+pitch_scale = 0.95
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="Select/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Select/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Select/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Options/Exit" to="." method="_on_exit_pressed"]

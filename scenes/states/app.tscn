@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://eleajfuwfpur"]
 
 [ext_resource type="Script" path="res://scripts/classes/app.gd" id="1_d1n4j"]
-[ext_resource type="PackedScene" uid="uid://dmdi4mdm7qr5o" path="res://scenes/scenes/MainGameState.tscn" id="2_w6e81"]
-[ext_resource type="PackedScene" uid="uid://demg1ljadhtwn" path="res://scenes/scenes/titleScreen.tscn" id="3_r3ptw"]
+[ext_resource type="PackedScene" uid="uid://dmdi4mdm7qr5o" path="res://scenes/states/MainGameState.tscn" id="2_w6e81"]
+[ext_resource type="PackedScene" uid="uid://demg1ljadhtwn" path="res://scenes/states/titleScreen.tscn" id="3_r3ptw"]
 [ext_resource type="VideoStream" path="res://assets/videos/jerma.ogv" id="3_vj886"]
 [ext_resource type="Material" uid="uid://bixuwp1cbjepr" path="res://assets/materials/ursc/circle_trans.tres" id="4_kytrq"]
 [ext_resource type="AudioStream" uid="uid://hcr0rb3h3por" path="res://assets/sounds/fadein.wav" id="5_sva3u"]
@@ -98,8 +98,8 @@ _data = {
 resource_name = "fpstimer"
 script/source = "extends Label
 
-func _process(_delta: float) -> void:
-	text = \"FPS: \" + str(Engine.get_frames_per_second())
+func _physics_process(_delta: float) -> void:
+	text = \"FPS: \" + str(Engine.get_frames_per_second()) + \"\\n\" + \"MEM: \" + str(OS.get_static_memory_usage()/1048576.0).pad_decimals(2) + \" MB\"
 "
 
 [node name="App" type="Node"]
@@ -110,18 +110,20 @@ MainMenu = ExtResource("3_r3ptw")
 
 [node name="Main" type="CanvasLayer" parent="."]
 process_mode = 3
-layer = 120
+layer = 128
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Main"]
 self_modulate = Color(0.268541, 0.842352, 0, 1)
 offset_right = 544.0
 offset_bottom = 544.0
+mouse_filter = 2
 stream = ExtResource("3_vj886")
 bus = &"Ambience"
 
 [node name="Transitions" type="ColorRect" parent="Main"]
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
 [node name="CircleTrans" type="ColorRect" parent="Main/Transitions"]
@@ -138,6 +140,7 @@ offset_right = 620.0
 offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Main/Transitions"]
@@ -149,14 +152,17 @@ libraries = {
 bus = &"SFX"
 
 [node name="FPS" type="Label" parent="Main"]
+process_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
+offset_top = -35.0
 offset_right = 108.0
 grow_vertical = 0
 theme = ExtResource("7_2arx1")
-text = "FPS: 60"
+theme_override_font_sizes/font_size = 15
+text = "FPS:"
+uppercase = true
 script = SubResource("GDScript_j0cdk")
 
 [node name="Timer" type="Timer" parent="."]
