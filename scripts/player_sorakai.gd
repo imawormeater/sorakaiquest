@@ -2,6 +2,10 @@ extends CharacterBody3D
 
 @export var camera:Camera3D
 
+@export var controlOn := true #sets player controls
+@export var cameraOn := true #gets rid of camera controls
+@export var disabledCamera := false #stops setting camera
+
 #GAMEPLAY SHIT
 var baseSPEED := 5.0
 var SPEED := baseSPEED
@@ -43,7 +47,7 @@ enum States {Free, Wall, Hang}
 var state:= States.Free
 #OTHER SHIT
 var springCombo := 0
-
+@export var dying := true
 #
 @onready var springarm := $Pivot/Arm
 @onready var pivot := $Pivot
@@ -87,9 +91,6 @@ func changeFace(whichface:String) -> void:
 		face["shader_parameter/Texture"] = faces_textures["normal"]
 	face["shader_parameter/Texture"] = currentface
 
-#func test()->void:
-#	print('poop')
-
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	springarm.add_excluded_object(self)
@@ -102,15 +103,22 @@ func _ready() -> void:
 	
 	for lockedDoor in get_tree().get_nodes_in_group("LockedDoors"):
 		lockedDoor.lockedDoor_touched.connect(lockedDoor_touched)
+		
+	await get_tree().create_timer(0.5,false).timeout #invincibility when respawn
+	dying = false
 
 func _process(delta: float) -> void:#Camera shit
+	if disabledCamera: return
+	
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
 	camera_deg[1] = clamp(camera_deg[1],-PI/3,PI/3)
 	
-	if Input.is_action_just_released('mw_up'):
-		cameraDistance -= scrollSpeed
-	elif Input.is_action_just_released('mw_down'):
-		cameraDistance += scrollSpeed
+	if cameraOn:
+		if Input.is_action_just_released('mw_up'):
+			cameraDistance -= scrollSpeed
+		elif Input.is_action_just_released('mw_down'):
+			cameraDistance += scrollSpeed
+			
 	cameraDistance = clamp(cameraDistance,1.4,5)	
 	springarm.spring_length = lerp(springarm.spring_length,cameraDistance,_lerp_speed)
 	if springarm.spring_length < 0.1:
@@ -268,6 +276,12 @@ func _physics_process(delta: float) -> void:
 	var pressedJump := Input.is_action_just_pressed("movement_jump")
 	var pressingJump := Input.is_action_pressed("movement_jump")
 	var pressedAction := Input.is_action_pressed("movement_action")
+	
+	if not controlOn:
+		pressingJump = false
+		pressedAction = false
+		pressedJump = false
+		input_dir = Vector2.ZERO
 		
 	set_animations(onFloor,state)
 	
@@ -365,11 +379,19 @@ func _physics_process(delta: float) -> void:
 			jump()
 			griptimer = griptimerinit
 		
-	
+
 func _input(event) -> void:
 	if event is InputEventMouseMotion:
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			camera_deg += event.relative * -mouseSens
+		if cameraOn or disabledCamera:
+			if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+				camera_deg += event.relative * -mouseSens
+
+func die() -> void:
+	dying = true
+	controlOn = false
+	cameraOn = false
+	disabledCamera = true
+	sfx.play_sound("Die")
 
 func key_touched(key) -> void:
 	if not currentKey:
@@ -392,5 +414,3 @@ func refresh() -> void:
 	for lockedDoor in get_tree().get_nodes_in_group("LockedDoors"):
 		lockedDoor.lockedDoor_touched.connect(lockedDoor_touched)
 
-func wait(seconds: float) -> void:
-	await get_tree().create_timer(seconds).timeout

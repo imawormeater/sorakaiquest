@@ -5,6 +5,6 @@ class_name balloonSpring
 func on_bounce(spring:Node3D,area3d:Area3D,_body:Node3D) -> void:
 	spring.hide()
 	area3d.set_deferred("monitoring",false)
-	await spring.get_tree().create_timer(time_to_come_back).timeout
+	await spring.get_tree().create_timer(time_to_come_back,false).timeout
 	spring.show()
 	area3d.set_deferred("monitoring",true)

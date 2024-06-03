@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://q2dt7dcu4bdy"]
+[gd_scene load_steps=13 format=3 uid="uid://q2dt7dcu4bdy"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_geecc"]
 [ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://objects/plains_1.tscn" id="2_kh2so"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cabix5vgaakof" path="res://objects/level_switcher.tscn" id="8_b5a3n"]
 [ext_resource type="PackedScene" uid="uid://0lu754qntb0m" path="res://objects/moneyCollectable.tscn" id="10_agn2l"]
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="11_v02df"]
+[ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="12_m1cxg"]
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
 script = ExtResource("1_geecc")
@@ -339,5 +340,8 @@ transform = Transform3D(4.17905, 0, 0, 0, 21.2953, 0, 0, 0, 4.04588, 10.326, 21.
 
 [node name="AlbumCollectable" parent="." instance=ExtResource("11_v02df")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.43614, -0.0563194, 30.2425)
+
+[node name="DeathPlane" parent="." instance=ExtResource("12_m1cxg")]
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -8.91429, 0)
 
 [editable path="Platforms/plains2"]

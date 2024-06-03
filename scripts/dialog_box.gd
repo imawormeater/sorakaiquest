@@ -66,7 +66,7 @@ func disappear() -> void:
 	var tweent = get_tree().create_tween().set_parallel().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	tweent.tween_property(frame,"position",Vector2(264,376),0.4)
 	tweent.tween_property(frame,"size",Vector2(112,0),0.4)
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(0.4,false).timeout
 	ending = false
 	hide()
 
@@ -78,7 +78,7 @@ func play_dialog(Speech:Array) -> void:
 	curIndex = -1
 	Dialog = Speech
 	appear()
-	await get_tree().create_timer(0.6).timeout
+	await get_tree().create_timer(0.6,false).timeout
 	active = true
 	doCurIndex()
 

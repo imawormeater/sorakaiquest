@@ -45,11 +45,11 @@ func changeState(newstate:states) -> void:
 	if newstate == states.Continue:
 		active = false
 
-func goToState(state:PackedScene) -> void:
+func goToState(_state:PackedScene) -> void:
 	active = false
 	GameManager.App.play_transition("circle",transTime)
 	await get_tree().create_timer(transTime).timeout
-	GameManager.App.changeState(state)
+	GameManager.App.changeState(_state)
 	
 func _process(_delta: float) -> void:
 	if state == states.Select:

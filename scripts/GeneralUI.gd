@@ -66,7 +66,7 @@ func recievedMoney(dictMom:Dictionary) -> void:
 	var tween1 = get_tree().create_tween()
 	tween1.tween_property(image,"position",Vector2(547,36),0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	$CollectSound2.play()
-	await get_tree().create_timer(0.41).timeout
+	await get_tree().create_timer(0.41,false).timeout
 	image.queue_free()
 	var tween2 = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	tween2.tween_property(self,"bankDollars",newBankMoney,0.3)
