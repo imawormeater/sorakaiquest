@@ -7,23 +7,27 @@ extends CharacterBody3D
 @export var disabledCamera := false #stops setting camera
 
 #GAMEPLAY SHIT
-var baseSPEED := 5.0
+
+@export var baseSPEED := 5.0
 var SPEED := baseSPEED
-var _ACCEL:float = 25.0
-var _DEACCEL:float = 30.0
+@export var _ACCEL:float = 25.0
+@export var _DEACCEL:float = 30.0
 
 var DEACEL_mult := 1.0
 var baseDEACEL := 1.0
 
 var SNAPLENGTH := 0.1
+
 #JUMP SHIT
-var JUMPHEIGHT := 2.5
-var JUMPPEAKTIME := 0.5
-var JUMPDESCENTTIME := 0.35
+
+@export var JUMPHEIGHT := 2.5
+@export var JUMPPEAKTIME := 0.5
+@export var JUMPDESCENTTIME := 0.35
 
 var jump_velo:float
 var jump_grav:float
 var fall_grav:float
+
 #CAMERA SHIT
 var cameraDistance := 2.7
 const scrollSpeed := 0.4
@@ -32,29 +36,44 @@ var visual_y_direction := 0.0
 var camera_deg := Vector2(0,0)
 var old_camera_pos := Vector3.ZERO
 #TIMER SHIT
-var jumpbufferInit := 0.2
+const jumpbufferInit := 0.2
 var jumpbuffer := -1.0
-var coyotejumpInit := 0.2
+const coyotejumpInit := 0.2
 var coyotejump := -1.0
-var exitwallclimbinit := 0.5
+const exitwallclimbinit := 0.5
 var exitwallclimb := -1.0
-var griptimerinit := 0.5
+const griptimerinit := 0.5
 var griptimer := -1.0
 
 var wallconcetioncount := 0.0
+
+var wallrideConnection := 0.0
+var wallrideTimer := 0.0
+const WRtilJump := 0.05
+
+var jumpTimer := 0.0
 #STATE SHIT
-enum States {Free, Wall, Hang}
+enum States {Free, Wall, Hang, WallRun, Roll}
 var state:= States.Free
+
+var wallRideCast:RayCast3D 
+var wallRideMag:float
+
 #OTHER SHIT
 var springCombo := 0
 @export var dying := true
 #
+
 @onready var springarm := $Pivot/Arm
 @onready var pivot := $Pivot
 @onready var visual := $Visual
+
 @onready var facecast := $Visual/faceCast
 @onready var hang_frontCast := $Visual/hangCasts/FrontCast
 @onready var hang_topCast := $Visual/hangCasts/TopCast 
+@onready var leftCast := $Visual/wallCasts/left
+@onready var rightCast := $Visual/wallCasts/right
+
 @onready var character := $Visual/loganchara
 @onready var character_mesh := $Visual/loganchara/Armature/Skeleton3D/logan
 @onready var targetCamera := $Pivot/Arm/Target
@@ -166,6 +185,7 @@ func jump() -> void:
 	visual.rotation.z = 0
 	anim_st.travel("Jump")
 	sfx.play_sound("Jump")
+	jumpTimer = 0.0
 	
 #CHECKS FOR HANG STATE
 func checkHang() -> bool:
@@ -205,13 +225,31 @@ func hangInit() -> void:
 			anim_st.travel("Grab")
 			sfx.play_sound("Grab")
 			#print("Change State Grab")
+			
+func wallRunInit(veloMag:float) -> void:
+	if leftCast.is_colliding(): wallRideCast = leftCast
+	elif rightCast.is_colliding(): wallRideCast = rightCast
+	else: return
+	if veloMag < 1: return
+	
+	wallrideTimer = 0
+	wallRideMag = veloMag
+	state = States.WallRun
+	
+	var wallNormal = wallRideCast.get_collision_normal()
+	var foward := wallNormal.cross(visual.global_basis.y) * wallRideMag
+	if (-visual.global_basis.z - foward).length() > (-visual.global_basis.z - -foward).length():
+		foward = -foward
+	velocity = Vector3(foward.x,velocity.y,foward.z)
+	#velocity.y += 1
+	sfx.play_sound("Wallride")
 #
 func get_pitch(normal:Vector3) -> float:
 	return asin(normal.cross(visual.global_basis.x).y)
 
 #MOST ANIMATIONS FUNCTION
-func set_animations(onfloor:bool,_state:int) -> void:
-	var _velocity := sqrt(velocity.x**2 + velocity.z**2)/baseSPEED
+func set_animations(onfloor:bool,_state:int,veloMag:float) -> void:
+	var _velocity := veloMag/baseSPEED
 	var curanim := anim_st.get_current_node()
 	var stepsound:AudioStreamPlayer3D = sfx.get_sound("Steps")
 	animationtree["parameters/IdleWalk/animation/blend_position"] = Vector2(_velocity,0)
@@ -243,9 +281,9 @@ func set_animations(onfloor:bool,_state:int) -> void:
 		walkDust.emitting = true
 
 #MOMENTUM
-func set_momentum(pitch:float,delta:float,onFloor:bool,direction:Vector2) -> void:
+func set_momentum(pitch:float,delta:float,onFloor:bool,direction:Vector2,veloMag:float) -> void:
 	var hill:int = 0
-	var _velocity:float = sqrt(velocity.x**2 + velocity.z**2)/baseSPEED
+	var _velocity:float = veloMag/baseSPEED
 	if direction != Vector2.ZERO:
 		hill = -1
 	var momentum:float = pitch * hill
@@ -276,14 +314,14 @@ func _physics_process(delta: float) -> void:
 	var pressedJump := Input.is_action_just_pressed("movement_jump")
 	var pressingJump := Input.is_action_pressed("movement_jump")
 	var pressedAction := Input.is_action_pressed("movement_action")
-	
+	var velocityMag := Vector2(velocity.x,velocity.z).length()
 	if not controlOn:
 		pressingJump = false
 		pressedAction = false
 		pressedJump = false
 		input_dir = Vector2.ZERO
 		
-	set_animations(onFloor,state)
+	set_animations(onFloor,state,velocityMag)
 	
 	if pressingJump:
 		changeFace('blink')
@@ -294,7 +332,7 @@ func _physics_process(delta: float) -> void:
 	if state == States.Free:
 		
 		var pitch := get_pitch(get_floor_normal())
-		set_momentum(pitch,delta,onFloor,input_dir)
+		set_momentum(pitch,delta,onFloor,input_dir,velocityMag)
 		
 		velocity.y += getGravity(pressingJump) * delta
 		character.rotation.z = lerp_angle(character.rotation.z,pitch/2,_lerp_speed*0.2)
@@ -304,8 +342,11 @@ func _physics_process(delta: float) -> void:
 				jump()
 		if onFloor:
 			baseDEACEL = 1.0
+			jumpTimer = 0.0
 			if jumpbuffer > 0:
 				jump()
+		else:
+			jumpTimer += delta
 		
 		var _pivot_rotation:float = pivot.rotation.x
 		pivot.rotation.x = 0
@@ -318,13 +359,17 @@ func _physics_process(delta: float) -> void:
 			_tempVelocity = _tempVelocity.move_toward(Vector2(direction.x,direction.z) * SPEED ,_ACCEL * delta * DEACEL_mult)
 		else:
 			_tempVelocity = _tempVelocity.move_toward(Vector2.ZERO,_DEACCEL * delta * DEACEL_mult)
+			
 		velocity.x = _tempVelocity.x
 		velocity.z = _tempVelocity.y
-		
 		velocity.y = clampf(velocity.y,fall_grav*JUMPDESCENTTIME*1.1,9999)
+		
 		move_and_slide()
+		
 		if onFloor != is_on_floor() and velocity.y < 0:#was on floor but now not
 			coyotejump = coyotejumpInit
+		if pressedJump and not is_on_floor() and jumpTimer > WRtilJump:
+			wallRunInit(Vector2(velocity.x,velocity.z).length())
 		wallInit(delta)
 		hangInit()
 
@@ -367,7 +412,7 @@ func _physics_process(delta: float) -> void:
 		if frontcastnormal.dot(Vector3.UP) > 0.001:
 			visual.look_at(global_position - frontcastnormal)
 		exitwallclimb = 0.5
-		if not checkHang():
+		if not checkHang() or pressedAction:
 			griptimer = griptimerinit
 			state = States.Free
 			visual.rotation.x = 0
@@ -378,7 +423,29 @@ func _physics_process(delta: float) -> void:
 			state = States.Free
 			jump()
 			griptimer = griptimerinit
+	
+	#WALL RUN
+	if state == States.WallRun:
+		wallrideTimer += delta
 		
+		var wallNormal = wallRideCast.get_collision_normal()
+		var foward := wallNormal.cross(visual.global_basis.y) 
+		if (-visual.global_basis.z - foward).length() > (-visual.global_basis.z - -foward).length():
+			foward = -foward
+		foward *= wallRideMag
+		velocity = Vector3(foward.x,velocity.y,foward.z) + (-wallNormal)
+		velocity.y += jump_grav * 0.7 * delta
+		velocity.y = clampf(velocity.y,jump_grav * 0.4,9999)
+		
+		visual.look_at(global_position + foward)
+		move_and_slide()
+		if not wallRideCast.is_colliding() or is_on_floor() or velocityMag < 1 or foward.length() == 0:
+			state = States.Free
+		if pressedJump and wallrideTimer > WRtilJump:
+			state = States.Free
+			jump()
+			velocity += (wallNormal*5)
+			baseDEACEL = 0.4
 
 func _input(event) -> void:
 	if event is InputEventMouseMotion:

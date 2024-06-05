@@ -47,10 +47,34 @@ transform = Transform3D(6.04345, 0, 0, 0, 0.150593, 0, 0, 0, 4.46357, -3.07534, 
 transform = Transform3D(9.555, 0, 0, 0, 0.649752, 0, 0, 0, 2.09589, 0.410692, 0.511683, -4.48496)
 
 [node name="Node3D3" parent="Platforms" instance=ExtResource("4_0rl8n")]
-transform = Transform3D(9.555, 0, 0, 0, 5.26299, 0, 0, 0, 0.907954, -0.112415, 2.74244, -7.64214)
+transform = Transform3D(18.8159, 0, 0, 0, 5.26299, 0, 0, 0, 0.907954, -4.97205, 2.74244, -7.64214)
 
 [node name="Node3D12" parent="Platforms" instance=ExtResource("4_0rl8n")]
-transform = Transform3D(9.555, 0, 0, 0, 10.2466, 0, 0, 0, 0.907955, -0.113365, 2.69087, -11.4974)
+transform = Transform3D(17.4141, 0, 0, 0, 10.2466, 0, 0, 0, 1.11043, -3.61057, 2.69087, -11.384)
+
+[node name="Node3D21" parent="Platforms" instance=ExtResource("4_0rl8n")]
+transform = Transform3D(-1.90127, 0, 0.0479934, 0, 10.2466, 0, -0.10064, 0, -0.906686, 3.27239, 0.364807, -11.5342)
+
+[node name="Node3D22" parent="Platforms" instance=ExtResource("4_0rl8n")]
+transform = Transform3D(-1.81035, 0, 0.281161, 0, 10.2466, 0, -0.58958, 0, -0.863325, 2.04299, 0.364807, -11.6842)
+
+[node name="Node3D23" parent="Platforms" instance=ExtResource("4_0rl8n")]
+transform = Transform3D(-1.49944, 0, 0.55953, 0, 10.2466, 0, -1.1733, 0, -0.715059, 0.898607, 0.364807, -12.1621)
+
+[node name="Node3D24" parent="Platforms" instance=ExtResource("4_0rl8n")]
+transform = Transform3D(-0.928736, 0, 0.792605, 0, 10.2466, 0, -1.66205, 0, -0.442899, 0.129945, 0.364807, -12.9177)
+
+[node name="Node3D25" parent="Platforms" instance=ExtResource("4_0rl8n")]
+transform = Transform3D(-0.132281, 0, 0.905761, 0, 10.2466, 0, -1.89933, 0, -0.0630829, -0.204585, 0.364807, -13.9547)
+
+[node name="Node3D26" parent="Platforms" instance=ExtResource("4_0rl8n")]
+transform = Transform3D(0.116664, 0, 0.906249, 0, 10.2466, 0, -1.90036, 0, 0.0556348, -0.203452, 0.364807, -15.7447)
+
+[node name="Node3D27" parent="Platforms" instance=ExtResource("4_0rl8n")]
+transform = Transform3D(0.529808, 0, 0.872093, 0, 10.2466, 0, -1.82873, 0, 0.252657, 0.00847387, 0.364807, -16.7941)
+
+[node name="Node3D28" parent="Platforms" instance=ExtResource("4_0rl8n")]
+transform = Transform3D(1.2986, 0, 0.663982, 0, 10.2466, 0, -1.39233, 0, 0.619282, 0.677793, 0.364807, -17.5401)
 
 [node name="Node3D4" parent="Platforms" instance=ExtResource("4_0rl8n")]
 transform = Transform3D(1.94431, 5.14889, 0, -1.94431, 5.14889, 0, 0, 0, 5.62932, 4.97785, -0.319414, 0.852464)
@@ -91,7 +115,7 @@ transform = Transform3D(-6.39572, 0, -4.11459e-07, 0, 0.139508, 0, 5.59131e-07, 
 [node name="Objects" type="Node3D" parent="."]
 
 [node name="LevelSwitch" parent="Objects" instance=ExtResource("8_bsmop")]
-transform = Transform3D(3.65528, 0, 0, 0, 1, 0, 0, 0, 2.54221, -14.6616, 0.501049, -8.89673)
+transform = Transform3D(3.65528, 0, 0, 0, 1, 0, 0, 0, 2.54221, -18.0878, 0.501049, -4.93397)
 levelpath = "res://scenes/levels/test_level_2.tscn"
 
 [node name="spring" parent="Objects" instance=ExtResource("9_p7xjg")]
