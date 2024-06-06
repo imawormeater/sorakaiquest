@@ -28,6 +28,7 @@ func onBounce(body:Node3D) -> void:
 	
 	body.springCombo += 1
 	body.springCombo = clampi(body.springCombo,0,6)
+	body.baseDEACEL = 1.0
 	
 	vardebounce = true
 	debounce.start()

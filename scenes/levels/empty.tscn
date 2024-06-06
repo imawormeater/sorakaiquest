@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://bg2f6bo121tjx"]
+
+[ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_bldlg"]
+[ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="8_0ruv0"]
+[ext_resource type="AudioStream" uid="uid://cu7ty4ay2nlw5" path="res://assets/sounds/mario64ambience.ogg" id="11_iccgs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_05ceg"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yuqvu"]
+size = Vector3(100, 1, 100)
+
+[node name="Level" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
+script = ExtResource("1_bldlg")
+Name = "test level"
+Mute_Music = true
+Logan_Spawn = NodePath("loganSpawn")
+
+[node name="Platforms" type="Node3D" parent="."]
+
+[node name="platform" type="StaticBody3D" parent="Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/platform"]
+shape = SubResource("BoxShape3D_05ceg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/platform"]
+mesh = SubResource("BoxMesh_yuqvu")
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="DeathPlane" parent="Objects" instance=ExtResource("8_0ruv0")]
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -8.91429, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.826341, 0.52806, -0.195738, 0.0290086, 0.387013, 0.921618, 0.562423, 0.755892, -0.335123, 0, 15.9898, -5.65541)
+light_color = Color(0.804743, 0.804743, 0.804743, 1)
+light_energy = 2.836
+shadow_enabled = true
+shadow_opacity = 0.15
+shadow_blur = 0.051
+sky_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="loganSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9561, 0)
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_iccgs")
+volume_db = -17.525
+autoplay = true
+bus = &"Ambience"

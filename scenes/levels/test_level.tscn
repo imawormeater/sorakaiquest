@@ -118,6 +118,10 @@ transform = Transform3D(-6.39572, 0, -4.11459e-07, 0, 0.139508, 0, 5.59131e-07, 
 transform = Transform3D(3.65528, 0, 0, 0, 1, 0, 0, 0, 2.54221, -18.0878, 0.501049, -4.93397)
 levelpath = "res://scenes/levels/test_level_2.tscn"
 
+[node name="LevelSwitch2" parent="Objects" instance=ExtResource("8_bsmop")]
+transform = Transform3D(3.65528, 0, 0, 0, 1, 0, 0, 0, 2.54221, 0.848166, 0.501049, 32.2863)
+levelpath = "res://scenes/levels/test_level_4.tscn"
+
 [node name="spring" parent="Objects" instance=ExtResource("9_p7xjg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.992574, -0.985205, 13.473)
 

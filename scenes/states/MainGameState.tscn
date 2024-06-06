@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmdi4mdm7qr5o"]
+[gd_scene load_steps=11 format=3 uid="uid://dmdi4mdm7qr5o"]
 
 [ext_resource type="Script" path="res://scripts/classes/Playstate.gd" id="1_kcow4"]
 [ext_resource type="PackedScene" uid="uid://dw40p48fqbsl2" path="res://scenes/player_sorakai.tscn" id="2_ntxhb"]
 [ext_resource type="PackedScene" uid="uid://p3tbs46mi8p3" path="res://scenes/levels/test_level.tscn" id="3_bv8ma"]
+[ext_resource type="Texture2D" uid="uid://bntjxa37b77sc" path="res://assets/images/loganchara_loganface1.png" id="4_g7wdt"]
+[ext_resource type="Texture2D" uid="uid://smwljtj7ysub" path="res://assets/images/loganface2.png" id="5_mj2np"]
 [ext_resource type="PackedScene" uid="uid://bexrd87t846hr" path="res://scenes/pause_menu.tscn" id="5_rp537"]
 [ext_resource type="PackedScene" uid="uid://douw2p6ggl56h" path="res://scenes/dialog_box.tscn" id="6_ne7gu"]
 [ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="6_qgbhh"]
@@ -20,6 +22,20 @@ first_level = ExtResource("3_bv8ma")
 
 [node name="Sorakai" parent="." instance=ExtResource("2_ntxhb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+controlOn = true
+cameraOn = true
+disabledCamera = false
+baseSPEED = 5.0
+_ACCEL = 25.0
+_DEACCEL = 30.0
+JUMPHEIGHT = 2.5
+JUMPPEAKTIME = 0.5
+JUMPDESCENTTIME = 0.35
+dying = true
+faces_textures = {
+"blink": ExtResource("5_mj2np"),
+"normal": ExtResource("4_g7wdt")
+}
 
 [node name="Smoother" type="Node" parent="."]
 script = ExtResource("6_qgbhh")

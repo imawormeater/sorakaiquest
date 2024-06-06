@@ -54,7 +54,7 @@ const WRtilJump := 0.05
 
 var jumpTimer := 0.0
 #STATE SHIT
-enum States {Free, Wall, Hang, WallRun, Roll}
+enum States {Free, Wall, Hang, WallRun, Roll, Noclip}
 var state:= States.Free
 
 var wallRideCast:RayCast3D 
@@ -128,6 +128,9 @@ func _ready() -> void:
 	dying = false
 
 func _process(delta: float) -> void:#Camera shit
+	if OS.is_debug_build():
+			if Input.is_action_just_pressed("debug1") and state != States.Noclip:
+				state = States.Noclip
 	if disabledCamera: return
 	
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
@@ -223,6 +226,8 @@ func hangInit() -> void:
 			var frontPosition:Vector3 = hang_frontCast.get_collision_point()
 			visual.look_at(global_position - frontNORMAL)
 			global_position = Vector3(frontPosition.x,topPosition.y - 0.5,frontPosition.z) + (visual.global_basis.z * 0.45)
+			if not hang_topCast.is_colliding() or not hang_frontCast.is_colliding():
+				return
 			velocity = Vector3.ZERO
 			SPEED = baseSPEED
 			state = States.Hang
@@ -375,7 +380,7 @@ func _physics_process(delta: float) -> void:
 		
 		if onFloor != is_on_floor() and velocity.y < 0:#was on floor but now not
 			coyotejump = coyotejumpInit
-		if pressedJump and not is_on_floor() and jumpTimer > WRtilJump:
+		if jumpbuffer > 0 and not is_on_floor() and jumpTimer > WRtilJump:
 			wallRunInit(Vector2(velocity.x,velocity.z).length())
 		wallInit(delta)
 		hangInit()
@@ -446,7 +451,7 @@ func _physics_process(delta: float) -> void:
 		
 		visual.look_at(global_position + foward)
 		move_and_slide()
-		if not wallRideCast.is_colliding() or is_on_floor() or velocityMag < 1 or foward.length() == 0:
+		if not wallRideCast.is_colliding() or is_on_floor() or velocityMag < 1 or foward.length() == 0 or pressedAction:
 			state = States.Free
 			wallrideDebounce = wallrideInit
 		if not pressingJump:
@@ -455,7 +460,18 @@ func _physics_process(delta: float) -> void:
 			forcedHoldJump = true
 			jump()
 			velocity += (wallNormal*5)
-			baseDEACEL = 0.4
+			baseDEACEL = 0.45
+		
+	if state == States.Noclip:
+		var direction:Vector3 = (pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() * 10
+		global_position += direction * delta
+		if pressingJump:
+			global_position.y += 10 * delta
+		if pressedAction:
+			global_position.y -= 10 * delta
+		if Input.is_action_just_pressed('debug2'):
+			velocity = Vector3.ZERO
+			state = States.Free
 
 func _input(event) -> void:
 	if event is InputEventMouseMotion:
