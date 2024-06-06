@@ -47,7 +47,8 @@ var griptimer := -1.0
 
 var wallconcetioncount := 0.0
 
-var wallrideConnection := 0.0
+var wallrideDebounce := -1.0
+const wallrideInit := 0.2
 var wallrideTimer := 0.0
 const WRtilJump := 0.05
 
@@ -58,7 +59,7 @@ var state:= States.Free
 
 var wallRideCast:RayCast3D 
 var wallRideMag:float
-
+var forcedHoldJump := false
 #OTHER SHIT
 var springCombo := 0
 @export var dying := true
@@ -170,9 +171,13 @@ func do_timers(delta:float) -> void: ##Does the Timers
 		exitwallclimb -= delta
 	if griptimer > 0:
 		griptimer -= delta
+	if wallrideDebounce > 0:
+		wallrideDebounce -= delta
 
 func getGravity(_pressingJump:bool) -> float:
-	return jump_grav if velocity.y > 0.0 and _pressingJump else fall_grav
+	if velocity.y < 0.0:
+		forcedHoldJump = false
+	return jump_grav if (velocity.y > 0.0 and _pressingJump) or forcedHoldJump else fall_grav
 
 #JUMP
 func jump() -> void:
@@ -227,6 +232,7 @@ func hangInit() -> void:
 			#print("Change State Grab")
 			
 func wallRunInit(veloMag:float) -> void:
+	if wallrideDebounce >= 0: return
 	if leftCast.is_colliding(): wallRideCast = leftCast
 	elif rightCast.is_colliding(): wallRideCast = rightCast
 	else: return
@@ -241,7 +247,8 @@ func wallRunInit(veloMag:float) -> void:
 	if (-visual.global_basis.z - foward).length() > (-visual.global_basis.z - -foward).length():
 		foward = -foward
 	velocity = Vector3(foward.x,velocity.y,foward.z)
-	#velocity.y += 1
+
+	wallrideDebounce = -1.
 	sfx.play_sound("Wallride")
 #
 func get_pitch(normal:Vector3) -> float:
@@ -441,8 +448,11 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		if not wallRideCast.is_colliding() or is_on_floor() or velocityMag < 1 or foward.length() == 0:
 			state = States.Free
-		if pressedJump and wallrideTimer > WRtilJump:
+			wallrideDebounce = wallrideInit
+		if not pressingJump:
 			state = States.Free
+			wallrideDebounce = wallrideInit
+			forcedHoldJump = true
 			jump()
 			velocity += (wallNormal*5)
 			baseDEACEL = 0.4
