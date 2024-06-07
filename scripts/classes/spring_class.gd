@@ -38,7 +38,7 @@ func onBounce(body:Node3D) -> void:
 	body.velocity.y = bouncePower
 	body.jumpAnimation += 1.0
 	if body.jumpAnimation >= 3.0 or body.jumpAnimation == -1.0:
-		body.jumpAnimation = -2.0
+		body.jumpAnimation = -15.0
 	
 	if body.state == 0:
 		body.anim_st.travel("Jump")
