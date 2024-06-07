@@ -38,7 +38,7 @@ alignment = 1
 
 [node name="Master" type="HSlider" parent="AudioSliders"]
 layout_mode = 2
-min_value = -80.0
+min_value = -35.0
 max_value = 6.0
 
 [node name="Label" type="Label" parent="AudioSliders/Master"]
@@ -61,7 +61,7 @@ horizontal_alignment = 1
 
 [node name="Music" type="HSlider" parent="AudioSliders"]
 layout_mode = 2
-min_value = -80.0
+min_value = -35.0
 max_value = 0.0
 
 [node name="Label" type="Label" parent="AudioSliders/Music"]
@@ -84,7 +84,7 @@ horizontal_alignment = 1
 
 [node name="SFX" type="HSlider" parent="AudioSliders"]
 layout_mode = 2
-min_value = -80.0
+min_value = -35.0
 max_value = 0.0
 
 [node name="Label" type="Label" parent="AudioSliders/SFX"]
@@ -107,7 +107,7 @@ horizontal_alignment = 1
 
 [node name="Ambience" type="HSlider" parent="AudioSliders"]
 layout_mode = 2
-min_value = -80.0
+min_value = -35.0
 max_value = 0.0
 
 [node name="Label" type="Label" parent="AudioSliders/Ambience"]

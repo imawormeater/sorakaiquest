@@ -74,6 +74,8 @@ func init_sliders() -> void:
 			resolution.selected = resolution.item_count -1 
 	
 func update_audio_slider(value,index) -> void:
+	if value == -35:
+		value = -80
 	AudioServer.set_bus_volume_db(index,value)
 	GameManager.settings_set_audiovolume()
 	checktosave()
