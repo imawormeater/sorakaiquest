@@ -62,7 +62,7 @@ var wallRideMag:float
 var forcedHoldJump := false
 #OTHER SHIT
 var springCombo := 0
-var jumpAnimation := 0.0
+var jumpAnimation := 1.0
 @export var dying := true
 #
 
@@ -101,10 +101,9 @@ func setCorrectJumpVariables() -> void:
 	jump_velo = ((2.0 * JUMPHEIGHT) / JUMPPEAKTIME)
 	jump_grav = ((-2.0 * JUMPHEIGHT) / (JUMPPEAKTIME * JUMPPEAKTIME))
 	fall_grav= ((-2.0 * JUMPHEIGHT) / (JUMPDESCENTTIME* JUMPDESCENTTIME))
-	
-	#print("JUMP VELOCITY:",jump_velo)
-	#print("JUMP GRAVITY:",jump_grav)
-	#print("FALL GRAVITY:",fall_grav)
+
+func setJumpAnimation() -> void:
+	jumpAnimation = absf(fmod(jumpAnimation,2.0))
 
 func changeFace(whichface:String) -> void:
 	var currentface:CompressedTexture2D = faces_textures[whichface]
@@ -195,6 +194,8 @@ func jump() -> void:
 	anim_st.travel("Jump")
 	sfx.play_sound("Jump")
 	jumpAnimation += 1.0
+	if jumpAnimation >= 3.0:
+		jumpAnimation = -5.0
 	jumpTimer = 0.0
 	
 #CHECKS FOR HANG STATE
@@ -234,6 +235,7 @@ func hangInit() -> void:
 			SPEED = baseSPEED
 			state = States.Hang
 			baseDEACEL = 1.0
+			jumpAnimation = 1.0
 			anim_st.travel("Grab")
 			sfx.play_sound("Grab")
 			#print("Change State Grab")
@@ -359,16 +361,17 @@ func _physics_process(delta: float) -> void:
 		if pressedJump:
 			jumpbuffer = jumpbufferInit
 			if coyotejump > 0:
+				setJumpAnimation()
 				jump()
 		if onFloor:
-			jumpAnimation = fmod(jumpAnimation,2.0)
+			setJumpAnimation()
 			baseDEACEL = 1.0
 			jumpTimer = 0.0
 			if jumpbuffer > 0:
 				jump()
 		else:
 			jumpTimer += delta
-		
+		print(jumpAnimation)
 		var _pivot_rotation:float = pivot.rotation.x
 		pivot.rotation.x = 0
 		var direction:Vector3 = (pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -408,7 +411,6 @@ func _physics_process(delta: float) -> void:
 			visual.look_at(global_position + facecastnormal)
 			state = States.Free
 			baseDEACEL = 0.5
-			jumpAnimation = -1.0
 			jump()
 			velocity.x = facecastnormal.x * 7
 			velocity.z = facecastnormal.z * 7
