@@ -408,6 +408,7 @@ func _physics_process(delta: float) -> void:
 			visual.look_at(global_position + facecastnormal)
 			state = States.Free
 			baseDEACEL = 0.5
+			jumpAnimation = -1.0
 			jump()
 			velocity.x = facecastnormal.x * 7
 			velocity.z = facecastnormal.z * 7
