@@ -194,8 +194,8 @@ func jump() -> void:
 	anim_st.travel("Jump")
 	sfx.play_sound("Jump")
 	jumpAnimation += 1.0
-	if jumpAnimation >= 3.0:
-		jumpAnimation = -555.0
+	#if jumpAnimation >= 3.0:
+		#jumpAnimation = -555.0
 	jumpTimer = 0.0
 	
 #CHECKS FOR HANG STATE
