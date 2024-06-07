@@ -1,12 +1,52 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmlr6c778pobt"]
+[gd_scene load_steps=14 format=3 uid="uid://bmlr6c778pobt"]
 
 [ext_resource type="Script" path="res://scripts/classes/spring_class.gd" id="1_wgym6"]
 [ext_resource type="Resource" uid="uid://c8mcrj031ixon" path="res://objects/resources/balloonSpringResLong.tres" id="2_csb5q"]
+[ext_resource type="PackedScene" uid="uid://bpkwccrgayy5a" path="res://assets/meshes/balloon.glb" id="3_632my"]
 [ext_resource type="AudioStream" uid="uid://cqn2jpgblcpf" path="res://assets/sounds/balloon_pop.mp3" id="3_tkc81"]
+[ext_resource type="Shader" path="res://assets/materials/celshaded.gdshader" id="4_wlrtw"]
+[ext_resource type="Texture2D" uid="uid://oq23ffi88t2f" path="res://assets/images/ExampleDitherRamp.png" id="5_u7q3p"]
+
+[sub_resource type="Gradient" id="Gradient_dp6ns"]
+colors = PackedColorArray(0.61676, 0.058232, 0.211483, 1, 0.615686, 0.0588235, 0.211765, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e2k4r"]
+gradient = SubResource("Gradient_dp6ns")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_frt6s"]
+render_priority = 0
+shader = ExtResource("4_wlrtw")
+shader_parameter/UseFade = true
+shader_parameter/MinDistance = 0.2
+shader_parameter/MaxDistance = 6.0
+shader_parameter/dithersize = 6
+shader_parameter/ditherpattern = ExtResource("5_u7q3p")
+shader_parameter/ToonRampOffset = 0.393
+shader_parameter/ToonRampSmoothness = 0.133
+shader_parameter/ToonRampTinting = Color(0.821788, 0.821789, 0.821789, 1)
+shader_parameter/RimPower = 3.642
+shader_parameter/RimCutOff = 0.0
+shader_parameter/RimSmoothness = 0.04
+shader_parameter/RimLightBrightness = 0.0
+shader_parameter/SubSurfDistortion = 0.0
+shader_parameter/SubSurfTint = null
+shader_parameter/SubSurfBrightness = 0.0
+shader_parameter/SubSurfCutoff = 0.0
+shader_parameter/SubSurfSmoothness = 0.0
+shader_parameter/Texture = SubResource("GradientTexture1D_e2k4r")
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mww2m"]
+animation = &"ArmatureAction"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jv0cn"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ch6cw"]
+states/Idle/node = SubResource("AnimationNodeAnimation_mww2m")
+states/Idle/position = Vector2(434, 90)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_jv0cn")]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w6e00"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_3634b"]
 
 [node name="balloon" type="Node3D" node_paths=PackedStringArray("bounceSound", "area", "debounce")]
 script = ExtResource("1_wgym6")
@@ -15,14 +55,30 @@ area = NodePath("Area3D")
 debounce = NodePath("Debounce")
 resource = ExtResource("2_csb5q")
 
+[node name="balloonmesh" parent="." instance=ExtResource("3_632my")]
+transform = Transform3D(0.388899, 0, 0, 0, 0.388899, 0, 0, 0, 0.388899, 0, -0.618945, 0)
+
+[node name="Skeleton3D" parent="balloonmesh/Armature" index="0"]
+bones/0/position = Vector3(0, -0.157083, 0)
+bones/0/scale = Vector3(0.986217, 0.986217, 0.986217)
+bones/2/rotation = Quaternion(-0.00358702, 2.07562e-15, 5.08109e-09, 0.999994)
+bones/2/scale = Vector3(0.989883, 0.989883, 0.989883)
+bones/3/rotation = Quaternion(-1.45438e-25, -7.10543e-15, 6.10013e-19, 1)
+bones/3/scale = Vector3(1.04078, 1.04078, 1.04078)
+
+[node name="Cylinder" parent="balloonmesh/Armature/Skeleton3D" index="0"]
+material_override = SubResource("ShaderMaterial_frt6s")
+
+[node name="AnimationTree" type="AnimationTree" parent="balloonmesh"]
+tree_root = SubResource("AnimationNodeStateMachine_ch6cw")
+anim_player = NodePath("../AnimationPlayer")
+
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1.32157, 0, 0, 0, 1.32157, 0, 0, 0, 1.32157, 0, 0, 0)
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_w6e00")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_3634b")
 
 [node name="Spring" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_tkc81")
@@ -31,3 +87,5 @@ bus = &"SFX"
 
 [node name="Debounce" type="Timer" parent="."]
 one_shot = true
+
+[editable path="balloonmesh"]
