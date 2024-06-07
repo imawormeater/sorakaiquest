@@ -27,6 +27,8 @@ func onBounce(body:Node3D) -> void:
 	if not body.is_in_group("Player"): return
 	
 	body.springCombo += 1
+	if body.springCombo == 1:
+		body.jumpAnimation = 0.0
 	body.springCombo = clampi(body.springCombo,0,6)
 	body.baseDEACEL = 1.0
 	
@@ -34,6 +36,12 @@ func onBounce(body:Node3D) -> void:
 	debounce.start()
 	bounceSound.play()
 	body.velocity.y = bouncePower
+	body.jumpAnimation += 1.0
+	if body.jumpAnimation >= 3.0 or body.jumpAnimation == -1.0:
+		body.jumpAnimation = -2.0
+	
+	if body.state == 0:
+		body.anim_st.travel("Jump")
 	
 	bounceSound.pitch_scale = float(body.springCombo)**0.1
 	resource.on_bounce(self,area,body)

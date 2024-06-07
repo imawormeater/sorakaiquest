@@ -62,6 +62,7 @@ var wallRideMag:float
 var forcedHoldJump := false
 #OTHER SHIT
 var springCombo := 0
+var jumpAnimation := 0.0
 @export var dying := true
 #
 
@@ -193,6 +194,7 @@ func jump() -> void:
 	visual.rotation.z = 0
 	anim_st.travel("Jump")
 	sfx.play_sound("Jump")
+	jumpAnimation += 1.0
 	jumpTimer = 0.0
 	
 #CHECKS FOR HANG STATE
@@ -238,7 +240,9 @@ func hangInit() -> void:
 			
 func wallRunInit(veloMag:float) -> void:
 	if wallrideDebounce >= 0: return
-	if leftCast.is_colliding(): wallRideCast = leftCast
+	if leftCast.is_colliding(): 
+		wallRideCast = leftCast
+		$Visual/loganchara/Armature/Skeleton3D/logan.scale = Vector3(1,1,-1)
 	elif rightCast.is_colliding(): wallRideCast = rightCast
 	else: return
 	if veloMag < 1: return
@@ -255,6 +259,7 @@ func wallRunInit(veloMag:float) -> void:
 
 	wallrideDebounce = -1.
 	sfx.play_sound("Wallride")
+	anim_st.travel("Wallrun")
 #
 func get_pitch(normal:Vector3) -> float:
 	return asin(normal.cross(visual.global_basis.x).y)
@@ -268,11 +273,13 @@ func set_animations(onfloor:bool,_state:int,veloMag:float) -> void:
 	animationtree["parameters/conditions/onFloor"] = onfloor
 	animationtree["parameters/conditions/Fall"] = not onfloor
 	animationtree["parameters/conditions/OnWall"] = false
+	animationtree["parameters/Jump/BlendSpace1D/blend_position"] = (jumpAnimation - 1.)
 	
 	if _state == States.Wall:
 		animationtree["parameters/conditions/OnWall"] = true
 	
 	animationtree["parameters/IdleWalk/TimeScale/scale"] = sqrt(_velocity)
+	animationtree["parameters/Wallrun/TimeScale/scale"] = sqrt(_velocity)
 	if animationtree["parameters/IdleWalk/animation/blend_position"].x < 0.1:
 		animationtree["parameters/IdleWalk/TimeScale/scale"] = 1.0
 	
@@ -348,11 +355,13 @@ func _physics_process(delta: float) -> void:
 		
 		velocity.y += getGravity(pressingJump) * delta
 		character.rotation.z = lerp_angle(character.rotation.z,pitch/2,_lerp_speed*0.2)
+
 		if pressedJump:
 			jumpbuffer = jumpbufferInit
 			if coyotejump > 0:
 				jump()
 		if onFloor:
+			jumpAnimation = fmod(jumpAnimation,2.0)
 			baseDEACEL = 1.0
 			jumpTimer = 0.0
 			if jumpbuffer > 0:
@@ -452,9 +461,12 @@ func _physics_process(delta: float) -> void:
 		visual.look_at(global_position + foward)
 		move_and_slide()
 		if not wallRideCast.is_colliding() or is_on_floor() or velocityMag < 1 or foward.length() == 0 or pressedAction:
+			$Visual/loganchara/Armature/Skeleton3D/logan.scale = Vector3.ONE
 			state = States.Free
 			wallrideDebounce = wallrideInit
+			anim_st.travel("Fall")
 		if not pressingJump:
+			$Visual/loganchara/Armature/Skeleton3D/logan.scale = Vector3.ONE
 			state = States.Free
 			wallrideDebounce = wallrideInit
 			forcedHoldJump = true
