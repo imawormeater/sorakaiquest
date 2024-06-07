@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg2f6bo121tjx"]
+[gd_scene load_steps=7 format=3 uid="uid://bg2f6bo121tjx"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_bldlg"]
+[ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://objects/basicassplatform.tscn" id="2_uv73p"]
 [ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="8_0ruv0"]
 [ext_resource type="AudioStream" uid="uid://cu7ty4ay2nlw5" path="res://assets/sounds/mario64ambience.ogg" id="11_iccgs"]
 
@@ -19,13 +20,21 @@ Logan_Spawn = NodePath("loganSpawn")
 [node name="Platforms" type="Node3D" parent="."]
 
 [node name="platform" type="StaticBody3D" parent="Platforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platforms/platform"]
 shape = SubResource("BoxShape3D_05ceg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Platforms/platform"]
 mesh = SubResource("BoxMesh_yuqvu")
+
+[node name="JumpHeight" parent="Platforms" instance=ExtResource("2_uv73p")]
+transform = Transform3D(1, 0, 0, 0, 2.5, 0, 0, 0, 1, 7, 1.75, 0)
+
+[node name="HangHeight" parent="Platforms" instance=ExtResource("2_uv73p")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 6, 2.5, 0)
+
+[node name="WallAndHangHeight" parent="Platforms" instance=ExtResource("2_uv73p")]
+transform = Transform3D(1, 0, 0, 0, 5.2, 0, 0, 0, 1, 5, 3.1, 0)
 
 [node name="Objects" type="Node3D" parent="."]
 
