@@ -241,6 +241,7 @@ func hangInit() -> void:
 			#print("Change State Grab")
 			
 func wallRunInit(veloMag:float) -> void:
+	character_mesh.rotation.y = 0
 	if wallrideDebounce >= 0: return
 	if veloMag < 1: return
 	

@@ -85,15 +85,6 @@ text = "$"
 offset_right = 640.0
 offset_bottom = 480.0
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(640, 480)
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-cull_mask = 524288
-
 [node name="dollar" type="Sprite2D" parent="SubViewportContainer"]
 visible = false
 position = Vector2(348, 222)

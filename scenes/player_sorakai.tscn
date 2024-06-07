@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dw40p48fqbsl2"]
+[gd_scene load_steps=55 format=3 uid="uid://dw40p48fqbsl2"]
 
 [ext_resource type="Script" path="res://scripts/player_sorakai.gd" id="1_6cmhp"]
 [ext_resource type="ArrayMesh" uid="uid://csjqnycfeybq" path="res://assets/meshes/smoke.obj" id="3_50lya"]
@@ -165,6 +165,14 @@ animation = &"OnWall"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lnhmh"]
 animation = &"OnWallStart"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j5ary"]
+animation = &"Roll"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_78ytn"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_j5ary")
+nodes/Animation/position = Vector2(68, 162)
+node_connections = [&"output", 0, &"Animation"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_46f3s"]
 animation = &"WallRun"
 
@@ -263,11 +271,13 @@ states/OnWall/node = SubResource("AnimationNodeAnimation_dae5x")
 states/OnWall/position = Vector2(462, 317)
 states/OnWallStart/node = SubResource("AnimationNodeAnimation_lnhmh")
 states/OnWallStart/position = Vector2(594, 317)
+states/Roll/node = SubResource("AnimationNodeBlendTree_78ytn")
+states/Roll/position = Vector2(154, 242.265)
 states/Start/position = Vector2(378, -32)
 states/Wallrun/node = SubResource("AnimationNodeBlendTree_21jag")
 states/Wallrun/position = Vector2(797, 284.265)
 transitions = ["Grab", "GrabIdle", SubResource("AnimationNodeStateMachineTransition_llqxh"), "Fall", "Grab", SubResource("AnimationNodeStateMachineTransition_j6jby"), "OnWall", "Land", SubResource("AnimationNodeStateMachineTransition_7qlsl"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_d3f7f"), "Start", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_xwwbw"), "IdleWalk", "Fall", SubResource("AnimationNodeStateMachineTransition_1gpea"), "Land", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_kvlu0"), "OnWallStart", "OnWall", SubResource("AnimationNodeStateMachineTransition_5md5v"), "Fall", "OnWallStart", SubResource("AnimationNodeStateMachineTransition_3tvi2"), "OnWallStart", "Fall", SubResource("AnimationNodeStateMachineTransition_hiovl"), "OnWallStart", "Land", SubResource("AnimationNodeStateMachineTransition_vpgol"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_nlthy")]
-graph_offset = Vector2(-152, 12.2649)
+graph_offset = Vector2(-53, -97.7351)
 
 [node name="Sorakai" type="CharacterBody3D" node_paths=PackedStringArray("camera") groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -333,45 +343,38 @@ draw_pass_1 = ExtResource("3_50lya")
 [node name="loganchara" parent="Visual" instance=ExtResource("4_a3uk4")]
 transform = Transform3D(0.000715101, 0, 0.0831059, 0, 0.083109, 0, -0.0831059, 0, 0.000715101, 0, -0.744453, -0.257608)
 
-[node name="FollowPoint" type="Node3D" parent="Visual/loganchara"]
-transform = Transform3D(12.0324, 0, 4.47035e-08, 0, 12.0324, 0, -4.47035e-08, 0, 12.0324, 0, 8.42923, 0)
-
-[node name="Armature" parent="Visual/loganchara" index="1"]
-transform = Transform3D(3.72083, 0, 0, 0, 3.39052, 0, 0, 0, 3.72083, -2.62473, 12.0173, 0.0415326)
-
 [node name="Skeleton3D" parent="Visual/loganchara/Armature" index="0"]
-bones/0/position = Vector3(-0.0543279, -1.47881, -0.304354)
-bones/0/rotation = Quaternion(0.991475, -0.0655005, -0.110785, -0.0203539)
-bones/0/scale = Vector3(1.00013, 1, 1.00193)
-bones/1/rotation = Quaternion(0.0183384, 0.111162, 0.273914, 0.955133)
-bones/2/rotation = Quaternion(0.342051, 0.618928, -0.341994, 0.618845)
+bones/0/position = Vector3(-0.0543279, -1.46756, -0.304354)
+bones/0/rotation = Quaternion(0.993636, 0.000740467, -0.111896, -0.0129232)
+bones/0/scale = Vector3(1.00272, 1.00004, 1.05104)
+bones/1/rotation = Quaternion(-0.000911299, 0.112654, 0.106811, 0.987876)
+bones/2/rotation = Quaternion(0.536409, 0.460725, -0.536408, 0.460722)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/position = Vector3(0.143431, -1.6587, 0.330273)
-bones/3/rotation = Quaternion(0.561902, 0.819499, -0.0739989, 0.0849224)
-bones/3/scale = Vector3(1.00013, 1, 1.00193)
-bones/4/rotation = Quaternion(0.0787716, 0.080526, 0.772192, 0.625325)
+bones/3/position = Vector3(-0.045908, -1.46756, 0.337209)
+bones/3/rotation = Quaternion(0.992062, 0.0559134, -0.112441, -0.00669003)
+bones/3/scale = Vector3(1.00272, 1.00004, 1.05104)
+bones/4/rotation = Quaternion(0.00580955, 0.11249, 0.16549, 0.979758)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.458754, 0.538991, -0.457971, 0.537862)
+bones/5/rotation = Quaternion(0.538099, 0.458747, -0.538099, 0.458747)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/position = Vector3(-0.0781445, -1.52537, -0.00108111)
+bones/6/position = Vector3(-0.0781445, -1.51944, -0.00108111)
 bones/6/rotation = Quaternion(9.31131e-10, 1.19206e-07, -0.00781089, 0.999969)
-bones/6/scale = Vector3(1.00001, 1.03634, 1.002)
-bones/7/rotation = Quaternion(-0.00324392, -0.0556019, -0.0721821, 0.995835)
-bones/8/rotation = Quaternion(-0.0115529, 0.0886872, 0.0589477, 0.994247)
+bones/6/scale = Vector3(1, 1, 1.05367)
+bones/7/rotation = Quaternion(-0.00246634, -0.0556365, -0.0580117, 0.996761)
+bones/8/position = Vector3(-0.0239583, 0.602603, 0.00283578)
+bones/8/rotation = Quaternion(0.00284299, 0.0556632, 0.064706, 0.996347)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/position = Vector3(-0.103089, 1.04786, 1.1251)
-bones/9/rotation = Quaternion(-0.0100292, 0.603627, 0.261019, -0.753262)
-bones/9/scale = Vector3(1.12455, 1.12455, 1.12455)
-bones/10/rotation = Quaternion(-0.0109736, 0.829423, 0.26455, 0.491885)
+bones/9/rotation = Quaternion(0.0655608, 0.422748, 0.900486, 0.0781703)
+bones/10/rotation = Quaternion(-0.112549, 0.0980654, 0.210984, 0.966024)
 bones/11/rotation = Quaternion(-0.100787, 0.96615, 0.153133, 0.181509)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(0.0181025, 0.588216, 0.807416, -0.0418797)
 bones/13/rotation = Quaternion(0.20999, 0.781056, 0.23008, 0.54122)
 bones/13/scale = Vector3(1, 1, 1)
-bones/14/rotation = Quaternion(0.51128, -0.55522, 0.636179, 0.160001)
-bones/15/rotation = Quaternion(-0.171169, 0.842087, 0.510405, 0.032826)
+bones/14/rotation = Quaternion(0.721878, -0.377987, 0.540706, -0.20894)
+bones/15/rotation = Quaternion(0.167004, -0.0808254, -0.102901, 0.977235)
 bones/16/rotation = Quaternion(-0.179544, 0.712432, 0.0877477, -0.672685)
-bones/17/rotation = Quaternion(-0.761307, -0.00813958, 0.273992, 0.5876)
+bones/17/rotation = Quaternion(-0.761307, -0.00813962, 0.273992, 0.5876)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/rotation = Quaternion(-0.320628, 0.54518, 0.0172301, 0.77439)
 bones/18/scale = Vector3(1, 1, 1)
@@ -381,8 +384,11 @@ transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 0, 1.86265e-09, 0, 1, 0, 0, 0)
 surface_material_override/0 = SubResource("ShaderMaterial_ouxd8")
 surface_material_override/1 = SubResource("ShaderMaterial_2nnn4")
 
-[node name="AnimationPlayer" parent="Visual/loganchara" index="2"]
+[node name="AnimationPlayer" parent="Visual/loganchara" index="1"]
 deterministic = true
+
+[node name="FollowPoint" type="Node3D" parent="Visual/loganchara"]
+transform = Transform3D(12.0324, 0, 4.47035e-08, 0, 12.0324, 0, -4.47035e-08, 0, 12.0324, 0, 8.42923, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="Visual/loganchara"]
 tree_root = SubResource("AnimationNodeStateMachine_wt1rb")
