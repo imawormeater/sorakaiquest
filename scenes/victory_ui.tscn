@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpha7olg0hps6"]
+
+[ext_resource type="Shader" path="res://assets/materials/ursc/canvas_item/sepia.gdshader" id="1_qoqcl"]
+[ext_resource type="Texture2D" uid="uid://dbtg8xvcugkey" path="res://assets/images/white.png" id="2_vp6cp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrnbs"]
+shader = ExtResource("1_qoqcl")
+shader_parameter/base = Color(0.941997, 0.648718, 0.359755, 1)
+
+[node name="Results" type="CanvasLayer"]
+
+[node name="Color" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_xrnbs")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vp6cp")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 637.0
+offset_bottom = 480.0
+text = "$00015.0
++TIME 15.50
+"

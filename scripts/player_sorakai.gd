@@ -243,6 +243,7 @@ func hangInit() -> void:
 func wallRunInit(veloMag:float) -> void:
 	character_mesh.rotation.y = 0
 	character_mesh.scale = Vector3.ONE
+	
 	if wallrideDebounce >= 0: return
 	if veloMag < 1: return
 	

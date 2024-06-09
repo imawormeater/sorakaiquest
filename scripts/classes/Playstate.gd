@@ -4,6 +4,7 @@ signal new_level_loaded
 signal game_paused
 signal receiveMoney
 signal loganGetMoney
+signal albumCollected
 
 @export var Sorakai:CharacterBody3D
 @export var MusicStream:AudioStreamPlayer
@@ -21,13 +22,14 @@ var bankMoney := 0.0
 
 func _ready() -> void:
 	new_level_loaded.connect(set_level_stuff)
+	albumCollected.connect(on_album_collect)
 	for i in get_children():
 		if i is Level:
 			print("Level is already in MainGameState")
 			currentLevel = i
 			set_level_stuff()
 			return
-			
+	
 	init_level(first_level)
 
 func set_level_stuff()->void:
@@ -83,6 +85,9 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_page_up"):
 		Dialog.play_dialog([])
 
+func teleport_player(point:Vector3) -> void:
+	Sorakai.global_position = point
+	smoother.reset_node(Sorakai)
 
 func _on_receive_money(dollar:moneyCollectable) -> void:
 	var dictInfo := {
@@ -94,3 +99,6 @@ func _on_receive_money(dollar:moneyCollectable) -> void:
 	bankMoney += dictInfo["value"]
 	dollar.queue_free()
 	loganGetMoney.emit(dictInfo)
+
+func on_album_collect(albumCollectable:Node3D) -> void:
+	pass
