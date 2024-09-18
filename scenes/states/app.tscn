@@ -150,6 +150,7 @@ libraries = {
 
 [node name="TransitionSound" type="AudioStreamPlayer" parent="Main/Transitions"]
 bus = &"SFX"
+playback_type = 1
 
 [node name="FPS" type="Label" parent="Main"]
 process_mode = 3

@@ -12,15 +12,6 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik824"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcrxk"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-expand_margin_left = 4.0
-expand_margin_right = 4.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjlll"]
 bg_color = Color(0.341176, 0.784314, 0.858824, 1)
 corner_radius_top_left = 15
@@ -39,15 +30,24 @@ corner_radius_bottom_left = 15
 expand_margin_left = 4.0
 expand_margin_right = 4.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ln8ob"]
-bg_color = Color(0, 0, 0, 0.392157)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcrxk"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uy0r7"]
+bg_color = Color(1, 1, 1, 0.392157)
 corner_radius_top_left = 15
 corner_radius_top_right = 35
 corner_radius_bottom_right = 35
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uy0r7"]
-bg_color = Color(1, 1, 1, 0.392157)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ln8ob"]
+bg_color = Color(0, 0, 0, 0.392157)
 corner_radius_top_left = 15
 corner_radius_top_right = 35
 corner_radius_bottom_right = 35
@@ -121,39 +121,39 @@ theme_override_constants/separation = 0
 
 [node name="Start" type="Button" parent="Select/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.341176, 0.784314, 0.858824, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.341176, 0.784314, 0.858824, 1)
 theme_override_fonts/font = ExtResource("2_oe3yi")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_pcrxk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sjlll")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sjlll")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ds3cu")
-theme_override_styles/focus = SubResource("StyleBoxFlat_sjlll")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pcrxk")
 text = "New.Game
 "
 
 [node name="Continue" type="Button" parent="Select/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.341176, 0.784314, 0.858824, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.341176, 0.784314, 0.858824, 1)
 theme_override_fonts/font = ExtResource("2_oe3yi")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_pcrxk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sjlll")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sjlll")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ds3cu")
-theme_override_styles/focus = SubResource("StyleBoxFlat_sjlll")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pcrxk")
 text = "Continue"
 
 [node name="Options" type="Button" parent="Select/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.341176, 0.784314, 0.858824, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.341176, 0.784314, 0.858824, 1)
 theme_override_fonts/font = ExtResource("2_oe3yi")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_pcrxk")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sjlll")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sjlll")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ds3cu")
-theme_override_styles/focus = SubResource("StyleBoxFlat_sjlll")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pcrxk")
 text = "Options"
 
 [node name="Options" type="Control" parent="."]
@@ -198,8 +198,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_qgclh")
 theme_override_fonts/font = ExtResource("2_oe3yi")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ln8ob")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uy0r7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ln8ob")
 text = "Back"
 
 [node name="TitleMusic" type="AudioStreamPlayer" parent="."]
@@ -207,6 +207,7 @@ stream = ExtResource("3_jgwdx")
 pitch_scale = 0.95
 autoplay = true
 bus = &"Music"
+playback_type = 1
 
 [connection signal="pressed" from="Select/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Select/VBoxContainer/Continue" to="." method="_on_continue_pressed"]

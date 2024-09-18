@@ -530,4 +530,3 @@ func refresh() -> void:
 	
 	for lockedDoor in get_tree().get_nodes_in_group("LockedDoors"):
 		lockedDoor.lockedDoor_touched.connect(lockedDoor_touched)
-

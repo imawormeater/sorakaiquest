@@ -18,4 +18,3 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if not body.is_in_group("Player"): return
 	await get_tree().create_timer(timeToDie,false).timeout
 	GameManager.CurrentState.teleport_player(pointToBringBack.global_position)
-

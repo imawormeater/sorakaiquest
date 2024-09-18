@@ -120,11 +120,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4b5h7")
 theme_override_fonts/font = ExtResource("4_byj5r")
-theme_override_styles/normal = SubResource("StyleBoxFlat_1ljj4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1ljj4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_1ljj4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jnfa7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1ljj4")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_1ljj4")
-theme_override_styles/focus = SubResource("StyleBoxFlat_1ljj4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ljj4")
 text = "Restart"
 
 [node name="Exit" type="Button" parent="."]
@@ -141,11 +141,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4b5h7")
 theme_override_fonts/font = ExtResource("4_byj5r")
-theme_override_styles/normal = SubResource("StyleBoxFlat_kemgr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kemgr")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kemgr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_28jp4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_kemgr")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_kemgr")
-theme_override_styles/focus = SubResource("StyleBoxFlat_kemgr")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kemgr")
 text = "Exit to Hub"
 
 [node name="Resume" type="Button" parent="."]
@@ -162,11 +162,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4b5h7")
 theme_override_fonts/font = ExtResource("4_byj5r")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ur5wy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ur5wy")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ur5wy")
 theme_override_styles/hover = SubResource("StyleBoxFlat_tdkxe")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ur5wy")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_ur5wy")
-theme_override_styles/focus = SubResource("StyleBoxFlat_ur5wy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ur5wy")
 text = "Resume"
 
 [node name="Settings" parent="." instance=ExtResource("6_4b87o")]

@@ -207,5 +207,3 @@ func gamepause(paused:bool) -> void:
 		hide()
 	else:
 		visible = prevhidden
-
-

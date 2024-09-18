@@ -27,6 +27,7 @@ script = ExtResource("6_qgbhh")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 volume_db = -15.32
 bus = &"Music"
+playback_type = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_rp537")]
 layer = 128
