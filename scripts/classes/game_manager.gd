@@ -10,7 +10,7 @@ extends Node
 const SAVE_DIR = "user://save/"
 const SETTINGS_FILE_NAME = "settings.tres"#tres so people can edit their settings as they please :)
 
-@export var settings = GameSettings.new()
+@export var settings:GameSettings = GameSettings.new()
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST or what == NOTIFICATION_WM_GO_BACK_REQUEST:
@@ -33,8 +33,8 @@ func save_settings() -> void:
 	ResourceSaver.save(settings,SAVE_DIR + SETTINGS_FILE_NAME)
 	
 func update_settings() -> void:
-	for i in settings.audioVolume:
-		var value = settings.audioVolume[i]
+	for i:int in settings.audioVolume:
+		var value:float = settings.audioVolume[i]
 		AudioServer.set_bus_volume_db(i,value)
 		
 	Engine.max_fps = settings.maxfps
@@ -57,7 +57,7 @@ func settings_update_window_mode()->void:
 	DisplayServer.window_set_mode(settings.windowmode)
 	
 func settings_update_resolution()->void:
-	var oldres = DisplayServer.window_get_size()
+	var oldres := DisplayServer.window_get_size()
 	
 	if oldres == settings.resolution: return
 	
@@ -66,5 +66,5 @@ func settings_update_resolution()->void:
 	DisplayServer.window_set_position(DisplayServer.window_get_position() + difference)
 
 func settings_set_audiovolume() -> void:
-	for i in settings.audioVolume:
+	for i:int in settings.audioVolume:
 		settings.audioVolume[i] = AudioServer.get_bus_volume_db(i)

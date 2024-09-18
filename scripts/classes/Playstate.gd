@@ -2,7 +2,7 @@ extends Node3D
 
 signal new_level_loaded
 signal game_paused
-signal receiveMoney
+signal receiveMoney#IT IS USED LEAVE ME ALONE
 signal loganGetMoney
 signal albumCollected
 
@@ -50,7 +50,7 @@ func set_level_stuff()->void:
 	smoother.reset_node(Sorakai)
 
 func load_level(loaded_level_path:String) -> void:
-	var packedscene = load(loaded_level_path)
+	var packedscene := load(loaded_level_path)
 	if packedscene == null:
 		push_warning("Incorrect Level Path, Loading Cancelled.")
 		return
@@ -71,7 +71,7 @@ func init_level(loaded_level:PackedScene) -> void:
 
 func reload_player() -> void:
 	Sorakai.queue_free()
-	var newplayer = loganScene.instantiate()
+	var newplayer:Logan = loganScene.instantiate()
 	Sorakai = newplayer
 	add_child(newplayer)
 	new_level_loaded.emit()
@@ -102,3 +102,7 @@ func _on_receive_money(dollar:moneyCollectable) -> void:
 
 func on_album_collect(albumCollectable:Node3D) -> void:
 	pass
+
+
+func _on_game_paused(paused:bool) -> void:
+	pass # Replace with function body.

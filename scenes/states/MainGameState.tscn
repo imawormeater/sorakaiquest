@@ -48,4 +48,5 @@ mesh = SubResource("CylinderMesh_fr2oh")
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Node3D"]
 aabb = AABB(-0.001, -1, -0.00100095, 0.002, 2, 0.002)
 
+[connection signal="game_paused" from="." to="." method="_on_game_paused"]
 [connection signal="receiveMoney" from="." to="." method="_on_receive_money"]

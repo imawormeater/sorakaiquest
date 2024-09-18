@@ -43,13 +43,13 @@ func checktosave() -> void:
 		GameManager.save_settings()
 
 func init_sliders() -> void:
-	for i in audioSliders.get_children():
+	for i:Control in audioSliders.get_children():
 		if i is HSlider:
 			var index:int = AudioServer.get_bus_index(i.name)
 			if index != null:
 				audiosliders[index] = i
 	
-	for i in audiosliders:
+	for i:int in audiosliders:
 		var slider:HSlider = audiosliders[i]
 		slider.value = AudioServer.get_bus_volume_db(i)
 		slider.connect("value_changed",update_audio_slider.bind(i))
@@ -63,24 +63,24 @@ func init_sliders() -> void:
 	windowdrop.clear()
 	resolution.clear()
 	
-	for i in windowModes:
+	for i:String in windowModes:
 		windowdrop.add_item(i,windowdrop.item_count)
 		if windowModes[i] == GameManager.settings.windowmode:
 			windowdrop.selected = windowdrop.item_count -1 
 		
-	for i in resolutions:
+	for i:String in resolutions:
 		resolution.add_item(i,resolution.item_count)
 		if resolutions[i] == GameManager.settings.resolution:
 			resolution.selected = resolution.item_count -1 
 	
-func update_audio_slider(value,index) -> void:
+func update_audio_slider(value:int,index:int) -> void:
 	if value == -35:
 		value = -80
 	AudioServer.set_bus_volume_db(index,value)
 	GameManager.settings_set_audiovolume()
 	checktosave()
 
-func update_fps(value) -> void:
+func update_fps(value:int) -> void:
 	var stringValue := str(value)
 	if value > 300 or value == 0:
 		stringValue = "unlimited"
@@ -95,19 +95,19 @@ func _on_vsync_pressed() -> void:
 	checktosave()
 
 func _on_window_item_selected(index: int) -> void:
-	var shitberries = windowModes[windowdrop.get_item_text(index)]
+	var shitberries:DisplayServer.WindowMode = windowModes[windowdrop.get_item_text(index)]
 
 	if shitberries == null:
-		shitberries = 0
+		shitberries = DisplayServer.WINDOW_MODE_WINDOWED
 	GameManager.settings.windowmode = shitberries
 	GameManager.settings_update_window_mode()
 
 
 func _on_resolution_item_selected(index: int) -> void:
-	var shitberries = resolutions[resolution.get_item_text(index)]
+	var shitberries:Vector2i = resolutions[resolution.get_item_text(index)]
 
 	if shitberries == null:
-		shitberries = 0
+		shitberries = resolutions["640x480"]
 	GameManager.settings.resolution = shitberries
 	GameManager.settings_update_resolution()
 	GameManager.settings_update_window_mode()

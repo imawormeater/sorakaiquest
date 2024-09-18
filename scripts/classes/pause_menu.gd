@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var paused:bool = false
-var oldmousemode
+var oldmousemode:Input.MouseMode
 
 @onready var pauseSound := $PauseSound
 @onready var exitButton := $Exit
@@ -30,7 +30,7 @@ func refresh(playSound:bool = true) -> void:
 	if playSound:
 		pauseSound.play(0.06)
 	
-	var inhub = GameManager.CurrentState.inHub
+	var inhub:bool = GameManager.CurrentState.inHub
 	if inhub:
 		exitButton.text = "Main Menu"
 	else:

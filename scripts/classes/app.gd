@@ -17,7 +17,7 @@ func changeState(state:PackedScene) -> void:
 		currentState.queue_free()
 	
 	
-	var newstate = state.instantiate()
+	var newstate := state.instantiate()
 	print("Changed game state: ",newstate.name)
 	add_child(newstate)
 	

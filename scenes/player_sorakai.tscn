@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dw40p48fqbsl2"]
+[gd_scene load_steps=58 format=3 uid="uid://dw40p48fqbsl2"]
 
 [ext_resource type="Script" path="res://scripts/player_sorakai.gd" id="1_6cmhp"]
 [ext_resource type="ArrayMesh" uid="uid://csjqnycfeybq" path="res://assets/meshes/smoke.obj" id="3_50lya"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://assets/images/blob_shadow.png" id="6_b517e"]
 [ext_resource type="PackedScene" uid="uid://bdc2nui0hm8y8" path="res://scenes/player_sfx.tscn" id="7_0u647"]
 [ext_resource type="Texture2D" uid="uid://bntjxa37b77sc" path="res://assets/images/loganchara_loganface1.png" id="7_qrgm5"]
+[ext_resource type="Script" path="res://scripts/collection_hitbox.gd" id="11_dg1fv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_62ypt"]
 radius = 0.3
@@ -279,6 +280,13 @@ states/Wallrun/position = Vector2(797, 284.265)
 transitions = ["Grab", "GrabIdle", SubResource("AnimationNodeStateMachineTransition_llqxh"), "Fall", "Grab", SubResource("AnimationNodeStateMachineTransition_j6jby"), "OnWall", "Land", SubResource("AnimationNodeStateMachineTransition_7qlsl"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_d3f7f"), "Start", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_xwwbw"), "IdleWalk", "Fall", SubResource("AnimationNodeStateMachineTransition_1gpea"), "Land", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_kvlu0"), "OnWallStart", "OnWall", SubResource("AnimationNodeStateMachineTransition_5md5v"), "Fall", "OnWallStart", SubResource("AnimationNodeStateMachineTransition_3tvi2"), "OnWallStart", "Fall", SubResource("AnimationNodeStateMachineTransition_hiovl"), "OnWallStart", "Land", SubResource("AnimationNodeStateMachineTransition_vpgol"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_nlthy")]
 graph_offset = Vector2(-53, -97.7351)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_sfpou"]
+radius = 0.041885
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hni6q"]
+resource_local_to_scene = true
+radius = 1.0
+
 [node name="Sorakai" type="CharacterBody3D" node_paths=PackedStringArray("camera") groups=["Player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
@@ -288,7 +296,7 @@ script = ExtResource("1_6cmhp")
 camera = NodePath("Camera")
 _face_mat = "surface_material_override/1"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="PlayerHitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_62ypt")
 
 [node name="Pivot" type="Node3D" parent="."]
@@ -344,35 +352,35 @@ draw_pass_1 = ExtResource("3_50lya")
 transform = Transform3D(0.000715101, 0, 0.0831059, 0, 0.083109, 0, -0.0831059, 0, 0.000715101, 0, -0.744453, -0.257608)
 
 [node name="Skeleton3D" parent="Visual/loganchara/Armature" index="0"]
-bones/0/position = Vector3(-0.0543279, -1.47771, -0.304354)
-bones/0/rotation = Quaternion(0.993438, 0.0198455, -0.112123, -0.0107694)
+bones/0/position = Vector3(-0.0543279, -1.45764, -0.304354)
+bones/0/rotation = Quaternion(0.993468, -0.018253, -0.111628, -0.0150598)
 bones/0/scale = Vector3(1.00272, 1.00004, 1.05104)
-bones/1/rotation = Quaternion(0.0026573, 0.112626, 0.138052, 0.983997)
-bones/2/rotation = Quaternion(0.541247, 0.455033, -0.541245, 0.455028)
+bones/1/rotation = Quaternion(-0.00445723, 0.112569, 0.0756548, 0.99075)
+bones/2/rotation = Quaternion(0.531622, 0.466239, -0.531622, 0.466239)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/position = Vector3(-0.045908, -1.47772, 0.337209)
-bones/3/rotation = Quaternion(0.990803, 0.074978, -0.112548, -0.00452684)
+bones/3/position = Vector3(-0.045908, -1.45764, 0.337209)
+bones/3/rotation = Quaternion(0.992949, 0.0369399, -0.112292, -0.00883811)
 bones/3/scale = Vector3(1.00272, 1.00004, 1.05104)
-bones/4/rotation = Quaternion(0.00885331, 0.112291, 0.191958, 0.974918)
+bones/4/rotation = Quaternion(0.00277981, 0.112605, 0.13906, 0.983857)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.543486, 0.452353, -0.543486, 0.452353)
+bones/5/rotation = Quaternion(0.532761, 0.464936, -0.532761, 0.464936)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/position = Vector3(-0.0781445, -1.53442, -0.00108111)
+bones/6/position = Vector3(-0.0781445, -1.50455, -0.00108111)
 bones/6/rotation = Quaternion(9.31131e-10, 1.19206e-07, -0.00781089, 0.999969)
 bones/6/scale = Vector3(1, 1, 1.05367)
-bones/7/rotation = Quaternion(-0.00314292, -0.0556024, -0.070132, 0.995982)
+bones/7/rotation = Quaternion(-0.00180465, -0.0556619, -0.046156, 0.997381)
 bones/8/position = Vector3(-0.0239583, 0.602603, 0.00283578)
-bones/8/rotation = Quaternion(0.00341572, 0.055631, 0.0749735, 0.995627)
+bones/8/rotation = Quaternion(0.00228285, 0.055689, 0.0546629, 0.996948)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.0643186, 0.427613, 0.89827, 0.0782389)
-bones/10/rotation = Quaternion(-0.111192, 0.114208, 0.218756, 0.962673)
+bones/9/rotation = Quaternion(0.0667161, 0.418206, 0.902526, 0.0781043)
+bones/10/rotation = Quaternion(-0.11386, 0.0819843, 0.203188, 0.969035)
 bones/11/rotation = Quaternion(-0.100787, 0.96615, 0.153133, 0.181509)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(0.0181025, 0.588216, 0.807416, -0.0418797)
 bones/13/rotation = Quaternion(0.20999, 0.781056, 0.23008, 0.54122)
 bones/13/scale = Vector3(1, 1, 1)
-bones/14/rotation = Quaternion(0.720604, -0.382422, 0.53757, -0.213313)
-bones/15/rotation = Quaternion(0.167254, -0.0813761, -0.0994123, 0.977508)
+bones/14/rotation = Quaternion(0.723034, -0.373827, 0.543611, -0.204846)
+bones/15/rotation = Quaternion(0.166777, -0.0803298, -0.106034, 0.97698)
 bones/16/rotation = Quaternion(-0.179544, 0.712432, 0.0877477, -0.672685)
 bones/17/rotation = Quaternion(-0.761307, -0.00813962, 0.273992, 0.5876)
 bones/17/scale = Vector3(1, 1, 1)
@@ -426,5 +434,26 @@ current = true
 fov = 98.7
 
 [node name="PlayerSFX" parent="." instance=ExtResource("7_0u647")]
+
+[node name="AttractionHitbox" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("11_dg1fv")
+
+[node name="CollectionHitbox" type="Area3D" parent="AttractionHitbox"]
+collision_layer = 2
+collision_mask = 7
+
+[node name="c" type="CollisionShape3D" parent="AttractionHitbox/CollectionHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10466, 0)
+shape = SubResource("SphereShape3D_sfpou")
+
+[node name="c" type="CollisionShape3D" parent="AttractionHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10466, 0)
+shape = SubResource("SphereShape3D_hni6q")
+
+[connection signal="area_entered" from="AttractionHitbox" to="AttractionHitbox" method="_on_area_entered"]
+[connection signal="area_entered" from="AttractionHitbox/CollectionHitbox" to="AttractionHitbox" method="_on_collection_hitbox_area_entered"]
+[connection signal="body_entered" from="AttractionHitbox/CollectionHitbox" to="AttractionHitbox" method="_on_collection_hitbox_body_entered"]
 
 [editable path="Visual/loganchara"]

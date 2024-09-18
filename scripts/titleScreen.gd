@@ -23,8 +23,8 @@ func _ready() -> void:
 	changeState(state)
 
 func hideAllControls() -> void:
-	for i in controlDict:
-		var control = controlDict[i]
+	for i:states in controlDict:
+		var control:Control = controlDict[i]
 		if control:
 			control.hide()
 

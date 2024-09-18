@@ -1,3 +1,4 @@
+class_name Logan
 extends CharacterBody3D
 
 @export var camera:Camera3D
@@ -262,7 +263,7 @@ func wallRunInit(veloMag:float) -> void:
 	wallRideMag = veloMag
 	state = States.WallRun
 	
-	var wallNormal = wallRideCast.get_collision_normal()
+	var wallNormal:Vector3 = wallRideCast.get_collision_normal()
 	var foward := wallNormal.cross(visual.global_basis.y) * wallRideMag
 	if (-visual.global_basis.z - foward).length() > (-visual.global_basis.z - -foward).length():
 		foward = -foward
@@ -459,7 +460,7 @@ func _physics_process(delta: float) -> void:
 	if state == States.WallRun:
 		wallrideTimer += delta
 		
-		var wallNormal = wallRideCast.get_collision_normal()
+		var wallNormal:Vector3 = wallRideCast.get_collision_normal()
 		var foward := wallNormal.cross(visual.global_basis.y) 
 		if (-visual.global_basis.z - foward).length() > (-visual.global_basis.z - -foward).length():
 			foward = -foward
@@ -497,7 +498,7 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector3.ZERO
 			state = States.Free
 
-func _input(event) -> void:
+func _input(event:InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if cameraOn or disabledCamera:
 			if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -510,12 +511,12 @@ func die() -> void:
 	disabledCamera = true
 	sfx.play_sound("Die")
 
-func key_touched(key) -> void:
+func key_touched(key:Node3D) -> void:
 	if not currentKey:
 		currentKey = key
 		sfx.play_sound("Pickup")
 	
-func lockedDoor_touched(door) -> void:
+func lockedDoor_touched(door:Node3D) -> void:
 	if currentKey:
 		currentKey.queue_free()
 		door.queue_free()

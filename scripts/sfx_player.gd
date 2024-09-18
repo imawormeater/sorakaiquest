@@ -51,5 +51,5 @@ func stop_sound(_name:String) -> void:
 	children[_name].stop()
 	
 func stop_all_sounds() -> void:
-	for i in children:
+	for i:String in children:
 		children[i].stop()

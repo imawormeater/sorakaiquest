@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 	else:
 		hello()
 		
-	var funstring = str(bankDollars).pad_decimals(2)
+	var funstring:String = str(bankDollars).pad_decimals(2)
 	moneyLabel.text = "[right]" + funstring + " "
 	moneyLabel.scale = moneyLabel.scale.lerp(defaultTextMoneySize,_lerp_speed*0.3)
 
@@ -57,18 +57,18 @@ func createMoneyImage(which:String) -> Sprite2D:
 
 func recievedMoney(dictMom:Dictionary) -> void:
 	goAwayTimer = goAwayTimerInit
-	var newBankMoney = GameManager.CurrentState.bankMoney
-	var which = dictMom["which"]
+	var newBankMoney:float = GameManager.CurrentState.bankMoney
+	var which:String = dictMom["which"]
 	
 	var image := createMoneyImage(which)
 	image.position = get_viewport().get_camera_3d().unproject_position(dictMom["global_pos"])
 
-	var tween1 = get_tree().create_tween()
+	var tween1 := get_tree().create_tween()
 	tween1.tween_property(image,"position",Vector2(547,36),0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	$CollectSound2.play()
 	await get_tree().create_timer(0.41,false).timeout
 	image.queue_free()
-	var tween2 = get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	var tween2 := get_tree().create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	tween2.tween_property(self,"bankDollars",newBankMoney,0.3)
 	moneyLabel.scale += Vector2(0.2,0.2)
 	collectSound.stream = collectSoundSFX.pick_random()
