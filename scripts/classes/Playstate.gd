@@ -6,7 +6,7 @@ signal receiveMoney#IT IS USED LEAVE ME ALONE
 signal loganGetMoney
 signal albumCollected
 
-@export var Sorakai:CharacterBody3D
+@export var Sorakai:Logan
 @export var MusicStream:AudioStreamPlayer
 @export var smoother:Smoother
 @export var Dialog:DialogBox

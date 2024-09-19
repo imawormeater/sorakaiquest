@@ -3,7 +3,7 @@ extends Node3D
 @onready var hitbox := $Hitbox
 
 func _ready() -> void:
-	print("FUCK MY LIFE")
+	#print("FUCK MY LIFE")
 	hitbox.body_entered.connect(onhit)
 
 func onhit(body: Node3D) -> void:

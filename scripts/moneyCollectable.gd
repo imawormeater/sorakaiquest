@@ -4,7 +4,6 @@ class_name moneyCollectable
 
 @export var value := 1.0
 @export var meshToUse:Node3D
-
 @onready var visual := $Visual
 
 var chaseSpeed := 0.0
@@ -20,7 +19,3 @@ func _ready() -> void:
 	meshToUse.visible = true
 	visual.rotation = Vector3.ZERO
 	rotation = Vector3.ZERO
-
-func _physics_process(delta: float) -> void:
-	visual.rotate_y(delta)
-	visual.position.y = sin(GameManager.sinTick*2)/9
