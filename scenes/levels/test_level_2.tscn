@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://0lu754qntb0m" path="res://objects/moneyCollectable.tscn" id="10_agn2l"]
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="11_v02df"]
 [ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="12_m1cxg"]
-[ext_resource type="Script" path="res://objects/money_handler.gd" id="13_untjg"]
+[ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="13_untjg"]
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
 script = ExtResource("1_geecc")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmdi4mdm7qr5o"]
+[gd_scene load_steps=10 format=3 uid="uid://dmdi4mdm7qr5o"]
 
 [ext_resource type="Script" path="res://scripts/classes/Playstate.gd" id="1_kcow4"]
 [ext_resource type="PackedScene" uid="uid://dw40p48fqbsl2" path="res://scenes/player_sorakai.tscn" id="2_ntxhb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://douw2p6ggl56h" path="res://scenes/dialog_box.tscn" id="6_ne7gu"]
 [ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="6_qgbhh"]
 [ext_resource type="PackedScene" uid="uid://dem3mo2wlnxg1" path="res://scenes/general_ui.tscn" id="7_mhkk0"]
+[ext_resource type="Script" path="res://scripts/classes/speakerClass.gd" id="8_3qufo"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_fr2oh"]
 
@@ -33,19 +34,21 @@ playback_type = 1
 layer = 128
 visible = false
 
-[node name="DialogBox" parent="." node_paths=PackedStringArray("speaker") instance=ExtResource("6_ne7gu")]
+[node name="DialogBox" parent="." instance=ExtResource("6_ne7gu")]
 visible = false
-speaker = NodePath("../Node3D")
 
 [node name="GeneralUI" parent="." instance=ExtResource("7_mhkk0")]
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70869, -3.7923)
+[node name="Speaker" type="Node3D" parent="." node_paths=PackedStringArray("visibleNotifier")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05087, -5.26338)
+script = ExtResource("8_3qufo")
+visibleNotifier = NodePath("VisibleOnScreenNotifier3D")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Speaker"]
 mesh = SubResource("CylinderMesh_fr2oh")
+skeleton = NodePath("")
 
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Node3D"]
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Speaker"]
 aabb = AABB(-0.001, -1, -0.00100095, 0.002, 2, 0.002)
 
 [connection signal="game_paused" from="." to="." method="_on_game_paused"]

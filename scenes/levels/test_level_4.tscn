@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cy6j2ail7h7vt" path="res://objects/spring.tscn" id="6_7d68t"]
 [ext_resource type="PackedScene" uid="uid://bmlr6c778pobt" path="res://objects/balloon.tscn" id="6_h4g0l"]
 [ext_resource type="PackedScene" uid="uid://0lu754qntb0m" path="res://objects/moneyCollectable.tscn" id="8_37msg"]
-[ext_resource type="Script" path="res://objects/money_handler.gd" id="8_x44en"]
+[ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="8_x44en"]
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="9_lp2dx"]
 [ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="9_sy7jc"]
 [ext_resource type="PackedScene" uid="uid://bq3sb4ownek8m" path="res://objects/bringback_plane.tscn" id="10_m5g3t"]

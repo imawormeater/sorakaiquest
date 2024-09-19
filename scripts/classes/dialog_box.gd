@@ -110,11 +110,13 @@ func doCurIndex() -> void:
 		
 	continueButton.hide()
 	var curTable:Array = Dialog[curIndex]
-	var _speaker:Node3D = curTable[0]
+	var _speaker:Node3D
 	var msg:String = curTable[1]
 	stagnant = true
-	if str(_speaker) == "player":
+	if str(curTable[0]) == "player":
 		_speaker = GameManager.CurrentState.Sorakai
+	else:
+		_speaker = curTable[0]
 	set_speaker(_speaker)
 	dialogText.text = "[center]" + msg
 	msgIndex = 0
