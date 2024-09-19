@@ -30,8 +30,7 @@ func _checkAndAppendDollar(i:Node3D) -> void:
 		kromer.append(m)
 	
 func _moneyUpdate(m:moneyCollectable,delta:float,playerPosition:Vector3) -> void:
-	var mag:float = (m.global_position-playerPosition).length()
-	if mag > 30 && !m.visible:
+	if (m.global_position-playerPosition).length() > 30:
 		m.visible = false
 		return
 	m.visible = true

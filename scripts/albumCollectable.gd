@@ -13,3 +13,4 @@ func onhit(body: Node3D) -> void:
 	$Sparkles.queue_free()
 	$OmniLight3D.queue_free()
 	GameManager.CurrentState.albumCollected.emit(self)
+	hitbox.queue_free()
