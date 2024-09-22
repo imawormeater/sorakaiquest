@@ -431,7 +431,7 @@ func _physics_process(delta: float) -> void:
 			SPEED += slideSpeed
 			velocity -= (visual.global_basis.z*slideSpeed)
 			state = States.Slide
-
+		return
 	#WALL RIDE STATE
 	if state == States.Wall:
 		var facecastnormal:Vector3 = facecast.get_collision_normal()
@@ -452,7 +452,7 @@ func _physics_process(delta: float) -> void:
 			animationtree["parameters/conditions/OnWall"] = false
 			anim_st.travel("Jump")
 			return
-		if not facecast.is_colliding() or is_on_floor() or pressedAction:
+		if not facecast.is_colliding() or is_on_floor() or justPressAction:
 			sfx.stop_sound("Walkriding")
 			sfx.stop_sound("Wallridebegin")
 			exitwallclimb = exitwallclimbinit
@@ -462,7 +462,7 @@ func _physics_process(delta: float) -> void:
 			animationtree["parameters/conditions/OnWall"] = false
 			return
 		hangInit()
-			
+		return
 			
 	#HANG STATE
 	
@@ -482,7 +482,7 @@ func _physics_process(delta: float) -> void:
 			state = States.Free
 			jump()
 			griptimer = griptimerinit
-	
+		return
 	#WALL RUN
 	if state == States.WallRun:
 		wallrideTimer += delta
@@ -513,13 +513,10 @@ func _physics_process(delta: float) -> void:
 			jump()
 			velocity += (wallNormal*5)
 			baseDEACEL = 0.45
-			
+		return
 	if state == States.Slide:
 		$PlayerHitbox.disabled = true
 		$SlideHitbox.disabled = false
-		if !(onFloor):
-			state = States.Free
-			return
 		var pitch := get_pitch(get_floor_normal())
 		
 		var momentum:float = -pitch
@@ -546,22 +543,33 @@ func _physics_process(delta: float) -> void:
 		velocity.z = _tempVelocity.z
 		velocity.y = clampf(velocity.y,fall_grav*JUMPDESCENTTIME*1.1,9999)
 		
-		if (pressedJump && onFloor) || coyotejump > 0:
-			print(pressedJump,onFloor,coyotejump)
+		if (pressedJump && onFloor) || (coyotejump > 0 && pressedJump):
 			jump()
+			#if(pressedAction):
+			#	velocity.y += jump_velo/4
+			#	SPEED = baseSPEED
 			state = States.Free
+		elif (justPressAction):
+			forcedHoldJump = true
+			jump()
+			velocity.y += jump_velo/4
+			SPEED = baseSPEED * 0.7
 	
 		move_and_slide()
 		
 		$SlideHitbox.disabled = true
 		$PlayerHitbox.disabled = false
-		if (SPEED <= 2 || velocity.length() <= 1):
+		if (SPEED <= 2):
 			state = States.Free
 			SPEED = baseSPEED
 			return
 			
 		if onFloor != is_on_floor() and velocity.y < 0:#was on floor but now not
 			coyotejump = coyotejumpInit
+		
+		if !(onFloor):
+			state = States.Free
+		return
 		
 	if state == States.Noclip:
 		var direction:Vector3 = (pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() * 10
@@ -573,6 +581,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed('debug2'):
 			velocity = Vector3.ZERO
 			state = States.Free
+		return
 
 func _input(event:InputEvent) -> void:
 	if event is InputEventMouseMotion:
