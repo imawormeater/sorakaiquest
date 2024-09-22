@@ -9,7 +9,7 @@ extends CharacterBody3D
 
 #GAMEPLAY SHIT
 
-@export var baseSPEED := 5.0
+@export var baseSPEED := 6.0
 var SPEED := baseSPEED
 @export var _ACCEL:float = 25.0
 @export var _DEACCEL:float = 30.0
