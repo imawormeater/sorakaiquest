@@ -18,7 +18,7 @@ var DEACEL_mult := 1.0
 var baseDEACEL := 1.0
 
 var SNAPLENGTH := 0.1
-var slideSpeedCap := 15.
+var slideSpeedCap := 20.
 
 #JUMP SHIT
 
@@ -424,8 +424,8 @@ func _physics_process(delta: float) -> void:
 			slideHold = -1.0
 			
 		if(onFloor && slideHold >= 0):
-			var velocityA:float = (absf(clampf(_tempVelocity.y*0.2,-9999,0))+1)
-			var slideSpeed:float = clampf(  clampf((1-slideHold*2),0,1)*4  ,0,4) * 1
+			var _velocityA:float = (absf(clampf(_tempVelocity.y*0.2,-9999,0))+1)
+			var slideSpeed:float = clampf(  clampf((1-slideHold*2),0,1)*4  ,0,4) - ((slideHold-0.016666667)*3*SPEED)
 			print(slideHold,":U:",slideSpeed)
 			slideHold = -1.0
 			SPEED += slideSpeed
