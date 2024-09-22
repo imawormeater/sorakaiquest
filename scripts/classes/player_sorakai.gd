@@ -18,6 +18,7 @@ var DEACEL_mult := 1.0
 var baseDEACEL := 1.0
 
 var SNAPLENGTH := 0.1
+var slideSpeedCap := 15.
 
 #JUMP SHIT
 
@@ -54,8 +55,9 @@ var wallrideTimer := 0.0
 const WRtilJump := 0.05
 
 var jumpTimer := 0.0
+var slideHold := -1.0
 #STATE SHIT
-enum States {Free, Wall, Hang, WallRun, Roll, Noclip}
+enum States {Free, Wall, Hang, WallRun, Slide, Noclip}
 var state:= States.Free
 
 var wallRideCast:RayCast3D 
@@ -132,9 +134,12 @@ func _process(delta: float) -> void:#Camera shit
 	if OS.is_debug_build():
 			if Input.is_action_just_pressed("debug1") and state != States.Noclip:
 				state = States.Noclip
+	var _lerp_speed:float = 1-pow(0.000000000005,delta)
+	if currentKey:
+		currentKey.global_transform = currentKey.global_transform.interpolate_with(followPoint.global_transform,_lerp_speed * 0.2)
+		
 	if disabledCamera: return
 	
-	var _lerp_speed:float = 1-pow(0.000000000005,delta)
 	camera_deg[1] = clamp(camera_deg[1],-PI/3,PI/3)
 	
 	if cameraOn:
@@ -161,9 +166,6 @@ func _process(delta: float) -> void:#Camera shit
 	pivot.rotation.y = lerp(pivot.rotation.y,camera_deg[0],_lerp_speed**0.2)
 	
 	camera.global_transform = camera.global_transform.interpolate_with(targetCamera.global_transform,_lerp_speed)
-	
-	if currentKey:
-		currentKey.global_transform = currentKey.global_transform.interpolate_with(followPoint.global_transform,_lerp_speed * 0.2)
 	
 
 func do_timers(delta:float) -> void: ##Does the Timers
@@ -281,7 +283,7 @@ func set_animations(onfloor:bool,_state:int,veloMag:float) -> void:
 	var _velocity := veloMag/baseSPEED
 	var curanim := anim_st.get_current_node()
 	var stepsound:AudioStreamPlayer3D = sfx.get_sound("Steps")
-	animationtree["parameters/IdleWalk/animation/blend_position"] = Vector2(_velocity,0)
+	animationtree["parameters/IdleWalk/animation/blend_position"] = Vector2(_velocity,state==States.Slide)
 	animationtree["parameters/conditions/onFloor"] = onfloor
 	animationtree["parameters/conditions/Fall"] = not onfloor
 	animationtree["parameters/conditions/OnWall"] = false
@@ -302,7 +304,7 @@ func set_animations(onfloor:bool,_state:int,veloMag:float) -> void:
 	if (curanim.begins_with("OnWall")) and not animationtree["parameters/conditions/OnWall"]:
 		anim_st.travel("Fall")
 	
-	if _velocity == 0 or not onfloor:
+	if _velocity == 0 or not onfloor or state == States.Slide:
 		walkDust.emitting = false
 		sfx.stop_sound("Steps")
 	else:
@@ -318,21 +320,30 @@ func set_momentum(pitch:float,delta:float,onFloor:bool,direction:Vector2,veloMag
 	if direction != Vector2.ZERO:
 		hill = -1
 	var momentum:float = pitch * hill
-	SPEED += momentum * delta * 5
-	if SPEED < 5:
-		SPEED =  clampf(SPEED,baseSPEED-absf(momentum)*2,999)
+	if SPEED < 8:
+		SPEED += momentum * delta * 5
+	#elif onFloor:
+	#	SPEED -= delta
+	if onFloor:
+		SPEED =  clampf(SPEED,baseSPEED,9999)
 	SNAPLENGTH = 0.15 * (SPEED/baseSPEED)
 	
-	var lerpSpeed:float =  clampf((_velocity**2),1,999) * 5
+	var lerpSpeed:float =  clampf((_velocity**2),1,999) * 4
 	#print(lerpSpeed,"  ",_velocity)
 	if _velocity < 1.0:
 		lerpSpeed = 100
 	if _velocity < 0.3:
 		SPEED = move_toward(SPEED,baseSPEED,delta * 100)
 	
-	if momentum == 0.0 and onFloor:
+	if momentum <= 0.0 and onFloor:
 		SPEED = move_toward(SPEED,baseSPEED,delta * lerpSpeed)
 	DEACEL_mult = sqrt(baseSPEED/SPEED) * baseDEACEL
+	
+func move_toward_angle(from : float, to: float, delta : float) -> float:
+	var ans:float = fposmod(to - from, TAU)
+	if ans > PI:
+		ans -= TAU
+	return from + ans * delta
 
 #EVERYTHING
 func _physics_process(delta: float) -> void:
@@ -345,6 +356,7 @@ func _physics_process(delta: float) -> void:
 	var pressedJump := Input.is_action_just_pressed("movement_jump")
 	var pressingJump := Input.is_action_pressed("movement_jump")
 	var pressedAction := Input.is_action_pressed("movement_action")
+	var justPressAction := Input.is_action_just_pressed("movement_action")
 	var velocityMag := Vector2(velocity.x,velocity.z).length()
 	if not controlOn:
 		pressingJump = false
@@ -363,7 +375,7 @@ func _physics_process(delta: float) -> void:
 	if state == States.Free:
 		var pitch := get_pitch(get_floor_normal())
 		set_momentum(pitch,delta,onFloor,input_dir,velocityMag)
-		
+		character_mesh.rotation.y = 0
 		velocity.y += getGravity(pressingJump) * delta
 		character.rotation.z = lerp_angle(character.rotation.z,pitch/2,_lerp_speed*0.2)
 
@@ -404,6 +416,21 @@ func _physics_process(delta: float) -> void:
 			wallRunInit(Vector2(velocity.x,velocity.z).length())
 		wallInit(delta)
 		hangInit()
+		
+		if (justPressAction): slideHold = 0
+		if(slideHold >= 0 && pressedAction):
+			slideHold += delta
+		else:
+			slideHold = -1.0
+			
+		if(onFloor && slideHold >= 0):
+			var velocityA:float = (absf(clampf(_tempVelocity.y*0.2,-9999,0))+1)
+			var slideSpeed:float = clampf(  clampf((1-slideHold*2),0,1)*4  ,0,4) * 1
+			print(slideHold,":U:",slideSpeed)
+			slideHold = -1.0
+			SPEED += slideSpeed
+			velocity -= (visual.global_basis.z*slideSpeed)
+			state = States.Slide
 
 	#WALL RIDE STATE
 	if state == States.Wall:
@@ -486,6 +513,55 @@ func _physics_process(delta: float) -> void:
 			jump()
 			velocity += (wallNormal*5)
 			baseDEACEL = 0.45
+			
+	if state == States.Slide:
+		$PlayerHitbox.disabled = true
+		$SlideHitbox.disabled = false
+		if !(onFloor):
+			state = States.Free
+			return
+		var pitch := get_pitch(get_floor_normal())
+		
+		var momentum:float = -pitch
+		momentum *= delta * 5
+		SPEED += momentum
+		SPEED = clampf(SPEED,0,slideSpeedCap)
+		if momentum <= 0:
+			SPEED = move_toward(SPEED,0,delta*9)
+		SNAPLENGTH = 0.15 * (SPEED/baseSPEED)
+		velocity.y += getGravity(pressingJump) * delta * 2
+		
+		character.rotation.z = lerp_angle(character.rotation.z,pitch/2,_lerp_speed*0.2)
+		var _pivot_rotation:float = pivot.rotation.x
+		pivot.rotation.x = 0
+		var direction:Vector3 = (pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		pivot.rotation.x = _pivot_rotation
+		
+		if direction:
+			visual.rotation.y = move_toward_angle(visual.rotation.y,atan2(-direction.x, -direction.z),delta*3)
+		
+		var _tempVelocity:Vector3 = (-visual.global_basis.z*SPEED)
+
+		velocity.x = _tempVelocity.x
+		velocity.z = _tempVelocity.z
+		velocity.y = clampf(velocity.y,fall_grav*JUMPDESCENTTIME*1.1,9999)
+		
+		if (pressedJump && onFloor) || coyotejump > 0:
+			print(pressedJump,onFloor,coyotejump)
+			jump()
+			state = States.Free
+	
+		move_and_slide()
+		
+		$SlideHitbox.disabled = true
+		$PlayerHitbox.disabled = false
+		if (SPEED <= 2 || velocity.length() <= 1):
+			state = States.Free
+			SPEED = baseSPEED
+			return
+			
+		if onFloor != is_on_floor() and velocity.y < 0:#was on floor but now not
+			coyotejump = coyotejumpInit
 		
 	if state == States.Noclip:
 		var direction:Vector3 = (pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() * 10
