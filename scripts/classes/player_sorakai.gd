@@ -283,7 +283,7 @@ func set_animations(onfloor:bool,_state:int,veloMag:float) -> void:
 	var _velocity := veloMag/baseSPEED
 	var curanim := anim_st.get_current_node()
 	var stepsound:AudioStreamPlayer3D = sfx.get_sound("Steps")
-	animationtree["parameters/IdleWalk/animation/blend_position"] = Vector2(_velocity,state==States.Slide)
+	animationtree["parameters/IdleWalk/animation/blend_position"] = Vector2(_velocity,0)
 	animationtree["parameters/conditions/onFloor"] = onfloor
 	animationtree["parameters/conditions/Fall"] = not onfloor
 	animationtree["parameters/conditions/OnWall"] = false
@@ -297,11 +297,13 @@ func set_animations(onfloor:bool,_state:int,veloMag:float) -> void:
 	if animationtree["parameters/IdleWalk/animation/blend_position"].x < 0.1:
 		animationtree["parameters/IdleWalk/TimeScale/scale"] = 1.0
 	
-	if (curanim != "IdleWalk") and onfloor:
+	if ((curanim != "IdleWalk") and onfloor) and state != States.Slide :
 		springCombo = 0
 		anim_st.travel("Land")
 		sfx.play_sound("Land")
 	if (curanim.begins_with("OnWall")) and not animationtree["parameters/conditions/OnWall"]:
+		anim_st.travel("Fall")
+	if(curanim.begins_with("Slide") and not onfloor):
 		anim_st.travel("Fall")
 	
 	if _velocity == 0 or not onfloor or state == States.Slide:
@@ -431,6 +433,7 @@ func _physics_process(delta: float) -> void:
 			SPEED += slideSpeed
 			velocity -= (visual.global_basis.z*slideSpeed)
 			state = States.Slide
+			anim_st.travel("Slide")
 		return
 	#WALL RIDE STATE
 	if state == States.Wall:
