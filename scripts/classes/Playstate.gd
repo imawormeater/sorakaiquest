@@ -12,11 +12,14 @@ signal albumCollected
 @export var Dialog:DialogBox
 
 @export var first_level:PackedScene
+
 @export var currentLevel:Level
+@export var storedLevel:Level
 
 @export var hubLevel:String = "res://scenes/levels/test_level.tscn"
 var inHub := false
 var loganScene:PackedScene = preload("res://scenes/player_sorakai.tscn")
+var checkPoint:Node3D = null
 
 var bankMoney := 0.0
 
@@ -34,9 +37,10 @@ func _ready() -> void:
 
 func set_level_stuff()->void:
 	if currentLevel.Song != null:#CHANGE ALL OF THESE TO FADE ONE DAY
-		MusicStream.stop()
-		MusicStream.stream = currentLevel.Song
-		MusicStream.play()
+		if MusicStream.stream != currentLevel.Song:
+			MusicStream.stop()
+			MusicStream.stream = currentLevel.Song
+			MusicStream.play()
 	if currentLevel.Mute_Music:
 		MusicStream.stop()
 		
@@ -44,21 +48,28 @@ func set_level_stuff()->void:
 	Sorakai.SPEED = 5
 	if currentLevel.Logan_Spawn != null:
 		#Sorakai.global_rotation = currentLevel.Logan_Spawn.global_rotation fix this someday
-		Sorakai.global_position = currentLevel.Logan_Spawn.global_position
+		teleport_player(currentLevel.Logan_Spawn.global_position)
 	else:
 		push_warning("Logan Spawn doesn't exist!")
+	if currentLevel.CurrentCheckpoint != null:
+		teleport_player(currentLevel.CurrentCheckpoint.global_position)
 	smoother.reset_node(Sorakai)
 
-func load_level(loaded_level_path:String) -> void:
+func load_level(loaded_level_path:String, isSubLevel:bool = false) -> void:
 	var packedscene := load(loaded_level_path)
 	if packedscene == null:
 		push_warning("Incorrect Level Path, Loading Cancelled.")
 		return
-	init_level(packedscene)
+	if !isSubLevel:
+		init_level(packedscene)
+	else:
+		init_sublevel(packedscene)
 
 func init_level(loaded_level:PackedScene) -> void:
 	if currentLevel != null:
 		currentLevel.queue_free()
+	if storedLevel != null:
+		storedLevel.queue_free()
 	inHub = false
 	if loaded_level.resource_path == hubLevel:
 		inHub = true
@@ -68,6 +79,26 @@ func init_level(loaded_level:PackedScene) -> void:
 	new_level_loaded.emit()
 	reload_player()
 	#Sorakai.refresh()
+
+func init_sublevel(loaded_level:PackedScene) -> void:
+	if currentLevel != null:
+		storedLevel = currentLevel
+		remove_child(storedLevel)
+	inHub = false
+	var newlevel:Level = loaded_level.instantiate()
+	add_child(newlevel)
+	currentLevel = newlevel
+	new_level_loaded.emit()
+	reload_player()
+	
+func exit_sublevel() -> void:
+	if currentLevel != null:
+		currentLevel.queue_free()
+	add_child(storedLevel)
+	currentLevel = storedLevel
+	storedLevel = null
+	new_level_loaded.emit()
+	reload_player()
 
 func reload_player() -> void:
 	Sorakai.queue_free()

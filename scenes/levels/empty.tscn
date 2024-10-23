@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bg2f6bo121tjx"]
+[gd_scene load_steps=8 format=3 uid="uid://bg2f6bo121tjx"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_bldlg"]
 [ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://objects/basicassplatform.tscn" id="2_uv73p"]
+[ext_resource type="PackedScene" uid="uid://cabix5vgaakof" path="res://objects/level_switcher.tscn" id="5_378a7"]
 [ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="8_0ruv0"]
 [ext_resource type="AudioStream" uid="uid://cu7ty4ay2nlw5" path="res://assets/sounds/mario64ambience.ogg" id="11_iccgs"]
 
@@ -60,3 +61,7 @@ stream = ExtResource("11_iccgs")
 volume_db = -17.525
 autoplay = true
 bus = &"Ambience"
+
+[node name="LevelSwitch" parent="." instance=ExtResource("5_378a7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.21233, 1.89647, -2.22092)
+goBackFromSubLevel = true

@@ -50,6 +50,8 @@ func refresh(playSound:bool = true) -> void:
 
 func _on_restart_pressed() -> void:
 	refresh()
+	if Input.is_key_pressed(KEY_SHIFT):
+		GameManager.CurrentState.currentLevel.CurrentCheckpoint = null
 	GameManager.CurrentState.reload_player()
 
 

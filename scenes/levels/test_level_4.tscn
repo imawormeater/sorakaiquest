@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ylg0kyvjsh87"]
+[gd_scene load_steps=25 format=3 uid="uid://ylg0kyvjsh87"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_3npde"]
 [ext_resource type="AudioStream" uid="uid://ddjidit8iv1y1" path="res://assets/music/sweet_pumpin.mp3" id="2_06mh4"]
@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://cy6j2ail7h7vt" path="res://objects/spring.tscn" id="6_7d68t"]
 [ext_resource type="PackedScene" uid="uid://bmlr6c778pobt" path="res://objects/balloon.tscn" id="6_h4g0l"]
 [ext_resource type="PackedScene" uid="uid://0lu754qntb0m" path="res://objects/moneyCollectable.tscn" id="8_37msg"]
+[ext_resource type="PackedScene" uid="uid://dxjqbclf6hso1" path="res://objects/checkPoint.tscn" id="8_b71s2"]
 [ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="8_x44en"]
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="9_lp2dx"]
 [ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="9_sy7jc"]
-[ext_resource type="PackedScene" uid="uid://bq3sb4ownek8m" path="res://objects/bringback_plane.tscn" id="10_m5g3t"]
+[ext_resource type="PackedScene" uid="uid://cabix5vgaakof" path="res://objects/level_switcher.tscn" id="12_myhkx"]
 
 [sub_resource type="Gradient" id="Gradient_urk2d"]
 offsets = PackedFloat32Array(0, 0.483483, 1)
@@ -308,6 +309,12 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2.365, 66.0305, -3.7234
 [node name="AlbumCollectable" parent="Objects" instance=ExtResource("9_lp2dx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.0148, 73.2537, 22.3409)
 
+[node name="Checkpoint" parent="Objects" instance=ExtResource("8_b71s2")]
+transform = Transform3D(7.05266, 0, 0, 0, 2.85697, 0, 0, 0, 5.44513, 0.127182, 84.2207, -4.84214)
+
+[node name="DeathPlane2" parent="Objects" instance=ExtResource("9_sy7jc")]
+transform = Transform3D(134.592, 0, 0, 0, 1, 0, 0, 0, 19.1069, 36.3135, 65.6611, 23.2457)
+
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.826341, 0.52806, -0.195738, 0.0290086, 0.387013, 0.921618, 0.562423, 0.755892, -0.335123, 0, 15.9898, -5.65541)
 light_color = Color(0.691357, 0.691357, 0.691357, 1)
@@ -346,13 +353,6 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.398285, 40.2708, -0.382416)
 size = Vector3(113.409, 84.9741, 130.567)
 metadata/_edit_lock_ = true
-
-[node name="BringBackSpot" type="Node3D" parent="."]
-transform = Transform3D(90.1965, 0, 0, 0, 1, 0, 0, 0, 37.7673, 0, 86, -4.649)
-
-[node name="BringPlane" parent="." node_paths=PackedStringArray("pointToBringBack") instance=ExtResource("10_m5g3t")]
-transform = Transform3D(90.1965, 0, 0, 0, 1, 0, 0, 0, 37.7674, 29.6055, 65.4754, 29.287)
-pointToBringBack = NodePath("../BringBackSpot")
 
 [node name="Collectables" type="Node3D" parent="."]
 script = ExtResource("8_x44en")
@@ -682,3 +682,7 @@ meshToUse = NodePath("Visual/coin")
 [node name="MoneyCollectable17" parent="Collectables" instance=ExtResource("8_37msg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.111229, 28.6121, 7.70714)
 value = 10.0
+
+[node name="LevelSwitch" parent="." instance=ExtResource("12_myhkx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.2298, 73.9496, 22.9051)
+goBackFromSubLevel = true

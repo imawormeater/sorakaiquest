@@ -339,7 +339,7 @@ func set_momentum(pitch:float,delta:float,onFloor:bool,direction:Vector2,veloMag
 	
 	if momentum <= 0.0 and onFloor:
 		SPEED = move_toward(SPEED,baseSPEED,delta * lerpSpeed)
-	DEACEL_mult = sqrt(baseSPEED/SPEED) * baseDEACEL
+	DEACEL_mult = pow(baseSPEED/SPEED,0.35) * baseDEACEL
 	
 func move_toward_angle(from : float, to: float, delta : float) -> float:
 	var ans:float = fposmod(to - from, TAU)
@@ -427,8 +427,8 @@ func _physics_process(delta: float) -> void:
 			
 		if(onFloor && slideHold >= 0):
 			var _velocityA:float = (absf(clampf(_tempVelocity.y*0.2,-9999,0))+1)
-			var slideSpeed:float = clampf(  clampf((1-slideHold*2),0,1)*4  ,0,4) - ((slideHold-0.016666667)*3*SPEED)
-			print(slideHold,":U:",slideSpeed)
+			var slideSpeed:float = clampf(  clampf((1-slideHold*2),0,1)*3  ,0,3) - ((slideHold-delta)*3*SPEED)
+			#print(slideHold,":U:",slideSpeed)
 			slideHold = -1.0
 			SPEED += slideSpeed
 			velocity -= (visual.global_basis.z*slideSpeed)
