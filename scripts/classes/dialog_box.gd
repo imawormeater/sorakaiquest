@@ -69,6 +69,8 @@ func disappear() -> void:
 	await get_tree().create_timer(0.4,false).timeout
 	ending = false
 	hide()
+	speaker.Interactable.enabled = true
+	
 
 #BEGINS DIALOG
 func play_dialog(Speech:Array) -> void:
@@ -117,6 +119,7 @@ func doCurIndex() -> void:
 		_speaker = GameManager.CurrentState.Sorakai
 	else:
 		_speaker = curTable[0]
+		speaker = _speaker
 	set_speaker(_speaker)
 	dialogText.text = "[center]" + msg
 	msgIndex = 0
@@ -181,7 +184,7 @@ func _process(delta: float) -> void:
 	
 	if not active: return
 	
-	if Input.is_action_just_pressed("movement_jump") or Input.is_action_just_pressed("movement_action"):
+	if Input.is_action_just_pressed("movement_jump") or Input.is_action_just_pressed("movement_action") or Input.is_action_just_pressed("interact"):
 		if stagnant:
 			msgIndex = 5555
 			_on_increment_timeout()

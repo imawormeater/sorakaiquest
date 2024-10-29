@@ -117,9 +117,9 @@ func _process(_delta: float) -> void:
 		smoother.add_exclude_node(Sorakai)
 	elif smoother.excludes != []:
 		smoother.remove_exclude_node(Sorakai)
-		
-	if Input.is_action_just_pressed("ui_page_up"):
-		Dialog.play_dialog($Speaker.getDialog())
+
+func play_dialog(speaker:Speaker) -> void:
+	Dialog.play_dialog(speaker.getDialog())
 
 func teleport_player(point:Vector3) -> void:
 	Sorakai.global_position = point

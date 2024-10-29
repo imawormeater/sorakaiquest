@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baq00epfanonj"
-path.s3tc="res://.godot/imported/vinylui.png-8b9c992c6ff3b0e3eeaf3c2d65b61741.s3tc.ctex"
+uid="uid://drun62bn35xkd"
+path.s3tc="res://.godot/imported/star_spritesheet2.png-c92a2a5fa4ed780ad5adf94d2c6eb1f8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/images/vinylui.png"
-dest_files=["res://.godot/imported/vinylui.png-8b9c992c6ff3b0e3eeaf3c2d65b61741.s3tc.ctex"]
+source_file="res://assets/images/star_spritesheet2.png"
+dest_files=["res://.godot/imported/star_spritesheet2.png-c92a2a5fa4ed780ad5adf94d2c6eb1f8.s3tc.ctex"]
 
 [params]
 

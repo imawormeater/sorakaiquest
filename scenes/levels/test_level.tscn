@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://p3tbs46mi8p3"]
+[gd_scene load_steps=16 format=3 uid="uid://p3tbs46mi8p3"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_aufyl"]
 [ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://objects/plains_1.tscn" id="2_u4bu6"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://cy6j2ail7h7vt" path="res://objects/spring.tscn" id="9_p7xjg"]
 [ext_resource type="PackedScene" uid="uid://bmlr6c778pobt" path="res://objects/balloon.tscn" id="10_ofphy"]
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="13_jb12y"]
+[ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="14_4hmp0"]
+[ext_resource type="Texture2D" uid="uid://sc0koml0wb4j" path="res://assets/images/piggybankPlaceholder.png" id="14_6j4l2"]
 
 [node name="Level" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
 script = ExtResource("1_aufyl")
@@ -195,5 +197,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70849, 4.2524, 0.681699)
 
 [node name="AlbumCollectable2" parent="." instance=ExtResource("13_jb12y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.612, 45.0113, 22.5292)
+
+[node name="npc" parent="." instance=ExtResource("14_4hmp0")]
+
+[node name="Sprite3D" type="Sprite3D" parent="npc"]
+transform = Transform3D(2.60509, 0, 0, 0, 2.62961, 0, 0, 0, 1, 0, -0.289, 0)
+billboard = 2
+texture = ExtResource("14_6j4l2")
 
 [editable path="Platforms/plains2"]

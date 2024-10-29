@@ -423,7 +423,6 @@ bones/12/scale = Vector3(1, 1, 1)
 bones/13/rotation = Quaternion(0.310574, 0.768808, 0.282632, 0.482284)
 bones/14/position = Vector3(-0.000460546, 0.48935, -0.170338)
 bones/14/rotation = Quaternion(0.723246, -0.373052, 0.544148, -0.204085)
-bones/14/scale = Vector3(1, 1, 1)
 bones/15/position = Vector3(2.0173e-07, 0.650187, 5.71001e-08)
 bones/15/rotation = Quaternion(0.415193, -0.612386, 0.00178723, 0.672752)
 bones/16/rotation = Quaternion(-0.463936, 0.718837, 0.143794, -0.497353)
@@ -494,6 +493,7 @@ text = "[center]YOU GOT!
 fit_content = true
 
 [node name="AlbumTitle" type="RichTextLabel" parent="PlayerUI/AlbumCollectControl"]
+layout_mode = 0
 offset_top = 383.0
 offset_right = 640.0
 offset_bottom = 465.0

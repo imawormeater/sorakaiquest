@@ -5,6 +5,7 @@ extends Node3D
 @export var visibleNotifier:VisibleOnScreenNotifier3D
 @export var cameraPlacementNode:Node3D
 @export var playerPlacementNode:Node3D
+@export var Interactable:interactComp
 
 @export var exportDialog:Array  = [
 	"s:Welcome to [color=57C8DB]Sorakai Quest!!!",
@@ -37,3 +38,6 @@ func getDialog() -> Array:
 		#return exportDialog.pick_random()
 		pass
 	return dialog
+
+func on_interact() -> void:
+	GameManager.CurrentState.play_dialog(self)

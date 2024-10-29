@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq5lxvda1l3e0"]
+
+[ext_resource type="Script" path="res://scripts/classes/speakerClass.gd" id="1_3r1bd"]
+[ext_resource type="PackedScene" uid="uid://cv8u5yn1kefiw" path="res://objects/interactable.tscn" id="2_q4pii"]
+
+[node name="npc" type="Node3D" node_paths=PackedStringArray("visibleNotifier", "Interactable")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13488, 7.78199)
+script = ExtResource("1_3r1bd")
+visibleNotifier = NodePath("VisibleOnScreenNotifier3D")
+Interactable = NodePath("Interactable")
+exportDialog = ["s:im gay", "p:well me too lets me friends irl", "s::)"]
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.116311, -0.146827, -0.0889406, 0.232623, 0.293655, 0.177881)
+
+[node name="Interactable" parent="." node_paths=PackedStringArray("objectDepedency") instance=ExtResource("2_q4pii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.461516, 0)
+objectDepedency = NodePath("..")
