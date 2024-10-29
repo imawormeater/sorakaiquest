@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmdi4mdm7qr5o"]
+[gd_scene load_steps=11 format=3 uid="uid://dmdi4mdm7qr5o"]
 
 [ext_resource type="Script" path="res://scripts/classes/Playstate.gd" id="1_kcow4"]
 [ext_resource type="PackedScene" uid="uid://dw40p48fqbsl2" path="res://scenes/player_sorakai.tscn" id="2_ntxhb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="6_qgbhh"]
 [ext_resource type="PackedScene" uid="uid://dem3mo2wlnxg1" path="res://scenes/general_ui.tscn" id="7_mhkk0"]
 [ext_resource type="Script" path="res://scripts/classes/speakerClass.gd" id="8_3qufo"]
+[ext_resource type="AudioStream" uid="uid://de3deq6mnk6pu" path="res://assets/sounds/battle won.mp3" id="9_da1go"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_fr2oh"]
 
@@ -50,6 +51,10 @@ skeleton = NodePath("")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="Speaker"]
 aabb = AABB(-0.001, -1, -0.00100095, 0.002, 2, 0.002)
+
+[node name="AlbumCollectedSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_da1go")
+bus = &"Music"
 
 [connection signal="game_paused" from="." to="." method="_on_game_paused"]
 [connection signal="receiveMoney" from="." to="." method="_on_receive_money"]

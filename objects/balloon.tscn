@@ -59,12 +59,12 @@ resource = ExtResource("2_csb5q")
 transform = Transform3D(0.388899, 0, 0, 0, 0.388899, 0, 0, 0, 0.388899, 0, -0.618945, 0)
 
 [node name="Skeleton3D" parent="balloonmesh/Armature" index="0"]
-bones/0/position = Vector3(0, -0.269132, 0)
+bones/0/position = Vector3(0, -0.319554, 0)
 bones/0/scale = Vector3(0.986217, 0.986217, 0.986217)
-bones/2/rotation = Quaternion(0.0243592, 7.16163e-16, 5.08066e-09, 0.999703)
-bones/2/scale = Vector3(1.03406, 1.03406, 1.03406)
+bones/2/rotation = Quaternion(-0.00293172, -1.45996e-15, 5.08037e-09, 0.999996)
+bones/2/scale = Vector3(1.05393, 1.05393, 1.05393)
 bones/3/rotation = Quaternion(-1.45438e-25, -7.10543e-15, 6.10013e-19, 1)
-bones/3/scale = Vector3(1.00048, 1.00048, 1.00048)
+bones/3/scale = Vector3(0.982339, 0.982339, 0.982339)
 
 [node name="Cylinder" parent="balloonmesh/Armature/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_frt6s")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dem3mo2wlnxg1"]
+[gd_scene load_steps=13 format=3 uid="uid://dem3mo2wlnxg1"]
 
 [ext_resource type="Script" path="res://scripts/GeneralUI.gd" id="1_jeuno"]
 [ext_resource type="AudioStream" uid="uid://d3xrse4yw41p1" path="res://assets/sounds/coin/CoinA.wav" id="2_pa3oa"]
@@ -9,6 +9,8 @@
 [ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="7_lmtsl"]
 [ext_resource type="Texture2D" uid="uid://dlitaxjmqrcxo" path="res://assets/images/dollarUI.png" id="8_63x73"]
 [ext_resource type="Texture2D" uid="uid://s8m64sur16lr" path="res://assets/images/coinUI.png" id="9_8456y"]
+[ext_resource type="Texture2D" uid="uid://baq00epfanonj" path="res://assets/images/vinylui.png" id="10_88bhw"]
+[ext_resource type="AudioStream" uid="uid://7uv0kul1oefe" path="res://assets/sounds/regular show.wav" id="11_n1ns2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_liab6"]
 bg_color = Color(0.105882, 0.145098, 0.180392, 0.839216)
@@ -105,3 +107,53 @@ stream = ExtResource("2_pa3oa")
 volume_db = -12.059
 pitch_scale = 0.75
 bus = &"SFX"
+
+[node name="AlbumCounter" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 480)
+
+[node name="album" type="TextureRect" parent="AlbumCounter"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -115.0
+offset_top = -114.0
+offset_right = -12.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("10_88bhw")
+
+[node name="c" type="RichTextLabel" parent="AlbumCounter/album"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -113.0
+offset_top = 36.0
+offset_right = -9.99999
+offset_bottom = 69.0
+grow_horizontal = 0
+scale = Vector2(0.88, 0.88)
+pivot_offset = Vector2(138.95, 0)
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/normal_font = ExtResource("6_rtbj8")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]0
+"
+scroll_active = false
+
+[node name="AlbumCollected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_n1ns2")

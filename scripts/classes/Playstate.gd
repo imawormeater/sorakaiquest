@@ -5,6 +5,7 @@ signal game_paused
 signal receiveMoney#IT IS USED LEAVE ME ALONE
 signal loganGetMoney
 signal albumCollected
+signal albumCounterAnimation
 
 @export var Sorakai:Logan
 @export var MusicStream:AudioStreamPlayer
@@ -22,6 +23,9 @@ var loganScene:PackedScene = preload("res://scenes/player_sorakai.tscn")
 var checkPoint:Node3D = null
 
 var bankMoney := 0.0
+var collectedAlbums:Array[int] = []
+var numberOfAlbums:int = 0
+var timeToCollect:float = 3.6
 
 func _ready() -> void:
 	new_level_loaded.connect(set_level_stuff)
@@ -133,8 +137,21 @@ func _on_receive_money(dollar:moneyCollectable) -> void:
 	loganGetMoney.emit(dictInfo)
 
 func on_album_collect(albumCollectable:Node3D) -> void:
-	pass
+	collectedAlbums += [albumCollectable.id]
+	print(collectedAlbums)
+	
+	Sorakai.onAlbumCollect()
+	get_tree().paused = true
+	
+	$AlbumCollectedSong.play()
+	await get_tree().create_timer(timeToCollect).timeout
+	
+	get_tree().paused = false
+	albumCounterAnimation.emit()
+	Sorakai.onAlbumStop()
+	albumCollectable.deleteSelf()
+	numberOfAlbums = collectedAlbums.size()
 
 
-func _on_game_paused(paused:bool) -> void:
+func _on_game_paused(_paused:bool) -> void:
 	pass # Replace with function body.

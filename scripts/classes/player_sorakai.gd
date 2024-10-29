@@ -57,7 +57,7 @@ const WRtilJump := 0.05
 var jumpTimer := 0.0
 var slideHold := -1.0
 #STATE SHIT
-enum States {Free, Wall, Hang, WallRun, Slide, Noclip}
+enum States {Free, Wall, Hang, WallRun, Slide, Noclip, Collecting}
 var state:= States.Free
 
 var wallRideCast:RayCast3D 
@@ -282,6 +282,7 @@ func get_pitch(normal:Vector3) -> float:
 func set_animations(onfloor:bool,_state:int,veloMag:float) -> void:
 	var _velocity := veloMag/baseSPEED
 	var curanim := anim_st.get_current_node()
+	if state == States.Collecting: return
 	var stepsound:AudioStreamPlayer3D = sfx.get_sound("Steps")
 	animationtree["parameters/IdleWalk/animation/blend_position"] = Vector2(_velocity,0)
 	animationtree["parameters/conditions/onFloor"] = onfloor
@@ -585,6 +586,9 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector3.ZERO
 			state = States.Free
 		return
+	
+	if state == States.Collecting:
+		return
 
 func _input(event:InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -610,6 +614,23 @@ func lockedDoor_touched(door:Node3D) -> void:
 		door.queue_free()
 		
 		currentKey = null
+		
+func onAlbumCollect() -> void:
+	cameraOn = false
+	walkDust.emitting = false
+	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
+	state = States.Collecting
+	anim_st.travel("COLLECT")
+	visual.look_at(camera.global_position)
+	sfx.stop_all_sounds()
+
+func onAlbumStop() -> void:
+	cameraOn = true
+	process_mode = ProcessMode.PROCESS_MODE_INHERIT
+	visual.rotation = Vector3(0,visual.rotation.y,0)
+	state = States.Free
+	velocity = Vector3.ZERO
+	
 
 func refresh() -> void:
 	currentKey = null

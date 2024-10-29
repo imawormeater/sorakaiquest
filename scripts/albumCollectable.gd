@@ -1,9 +1,14 @@
 extends Node3D
 
+@export var id:int = 0
 @onready var hitbox := $Hitbox
 
 func _ready() -> void:
 	#print("FUCK MY LIFE")
+	await get_tree().create_timer(0.2).timeout
+	if id in GameManager.CurrentState.collectedAlbums:
+		print("Byee")
+		self.queue_free()
 	hitbox.body_entered.connect(onhit)
 
 func onhit(body: Node3D) -> void:
@@ -14,3 +19,6 @@ func onhit(body: Node3D) -> void:
 	$OmniLight3D.queue_free()
 	GameManager.CurrentState.albumCollected.emit(self)
 	hitbox.queue_free()
+
+func deleteSelf() -> void:
+	self.queue_free()

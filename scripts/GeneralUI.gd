@@ -8,6 +8,10 @@ extends CanvasLayer
 @onready var dollarImage := $SubViewportContainer/dollar
 @onready var coinImage := $SubViewportContainer/coin
 
+@onready var albumControl := $AlbumCounter
+@onready var albumImage := $AlbumCounter/album
+@onready var albumText := $AlbumCounter/album/c
+
 var isBankHere := false
 var goAwayTimer := -1.0
 var goAwayTimerInit := 5.0
@@ -18,7 +22,9 @@ var defaultTextMoneySize:Vector2
 
 func _ready() -> void:
 	get_parent().loganGetMoney.connect(recievedMoney)
+	get_parent().albumCounterAnimation.connect(onAlbumCollected)
 	defaultTextMoneySize = moneyLabel.scale
+	albumControl.position = Vector2(0,150)
 	
 func goodBye() -> void:
 	if not isBankHere: return
@@ -44,6 +50,7 @@ func _process(delta: float) -> void:
 	var funstring:String = str(bankDollars).pad_decimals(2)
 	moneyLabel.text = "[right]" + funstring + " "
 	moneyLabel.scale = moneyLabel.scale.lerp(defaultTextMoneySize,_lerp_speed*0.3)
+	
 
 func createMoneyImage(which:String) -> Sprite2D:
 	var sprite2d:Sprite2D = dollarImage
@@ -77,6 +84,21 @@ func recievedMoney(dictMom:Dictionary) -> void:
 func doTimers(delta:float) -> void:
 	if goAwayTimer > 0:
 		goAwayTimer -= delta
+
+func onAlbumCollected() -> void:
+	albumControl.position = Vector2(0,140)
+	var tween1 := get_tree().create_tween()
+	tween1.tween_property(albumControl,"position",Vector2(0,0),0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	await get_tree().create_timer(1).timeout
+	albumControl.scale = Vector2.ONE*1.3
+	var tweeny := get_tree().create_tween()
+	tweeny.tween_property(albumControl,"scale",Vector2.ONE,0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	albumText.text = "[center]" + str(GameManager.CurrentState.numberOfAlbums)
+	$AlbumCollected.play()
+	await get_tree().create_timer(1).timeout
+	var tween2 := get_tree().create_tween()
+	tween2.tween_property(albumControl,"position",Vector2(0,140),0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+
 #UI
 var prevhidden:bool
 func gamepause(paused:bool) -> void:
