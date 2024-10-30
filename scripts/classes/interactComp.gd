@@ -24,12 +24,12 @@ func interact() -> void:
 	enabled = false
 
 func onBodyEntered(body:Node3D) -> void:
-	print(body)
+	#print(body)
 	if body is Logan:
 		canInteract = true
 
 func onBodyLeft(body:Node3D) -> void:
-	print(body)
+	#print(body)
 	if body is Logan:
 		canInteract = false
 

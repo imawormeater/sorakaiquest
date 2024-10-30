@@ -74,6 +74,7 @@ func init_level(loaded_level:PackedScene) -> void:
 		currentLevel.queue_free()
 	if storedLevel != null:
 		storedLevel.queue_free()
+		storedLevel = null
 	inHub = false
 	if loaded_level.resource_path == hubLevel:
 		inHub = true

@@ -602,6 +602,8 @@ func die() -> void:
 	cameraOn = false
 	disabledCamera = true
 	sfx.play_sound("Die")
+	await get_tree().create_timer(1).timeout
+	GameManager.App.play_transition("circle",1)
 
 func key_touched(key:Node3D) -> void:
 	if not currentKey:

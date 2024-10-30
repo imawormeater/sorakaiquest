@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://douw2p6ggl56h"]
+[gd_scene load_steps=10 format=3 uid="uid://douw2p6ggl56h"]
 
 [ext_resource type="Script" path="res://scripts/classes/dialog_box.gd" id="1_xyjux"]
 [ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="3_6hcxw"]
+[ext_resource type="AudioStream" uid="uid://c48ptf4lcptvp" path="res://assets/sounds/sn_DialogIn.wav" id="4_8r308"]
 [ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="4_klter"]
-[ext_resource type="AudioStream" uid="uid://1y2l7ieysg8x" path="res://assets/sounds/up.wav" id="5_aa5qh"]
+[ext_resource type="AudioStream" uid="uid://cjtvy7so7fa7h" path="res://assets/sounds/sn_DialogPing.mp3" id="5_k6xci"]
+[ext_resource type="AudioStream" uid="uid://dra58ftndotnx" path="res://assets/sounds/sn_DialogNext.wav" id="6_mddup"]
+[ext_resource type="AudioStream" uid="uid://un3mmhmy47v0" path="res://assets/sounds/sn_DialogOut.wav" id="7_5l2rl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t43ki"]
 bg_color = Color(0.105882, 0.145098, 0.180392, 1)
@@ -76,9 +79,27 @@ offset_bottom = 418.0
 scale = Vector2(2.59189, 2.59189)
 theme_override_styles/normal = SubResource("StyleBoxFlat_1s5su")
 
-[node name="PauseSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_aa5qh")
+[node name="Begin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8r308")
+volume_db = 4.747
 pitch_scale = 0.45
+bus = &"SFX"
+
+[node name="Speak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_k6xci")
+volume_db = -5.61
+bus = &"SFX"
+
+[node name="Progress" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_mddup")
+volume_db = 4.315
+pitch_scale = 0.8
+bus = &"SFX"
+
+[node name="End" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_5l2rl")
+volume_db = 6.473
+pitch_scale = 0.55
 bus = &"SFX"
 
 [node name="Increment" type="Timer" parent="."]

@@ -16,6 +16,12 @@ var currentspeaker:Node3D = null
 @onready var dialogText := $DialogText
 @onready var incTimer := $Increment
 @onready var continueButton := $ContinueButton
+
+@onready var begin:AudioStreamPlayer = $Begin
+@onready var speak:AudioStreamPlayer = $Speak
+@onready var progress:AudioStreamPlayer = $Progress
+@onready var end:AudioStreamPlayer = $End
+
 var initPoint := Vector2(320,350)
 
 var hidden := true
@@ -56,6 +62,7 @@ func appear() -> void:
 	frame.position = Vector2(264,376)
 	tweent.tween_property(frame,"size",defaultSize,0.6)
 	tweent.tween_property(frame,"position",defaultPosition,0.6)
+	begin.play(0.05)
 
 #END ANIMATION
 func disappear() -> void:
@@ -66,6 +73,7 @@ func disappear() -> void:
 	var tweent := get_tree().create_tween().set_parallel().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	tweent.tween_property(frame,"position",Vector2(264,376),0.4)
 	tweent.tween_property(frame,"size",Vector2(112,0),0.4)
+	end.play()
 	await get_tree().create_timer(0.4,false).timeout
 	ending = false
 	hide()
@@ -105,6 +113,7 @@ func set_dialog_box() -> void:
 
 #INITIATES THE CURRENT INDEX IN THE DIALOG
 func doCurIndex() -> void:
+	progress.play(0.1)
 	curIndex += 1
 	if len(Dialog) == curIndex:
 		stop_dialog()
@@ -131,6 +140,7 @@ func doCurIndex() -> void:
 func _on_increment_timeout() -> void:
 	msgIndex += 1
 	dialogText.visible_characters = msgIndex
+	speak.play(0.04)
 	if dialogText.visible_characters >= dialogText.get_total_character_count() + 1:
 		dialogText.visible_characters = -1
 		incTimer.stop()
