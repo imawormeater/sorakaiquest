@@ -29,7 +29,8 @@ func deleteSelf() -> void:
 	GameManager.App.endParams = {
 		CollectedMoney = GameManager.CurrentState.allCollectedMoney,
 		AlbumsCollect = GameManager.CurrentState.numberOfAlbums,
-		AmmountAlbums = 10,#TODO 
+		AmmountAlbums = GameManager.CurrentState.totalAlbums,#TODO 
+		Deaths = GameManager.CurrentState.deathCount
 	}
 	GameManager.CurrentState.Sorakai.controlOn = false
 	GameManager.CurrentState.Sorakai.cameraOn = false

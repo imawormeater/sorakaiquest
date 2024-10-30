@@ -602,6 +602,7 @@ func die() -> void:
 	controlOn = false
 	cameraOn = false
 	disabledCamera = true
+	GameManager.CurrentState.deathCount += 1
 	sfx.play_sound("Die")
 	await get_tree().create_timer(1).timeout
 	GameManager.App.play_transition("circle",1)

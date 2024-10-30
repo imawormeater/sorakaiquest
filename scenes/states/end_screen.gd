@@ -4,6 +4,7 @@ var endParams:Dictionary = {
 	CollectedMoney = 0,
 	AlbumsCollect = 0,
 	AmmountAlbums = 0,
+	Deaths = 0
 }
 enum rank {
 	BAD,
@@ -41,6 +42,20 @@ func _ready() -> void:
 	endParams = GameManager.App.endParams
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	print(endParams)
+	var percentage:float = float(endParams["AlbumsCollect"])/float(endParams["AmmountAlbums"])
+	print(percentage)
+		
+	Rank = rank.BAD
+	if(percentage >= 0.7):
+		Rank = rank.OK
+	if(percentage >= 0.9):
+		Rank = rank.SUPERB
+	if(percentage == 1):
+		Rank = rank.PERFECT
+	
+	var format_string:String = "You collected $%s.\nYou collected %s/%s albums.\nAnd you died %s times."
+	var actual_string:String = format_string % [str(endParams["CollectedMoney"]).pad_decimals(2),endParams["AlbumsCollect"],endParams["AmmountAlbums"],endParams["Deaths"]]	
+	contents.text = actual_string
 	
 	if(Rank == rank.BAD):
 		resultText.text = "[center]I think it's my heart that is empty."

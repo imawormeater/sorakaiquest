@@ -27,7 +27,9 @@ var allCollectedMoney := 0.0
 
 var collectedAlbums:Array[int] = []
 var numberOfAlbums:int = 0
+var totalAlbums:int = 10#TODO
 var timeToCollect:float = 3.6
+var deathCount:int = 0
 
 func _ready() -> void:
 	new_level_loaded.connect(set_level_stuff)
