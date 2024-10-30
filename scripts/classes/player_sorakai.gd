@@ -588,6 +588,7 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	if state == States.Collecting:
+		visual.look_at(camera.global_position)
 		return
 
 func _input(event:InputEvent) -> void:
@@ -623,7 +624,6 @@ func onAlbumCollect() -> void:
 	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 	state = States.Collecting
 	anim_st.travel("COLLECT")
-	visual.look_at(camera.global_position)
 	sfx.stop_all_sounds()
 
 func onAlbumStop() -> void:

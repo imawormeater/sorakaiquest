@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://odw1x4buac5j"]
+[gd_scene load_steps=19 format=3 uid="uid://odw1x4buac5j"]
 
 [ext_resource type="Script" path="res://scenes/states/end_screen.gd" id="1_sdb5c"]
 [ext_resource type="PackedScene" uid="uid://demg1ljadhtwn" path="res://scenes/states/titleScreen.tscn" id="2_v024c"]
@@ -7,7 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://byix24k02ayaj" path="res://assets/images/loganchara_loganchara_loganface1.png" id="5_pdckr"]
 [ext_resource type="FontFile" uid="uid://c63riwf1oe6p4" path="res://assets/fonts/GothicA1-SemiBold.ttf" id="6_jn51s"]
 [ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="7_fk1y7"]
+[ext_resource type="AudioStream" uid="uid://deyrwhrunbf05" path="res://assets/sounds/rhProceed.mp3" id="8_ijbad"]
 [ext_resource type="Texture2D" uid="uid://cpgjkmt88dhng" path="res://assets/images/e_Interact.png" id="8_stpdm"]
+[ext_resource type="AudioStream" uid="uid://gdxoxu2xcro1" path="res://assets/music/ranks/rhResults.mp3" id="9_6qydc"]
+[ext_resource type="AudioStream" uid="uid://dt3jcaeb616pi" path="res://assets/music/ranks/tryagain (remux).wav" id="10_j2g40"]
+[ext_resource type="AudioStream" uid="uid://bjemx8pffl0ng" path="res://assets/music/ranks/init/tryagainRank.mp3" id="11_ajatj"]
+[ext_resource type="AudioStream" uid="uid://dknlckchvc5q5" path="res://assets/music/ranks/results/tryagainResult.mp3" id="12_5dgrl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdb56"]
 bg_color = Color(0, 0, 0, 1)
@@ -18,6 +23,139 @@ corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
+
+[sub_resource type="Animation" id="Animation_d6wmo"]
+resource_name = "anim"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Who:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contents:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.56667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rank:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../RankStinger:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Song:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.96667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_eu310"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Who:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contents:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rank:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../RankStinger:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Song:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5drh3"]
+_data = {
+"RESET": SubResource("Animation_eu310"),
+"anim": SubResource("Animation_d6wmo")
+}
 
 [node name="EndScreen" type="CanvasLayer"]
 script = ExtResource("1_sdb5c")
@@ -37,6 +175,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Who" type="Control" parent="Judgement"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 18.0
@@ -44,6 +183,7 @@ offset_right = 40.0
 offset_bottom = 58.0
 
 [node name="bg" type="Panel" parent="Judgement/Who"]
+layout_mode = 0
 offset_left = 126.0
 offset_top = 29.0
 offset_right = 476.0
@@ -66,6 +206,7 @@ bbcode_enabled = true
 text = "[center]Your besties say..."
 
 [node name="Contents" type="RichTextLabel" parent="Judgement"]
+visible = false
 layout_mode = 0
 offset_left = 149.0
 offset_top = 147.0
@@ -82,12 +223,18 @@ fit_content = true
 scroll_active = false
 
 [node name="Rank" type="TextureRect" parent="Judgement"]
+visible = false
 layout_mode = 0
 offset_left = 443.0
 offset_top = 254.0
 offset_right = 614.0
 offset_bottom = 447.0
 texture = ExtResource("4_231hh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Judgement"]
+libraries = {
+"": SubResource("AnimationLibrary_5drh3")
+}
 
 [node name="Result" type="Control" parent="."]
 visible = false
@@ -120,10 +267,20 @@ bbcode_enabled = true
 text = "[center]All I ever needed!"
 
 [node name="Progress" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ijbad")
+
+[node name="Contents" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_6qydc")
 
 [node name="Song" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_j2g40")
+
+[node name="RankStinger" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ajatj")
 
 [node name="ResultMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_5dgrl")
+volume_db = 2.0
 
 [node name="progress" type="TextureRect" parent="."]
 anchors_preset = 7
@@ -144,5 +301,14 @@ texture = ExtResource("8_stpdm")
 [node name="progressTimer" type="Timer" parent="progress"]
 wait_time = 0.5
 autostart = true
+
+[node name="trans" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 3.05176e-05
+offset_top = 9.15527e-05
+offset_right = 640.0
+offset_bottom = 480.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tdb56")
 
 [connection signal="timeout" from="progress/progressTimer" to="." method="_on_progress_timer_timeout"]

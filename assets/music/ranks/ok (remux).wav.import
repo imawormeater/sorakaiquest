@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dn5k0my18mmd2"
+path="res://.godot/imported/ok (remux).wav-0665bc61851b0a697a4d174e6ad6107b.sample"
+
+[deps]
+
+source_file="res://assets/music/ranks/ok (remux).wav"
+dest_files=["res://.godot/imported/ok (remux).wav-0665bc61851b0a697a4d174e6ad6107b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

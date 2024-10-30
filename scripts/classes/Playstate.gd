@@ -43,7 +43,7 @@ func _ready() -> void:
 
 func set_level_stuff()->void:
 	if currentLevel.Song != null:#CHANGE ALL OF THESE TO FADE ONE DAY
-		if MusicStream.stream != currentLevel.Song:
+		if MusicStream.stream != currentLevel.Song or not MusicStream.playing:
 			MusicStream.stop()
 			MusicStream.stream = currentLevel.Song
 			MusicStream.play()
