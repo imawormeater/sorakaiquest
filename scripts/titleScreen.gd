@@ -43,7 +43,7 @@ func changeState(newstate:states) -> void:
 	if newstate == states.NewGame:
 		active = false
 	if newstate == states.Continue:
-		active = false
+		active = true
 
 func goToState(_state:PackedScene) -> void:
 	active = false
@@ -72,4 +72,5 @@ func _on_start_pressed() -> void:
 	goToState(continueState)
 
 func _on_continue_pressed() -> void:
-	goToState(continueState)
+	$VideoStreamPlayer.play()
+	#goToState(continueState)

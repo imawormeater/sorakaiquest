@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://demg1ljadhtwn"]
+[gd_scene load_steps=16 format=3 uid="uid://demg1ljadhtwn"]
 
 [ext_resource type="Texture2D" uid="uid://dypyhqscgc0rp" path="res://assets/images/gamelogo.png" id="1_e5acb"]
 [ext_resource type="Script" path="res://scripts/titleScreen.gd" id="1_k3mqt"]
-[ext_resource type="PackedScene" uid="uid://dmdi4mdm7qr5o" path="res://scenes/states/MainGameState.tscn" id="2_dhqq7"]
+[ext_resource type="PackedScene" uid="uid://d2o5t3521e378" path="res://scenes/states/introCutscene.tscn" id="2_leo5k"]
 [ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="2_oe3yi"]
 [ext_resource type="AudioStream" uid="uid://54ta2nex1swr" path="res://assets/music/BotB+23659+shinichi+-+No+Juice_+A+Fruitless+Endeavor.vt.mp3" id="3_jgwdx"]
 [ext_resource type="Material" uid="uid://cfs4axkv37ppd" path="res://assets/materials/ursc/checkerboard.tres" id="4_ipdlo"]
 [ext_resource type="PackedScene" uid="uid://ds5rt4cupnt7t" path="res://scenes/settingsUI.tscn" id="5_ueoup"]
 [ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="6_qgclh"]
+[ext_resource type="VideoStream" path="res://assets/videos/watermarked_video061a1b21144d1415082de7686bb9d6874.ogv" id="9_a47c1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ik824"]
 bg_color = Color(1, 1, 1, 1)
@@ -56,7 +57,7 @@ corner_radius_bottom_left = 15
 [node name="TitleScreen" type="CanvasLayer"]
 script = ExtResource("1_k3mqt")
 transTime = 1.0
-continueState = ExtResource("2_dhqq7")
+continueState = ExtResource("2_leo5k")
 
 [node name="BG" type="Panel" parent="."]
 offset_right = 640.0
@@ -142,7 +143,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_sjlll")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sjlll")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ds3cu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_pcrxk")
-text = "Continue"
+text = "running man challenge"
 
 [node name="Options" type="Button" parent="Select/VBoxContainer"]
 layout_mode = 2
@@ -208,6 +209,12 @@ pitch_scale = 0.95
 autoplay = true
 bus = &"Music"
 playback_type = 1
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 1360.0
+offset_bottom = 752.0
+scale = Vector2(0.465, 0.465)
+stream = ExtResource("9_a47c1")
 
 [connection signal="pressed" from="Select/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Select/VBoxContainer/Continue" to="." method="_on_continue_pressed"]

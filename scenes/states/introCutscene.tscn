@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2o5t3521e378"]
+
+[ext_resource type="Script" path="res://scenes/states/intro_cutscene.gd" id="1_k116t"]
+[ext_resource type="VideoStream" path="res://assets/videos/sorakai quest intro.ogv" id="1_m5dpc"]
+[ext_resource type="PackedScene" uid="uid://dmdi4mdm7qr5o" path="res://scenes/states/MainGameState.tscn" id="2_huccw"]
+[ext_resource type="Texture2D" uid="uid://cch8l7y004b55" path="res://assets/images/Screenshot 2024-10-05 235602.png" id="3_6r3f5"]
+
+[node name="GameState" type="Node2D"]
+script = ExtResource("1_k116t")
+gameState = ExtResource("2_huccw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(237.533, 162.25)
+scale = Vector2(0.429293, 0.429293)
+texture = ExtResource("3_6r3f5")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("1_m5dpc")
