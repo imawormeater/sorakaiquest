@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://eleajfuwfpur"]
+[gd_scene load_steps=14 format=3 uid="uid://eleajfuwfpur"]
 
 [ext_resource type="Script" path="res://scripts/classes/app.gd" id="1_d1n4j"]
 [ext_resource type="PackedScene" uid="uid://dmdi4mdm7qr5o" path="res://scenes/states/MainGameState.tscn" id="2_w6e81"]
 [ext_resource type="PackedScene" uid="uid://demg1ljadhtwn" path="res://scenes/states/titleScreen.tscn" id="3_r3ptw"]
 [ext_resource type="VideoStream" path="res://assets/videos/jerma.ogv" id="3_vj886"]
 [ext_resource type="Material" uid="uid://bixuwp1cbjepr" path="res://assets/materials/ursc/circle_trans.tres" id="4_kytrq"]
+[ext_resource type="PackedScene" uid="uid://odw1x4buac5j" path="res://scenes/states/endScreen.tscn" id="4_uqtmo"]
 [ext_resource type="AudioStream" uid="uid://hcr0rb3h3por" path="res://assets/sounds/fadein.wav" id="5_sva3u"]
 [ext_resource type="AudioStream" uid="uid://45vsqs36eye6" path="res://assets/sounds/fadeout.wav" id="6_y87jn"]
 [ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="7_2arx1"]
@@ -107,6 +108,7 @@ script = ExtResource("1_d1n4j")
 firstState = ExtResource("2_w6e81")
 PlayState = ExtResource("2_w6e81")
 MainMenu = ExtResource("3_r3ptw")
+EndState = ExtResource("4_uqtmo")
 
 [node name="Main" type="CanvasLayer" parent="."]
 process_mode = 3

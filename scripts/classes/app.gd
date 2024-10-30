@@ -6,8 +6,15 @@ var inTransition := false
 
 @export var PlayState:PackedScene
 @export var MainMenu:PackedScene
+@export var EndState:PackedScene
 
 @onready var animPlayer := $Main/Transitions/AnimationPlayer
+
+var endParams:Dictionary = {
+	CollectedMoney = 0,
+	AlbumsCollect = 0,
+	AmmountAlbums = 0,
+}
 
 func changeState(state:PackedScene) -> void:
 	if state == null:

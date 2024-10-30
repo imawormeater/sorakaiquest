@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var id:int = 0
+@export var endingAlbum:bool = false
 @onready var hitbox := $Hitbox
 
 func _ready() -> void:
@@ -20,4 +21,19 @@ func onhit(body: Node3D) -> void:
 	hitbox.queue_free()
 
 func deleteSelf() -> void:
-	self.queue_free()
+	if not endingAlbum:
+		self.queue_free()
+		return
+	
+	self.visible = false
+	GameManager.App.endParams = {
+		CollectedMoney = GameManager.CurrentState.allCollectedMoney,
+		AlbumsCollect = GameManager.CurrentState.numberOfAlbums,
+		AmmountAlbums = 10,#TODO 
+	}
+	GameManager.CurrentState.Sorakai.controlOn = false
+	GameManager.CurrentState.Sorakai.cameraOn = false
+	await get_tree().create_timer(2).timeout
+	GameManager.App.play_transition("circle",1)
+	await get_tree().create_timer(1).timeout
+	GameManager.App.changeState(GameManager.App.EndState)

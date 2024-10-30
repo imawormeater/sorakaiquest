@@ -1,0 +1,148 @@
+[gd_scene load_steps=11 format=3 uid="uid://odw1x4buac5j"]
+
+[ext_resource type="Script" path="res://scenes/states/end_screen.gd" id="1_sdb5c"]
+[ext_resource type="PackedScene" uid="uid://demg1ljadhtwn" path="res://scenes/states/titleScreen.tscn" id="2_v024c"]
+[ext_resource type="FontFile" uid="uid://csjw5posryyf3" path="res://assets/fonts/GothicA1-Bold.ttf" id="3_ig54g"]
+[ext_resource type="Texture2D" uid="uid://dsinsobrob438" path="res://assets/images/cutelogan.png" id="4_231hh"]
+[ext_resource type="Texture2D" uid="uid://byix24k02ayaj" path="res://assets/images/loganchara_loganchara_loganface1.png" id="5_pdckr"]
+[ext_resource type="FontFile" uid="uid://c63riwf1oe6p4" path="res://assets/fonts/GothicA1-SemiBold.ttf" id="6_jn51s"]
+[ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="7_fk1y7"]
+[ext_resource type="Texture2D" uid="uid://cpgjkmt88dhng" path="res://assets/images/e_Interact.png" id="8_stpdm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdb56"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2rny"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[node name="EndScreen" type="CanvasLayer"]
+script = ExtResource("1_sdb5c")
+titleScreen = ExtResource("2_v024c")
+
+[node name="BG" type="Panel" parent="."]
+offset_right = 640.0
+offset_bottom = 480.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tdb56")
+
+[node name="Judgement" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Who" type="Control" parent="Judgement"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 18.0
+offset_right = 40.0
+offset_bottom = 58.0
+
+[node name="bg" type="Panel" parent="Judgement/Who"]
+offset_left = 126.0
+offset_top = 29.0
+offset_right = 476.0
+offset_bottom = 79.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d2rny")
+
+[node name="label" type="RichTextLabel" parent="Judgement/Who"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 45.0
+offset_right = 463.0
+offset_bottom = 74.0
+theme = ExtResource("7_fk1y7")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("3_ig54g")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[center]Your besties say..."
+
+[node name="Contents" type="RichTextLabel" parent="Judgement"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 147.0
+offset_right = 552.0
+offset_bottom = 330.0
+theme_override_constants/line_separation = 15
+theme_override_fonts/normal_font = ExtResource("3_ig54g")
+theme_override_font_sizes/normal_font_size = 21
+text = "You collected $10.50. 
+You collected 5/10 albums.
+And you died 100 times.
+"
+fit_content = true
+scroll_active = false
+
+[node name="Rank" type="TextureRect" parent="Judgement"]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 254.0
+offset_right = 614.0
+offset_bottom = 447.0
+texture = ExtResource("4_231hh")
+
+[node name="Result" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="resultScreen" type="TextureRect" parent="Result"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 110.0
+offset_right = 448.0
+offset_bottom = 270.0
+pivot_offset = Vector2(0.5, 0.5)
+texture = ExtResource("5_pdckr")
+
+[node name="resultText" type="RichTextLabel" parent="Result"]
+layout_mode = 0
+offset_top = 320.0
+offset_right = 640.0
+offset_bottom = 366.0
+theme = ExtResource("7_fk1y7")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 0
+theme_override_fonts/normal_font = ExtResource("6_jn51s")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]All I ever needed!"
+
+[node name="Progress" type="AudioStreamPlayer" parent="."]
+
+[node name="Song" type="AudioStreamPlayer" parent="."]
+
+[node name="ResultMusic" type="AudioStreamPlayer" parent="."]
+
+[node name="progress" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -50.0
+offset_right = 115.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+size_flags_horizontal = 4
+texture = ExtResource("8_stpdm")
+
+[node name="progressTimer" type="Timer" parent="progress"]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="progress/progressTimer" to="." method="_on_progress_timer_timeout"]

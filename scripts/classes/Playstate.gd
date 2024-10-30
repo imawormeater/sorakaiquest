@@ -23,6 +23,8 @@ var loganScene:PackedScene = preload("res://scenes/player_sorakai.tscn")
 var checkPoint:Node3D = null
 
 var bankMoney := 0.0
+var allCollectedMoney := 0.0
+
 var collectedAlbums:Array[int] = []
 var numberOfAlbums:int = 0
 var timeToCollect:float = 3.6
@@ -134,6 +136,7 @@ func _on_receive_money(dollar:moneyCollectable) -> void:
 		"which" : dollar.meshToUse.name
 	}
 	bankMoney += dictInfo["value"]
+	allCollectedMoney += dictInfo["value"]
 	dollar.queue_free()
 	loganGetMoney.emit(dictInfo)
 
@@ -150,8 +153,9 @@ func on_album_collect(albumCollectable:Node3D) -> void:
 	get_tree().paused = false
 	albumCounterAnimation.emit()
 	Sorakai.onAlbumStop()
-	albumCollectable.deleteSelf()
 	numberOfAlbums = collectedAlbums.size()
+	
+	albumCollectable.deleteSelf()
 
 
 func _on_game_paused(_paused:bool) -> void:

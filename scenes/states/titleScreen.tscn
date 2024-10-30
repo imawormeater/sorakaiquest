@@ -214,6 +214,7 @@ playback_type = 1
 offset_right = 1360.0
 offset_bottom = 752.0
 scale = Vector2(0.465, 0.465)
+mouse_filter = 2
 stream = ExtResource("9_a47c1")
 
 [connection signal="pressed" from="Select/VBoxContainer/Start" to="." method="_on_start_pressed"]
