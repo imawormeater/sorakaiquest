@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dw40p48fqbsl2"]
+[gd_scene load_steps=72 format=3 uid="uid://dw40p48fqbsl2"]
 
 [ext_resource type="Script" path="res://scripts/classes/player_sorakai.gd" id="1_6cmhp"]
 [ext_resource type="ArrayMesh" uid="uid://csjqnycfeybq" path="res://assets/meshes/smoke.obj" id="3_50lya"]
@@ -103,11 +103,26 @@ shader_parameter/SubSurfCutoff = 0.0
 shader_parameter/SubSurfSmoothness = 0.0
 shader_parameter/Texture = ExtResource("7_qrgm5")
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t0ql0"]
-animation = &"StopMoving"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kv8l7"]
+animation = &"AlbumCollect"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_47siu"]
+animation = &"DropSlide"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_16oou"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_47siu")
+blend_point_0/pos = 0.0
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_rrobv"]
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_16oou")
+nodes/BlendSpace1D/position = Vector2(40, 120)
+node_connections = [&"output", 0, &"BlendSpace1D"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ra5mc"]
 animation = &"Fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_06ybo"]
+animation = &"DropSlide"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a2vr0"]
 animation = &"Grab"
@@ -140,7 +155,7 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_byw68")
 blend_point_3/pos = Vector2(1, 1)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bldrm"]
-graph_offset = Vector2(-136.471, 145.901)
+graph_offset = Vector2(-179.065, 87.0833)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_swnlg")
 nodes/TimeScale/position = Vector2(500, 200)
 nodes/animation/node = SubResource("AnimationNodeBlendSpace2D_ekmy1")
@@ -164,8 +179,10 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_slwjt")
 blend_point_1/pos = 1.0
 blend_point_2/node = SubResource("AnimationNodeAnimation_egt72")
 blend_point_2/pos = -1.0
+value_label = "0"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ejh25"]
+graph_offset = Vector2(124.791, 57.92)
 nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_037ev")
 nodes/BlendSpace1D/position = Vector2(409, 134)
 nodes/output/position = Vector2(800, 200)
@@ -180,18 +197,13 @@ animation = &"OnWall"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lnhmh"]
 animation = &"OnWallStart"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f3c5y"]
-animation = &"SlideLoop"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j5ary"]
 animation = &"Slide"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_78ytn"]
-graph_offset = Vector2(-187, 74)
+graph_offset = Vector2(-166.78, -9.45)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_j5ary")
 nodes/Animation/position = Vector2(68, 162)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_f3c5y")
-"nodes/Animation 2/position" = Vector2(240, 160)
 nodes/output/position = Vector2(440, 160)
 node_connections = [&"output", 0, &"Animation"]
 
@@ -283,11 +295,28 @@ advance_condition = &"Fall"
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mvekw"]
+xfade_time = 0.25
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_crrtj"]
+xfade_time = 0.05
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h6yj1"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wt1rb"]
-states/COLLECT/node = SubResource("AnimationNodeAnimation_t0ql0")
-states/COLLECT/position = Vector2(995, 244.265)
+states/COLLECT/node = SubResource("AnimationNodeAnimation_kv8l7")
+states/COLLECT/position = Vector2(913, 188.681)
+states/DropSlide/node = SubResource("AnimationNodeBlendTree_rrobv")
+states/DropSlide/position = Vector2(328, 114.265)
 states/Fall/node = SubResource("AnimationNodeAnimation_ra5mc")
 states/Fall/position = Vector2(489, 41)
+states/FallDrop/node = SubResource("AnimationNodeAnimation_06ybo")
+states/FallDrop/position = Vector2(239, 50.6811)
 states/Grab/node = SubResource("AnimationNodeAnimation_a2vr0")
 states/Grab/position = Vector2(114, -28)
 states/GrabIdle/node = SubResource("AnimationNodeAnimation_p6go8")
@@ -303,14 +332,14 @@ states/OnWall/position = Vector2(461, 317)
 states/OnWallStart/node = SubResource("AnimationNodeAnimation_lnhmh")
 states/OnWallStart/position = Vector2(594, 317)
 states/Slide/node = SubResource("AnimationNodeBlendTree_78ytn")
-states/Slide/position = Vector2(155, 241.265)
+states/Slide/position = Vector2(155, 222.265)
 states/SlideLoop/node = SubResource("AnimationNodeAnimation_gpr3y")
 states/SlideLoop/position = Vector2(298, 247.265)
 states/Start/position = Vector2(378, -32)
 states/Wallrun/node = SubResource("AnimationNodeBlendTree_21jag")
 states/Wallrun/position = Vector2(797, 284.265)
-transitions = ["Grab", "GrabIdle", SubResource("AnimationNodeStateMachineTransition_llqxh"), "Fall", "Grab", SubResource("AnimationNodeStateMachineTransition_j6jby"), "OnWall", "Land", SubResource("AnimationNodeStateMachineTransition_7qlsl"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_d3f7f"), "Start", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_xwwbw"), "IdleWalk", "Fall", SubResource("AnimationNodeStateMachineTransition_1gpea"), "Land", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_kvlu0"), "OnWallStart", "OnWall", SubResource("AnimationNodeStateMachineTransition_5md5v"), "Fall", "OnWallStart", SubResource("AnimationNodeStateMachineTransition_3tvi2"), "OnWallStart", "Fall", SubResource("AnimationNodeStateMachineTransition_hiovl"), "OnWallStart", "Land", SubResource("AnimationNodeStateMachineTransition_vpgol"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_nlthy"), "Slide", "SlideLoop", SubResource("AnimationNodeStateMachineTransition_dd3qb")]
-graph_offset = Vector2(-147, -89.735)
+transitions = ["Grab", "GrabIdle", SubResource("AnimationNodeStateMachineTransition_llqxh"), "Fall", "Grab", SubResource("AnimationNodeStateMachineTransition_j6jby"), "OnWall", "Land", SubResource("AnimationNodeStateMachineTransition_7qlsl"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_d3f7f"), "Start", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_xwwbw"), "IdleWalk", "Fall", SubResource("AnimationNodeStateMachineTransition_1gpea"), "Land", "IdleWalk", SubResource("AnimationNodeStateMachineTransition_kvlu0"), "OnWallStart", "OnWall", SubResource("AnimationNodeStateMachineTransition_5md5v"), "Fall", "OnWallStart", SubResource("AnimationNodeStateMachineTransition_3tvi2"), "OnWallStart", "Fall", SubResource("AnimationNodeStateMachineTransition_hiovl"), "OnWallStart", "Land", SubResource("AnimationNodeStateMachineTransition_vpgol"), "Jump", "Fall", SubResource("AnimationNodeStateMachineTransition_nlthy"), "Slide", "SlideLoop", SubResource("AnimationNodeStateMachineTransition_dd3qb"), "DropSlide", "Slide", SubResource("AnimationNodeStateMachineTransition_mvekw"), "Fall", "DropSlide", SubResource("AnimationNodeStateMachineTransition_crrtj"), "FallDrop", "Fall", SubResource("AnimationNodeStateMachineTransition_h6yj1")]
+graph_offset = Vector2(-185, -71.319)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sfpou"]
 radius = 0.041885
@@ -389,50 +418,31 @@ draw_pass_1 = ExtResource("3_50lya")
 transform = Transform3D(0.000715101, 0, 0.0831059, 0, 0.083109, 0, -0.0831059, 0, 0.000715101, 0, -0.744453, -0.257608)
 
 [node name="Armature" parent="Visual/loganchara" index="0"]
-transform = Transform3D(3.72083, 0, 0, 0, 3.72083, 0, 0, 0, 3.72083, -2.62473, 11.8175, 0.0415326)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Visual/loganchara/Armature" index="0"]
-bones/0/position = Vector3(-0.0543279, -1.23801, -0.304354)
-bones/0/rotation = Quaternion(0.903437, 0.413659, -0.107144, 0.0347532)
-bones/0/scale = Vector3(1.00654, 1.00314, 0.977535)
-bones/1/position = Vector3(-1.09187e-07, 0.641317, 5.84397e-08)
-bones/1/rotation = Quaternion(-0.00864792, 0.112307, 0.038621, 0.992885)
-bones/2/rotation = Quaternion(0.520595, 0.478519, -0.520595, 0.478519)
-bones/3/position = Vector3(-0.045908, -1.23801, 0.337209)
-bones/3/rotation = Quaternion(0.850565, -0.51647, -0.0887105, -0.0439066)
-bones/3/scale = Vector3(1.00873, 1.00071, 0.977812)
-bones/4/position = Vector3(4.94864e-08, 0.641317, -1.19599e-07)
-bones/4/rotation = Quaternion(0.00909867, 0.112271, 0.194089, 0.974496)
+bones/0/rotation = Quaternion(0.993429, -0.0202892, -0.111597, -0.0152885)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(-0.0149881, 0.111638, -0.0176158, 0.99348)
+bones/2/rotation = Quaternion(0.479386, 0.519797, -0.479386, 0.519797)
+bones/3/rotation = Quaternion(0.993429, -0.0202892, -0.111597, -0.0152885)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.0140851, 0.111755, -0.00958322, 0.99359)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.273702, 0.651987, -0.273703, 0.651987)
-bones/6/position = Vector3(-0.0753318, -1.26873, 0.000852531)
-bones/6/rotation = Quaternion(-7.69188e-09, 1.2031e-07, -0.00781089, 0.99997)
-bones/6/scale = Vector3(1, 1.01163, 0.975676)
-bones/7/position = Vector3(1.00828e-08, 0.80456, 1.1236e-09)
-bones/7/rotation = Quaternion(-0.00390604, -0.0555747, -0.0629756, 0.996459)
-bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(-4.2094e-08, 0.702747, 1.8348e-09)
-bones/8/rotation = Quaternion(0.00365893, 0.0556238, 0.0793248, 0.995289)
+bones/5/rotation = Quaternion(0.483573, 0.515904, -0.483573, 0.515904)
+bones/7/rotation = Quaternion(-0.00233409, -0.0556422, -0.0556421, 0.996896)
+bones/8/rotation = Quaternion(0.00233409, 0.055642, 0.0556421, 0.996896)
 bones/8/scale = Vector3(1, 1, 1)
-bones/9/position = Vector3(0.0271018, 0.48289, 0.197012)
-bones/9/rotation = Quaternion(-0.18432, 0.376421, 0.77708, -0.469552)
-bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(-0.342859, 0.116323, 0.279121, 0.889386)
-bones/11/rotation = Quaternion(-0.100787, 0.96615, 0.153133, 0.181509)
+bones/11/rotation = Quaternion(0.0400061, 0.989659, 0.136804, -0.0160942)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/rotation = Quaternion(0.0181026, 0.588216, 0.807416, -0.0418799)
+bones/12/rotation = Quaternion(0.0854641, 0.986773, 0.1374, 0.00978707)
 bones/12/scale = Vector3(1, 1, 1)
-bones/13/rotation = Quaternion(0.20999, 0.781056, 0.23008, 0.54122)
-bones/14/position = Vector3(-0.000460571, 0.48935, -0.170338)
-bones/14/rotation = Quaternion(0.614491, -0.716263, 0.325689, -0.0574009)
-bones/14/scale = Vector3(1, 1, 1)
-bones/15/position = Vector3(2.05921e-07, 0.650187, 7.57266e-08)
-bones/15/rotation = Quaternion(-0.133478, -0.00282147, -0.275099, 0.952101)
-bones/16/rotation = Quaternion(-0.143447, 0.427346, 0.116604, -0.884987)
+bones/13/rotation = Quaternion(0.273842, 0.876339, 0.202027, 0.340918)
+bones/16/rotation = Quaternion(-0.0991348, 0.868196, -0.102412, -0.47531)
 bones/16/scale = Vector3(1, 1, 1)
-bones/17/rotation = Quaternion(-0.761307, -0.00813957, 0.273992, 0.5876)
+bones/17/rotation = Quaternion(-0.155137, 0.270966, -0.0459922, 0.948891)
 bones/17/scale = Vector3(1, 1, 1)
-bones/18/rotation = Quaternion(-0.320628, 0.54518, 0.0172302, 0.77439)
+bones/18/rotation = Quaternion(-0.25316, 0.608766, -0.227409, 0.716658)
 
 [node name="logan" parent="Visual/loganchara/Armature/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, -1.86265e-09, 0, 1, 0, 1.86265e-09, 0, 1, 0, 0, 0)
@@ -451,6 +461,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/Fall = false
 parameters/conditions/OnWall = false
 parameters/conditions/onFloor = false
+parameters/DropSlide/BlendSpace1D/blend_position = 0.0
 parameters/IdleWalk/TimeScale/scale = 1.0
 parameters/IdleWalk/animation/blend_position = Vector2(0.514488, -0.5)
 parameters/Jump/BlendSpace1D/blend_position = 0.0
