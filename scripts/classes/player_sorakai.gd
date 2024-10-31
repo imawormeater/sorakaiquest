@@ -450,7 +450,11 @@ func _physics_process(delta: float) -> void:
 			SPEED += slideSpeed
 			velocity -= (visual.global_basis.z*slideSpeed)
 			state = States.Slide
-			anim_st.travel("Slide")
+			if pressedActionInAir:
+				print("hi")
+				anim_st.travel("DropSlide")
+			else:
+				anim_st.travel("Slide")
 		return
 	#WALL RIDE STATE
 	if state == States.Wall:
