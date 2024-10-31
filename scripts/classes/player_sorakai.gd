@@ -65,6 +65,7 @@ var wallRideCast:RayCast3D
 var wallRideMag:float
 var forcedHoldJump := false
 var cantHoldJump:bool = false
+var pressedActionInAir: bool = false
 #OTHER SHIT
 var springCombo := 0
 var jumpAnimation := 1.0
@@ -106,7 +107,7 @@ var currentKey:Node3D
 func setCorrectJumpVariables() -> void:
 	jump_velo = ((2.0 * JUMPHEIGHT) / JUMPPEAKTIME)
 	jump_grav = ((-2.0 * JUMPHEIGHT) / (JUMPPEAKTIME * JUMPPEAKTIME))
-	fall_grav= ((-2.0 * JUMPHEIGHT) / (JUMPDESCENTTIME* JUMPDESCENTTIME))
+	fall_grav = ((-2.0 * JUMPHEIGHT) / (JUMPDESCENTTIME* JUMPDESCENTTIME))
 
 func setJumpAnimation() -> void:
 	jumpAnimation = absf(fmod(jumpAnimation,2.0))
@@ -363,6 +364,12 @@ func _physics_process(delta: float) -> void:
 	var pressingJump := Input.is_action_pressed("movement_jump")
 	var pressedAction := Input.is_action_pressed("movement_action")
 	var justPressAction := Input.is_action_just_pressed("movement_action")
+	
+	if (justPressAction && !onFloor):
+		pressedActionInAir = true
+	elif (!pressedAction || onFloor):
+		pressedActionInAir = false
+		
 	var velocityMag := Vector2(velocity.x,velocity.z).length()
 	if not controlOn:
 		pressingJump = false
@@ -415,11 +422,14 @@ func _physics_process(delta: float) -> void:
 			
 		velocity.x = _tempVelocity.x
 		velocity.z = _tempVelocity.y
-		velocity.y = clampf(velocity.y,fall_grav*JUMPDESCENTTIME*1.1,9999)
-		
+		if pressedActionInAir:
+			velocity.y = -15
+		else:
+			velocity.y = clampf(velocity.y,fall_grav * JUMPDESCENTTIME * 1.1,9999)
+
 		move_and_slide()
 		
-		if onFloor != is_on_floor() and velocity.y < 0:#was on floor but now not
+		if onFloor != is_on_floor() and velocity.y < 0: #was on floor but now not
 			coyotejump = coyotejumpInit
 		if jumpbuffer > 0 and not is_on_floor() and jumpTimer > WRtilJump:
 			wallRunInit(Vector2(velocity.x,velocity.z).length())
