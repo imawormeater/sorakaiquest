@@ -367,6 +367,7 @@ func _physics_process(delta: float) -> void:
 	
 	if (justPressAction && !onFloor):
 		pressedActionInAir = true
+		anim_st.travel("FallDrop")
 	elif (!pressedAction || onFloor):
 		pressedActionInAir = false
 		
