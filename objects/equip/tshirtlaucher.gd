@@ -4,6 +4,14 @@ var launchPower:float = 20
 var canUse:bool = true
 var used:bool = false
 
+var ogPos:Vector3 = Vector3.ZERO
+var ogParent:Node3D = null
+
+func _ready() -> void:
+	ogPos = self.global_position
+	ogParent = self.get_parent_node_3d()
+	GameManager.CurrentState.new_level_loaded.connect(onUnequip)
+
 func onEquip() -> void:
 	sorakai = GameManager.CurrentState.Sorakai
 	sorakai.equip(self)
@@ -22,7 +30,7 @@ func revert() -> void:
 	used = false
 	sorakai.cantHoldJump = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if sorakai == null: return
 	if(sorakai.is_on_floor()):
 		revert()
@@ -33,4 +41,13 @@ func _physics_process(delta: float) -> void:
 		revert()
 
 func onUnequip() -> void:
+	print(ogParent)
 	interactable.enabled = true
+	sorakai = null
+	canUse = false
+	used = false
+	if self.is_inside_tree():
+		global_position = ogPos
+		reparent(ogParent)
+	if ogParent == null:
+		self.queue_free()
