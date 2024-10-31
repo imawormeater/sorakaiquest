@@ -111,9 +111,6 @@ script = ExtResource("8_yfyt5")
 transform = Transform3D(4.76148, 0, 0, 0, 1, 0, 0, 0, 2.83563, 10.5373, 14.2981, 43.4705)
 levelpath = "res://scenes/levels/test_level.tscn"
 
-[node name="Key" parent="." instance=ExtResource("10_muhek")]
-transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -23.4475, 25.2914, -12.3708)
-
 [node name="Door" parent="." instance=ExtResource("11_4qyr5")]
 transform = Transform3D(-4.35074e-08, 0, 6.32603, 0, 3.98133, 0, -0.995332, 0, -2.7652e-07, 10.3922, 15.3502, 32.5971)
 
@@ -122,3 +119,6 @@ transform = Transform3D(300, 0, 0, 0, 26.0896, 0, 0, 0, 83.5896, 0.611629, 22.01
 
 [node name="DeathPlane2" parent="." instance=ExtResource("12_62k7l")]
 transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 240.044, -7.02946, 4.20365, 45.2114)
+
+[node name="Key" parent="." instance=ExtResource("10_muhek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3963, 25.2471, -12.2476)

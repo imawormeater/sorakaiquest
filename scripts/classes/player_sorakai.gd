@@ -125,11 +125,11 @@ func _ready() -> void:
 	animationtree.active = true
 	anim_st = animationtree.get("parameters/playback")
 	
-	for key in get_tree().get_nodes_in_group("Keys"):
-		key.key_touched.connect(key_touched)
+	#for key in get_tree().get_nodes_in_group("Keys"):
+	#	key.key_touched.connect(key_touched)
 	
-	for lockedDoor in get_tree().get_nodes_in_group("LockedDoors"):
-		lockedDoor.lockedDoor_touched.connect(lockedDoor_touched)
+	#for lockedDoor in get_tree().get_nodes_in_group("LockedDoors"):
+	#	lockedDoor.lockedDoor_touched.connect(lockedDoor_touched)
 		
 	await get_tree().create_timer(0.5,false).timeout #invincibility when respawn
 	dying = false
@@ -139,8 +139,8 @@ func _process(delta: float) -> void:#Camera shit
 			if Input.is_action_just_pressed("debug1") and state != States.Noclip:
 				state = States.Noclip
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
-	if currentKey:
-		currentKey.global_transform = currentKey.global_transform.interpolate_with(followPoint.global_transform,_lerp_speed * 0.2)
+	#if currentKey:
+		#currentKey.global_transform = currentKey.global_transform.interpolate_with(followPoint.global_transform,_lerp_speed * 0.2)
 		
 	if disabledCamera: return
 	
@@ -658,11 +658,14 @@ func onAlbumStop() -> void:
 
 func equip(thing:Equipable)	 -> void:
 	if equippedItem:
-		equippedItem.onUnequip()
+		unequip()
 	equippedItem = thing
 	equippedItem.reparent(equipNode)
 	equippedItem.position = Vector3.ZERO
-
+	
+func unequip() -> void:
+	equippedItem.onUnequip()
+	equippedItem = null
 func refresh() -> void:
 	currentKey = null
 	

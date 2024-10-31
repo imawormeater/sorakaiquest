@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn35hu6xtwj7q"]
+[gd_scene load_steps=8 format=3 uid="uid://bn35hu6xtwj7q"]
 
 [ext_resource type="Texture2D" uid="uid://dh4lvqcs1ktj" path="res://assets/images/keyColor.png" id="1_kro43"]
 [ext_resource type="Script" path="res://scripts/key_handler.gd" id="1_n3xml"]
 [ext_resource type="ArrayMesh" uid="uid://b1nc7ng2qo8ku" path="res://assets/meshes/sorakaiKeyy.obj" id="3_a4rlb"]
+[ext_resource type="PackedScene" uid="uid://cv8u5yn1kefiw" path="res://objects/interactable.tscn" id="4_eant1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atabq"]
 albedo_texture = ExtResource("1_kro43")
@@ -10,21 +11,36 @@ albedo_texture = ExtResource("1_kro43")
 [sub_resource type="BoxShape3D" id="BoxShape3D_w1ih1"]
 size = Vector3(0.221252, 0.562988, 1.10986)
 
-[node name="Key" type="Node3D" groups=["Keys"]]
-script = ExtResource("1_n3xml")
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ht8u"]
 
-[node name="Key" type="MeshInstance3D" parent="."]
+[node name="Key" type="Node3D" node_paths=PackedStringArray("interactable") groups=["Keys"]]
+script = ExtResource("1_n3xml")
+interactable = NodePath("RigidBody3D/Interactable")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
+input_ray_pickable = false
+lock_rotation = true
+
+[node name="Key" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_atabq")
 mesh = ExtResource("3_a4rlb")
+skeleton = NodePath("../..")
 
-[node name="Area3D" type="Area3D" parent="Key"]
+[node name="KeyArea" type="Area3D" parent="RigidBody3D/Key" groups=["Keys"]]
 transform = Transform3D(4.54545, 0, 0, 0, 4.54545, 0, 0, 0, 4.54545, 0, 0, 0)
-collision_layer = 4
+collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Key/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Key/KeyArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00375366, 0.0314941, -0.0549316)
 shape = SubResource("BoxShape3D_w1ih1")
 
-[connection signal="body_entered" from="Key/Area3D" to="." method="_on_key_entered"]
+[node name="keyCollision" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(0.61, 0, 0, 0, 0.61, 0, 0, 0, 0.61, 0.00375366, 0.0314941, -0.0549315)
+shape = SubResource("BoxShape3D_1ht8u")
+
+[node name="Interactable" parent="RigidBody3D" node_paths=PackedStringArray("objectDepedency") instance=ExtResource("4_eant1")]
+objectDepedency = NodePath("../..")
+functionName = "onEquip"
