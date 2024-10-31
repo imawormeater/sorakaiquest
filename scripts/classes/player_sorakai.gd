@@ -364,9 +364,14 @@ func _physics_process(delta: float) -> void:
 	var pressingJump := Input.is_action_pressed("movement_jump")
 	var pressedAction := Input.is_action_pressed("movement_action")
 	var justPressAction := Input.is_action_just_pressed("movement_action")
+	var isDropSliding: bool = false
 	
 	if (justPressAction && !onFloor):
 		pressedActionInAir = true
+	elif (pressedActionInAir && onFloor):
+		isDropSliding = true
+		anim_st.travel("DropSlide")	
+		pressedActionInAir = false
 	elif (!pressedAction || onFloor):
 		pressedActionInAir = false
 		
@@ -450,10 +455,7 @@ func _physics_process(delta: float) -> void:
 			SPEED += slideSpeed
 			velocity -= (visual.global_basis.z*slideSpeed)
 			state = States.Slide
-			if pressedActionInAir:
-				print("hi")
-				anim_st.travel("DropSlide")
-			else:
+			if !isDropSliding:
 				anim_st.travel("Slide")
 		return
 	#WALL RIDE STATE
