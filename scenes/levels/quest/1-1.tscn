@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b0lkmrk437kiy"]
+[gd_scene load_steps=22 format=3 uid="uid://b0lkmrk437kiy"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_q228h"]
 [ext_resource type="AudioStream" uid="uid://b1c2svuetr1yj" path="res://assets/music/deathmatch.ogg" id="2_qihrs"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="9_jxhij"]
 [ext_resource type="PackedScene" uid="uid://dxjqbclf6hso1" path="res://objects/checkPoint.tscn" id="9_lwht0"]
 [ext_resource type="PackedScene" uid="uid://0lu754qntb0m" path="res://objects/moneyCollectable.tscn" id="10_02m7t"]
-[ext_resource type="Environment" uid="uid://jyc65e1ajlll" path="res://assets/materials/ursc/test_env.tres" id="10_6vybs"]
 [ext_resource type="Script" path="res://scripts/skybox_rotater.gd" id="11_f00vt"]
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="12_2hhil"]
 [ext_resource type="AudioStream" uid="uid://cu7ty4ay2nlw5" path="res://assets/sounds/mario64ambience.ogg" id="12_qqygi"]
@@ -18,6 +17,42 @@
 
 [sub_resource type="TextMesh" id="TextMesh_2bgju"]
 text = "LOGANS HOUSE"
+
+[sub_resource type="Gradient" id="Gradient_bdev1"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.292876, 0.522427, 0.71504, 0.744063)
+colors = PackedColorArray(0.0697963, 0, 0.953077, 1, 0.224321, 0.468438, 0.755248, 1, 0.84, 0.3528, 0.3528, 1, 0.965211, 0.711422, 0.264923, 1, 0.999999, 0.86464, 0.838241, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q14d0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sv1r0"]
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_bdev1")
+noise = SubResource("FastNoiseLite_q14d0")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_af0jj"]
+panorama = SubResource("NoiseTexture2D_sv1r0")
+
+[sub_resource type="Sky" id="Sky_j1hyb"]
+sky_material = SubResource("PanoramaSkyMaterial_af0jj")
+
+[sub_resource type="Environment" id="Environment_54m0d"]
+resource_local_to_scene = true
+background_mode = 2
+background_color = Color(0.0352941, 0.376471, 0.588235, 1)
+background_energy_multiplier = 0.9
+sky = SubResource("Sky_j1hyb")
+ambient_light_source = 2
+ambient_light_color = Color(0.676748, 0.28632, 0.37773, 1)
+ambient_light_energy = 0.93
+reflected_light_source = 2
+fog_light_color = Color(0.715319, 0.500035, 0.243534, 1)
+fog_sun_scatter = 0.77
+fog_density = 0.0
+volumetric_fog_density = 0.0706
+volumetric_fog_ambient_inject = 1.75
+adjustment_enabled = true
 
 [node name="Level" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
 script = ExtResource("1_q228h")
@@ -859,16 +894,18 @@ meshToUse = NodePath("Visual/coin")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.6402, 37.7456, 118.55)
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.825812, 0.527723, -0.195613, 0.02899, 0.386766, 0.921028, 0.562063, 0.755409, -0.334909, 0, 15.9898, -5.65541)
-light_color = Color(0.804743, 0.804743, 0.804743, 1)
-light_energy = 2.836
+transform = Transform3D(-0.508335, 0.693142, -0.511028, 0.470082, 0.720554, 0.509731, 0.721539, 0.0188898, -0.692116, 0, 15.9898, -5.65541)
+light_color = Color(1, 0.913176, 0.351163, 1)
+light_energy = 1.159
+light_indirect_energy = 4.633
+light_angular_distance = 3.93
 shadow_enabled = true
-shadow_opacity = 0.15
-shadow_blur = 0.051
+shadow_opacity = 0.6
+shadow_blur = 0.0
 sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("10_6vybs")
+environment = SubResource("Environment_54m0d")
 script = ExtResource("11_f00vt")
 
 [node name="loganSpawn" type="Node3D" parent="."]
