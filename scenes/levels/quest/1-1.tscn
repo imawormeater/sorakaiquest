@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://scripts/skybox_rotater.gd" id="11_f00vt"]
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="12_2hhil"]
 [ext_resource type="AudioStream" uid="uid://cu7ty4ay2nlw5" path="res://assets/sounds/mario64ambience.ogg" id="12_qqygi"]
-[ext_resource type="PackedScene" uid="uid://cni3lqkh187ir" path="res://objects/wallrunPlatform.tscn" id="14_m7qd4"]
+[ext_resource type="PackedScene" path="res://objects/wallrunPlatform.tscn" id="14_m7qd4"]
 [ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="14_pa3im"]
 
 [sub_resource type="TextMesh" id="TextMesh_2bgju"]
@@ -269,7 +269,7 @@ transform = Transform3D(-39.9161, 0, 0, 0, 1, 0, 0, 0, 48.3698, -3.17799, 12.772
 
 [node name="npc" parent="Objects" instance=ExtResource("14_pa3im")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.30432, 0.630434, 6.42443)
-exportDialog = ["s:Welcome to Sorakai Quest!", "s:You can move around using WASD, move your camera around with the mouse.", "s:And press space to jump, just try it out!"]
+exportDialog = ["s:Welcome to [color=57C8DB]Sorakai Quest!", "s:You can move around using WASD, move your camera around with the mouse.", "s:And press space to jump, just try it out!"]
 
 [node name="Sprite3D" type="Sprite3D" parent="Objects/npc"]
 transform = Transform3D(1, 0, 0, 0, 1.01, 0, 0, 0, 0.384, 0, -0.164759, 0)

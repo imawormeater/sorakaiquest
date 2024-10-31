@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://p3tbs46mi8p3"]
+[gd_scene load_steps=18 format=3 uid="uid://p3tbs46mi8p3"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_aufyl"]
 [ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://objects/plains_1.tscn" id="2_u4bu6"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="13_jb12y"]
 [ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="14_4hmp0"]
 [ext_resource type="Texture2D" uid="uid://sc0koml0wb4j" path="res://assets/images/piggybankPlaceholder.png" id="14_6j4l2"]
+[ext_resource type="Texture2D" uid="uid://u1qhjc2sk53o" path="res://assets/images/deny.png" id="16_76bvg"]
 [ext_resource type="PackedScene" uid="uid://c1nam1mox4tq6" path="res://objects/equip/tshirtlaucher.tscn" id="16_k8hed"]
 
 [node name="Level" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
@@ -210,6 +211,16 @@ endingAlbum = true
 transform = Transform3D(2.60509, 0, 0, 0, 2.62961, 0, 0, 0, 1, 0, -0.289, 0)
 billboard = 2
 texture = ExtResource("14_6j4l2")
+
+[node name="npc2" parent="." instance=ExtResource("14_4hmp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.95138, 0.438184, 7.78199)
+exportDialog = ["s:Hello Sorakai, im [color=57C8DB]Cunty Danny!", "p:What makes you say that...?", "s:Just take one look at me. What am I serving?", "p:..."]
+
+[node name="Sprite3D" type="Sprite3D" parent="npc2"]
+transform = Transform3D(2.60509, 0, 0, 0, 2.62961, 0, 0, 0, 1, 0, -0.289, 0)
+pixel_size = 0.0013
+billboard = 2
+texture = ExtResource("16_76bvg")
 
 [node name="Equipable" parent="." instance=ExtResource("16_k8hed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -4)
