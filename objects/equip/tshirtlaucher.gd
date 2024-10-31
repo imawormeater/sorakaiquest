@@ -41,12 +41,11 @@ func _physics_process(_delta: float) -> void:
 		revert()
 
 func onUnequip() -> void:
-	print(ogParent)
 	interactable.enabled = true
 	sorakai = null
 	canUse = false
 	used = false
-	if self.is_inside_tree():
+	if self.is_inside_tree():#this might cause a memory leak? idk
 		global_position = ogPos
 		reparent(ogParent)
 	if ogParent == null:
