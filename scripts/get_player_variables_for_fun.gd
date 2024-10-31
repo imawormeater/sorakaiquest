@@ -22,7 +22,7 @@ func _process(_delta: float) -> void:
 		var actual_string := format_string % [logan.velocity, logan.SPEED,logan.state,logan.DEACEL_mult,logan.global_position,1]
 		label.text = actual_string
 
-func onAlbumCollect(this:Node3D) -> void:
+func onAlbumCollect(_this:Node3D) -> void:
 	$AlbumCollectControl.visible = true
 	await get_tree().create_timer(GameManager.CurrentState.timeToCollect).timeout
 	$AlbumCollectControl.visible = false

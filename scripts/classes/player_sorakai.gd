@@ -323,7 +323,7 @@ func set_momentum(pitch:float,delta:float,onFloor:bool,direction:Vector2,veloMag
 	if direction != Vector2.ZERO:
 		hill = -1
 	var momentum:float = pitch * hill
-	if SPEED < 8:
+	if SPEED < 9:
 		SPEED += momentum * delta * 5
 	#elif onFloor:
 	#	SPEED -= delta
@@ -499,10 +499,16 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector3(foward.x,velocity.y,foward.z) + (-wallNormal)
 		velocity.y += jump_grav * 0.7 * delta
 		velocity.y = clampf(velocity.y,jump_grav * 0.4,9999)
+		if wallRideCast.get_collider() != null:
+			if(wallRideCast.get_collider().is_in_group("wallrunPlatform")):
+				velocity = Vector3(foward.x/wallRideMag * SPEED,velocity.y,foward.z/wallRideMag * SPEED) + (-wallNormal)
+				velocity.y = clampf(velocity.y,0,9999)
 		
+		velocityMag = Vector2(velocity.x,velocity.z).length()
 		visual.look_at(global_position + foward)
 		move_and_slide()
 		if not wallRideCast.is_colliding() or is_on_floor() or velocityMag < 1 or foward.length() == 0 or pressedAction:
+			print(velocityMag)
 			character_mesh.scale = Vector3.ONE
 			character_mesh.rotation = Vector3.ZERO
 			state = States.Free

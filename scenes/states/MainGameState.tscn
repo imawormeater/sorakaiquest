@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/classes/Playstate.gd" id="1_kcow4"]
 [ext_resource type="PackedScene" uid="uid://dw40p48fqbsl2" path="res://scenes/player_sorakai.tscn" id="2_ntxhb"]
-[ext_resource type="PackedScene" uid="uid://p3tbs46mi8p3" path="res://scenes/levels/test_level.tscn" id="3_bv8ma"]
+[ext_resource type="PackedScene" uid="uid://b0lkmrk437kiy" path="res://scenes/levels/quest/1-1.tscn" id="2_qgx60"]
 [ext_resource type="PackedScene" uid="uid://bexrd87t846hr" path="res://scenes/pause_menu.tscn" id="5_rp537"]
 [ext_resource type="PackedScene" uid="uid://douw2p6ggl56h" path="res://scenes/dialog_box.tscn" id="6_ne7gu"]
 [ext_resource type="Script" path="res://addons/smoother/smoother.gd" id="6_qgbhh"]
@@ -15,7 +15,7 @@ Sorakai = NodePath("Sorakai")
 MusicStream = NodePath("Music")
 smoother = NodePath("Smoother")
 Dialog = NodePath("DialogBox")
-first_level = ExtResource("3_bv8ma")
+first_level = ExtResource("2_qgx60")
 
 [node name="Sorakai" parent="." instance=ExtResource("2_ntxhb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

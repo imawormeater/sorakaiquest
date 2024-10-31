@@ -84,7 +84,7 @@ transform = Transform3D(0.306804, 0, 0, 0, 0.436611, 0, 0, 0, 0.436611, 0, -0.02
 [node name="Skeleton3D" parent="album/Armature" index="0"]
 bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, -2.11758e-22, 1)
 bones/1/position = Vector3(0.0866297, 0.916741, 0.980129)
-bones/1/rotation = Quaternion(0.989311, 0, 0, 0.14582)
+bones/1/rotation = Quaternion(0.367786, 0, 0, 0.92991)
 
 [node name="Cube" parent="album/Armature/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_7aps4")

@@ -109,7 +109,7 @@ func progress() -> void:
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not canProgress: return
 	
 	if Input.is_action_just_pressed("interact"):
