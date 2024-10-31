@@ -1,8 +1,9 @@
 [gd_resource type="Environment" load_steps=6 format=3 uid="uid://jyc65e1ajlll"]
 
 [sub_resource type="Gradient" id="Gradient_bdev1"]
-offsets = PackedFloat32Array(0, 0.608833, 0.839117)
-colors = PackedColorArray(0.36067, 0.380682, 0.819996, 1, 0.541721, 0.690846, 1, 1, 1, 1, 1, 1)
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.414248, 0.751979, 0.936675)
+colors = PackedColorArray(0.0697963, 0, 0.953077, 1, 0.500366, 0.705017, 0.867447, 1, 1, 0.933333, 0.92, 1, 1, 0.933333, 0.92, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_q14d0"]
 
@@ -15,7 +16,7 @@ noise = SubResource("FastNoiseLite_q14d0")
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_af0jj"]
 panorama = SubResource("NoiseTexture2D_sv1r0")
 
-[sub_resource type="Sky" id="Sky_j1hyb"]
+[sub_resource type="Sky" id="Sky_3i3qb"]
 sky_material = SubResource("PanoramaSkyMaterial_af0jj")
 
 [resource]
@@ -23,7 +24,7 @@ resource_local_to_scene = true
 background_mode = 2
 background_color = Color(0.0352941, 0.376471, 0.588235, 1)
 background_energy_multiplier = 0.9
-sky = SubResource("Sky_j1hyb")
+sky = SubResource("Sky_3i3qb")
 ambient_light_source = 2
 ambient_light_color = Color(0.244776, 0.244776, 0.244776, 1)
 ambient_light_sky_contribution = 0.2

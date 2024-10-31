@@ -2,6 +2,7 @@ class_name Logan
 extends CharacterBody3D
 
 @export var camera:Camera3D
+@export var equippedItem:Equipable
 
 @export var controlOn := true #sets player controls
 @export var cameraOn := true #gets rid of camera controls
@@ -63,6 +64,7 @@ var state:= States.Free
 var wallRideCast:RayCast3D 
 var wallRideMag:float
 var forcedHoldJump := false
+var cantHoldJump:bool = false
 #OTHER SHIT
 var springCombo := 0
 var jumpAnimation := 1.0
@@ -87,6 +89,7 @@ var jumpAnimation := 1.0
 @onready var walkDust := $Visual/WalkDust
 @onready var sfx := $PlayerSFX
 @onready var followPoint := $Visual/loganchara/FollowPoint
+@onready var equipNode := $Equip
 
 @export var _face_mat: String
 @onready var face:ShaderMaterial = character_mesh.get(_face_mat)
@@ -183,7 +186,7 @@ func do_timers(delta:float) -> void: ##Does the Timers
 func getGravity(_pressingJump:bool) -> float:
 	if velocity.y < 0.0:
 		forcedHoldJump = false
-	return jump_grav if (velocity.y > 0.0 and _pressingJump) or forcedHoldJump else fall_grav
+	return jump_grav if (velocity.y > 0.0 and _pressingJump and not cantHoldJump) or forcedHoldJump else fall_grav
 
 #JUMP
 func jump() -> void:
@@ -374,6 +377,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		changeFace('normal')
 	#FREE STATE (RUNNING, JUMPING, BASIC)
+	if equippedItem != null:
+		if Input.is_action_just_pressed("interact"):
+			equippedItem.onUse()
 	
 	if state == States.Free:
 		var pitch := get_pitch(get_floor_normal())
@@ -639,7 +645,13 @@ func onAlbumStop() -> void:
 	visual.rotation = Vector3(0,visual.rotation.y,0)
 	state = States.Free
 	velocity = Vector3.ZERO
-	
+
+func equip(thing:Equipable)	 -> void:
+	if equippedItem:
+		equippedItem.onUnequip()
+	equippedItem = thing
+	equippedItem.reparent(equipNode)
+	equippedItem.position = Vector3.ZERO
 
 func refresh() -> void:
 	currentKey = null

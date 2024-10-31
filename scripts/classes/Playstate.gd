@@ -12,6 +12,7 @@ signal albumCounterAnimation
 @export var smoother:Smoother
 @export var Dialog:DialogBox
 
+
 @export var first_level:PackedScene
 
 @export var currentLevel:Level

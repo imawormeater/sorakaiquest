@@ -18,31 +18,31 @@
 [sub_resource type="TextMesh" id="TextMesh_2bgju"]
 text = "LOGANS HOUSE"
 
-[sub_resource type="Gradient" id="Gradient_bdev1"]
+[sub_resource type="Gradient" id="Gradient_o7fpc"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.292876, 0.522427, 0.71504, 0.744063)
-colors = PackedColorArray(0.0697963, 0, 0.953077, 1, 0.224321, 0.468438, 0.755248, 1, 0.84, 0.3528, 0.3528, 1, 0.965211, 0.711422, 0.264923, 1, 0.999999, 0.86464, 0.838241, 1)
+offsets = PackedFloat32Array(0, 0.313984, 0.562005, 0.781003, 0.828496)
+colors = PackedColorArray(0.0602451, 0.214174, 0.421189, 1, 0.216028, 0.357701, 0.634872, 1, 0.79, 0.395, 0.487167, 1, 1, 0.767667, 0.18, 1, 1, 1, 1, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_q14d0"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gbbm8"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sv1r0"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y8oh7"]
 generate_mipmaps = false
 seamless = true
-color_ramp = SubResource("Gradient_bdev1")
-noise = SubResource("FastNoiseLite_q14d0")
+color_ramp = SubResource("Gradient_o7fpc")
+noise = SubResource("FastNoiseLite_gbbm8")
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_af0jj"]
-panorama = SubResource("NoiseTexture2D_sv1r0")
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lroy7"]
+panorama = SubResource("NoiseTexture2D_y8oh7")
 
-[sub_resource type="Sky" id="Sky_j1hyb"]
-sky_material = SubResource("PanoramaSkyMaterial_af0jj")
+[sub_resource type="Sky" id="Sky_5566o"]
+sky_material = SubResource("PanoramaSkyMaterial_lroy7")
 
 [sub_resource type="Environment" id="Environment_54m0d"]
 resource_local_to_scene = true
 background_mode = 2
 background_color = Color(0.0352941, 0.376471, 0.588235, 1)
 background_energy_multiplier = 0.9
-sky = SubResource("Sky_j1hyb")
+sky = SubResource("Sky_5566o")
 ambient_light_source = 2
 ambient_light_color = Color(0.676748, 0.28632, 0.37773, 1)
 ambient_light_energy = 0.93
@@ -318,9 +318,10 @@ value = 10.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27295, 37.2011, 43.6307)
 value = 10.0
 
-[node name="MoneyCollectable3" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
+[node name="MoneyCollectable3" parent="Objects/MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0130423, 1.46037, 9.81592)
 value = 0.1
+meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable4" parent="Objects/MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.924006, 1.46037, 9.81592)
@@ -397,9 +398,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0130423, 21.2534, 30.0462)
 value = 0.1
 meshToUse = NodePath("Visual/coin")
 
-[node name="MoneyCollectable29" parent="Objects/MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("10_02m7t")]
+[node name="MoneyCollectable29" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0130423, 21.8574, 36.6195)
-meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable30" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02268, 21.8574, 36.6195)
@@ -407,9 +407,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02268, 21.8574, 36.6195)
 [node name="MoneyCollectable31" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03391, 21.8574, 36.6195)
 
-[node name="MoneyCollectable32" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
+[node name="MoneyCollectable32" parent="Objects/MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.937617, 23.8371, 41.5273)
 value = 0.1
+meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable33" parent="Objects/MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.937617, 23.8371, 43.2588)
@@ -466,9 +467,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0164543, 28.235, 64.1375)
 value = 0.1
 meshToUse = NodePath("Visual/coin")
 
-[node name="MoneyCollectable54" parent="Objects/MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("10_02m7t")]
+[node name="MoneyCollectable54" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22397, 32.3758, 65.4007)
-meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable55" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300508, 32.3758, 65.4007)
@@ -476,9 +476,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300508, 32.3758, 65.4007)
 [node name="MoneyCollectable56" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30852, 32.3758, 65.4007)
 
-[node name="MoneyCollectable57" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
+[node name="MoneyCollectable57" parent="Objects/MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18786, 38.8146, 62.7247)
 value = 0.1
+meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable58" parent="Objects/MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038177, 38.8146, 62.7247)
@@ -750,9 +751,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.823, 29.7404, 118.502)
 value = 0.1
 meshToUse = NodePath("Visual/coin")
 
-[node name="MoneyCollectable123" parent="Objects/MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("10_02m7t")]
+[node name="MoneyCollectable123" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.1661, 30.4542, 118.502)
-meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable124" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.1661, 32.2323, 118.502)
@@ -783,9 +783,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.136, 51.527, 116.74)
 value = 0.1
 meshToUse = NodePath("Visual/coin")
 
-[node name="MoneyCollectable91" parent="Objects/MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("10_02m7t")]
+[node name="MoneyCollectable91" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9561, 51.5784, 119.098)
-meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable92" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8992, 51.5784, 119.098)
@@ -861,9 +860,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0130423, 6.00719, 19.5151)
 value = 0.1
 meshToUse = NodePath("Visual/coin")
 
-[node name="MoneyCollectable13" parent="Objects/MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("10_02m7t")]
+[node name="MoneyCollectable13" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0130423, 8.3597, 19.5151)
-meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable14" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0130423, 10.3342, 17.9726)
