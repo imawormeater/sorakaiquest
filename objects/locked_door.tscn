@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhofpy040oepx"]
+[gd_scene load_steps=6 format=3 uid="uid://dhofpy040oepx"]
 
 [ext_resource type="Script" path="res://scripts/locked_door.gd" id="1_gjlhp"]
+[ext_resource type="AudioStream" uid="uid://qbj48iekwu5d" path="res://assets/sounds/dvd bump.mp3" id="2_6xeb2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ohtsa"]
 lightmap_size_hint = Vector2i(14, 21)
@@ -28,5 +29,11 @@ shape = SubResource("SphereShape3D_f2hns")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00642252, -0.000669956, -0.000396729)
 shape = SubResource("BoxShape3D_1h2me")
+
+[node name="explosion" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_6xeb2")
+volume_db = 37.178
+max_distance = 25.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="Door/Area3D" to="." method="_on_area_3d_area_entered"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6c5nbau5t1sw"
+path="res://.godot/imported/wind up n throw.mp3-82e0f039e32b0e3a1541bc22aec57e9b.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/wind up n throw.mp3"
+dest_files=["res://.godot/imported/wind up n throw.mp3-82e0f039e32b0e3a1541bc22aec57e9b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -18,8 +18,10 @@ func _on_area_entered(area: Area3D) -> void:
 
 
 func _on_collection_hitbox_area_entered(area: Area3D) -> void:
+	
 	var body := area.get_parent()
-	if body == null: return
+	if !body.is_in_group("Collectable"): return
+	
 	if body in attractedBodies:
 		attractedBodies.erase(body)
 		GameManager.CurrentState.receiveMoney.emit(body)

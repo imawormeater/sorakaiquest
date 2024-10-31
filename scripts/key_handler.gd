@@ -1,6 +1,4 @@
 extends Equipable
-signal key_touched
-signal lockedDoor_touched
 
 var launchPower:float = 5
 var canUse:bool = false
@@ -10,6 +8,7 @@ var ogPos:Vector3 = Vector3.ZERO
 var ogParent:Node3D = null
 @onready var rigidBody:RigidBody3D = $RigidBody3D
 @onready var keyCollision:CollisionShape3D = $RigidBody3D/keyCollision
+@onready var throwSound:AudioStreamPlayer3D = $RigidBody3D/throw
 
 func _ready() -> void:
 	ogPos = self.global_position
@@ -60,6 +59,7 @@ func onUnequip() -> void:
 	rigidBody.sleeping = false
 	rigidBody.top_level = true
 	rigidBody.freeze = false
+	throwSound.play(0.65)
 	await get_tree().create_timer(0.4).timeout
 	interactable.enabled = true
 	
@@ -74,3 +74,8 @@ func onlevelLoaded() -> void:
 		reparent(ogParent)
 	if ogParent == null:
 		self.queue_free()
+
+
+func _on_key_area_area_entered(area: Area3D) -> void:
+	if area.is_in_group("deathPlane"):
+		onlevelLoaded()

@@ -15,7 +15,7 @@ material = SubResource("StandardMaterial3D_s8ah6")
 [node name="DeathPlane" type="Node3D"]
 script = ExtResource("1_trn0j")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["deathPlane"]]
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]

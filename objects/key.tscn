@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn35hu6xtwj7q"]
+[gd_scene load_steps=9 format=3 uid="uid://bn35hu6xtwj7q"]
 
 [ext_resource type="Texture2D" uid="uid://dh4lvqcs1ktj" path="res://assets/images/keyColor.png" id="1_kro43"]
 [ext_resource type="Script" path="res://scripts/key_handler.gd" id="1_n3xml"]
 [ext_resource type="ArrayMesh" uid="uid://b1nc7ng2qo8ku" path="res://assets/meshes/sorakaiKeyy.obj" id="3_a4rlb"]
 [ext_resource type="PackedScene" uid="uid://cv8u5yn1kefiw" path="res://objects/interactable.tscn" id="4_eant1"]
+[ext_resource type="AudioStream" uid="uid://6c5nbau5t1sw" path="res://assets/sounds/wind up n throw.mp3" id="5_6ac82"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atabq"]
 albedo_texture = ExtResource("1_kro43")
@@ -30,7 +31,7 @@ skeleton = NodePath("../..")
 
 [node name="KeyArea" type="Area3D" parent="RigidBody3D/Key" groups=["Keys"]]
 transform = Transform3D(4.54545, 0, 0, 0, 4.54545, 0, 0, 0, 4.54545, 0, 0, 0)
-collision_layer = 2
+collision_layer = 3
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Key/KeyArea"]
@@ -44,3 +45,11 @@ shape = SubResource("BoxShape3D_1ht8u")
 [node name="Interactable" parent="RigidBody3D" node_paths=PackedStringArray("objectDepedency") instance=ExtResource("4_eant1")]
 objectDepedency = NodePath("../..")
 functionName = "onEquip"
+
+[node name="throw" type="AudioStreamPlayer3D" parent="RigidBody3D"]
+stream = ExtResource("5_6ac82")
+volume_db = 10.0
+max_distance = 10.0
+bus = &"SFX"
+
+[connection signal="area_entered" from="RigidBody3D/Key/KeyArea" to="." method="_on_key_area_area_entered"]
