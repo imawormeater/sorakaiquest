@@ -568,7 +568,7 @@ func _physics_process(delta: float) -> void:
 		elif (justPressAction):
 			forcedHoldJump = true
 			jump()
-			velocity.y += jump_velo/4
+			velocity.y += jump_velo/3 #NOW ITS SUPER. FUCK YOU DANNY
 			SPEED = baseSPEED * 0.7
 	
 		move_and_slide()

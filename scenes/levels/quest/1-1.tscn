@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://scripts/skybox_rotater.gd" id="11_f00vt"]
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="12_2hhil"]
 [ext_resource type="AudioStream" uid="uid://cu7ty4ay2nlw5" path="res://assets/sounds/mario64ambience.ogg" id="12_qqygi"]
-[ext_resource type="PackedScene" path="res://objects/wallrunPlatform.tscn" id="14_m7qd4"]
+[ext_resource type="PackedScene" uid="uid://cni3lqkh187ir" path="res://objects/wallrunPlatform.tscn" id="14_m7qd4"]
 [ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="14_pa3im"]
 
 [sub_resource type="TextMesh" id="TextMesh_2bgju"]
@@ -277,7 +277,7 @@ texture = ExtResource("7_b1y0b")
 
 [node name="npc2" parent="Objects" instance=ExtResource("14_pa3im")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.23952, 22.6488, 39.0808)
-exportDialog = ["s:In order to not fall into the void, you need to wallrun!", "s:You can wallrun by holding jump whilst being perpendicular to the wall.", "s:And to do a wall-jump, just release the jump button!", "s:Just try it!"]
+exportDialog = ["s:In order to not fall into the void, you need to wallrun!", "s:You can wallrun by pressing and holding jump whilst being perpendicular to the wall.", "s:Releasing the jump button while wallrunning while allow you to wall-jump!", "s:Just try it!"]
 
 [node name="Sprite3D" type="Sprite3D" parent="Objects/npc2"]
 transform = Transform3D(0.873143, 0, -0.187186, 0, 1.01, 0, 0.487463, 0, 0.335287, 0, -0.164759, 0)
