@@ -140,7 +140,7 @@ func _on_receive_money(dollar:moneyCollectable) -> void:
 	}
 	bankMoney += dictInfo["value"]
 	allCollectedMoney += dictInfo["value"]
-	dollar.queue_free()
+	dollar.deleteSelf()
 	loganGetMoney.emit(dictInfo)
 
 func on_album_collect(albumCollectable:Node3D) -> void:

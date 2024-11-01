@@ -15,13 +15,14 @@ material = SubResource("StandardMaterial3D_s8ah6")
 [node name="DeathPlane" type="Node3D"]
 script = ExtResource("1_trn0j")
 
-[node name="Area3D" type="Area3D" parent="." groups=["deathPlane"]]
+[node name="DeathArea" type="Area3D" parent="." groups=["deathPlane"]]
+collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea"]
 shape = SubResource("BoxShape3D_n6adu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_yjx4w")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="DeathArea" to="." method="_on_area_3d_body_entered"]

@@ -23,6 +23,14 @@ func _ready() -> void:
 
 func onEquip() -> void:
 	sorakai = GameManager.CurrentState.Sorakai
+	if sorakai.state != sorakai.States.Free: 
+		sorakai = null
+		interactable.enabled = true
+		return
+	sorakai.canHang = false
+	sorakai.canWall = false
+	sorakai.canWallrun = false
+	sorakai.canSlide = false
 	canUse = false
 	
 	interactable.enabled = false
@@ -55,6 +63,10 @@ func onUnequip() -> void:
 	if sorakai:
 		rigidBody.linear_velocity = -sorakai.visual.global_transform.basis.z * launchPower + sorakai.velocity
 		rigidBody.linear_velocity.y += launchPower
+		sorakai.canHang = true
+		sorakai.canWall = true
+		sorakai.canWallrun = true
+		sorakai.canSlide = true
 	sorakai = null
 	rigidBody.sleeping = false
 	rigidBody.top_level = true
@@ -77,5 +89,6 @@ func onlevelLoaded() -> void:
 
 
 func _on_key_area_area_entered(area: Area3D) -> void:
+	print(area)
 	if area.is_in_group("deathPlane"):
-		onlevelLoaded()
+		call_deferred("onlevelLoaded")
