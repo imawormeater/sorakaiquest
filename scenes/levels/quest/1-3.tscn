@@ -251,7 +251,7 @@ value = 0.1
 meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable48" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_3qvsf")]
-transform = Transform3D(0.998664, 0.0516736, 0, -0.0516736, 0.998664, 0, 0, 0, 1, 7.61396, 6.38192, 30.9377)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.61396, 6.38192, 30.9377)
 value = 0.1
 meshToUse = NodePath("Visual/coin")
 
@@ -437,31 +437,30 @@ meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3279, 34.6355, -15.6687)
-value = 10.0
 
 [node name="MoneyCollectable2" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3279, 19.1141, 12.3323)
-value = 10.0
+value = 5.0
 
 [node name="MoneyCollectable4" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08775, 9.82779, 21.8064)
-value = 10.0
+value = 5.0
 
 [node name="MoneyCollectable5" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.889, 19.065, 24.2954)
-value = 10.0
+value = 2.0
 
 [node name="MoneyCollectable49" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6941, 6.3058, 30.8378)
-value = 10.0
+value = 5.0
 
 [node name="MoneyCollectable6" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8348, 23.0922, -7.5918)
-value = 10.0
+value = 5.0
 
 [node name="MoneyCollectable7" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.4447, 22.7162, 1.72435)
-value = 10.0
+value = 5.0
 
 [node name="MoneyCollectable3" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.82878, 11.2037, 28.6219)
@@ -472,7 +471,7 @@ transform = Transform3D(8.7428, 0, 0, 0, 47.6259, 0, 0, 0, 8.814, 10.1791, 8.128
 
 [node name="npc" parent="." instance=ExtResource("7_ivm2k")]
 transform = Transform3D(0.90599, 0, 0, 0, 0.696997, 0, 0, 0, 0.335891, 7.46552, 14.4285, 30.3235)
-exportDialog = ["s:Passage is temporarily [color=FF0000]closed. [color=FFFFFF]Come back later.", "p:Seems like I need a way to open it..."]
+exportDialog = ["s:Passage is temporarily [color=D04140]closed. [color=FFFFFF]Come back later.", "p:Seems like I need a way to open it..."]
 
 [node name="Sprite3D" type="Sprite3D" parent="npc"]
 transform = Transform3D(0.802484, 0, -0.229122, 0, 1.01, 0, 0.596673, 0, 0.308154, 0, -0.164759, 0)

@@ -19,12 +19,12 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tpArea"]
 shape = SubResource("BoxShape3D_1h2me")
 
-[node name="debug" type="MeshInstance3D" parent="tpArea"]
+[node name="CoolBlack" type="MeshInstance3D" parent="tpArea"]
 mesh = SubResource("BoxMesh_fwv4e")
 skeleton = NodePath("../..")
 
 [node name="debounceTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="body_entered" from="tpArea" to="." method="_on_tp_area_body_entered"]
 [connection signal="body_entered" from="tpArea" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="tpArea" to="." method="_on_tp_area_body_entered"]
