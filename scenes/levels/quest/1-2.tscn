@@ -1,0 +1,390 @@
+[gd_scene load_steps=14 format=3 uid="uid://q2dt7dcu4bdy"]
+
+[ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_4uglr"]
+[ext_resource type="AudioStream" uid="uid://ctx5nhlg31caj" path="res://assets/music/the_time_flys.mp3" id="2_3esjd"]
+[ext_resource type="Environment" uid="uid://bn8ohqm75mqkj" path="res://assets/materials/ursc/test_env_dusk.tres" id="3_q6w0s"]
+[ext_resource type="Script" path="res://scripts/skybox_rotater.gd" id="4_qu2p0"]
+[ext_resource type="PackedScene" uid="uid://cabix5vgaakof" path="res://objects/level_switcher.tscn" id="5_4bo0q"]
+[ext_resource type="PackedScene" uid="uid://d0wtjv210el32" path="res://objects/plains_2.tscn" id="6_4st38"]
+[ext_resource type="PackedScene" uid="uid://dofocsipduo7e" path="res://objects/plains_1.tscn" id="7_qpdkb"]
+[ext_resource type="Material" uid="uid://fy0ibi6x3jnj" path="res://assets/materials/basicassplatform.tres" id="8_adxgb"]
+[ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://objects/basicassplatform.tscn" id="9_twkp4"]
+[ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="10_ujbox"]
+[ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="11_m7cy7"]
+[ext_resource type="PackedScene" uid="uid://0lu754qntb0m" path="res://objects/moneyCollectable.tscn" id="12_1x34o"]
+[ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="13_ggvdg"]
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
+script = ExtResource("1_4uglr")
+Name = "test level"
+Song = ExtResource("2_3esjd")
+Logan_Spawn = NodePath("loganSpawn")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.826341, 0.52806, -0.195738, 0.0290086, 0.387013, 0.921618, 0.562423, 0.755892, -0.335123, 0, 15.9898, -5.65541)
+light_color = Color(0.804743, 0.804743, 0.804743, 1)
+light_energy = 2.836
+shadow_enabled = true
+shadow_opacity = 0.15
+shadow_blur = 0.051
+sky_mode = 1
+
+[node name="loganSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.21617, 0.351428, 31.275)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_q6w0s")
+script = ExtResource("4_qu2p0")
+
+[node name="LevelSwitch" parent="." instance=ExtResource("5_4bo0q")]
+transform = Transform3D(4.76148, 0, 0, 0, 1, 0, 0, 0, 2.83563, -10.0569, 0.221125, 21.2372)
+levelpath = "res://scenes/levels/test_level_3.tscn"
+
+[node name="Platforms" type="Node3D" parent="."]
+
+[node name="plains4" parent="Platforms" instance=ExtResource("6_4st38")]
+transform = Transform3D(-0.179586, 0, -1.56999e-08, 0, 0.179586, 0, 1.56999e-08, 0, -0.179586, -0.881304, -0.844355, -35.4229)
+
+[node name="plains2" parent="Platforms" instance=ExtResource("7_qpdkb")]
+transform = Transform3D(0.157232, 0, 0, 0, 0.157232, 0, 0, 0, 0.157232, 1.88997, -0.736862, 13.0222)
+
+[node name="Plane" parent="Platforms/plains2" index="0"]
+transform = Transform3D(368.488, 0, 0, 0, 368.488, 0, 0, 0, 368.488, 1.96871, -0.0480943, -42.6289)
+material_override = ExtResource("8_adxgb")
+surface_material_override/1 = ExtResource("8_adxgb")
+
+[node name="bigtower" type="Node3D" parent="Platforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.30659)
+
+[node name="Node3D27" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
+transform = Transform3D(8.7428, 0, 0, 0, 47.6259, 0, 0, 0, 8.814, 12.2161, 22.5191, -14.9038)
+
+[node name="Node3D36" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
+transform = Transform3D(2.30171, 0, 0, 0, 3.45456, 0, 0, 0, 2.32045, 9.97261, 46.0539, -16.9996)
+
+[node name="Node3D28" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
+transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 9.7104, 8.60118, 22.9114, -14.3721)
+
+[node name="Node3D31" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
+transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 8.60118, 35.3732, -10.8045)
+
+[node name="Node3D32" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
+transform = Transform3D(7.79189, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 10.8606, 35.5131, -18.8176)
+
+[node name="Node3D35" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
+transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 15.7955, 43.2343, -18.8176)
+
+[node name="Node3D33" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
+transform = Transform3D(0.792129, 0, 0, 0, 5.81007, 0, 0, 0, 2.84163, 14.3728, 39.977, -18.8176)
+
+[node name="Node3D34" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
+transform = Transform3D(0.792129, 0, 0, 0, 5.30971, 0, 0, 0, 2.84163, 11.7114, 42.1896, -18.8153)
+
+[node name="Node3D29" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
+transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 15.8741, 24.7927, -10.8045)
+
+[node name="Node3D30" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
+transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.84163, 15.8741, 33.4816, -10.8045)
+
+[node name="Node3D36" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(-0.029291, 0, 2.84154, 0, 0.676602, 0, -3.60132, 0, -0.0231113, 21.6008, 28.3985, -11.2807)
+
+[node name="Node3D" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(3.0023, 0, 0, 0, 2.16552, 0, 0, 0, 3.02937, 4.49782, -0.017755, 26.3094)
+
+[node name="Node3D19" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(3.0023, 0, 0, 0, 5.28219, 0, 0, 0, 3.02937, 8.31546, 0.0496383, 24.2436)
+
+[node name="Node3D2" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(3.0023, 0, 0, 0, 8.00058, 0, 0, 0, 6.38392, 11.6316, -0.0879075, 18.7564)
+
+[node name="Node3D3" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.34622, 0, 0, 0, 18.9953, 0, 0, 0, 4.27527, 11.7362, 7.54414, 14.657)
+
+[node name="Node3D8" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.34622, 0, 0, 0, 18.9953, 0, 0, 0, 4.27527, 1.31783, 7.54414, 14.657)
+
+[node name="Node3D9" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(0.323229, 2.76595, 0, -0.706255, 1.26588, 0, 0, 0, 4.14806, 8.33509, 16.0544, 14.657)
+
+[node name="Node3D15" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(-0.34402, 6.97496, 0, -0.570513, -4.2059, 0, 0, 0, 3.97237, -11.6902, 22.8815, -10.4937)
+
+[node name="Node3D4" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.61605, 0, 0, 0, 6.77972, 0, 0, 0, 0.762339, 11.7948, 11.5309, 19.3969)
+
+[node name="Node3D5" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.34622, 0, 0, 0, 18.9953, 0, 0, 0, 4.27527, -6.38088, 7.68635, 12.0901)
+
+[node name="Node3D6" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.34622, 0, 0, 0, 10.5262, -3.55881, 0, 15.812, 2.36913, -6.38088, 13.6857, 0.998284)
+
+[node name="Node3D21" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.34622, 0, 0, 0, -0.342766, -5.04809, 0, -0.363912, 4.75476, -6.38088, 18.0706, 9.93642)
+
+[node name="Node3D7" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(8.34427, 0, 0, 0, 0.965095, 0, 0, 0, 3.99499, -2.38274, 7.98994, 13.3658)
+
+[node name="Node3D10" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.17905, 0, 0, 0, 2.7054, 0, 0, 0, 4.04588, -6.26938, 13.5218, -10.9825)
+
+[node name="Node3D11" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.17905, 0, 0, 0, 10.0297, 0, 0, 0, 4.04588, -12.05, 14.194, -23.1362)
+
+[node name="Node3D17" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.17905, 0, 0, 0, 10.0297, 0, 0, 0, 4.04588, -7.0224, 12.1435, -18.1959)
+
+[node name="Node3D12" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.17905, 0, 0, 0, 10.0297, 0, 0, 0, 4.04588, -19.2722, 16.6082, -24.4581)
+
+[node name="Node3D13" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.17905, 0, 0, 0, 12.7027, 0, 0, 0, 4.04588, -27.4479, 16.7549, -20.1844)
+
+[node name="Node3D18" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.17905, 0, 0, 0, 14.7635, 0, 0, 0, 4.04588, -24.3773, 16.7549, -12.9389)
+
+[node name="Node3D14" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.17905, 0, 0, 0, 17.0707, 0, 0, 0, 4.04588, -17.1164, 16.7549, -10.5015)
+
+[node name="Node3D16" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(4.17905, 0, 0, 0, 17.0707, 0, 0, 0, 4.04588, 1.07813, 13.2497, -10.5015)
+
+[node name="Node3D20" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(-0.0339887, 0, 4.04575, 0, 21.2953, 0, -4.17891, 0, -0.0329057, 23.4607, 21.5701, -11.4198)
+
+[node name="DeathPlane" parent="." instance=ExtResource("10_ujbox")]
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 0, -8.91429, 0)
+
+[node name="MoneyHandler" type="Node3D" parent="."]
+script = ExtResource("11_m7cy7")
+
+[node name="MoneyCollectable" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 8.06509, 3.26151, 24.1466)
+
+[node name="MoneyCollectable2" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 11.3277, 4.62846, 21.3185)
+
+[node name="MoneyCollectable3" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 11.3277, 4.62846, 19.3149)
+
+[node name="MoneyCollectable4" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 11.3277, 6.29004, 18.0708)
+
+[node name="MoneyCollectable5" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 11.3277, 9.24831, 18.0708)
+
+[node name="MoneyCollectable6" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 11.3277, 12.3414, 18.0708)
+
+[node name="MoneyCollectable7" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 11.3277, 15.5376, 19.3494)
+
+[node name="MoneyCollectable14" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -1.36949, 18.5867, 13.9176)
+value = 2.0
+
+[node name="MoneyCollectable15" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -2.31365, 19.4093, 13.3553)
+value = 2.0
+
+[node name="MoneyCollectable38" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -3.27422, 19.1318, 12.8896)
+value = 2.0
+
+[node name="MoneyCollectable39" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -4.35646, 18.6481, 12.5717)
+value = 2.0
+
+[node name="MoneyCollectable17" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -14.9835, 25.8439, -10.3732)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable27" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 21.3001, 32.4501, -11.5156)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable47" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 20.3064, 33.6601, -11.5156)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable48" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 18.9581, 34.5474, -11.5156)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable49" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 17.6404, 34.275, -11.5156)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable50" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 13.7117, 35.7416, -11.5156)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable51" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 12.2025, 37.214, -11.5156)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable53" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 13.146, 36.7002, -11.5156)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable52" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 11.0557, 36.9202, -11.5156)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable18" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -13.4904, 25.1682, -10.2848)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable19" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -12.0918, 24.2734, -10.2986)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable20" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -10.7899, 23.5354, -10.2021)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable21" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -9.52326, 22.6502, -10.0973)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable22" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -8.00345, 21.7387, -9.9913)
+value = 0.25
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable23" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 9.9317, 23.7554, -11.302)
+
+[node name="MoneyCollectable24" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 16.1406, 25.7024, -11.0826)
+
+[node name="MoneyCollectable25" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 18.5254, 27.4721, -11.0403)
+
+[node name="MoneyCollectable26" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 20.5288, 29.1288, -10.8429)
+
+[node name="MoneyCollectable28" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 14.4902, 34.2993, -11.2748)
+
+[node name="MoneyCollectable29" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 9.82185, 36.1591, -11.613)
+
+[node name="MoneyCollectable30" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 7.59198, 36.1591, -20.9992)
+
+[node name="MoneyCollectable31" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 13.1495, 38.1444, -20.9992)
+value = 0.5
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable32" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 13.1495, 40.3743, -20.9992)
+value = 0.5
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable33" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 13.1495, 42.1524, -20.9992)
+value = 0.5
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable34" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 13.1495, 44.294, -20.9992)
+value = 0.5
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable8" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 11.5923, 17.5327, 13.3026)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable9" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 12.8923, 17.5327, 13.7254)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable10" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 12.8923, 17.5327, 15.0929)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable11" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 11.7804, 17.5327, 16.1487)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable12" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 10.5691, 17.5327, 15.2409)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable13" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 10.5691, 17.5327, 14.0443)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable36" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.30873, 20.7093, 6.73403)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable37" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.21137, 19.9644, 5.53213)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable40" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.10806, 19.1386, 4.41172)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable41" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.09761, 18.3933, 3.26284)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable42" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.0909, 17.6269, 2.03664)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable43" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.08299, 16.6933, 0.573547)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable44" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.07755, 16.0802, -0.415779)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable45" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.07076, 15.1884, -1.7256)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable46" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, -6.08568, 17.1113, 1.13092)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="AlbumCollectable" parent="." instance=ExtResource("13_ggvdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.94911, 49.8729, -18.3487)
+id = 1
+
+[connection signal="child_exiting_tree" from="MoneyHandler" to="MoneyHandler" method="_on_child_exiting_tree"]
+
+[editable path="Platforms/plains2"]
