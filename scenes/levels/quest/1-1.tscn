@@ -262,8 +262,8 @@ transform = Transform3D(-8.03991e-09, 0, -8.97473, 0, 7.49795, 0, 0.183932, 0, -
 [node name="Objects" type="Node3D" parent="."]
 
 [node name="LevelSwitch" parent="Objects" instance=ExtResource("5_kp8aq")]
-transform = Transform3D(1, 0, 0, 0, 1.3574, 0, 0, 0, 1, 0.0361032, 31.1712, 88.4477)
-levelpath = "res://scenes/levels/quest/sublevel1.tscn"
+transform = Transform3D(1, 0, 0, 0, 1.3574, 0, 0, 0, 1, -0.0507956, 31.1712, 88.4477)
+levelpath = "res://scenes/levels/quest/sublevel3.tscn"
 
 [node name="Checkpoint" parent="Objects" instance=ExtResource("9_lwht0")]
 transform = Transform3D(22.7792, 0, 0, 0, 2.99809, 0, 0, 0, 1, 0.169326, 22.3175, 37.612)
