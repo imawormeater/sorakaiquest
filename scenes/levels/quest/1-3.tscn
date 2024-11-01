@@ -213,7 +213,7 @@ levelpath = "res://scenes/levels/quest/1-4.tscn"
 
 [node name="LevelSwitch2" parent="." instance=ExtResource("5_jdotn")]
 transform = Transform3D(1.16885, 0, 0, 0, 1.15971, 0, 0, 0, 0.662248, 10.0988, 8.89299, 46.6804)
-levelpath = "res://scenes/levels/quest/sublevel2.tscn"
+levelpath = "res://scenes/levels/quest/sublevel4.tscn"
 
 [node name="Door" parent="." instance=ExtResource("7_hbggx")]
 transform = Transform3D(-4.35074e-08, 0, 6.32603, 0, 3.98133, 0, -0.995332, 0, -2.7652e-07, 10.3922, 15.3502, 32.5971)

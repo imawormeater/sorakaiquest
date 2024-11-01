@@ -67,7 +67,7 @@ script = ExtResource("5_hh3tj")
 
 [node name="LevelSwitch" parent="." instance=ExtResource("6_yawwb")]
 transform = Transform3D(-1.93988e-07, 0, 4.40282, 0, 3.29524, 0, -4.43792, 0, -1.92453e-07, 89.7033, 79.0456, -207.372)
-levelpath = "res://scenes/levels/test_level.tscn"
+levelpath = "res://scenes/levels/quest/1-5.tscn"
 
 [node name="LevelSwitch2" parent="." instance=ExtResource("6_yawwb")]
 transform = Transform3D(-6.7827e-08, 0, 1.33386, 0, 3.29524, 0, -1.5517, 0, -5.83049e-08, -9.33013, 11.3129, 40.1865)
@@ -75,6 +75,12 @@ levelpath = "res://scenes/levels/quest/sublevel1.tscn"
 
 [node name="DeathPlane2" parent="." instance=ExtResource("8_4o2vp")]
 transform = Transform3D(671.548, 0, 0, 0, 1, 0, 0, 0, 969.255, -7.02946, 4.20365, -59.8874)
+
+[node name="DeathPlane3" parent="." instance=ExtResource("8_4o2vp")]
+transform = Transform3D(-36.9859, 0, 0, 0, 1, 0, 0, 0, -28.284, 41.0113, 59.0619, -19.544)
+
+[node name="DeathPlane4" parent="." instance=ExtResource("8_4o2vp")]
+transform = Transform3D(-117.1, 0, 0, 0, 1, 0, 0, 0, -196.038, 62.5737, 72.7247, -149.988)
 
 [node name="AlbumCollectable" parent="." instance=ExtResource("10_atjda")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 77.7686, 90.5501, -207.745)

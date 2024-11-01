@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bthpapjatf7d3"]
+
+[ext_resource type="Texture2D" uid="uid://yll5g0paupcn" path="res://assets/images/uyhhhidk.jpg" id="1_87rnf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7l7bp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ub2pf"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(0.617003, 0.763871, 0.793967, 1)
+albedo_texture = ExtResource("1_87rnf")
+uv1_scale = Vector3(0.62, 0.62, 0.62)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_aphmx"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_ub2pf")
+
+[node name="Platform" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_7l7bp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_aphmx")
