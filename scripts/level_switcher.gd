@@ -35,4 +35,3 @@ func _on_tp_area_body_entered(body: Node3D) -> void:
 		GameManager.CurrentState.exit_sublevel()
 	else:
 		GameManager.CurrentState.load_level(levelpath,subLevel)
-	debounce = false
