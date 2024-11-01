@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://scripts/skybox_rotater.gd" id="11_f00vt"]
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="12_2hhil"]
 [ext_resource type="AudioStream" uid="uid://cu7ty4ay2nlw5" path="res://assets/sounds/mario64ambience.ogg" id="12_qqygi"]
-[ext_resource type="PackedScene" path="res://objects/wallrunPlatform.tscn" id="14_m7qd4"]
+[ext_resource type="PackedScene" uid="uid://cni3lqkh187ir" path="res://objects/wallrunPlatform.tscn" id="14_m7qd4"]
 [ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="14_pa3im"]
 
 [sub_resource type="TextMesh" id="TextMesh_2bgju"]
