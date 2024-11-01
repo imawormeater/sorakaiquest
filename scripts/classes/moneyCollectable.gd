@@ -19,3 +19,12 @@ func _ready() -> void:
 	meshToUse.visible = true
 	visual.rotation = Vector3.ZERO
 	rotation = Vector3.ZERO
+
+func deleteSelf() -> void:
+	visual.hide()
+	$IdleSparkle.hide()
+	$NearRange.monitorable = false
+	$CollectSparkle.emitting = true
+	$CollectSparkle/Ring.emitting = true
+	await get_tree().create_timer(1).timeout
+	self.queue_free()

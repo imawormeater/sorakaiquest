@@ -8,6 +8,11 @@ extends CharacterBody3D
 @export var cameraOn := true #gets rid of camera controls
 @export var disabledCamera := false #stops setting camera
 
+var canHang:bool = true
+var canWallrun:bool = true
+var canWall:bool = true
+var canSlide:bool = true
+
 #GAMEPLAY SHIT
 
 @export var baseSPEED := 6.0
@@ -122,6 +127,11 @@ func _ready() -> void:
 	setCorrectJumpVariables()
 	animationtree.active = true
 	anim_st = animationtree.get("parameters/playback")
+	
+	canHang = true
+	canWall = true
+	canWallrun = true
+	canSlide = true
 		
 	await get_tree().create_timer(0.5,false).timeout #invincibility when respawn
 	dying = false
@@ -422,10 +432,13 @@ func _physics_process(delta: float) -> void:
 		
 		if onFloor != is_on_floor() and velocity.y < 0: #was on floor but now not
 			coyotejump = coyotejumpInit
-		if jumpbuffer > 0 and not is_on_floor() and jumpTimer > WRtilJump:
-			wallRunInit(Vector2(velocity.x,velocity.z).length())
-		wallInit(delta)
-		hangInit()
+		if canWallrun:
+			if jumpbuffer > 0 and not is_on_floor() and jumpTimer > WRtilJump:
+				wallRunInit(Vector2(velocity.x,velocity.z).length())
+		if canWall:
+			wallInit(delta)
+		if canHang:
+			hangInit()
 		
 		if (justPressAction): slideHold = 0
 		if(slideHold >= 0 && pressedAction):
@@ -433,6 +446,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			slideHold = -1.0
 			
+		if !canSlide: return
 		if(onFloor && slideHold >= 0):
 			var _velocityA:float = (absf(clampf(_tempVelocity.y*0.2,-9999,0))+1)
 			var slideSpeed:float = clampf(  clampf((1-slideHold*2),0,1)*3  ,0,3) - ((slideHold-delta)*3*SPEED)
@@ -615,6 +629,12 @@ func die() -> void:
 	controlOn = false
 	cameraOn = false
 	disabledCamera = true
+	
+	canHang = false
+	canWall = false
+	canWallrun = false
+	canSlide = false
+	
 	GameManager.CurrentState.deathCount += 1
 	sfx.play_sound("Die")
 	await get_tree().create_timer(1).timeout

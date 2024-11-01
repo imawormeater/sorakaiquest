@@ -9,10 +9,10 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atabq"]
 albedo_texture = ExtResource("1_kro43")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_w1ih1"]
-size = Vector3(0.221252, 0.562988, 1.10986)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ht8u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w1ih1"]
+size = Vector3(0.78273, 0.562988, 1.12829)
 
 [node name="Key" type="Node3D" node_paths=PackedStringArray("interactable") groups=["Keys"]]
 script = ExtResource("1_n3xml")
@@ -29,15 +29,6 @@ material_override = SubResource("StandardMaterial3D_atabq")
 mesh = ExtResource("3_a4rlb")
 skeleton = NodePath("../..")
 
-[node name="KeyArea" type="Area3D" parent="RigidBody3D/Key" groups=["Keys"]]
-transform = Transform3D(4.54545, 0, 0, 0, 4.54545, 0, 0, 0, 4.54545, 0, 0, 0)
-collision_layer = 3
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Key/KeyArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00375366, 0.0314941, -0.0549316)
-shape = SubResource("BoxShape3D_w1ih1")
-
 [node name="keyCollision" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(0.61, 0, 0, 0, 0.61, 0, 0, 0, 0.61, 0.00375366, 0.0314941, -0.0549315)
 shape = SubResource("BoxShape3D_1ht8u")
@@ -52,4 +43,13 @@ volume_db = 10.0
 max_distance = 10.0
 bus = &"SFX"
 
-[connection signal="area_entered" from="RigidBody3D/Key/KeyArea" to="." method="_on_key_area_area_entered"]
+[node name="KeyArea" type="Area3D" parent="RigidBody3D" groups=["Keys"]]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 0)
+collision_layer = 3
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/KeyArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0204087, 0.0314941, -0.0457145)
+shape = SubResource("BoxShape3D_w1ih1")
+
+[connection signal="area_entered" from="RigidBody3D/KeyArea" to="." method="_on_key_area_area_entered"]

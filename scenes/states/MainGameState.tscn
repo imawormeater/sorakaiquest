@@ -16,7 +16,6 @@ MusicStream = NodePath("Music")
 smoother = NodePath("Smoother")
 Dialog = NodePath("DialogBox")
 first_level = ExtResource("2_qgx60")
-hubLevel = null
 
 [node name="Sorakai" parent="." instance=ExtResource("2_ntxhb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
