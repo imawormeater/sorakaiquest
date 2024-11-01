@@ -645,8 +645,7 @@ func die() -> void:
 func _addalbumtohand(albumNode:Node3D) -> void:
 	albumNode.reparent($Visual/loganchara/Armature/Skeleton3D/HandAttachment)
 	albumNode.position = Vector3.ZERO
-	albumNode.album.rotate_z(PI/2)
-	albumNode.album.rotate_x(PI/2)
+	albumNode.rotation = Vector3(deg_to_rad(18),deg_to_rad(-71.9),deg_to_rad(37.6))
 
 func onAlbumCollect(albumNode:Node3D) -> void:
 	cameraOn = false
