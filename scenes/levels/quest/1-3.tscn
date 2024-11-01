@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ch6e826o82op"]
+[gd_scene load_steps=19 format=3 uid="uid://ch6e826o82op"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_awjy4"]
 [ext_resource type="AudioStream" uid="uid://dr480fcl7ltkd" path="res://assets/music/a VICious groove.mp3" id="2_1hub8"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="13_lalpn"]
 [ext_resource type="PackedScene" uid="uid://bmlr6c778pobt" path="res://objects/balloon.tscn" id="14_h6hmg"]
 [ext_resource type="PackedScene" uid="uid://dxjqbclf6hso1" path="res://objects/checkPoint.tscn" id="17_c20vm"]
+[ext_resource type="Texture2D" uid="uid://d1j473nv4d2um" path="res://assets/images/blev.png" id="18_qohc1"]
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
 script = ExtResource("1_awjy4")
@@ -130,10 +131,10 @@ transform = Transform3D(2.90355, 0, 0, 0, 6.03687, 0, 0, 0, 15.1353, 19.4863, 16
 transform = Transform3D(-1.26505e-07, 0, 17.1714, 0, 6.0172, 0, -2.89409, 0, -7.50587e-07, 10.0931, 16.429, 46.912)
 
 [node name="Node3D25" parent="." instance=ExtResource("9_xwr7t")]
-transform = Transform3D(6.7816, 0, 0, 0, 23.4866, 0, 0, 0, 2.04314, 4.18537, 9.9721, 32.5645)
+transform = Transform3D(6.7816, 0, 0, 0, 23.4866, 0, 0, 0, 2.04314, 4.18537, 10.0903, 32.5645)
 
 [node name="Node3D26" parent="." instance=ExtResource("9_xwr7t")]
-transform = Transform3D(6.38742, 0, 0, 0, 23.4866, 0, 0, 0, 2.04314, 16.6037, 9.9721, 32.5645)
+transform = Transform3D(6.38742, 0, 0, 0, 23.4866, 0, 0, 0, 2.04314, 16.6037, 10.087, 32.5645)
 
 [node name="Node3D27" parent="." instance=ExtResource("9_xwr7t")]
 transform = Transform3D(7.36959, 0, 0, 0, 4.59406, 0, 0, 0, 2.04314, 10.3158, 19.5363, 32.5645)
@@ -233,7 +234,7 @@ value = 0.1
 meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable23" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_3qvsf")]
-transform = Transform3D(1, 0, 0, 0, 0.999867, -0.0163181, 0, 0.0163181, 0.999867, -26.8904, 18.8227, 25.1759)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8904, 18.8227, 25.1759)
 value = 0.1
 meshToUse = NodePath("Visual/coin")
 
@@ -422,3 +423,13 @@ transform = Transform3D(7.55805, 0, 0, 0, 2.99809, 0, 0, 0, 1, 10.53, 14.7506, 2
 
 [node name="Checkpoint2" parent="." instance=ExtResource("17_c20vm")]
 transform = Transform3D(7.55805, 0, 0, 0, 2.99809, 0, 0, 0, 1, -39.2657, 25.3598, -13.2949)
+
+[node name="npc4" parent="." instance=ExtResource("7_ivm2k")]
+transform = Transform3D(0.971877, 0, 0, 0, 0.971783, 0, 0, 0, 2.04314, -1.28579, 20.5954, 31.0419)
+exportDialog = ["s:Sorakai! It's me, [color=57C8DB]Blev-Sama!", "p:What are you doing up here [color=57C8DB]Blev-Sama?", "s:[color=FF0000]I'm gonna jump.", "p:...", "p:What?", "s:What?"]
+
+[node name="Sprite3D" type="Sprite3D" parent="npc4"]
+transform = Transform3D(2.60509, 0, 0, 0, 2.62961, 0, 0, 0, 1, 0, -0.289, 0)
+pixel_size = 0.0013
+billboard = 2
+texture = ExtResource("18_qohc1")
