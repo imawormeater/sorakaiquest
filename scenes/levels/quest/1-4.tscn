@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dmw7lhelchm26"]
+[gd_scene load_steps=24 format=3 uid="uid://dmw7lhelchm26"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_byaye"]
 [ext_resource type="AudioStream" uid="uid://dr480fcl7ltkd" path="res://assets/music/a VICious groove.mp3" id="2_2utje"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="10_atjda"]
 [ext_resource type="PackedScene" uid="uid://bmlr6c778pobt" path="res://objects/balloon.tscn" id="12_yifyy"]
 [ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="13_7pjvr"]
+[ext_resource type="Texture2D" uid="uid://cyh8cagkfk8sc" path="res://assets/images/chasecunter.png" id="14_aepv4"]
 [ext_resource type="PackedScene" uid="uid://0lu754qntb0m" path="res://objects/moneyCollectable.tscn" id="14_tmjii"]
 [ext_resource type="Texture2D" uid="uid://3caagaiqgmed" path="res://assets/images/grayheadedgamer.png" id="14_tn1pc"]
 [ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="15_3ipkx"]
@@ -628,7 +629,10 @@ transform = Transform3D(7.06686, 0, 0, 0, 47.6259, 0, 0, 0, 20.1383, 10.1791, 8.
 transform = Transform3D(7.06686, 0, 0, 0, 47.6259, 0, 0, 0, 20.1383, 62.8424, 41.8942, -20.3407)
 
 [node name="Node3D47" parent="." instance=ExtResource("3_vmtdy")]
-transform = Transform3D(7.10965, 0, 0, 0, 31.6503, 0, 0, 0, 2.16238, 62.8424, 75.2791, -15.3282)
+transform = Transform3D(7.10965, 0, 0, 0, 12.5005, 0, 0, 0, 2.16238, 62.8424, 71.5461, -15.3282)
+
+[node name="Node3D65" parent="." instance=ExtResource("3_vmtdy")]
+transform = Transform3D(7.10965, 0, 0, 0, 12.5005, 0, 0, 0, 2.16238, 62.8424, 86.5657, -11.0268)
 
 [node name="Node3D53" parent="." instance=ExtResource("3_vmtdy")]
 transform = Transform3D(7.10965, 0, 0, 0, 6.19939, 0, 0, 0, 3.53647, 62.8424, 95.862, -7.41927)
@@ -662,7 +666,7 @@ transform = Transform3D(0, 0, -1.91253, 0, 11.3664, 0, 10.2369, 0, -8.9407e-08, 
 
 [node name="npc2" parent="." instance=ExtResource("15_3ipkx")]
 transform = Transform3D(0.90599, 0, 0, 0, 0.696997, 0, 0, 0, 0.335891, 12.9266, 32.8458, -8.70306)
-exportDialog = ["s:The [color=57C8DB]T-Shirt Canon[color=FFFFFF] is a useful tool for getting an extra push!", "s:Simply fire the canon and be launched in the opposite direction!"]
+exportDialog = ["s:The [color=57C8DB]T-Shirt Canon[color=FFFFFF] is a useful tool for getting an extra push!", "s:While in the air, press the [color=57C8DB]interact key[color=FFFFFF] to fire the canon.", "s:It's as simple as firing the canon and getting launched in the opposite direction!"]
 
 [node name="Sprite3D" type="Sprite3D" parent="npc2"]
 transform = Transform3D(0.799998, 0, -0.2304, 0, 1.01, 0, 0.600001, 0, 0.307199, 0, -0.164761, 0)
@@ -677,6 +681,16 @@ transform = Transform3D(1.46885, 0, 0, 0, 1.66802, 0, 0, 0, 1.00373, 0, -0.28899
 pixel_size = 0.0013
 billboard = 2
 texture = ExtResource("14_tn1pc")
+
+[node name="npc4" parent="." instance=ExtResource("15_3ipkx")]
+transform = Transform3D(0.90599, 0, 0, 0, 0.696997, 0, 0, 0, 0.335891, 65.1941, 100.306, -7.07366)
+exportDialog = ["s:It's me, [color=57C8DB]Chase Hunter.", "s:...", "s:That song is fucking [color=754Ew27]ass.", "p:Wtf, no it isn't!", "s:Yeah it is lol."]
+
+[node name="Sprite3D" type="Sprite3D" parent="npc4"]
+transform = Transform3D(3.47667, 0, 0, 0, 4.2351, 0, 0, 0, 2.48054, 0, -0.289001, 0)
+pixel_size = 0.0013
+billboard = 2
+texture = ExtResource("14_aepv4")
 
 [node name="Equipable" parent="." instance=ExtResource("16_5f6cx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3264, 33.2827, -3.2662)
