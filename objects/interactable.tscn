@@ -51,7 +51,7 @@ script = ExtResource("1_bdxvs")
 [node name="Visible" type="VisibleOnScreenNotifier3D" parent="."]
 transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0, 0, 0)
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["interactable"]]
 collision_mask = 2
 
 [node name="Hitbox" type="CollisionShape3D" parent="Area3D"]

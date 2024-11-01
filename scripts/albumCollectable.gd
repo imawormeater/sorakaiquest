@@ -58,7 +58,7 @@ func _ready() -> void:
 func onhit(body: Node3D) -> void:
 	if not body.is_in_group("Player"): return
 	$chimes.queue_free()
-	$Sparkles.queue_free()
+	$IdleSparkle.queue_free()
 	$OmniLight3D.queue_free()
 	GameManager.CurrentState.albumCollected.emit(self)
 	hitbox.queue_free()
