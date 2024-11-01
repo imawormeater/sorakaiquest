@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dfs4m8ro58qx1"]
+[gd_scene load_steps=20 format=3 uid="uid://xyn7x7qc3bto"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_jvhv7"]
 [ext_resource type="AudioStream" uid="uid://crl8t16yby32v" path="res://assets/music/vanishing_paradise.mp3" id="2_p0bu7"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c1nam1mox4tq6" path="res://objects/equip/tshirtlaucher.tscn" id="8_4dk52"]
 [ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="8_phoac"]
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="10_abrum"]
-[ext_resource type="PackedScene" uid="uid://bdy17xfyr2owo" path="res://objects/deleteItems_plane.tscn" id="10_ymfpr"]
+[ext_resource type="PackedScene" path="res://objects/deleteItems_plane.tscn" id="10_ymfpr"]
 [ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="13_444of"]
 [ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="15_j8vea"]
 [ext_resource type="PackedScene" uid="uid://dxjqbclf6hso1" path="res://objects/checkPoint.tscn" id="17_ivuvi"]

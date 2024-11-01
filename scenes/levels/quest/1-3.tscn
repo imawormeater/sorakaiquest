@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dhofpy040oepx" path="res://objects/locked_door.tscn" id="7_hbggx"]
 [ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="7_ivm2k"]
 [ext_resource type="Texture2D" uid="uid://dqcbno8lejelk" path="res://assets/images/levelStuff/signPost.png" id="8_fhxt7"]
-[ext_resource type="PackedScene" uid="uid://bn35hu6xtwj7q" path="res://objects/equip/key.tscn" id="9_wogw8"]
+[ext_resource type="PackedScene" path="res://objects/equip/key.tscn" id="9_wogw8"]
 [ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://objects/basicassplatform.tscn" id="9_xwr7t"]
 [ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="10_qv8vy"]
 [ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="11_k5ba8"]
@@ -247,6 +247,46 @@ meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable40" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117918, 19.9205, 28.1984)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable53" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_3qvsf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.715358, 20.0805, 32.6439)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable54" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_3qvsf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.715358, 19.9205, 33.2651)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable55" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_3qvsf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.715358, 19.4061, 33.7164)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable56" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_3qvsf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.715358, 18.8868, 34.0782)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable57" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_3qvsf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.715358, 18.2247, 34.1076)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable58" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_3qvsf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.715358, 17.2976, 34.1795)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable59" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_3qvsf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.715358, 16.1301, 34.1795)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable60" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_3qvsf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.715358, 14.93, 34.1795)
 value = 0.1
 meshToUse = NodePath("Visual/coin")
 
@@ -495,7 +535,7 @@ value = 10.0
 transform = Transform3D(8.7428, 0, 0, 0, 47.6259, 0, 0, 0, 8.814, 10.1791, 8.12807, -23.6513)
 
 [node name="npc" parent="." instance=ExtResource("7_ivm2k")]
-transform = Transform3D(0.90599, 0, 0, 0, 0.696997, 0, 0, 0, 0.335891, 7.46552, 14.4285, 30.3235)
+transform = Transform3D(0.90599, 0, 0, 0, 0.696997, 0, 0, 0, 0.335891, 8.06903, 14.4285, 30.3235)
 exportDialog = ["s:Passage is temporarily [color=D04140]closed. [color=FFFFFF]Come back later.", "p:Seems like I need a way to open it..."]
 
 [node name="Sprite3D" type="Sprite3D" parent="npc"]
@@ -525,7 +565,7 @@ transform = Transform3D(7.55805, 0, 0, 0, 2.99809, 0, 0, 0, 1, 10.53, 14.7506, 2
 transform = Transform3D(7.55805, 0, 0, 0, 2.99809, 0, 0, 0, 1, -39.2657, 25.3598, -13.2949)
 
 [node name="npc4" parent="." instance=ExtResource("7_ivm2k")]
-transform = Transform3D(0.971877, 0, 0, 0, 0.971783, 0, 0, 0, 2.04314, -1.28579, 20.5954, 31.0419)
+transform = Transform3D(0.971877, 0, 0, 0, 0.971783, 0, 0, 0, 2.04314, -3.12591, 20.5954, 31.0419)
 exportDialog = ["s:Sorakai! It's me, [color=57C8DB]Blev-Sama!", "p:What are you doing up here [color=57C8DB]Blev-Sama?", "s:Isn't it obvious?", "s:[color=D04140]I'm gonna jump.", "p:...", "p:What?", "s:Hm?"]
 
 [node name="Sprite3D" type="Sprite3D" parent="npc4"]

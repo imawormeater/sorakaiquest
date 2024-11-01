@@ -102,13 +102,13 @@ script = ExtResource("13_sg036")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18036, -4.16234)
 
 [node name="Platform" parent="." instance=ExtResource("3_mb5v4")]
-transform = Transform3D(0.1, 0, 0, 0, 3.1, 0, 0, 0, 8.2, 1.86413, 6.26875, 11.2538)
+transform = Transform3D(4.32469, 0, 0, 0, 0.632593, 0, 0, 0, 1.38951, -0.457038, 6.26875, 9.29992)
 
 [node name="Platform2" parent="." instance=ExtResource("3_mb5v4")]
-transform = Transform3D(4.47, 0, 0, 0, 3.1, 0, 0, 0, 2.97885, -0.362471, 6.26875, 16.0714)
+transform = Transform3D(4.47, 0, 0, 0, 3.1, 0, 0, 0, 2.97885, -0.362471, 6.26875, 19.7865)
 
 [node name="Platform3" parent="." instance=ExtResource("3_mb5v4")]
-transform = Transform3D(4.47, 0, 0, 0, 0.93, 0, 0, 0, 4.17039, -0.362471, 13.4437, 12.7485)
+transform = Transform3D(4.47, 0, 0, 0, 0.93, 0, 0, 0, 6.08103, -0.362471, 13.4437, 13.5508)
 
 [node name="Platform4" parent="." instance=ExtResource("3_mb5v4")]
 transform = Transform3D(4.47, 0, 0, 0, 6.54913, 0, 0, 0, 0.216823, 1.65186, 16.2181, 7.85418)
@@ -140,23 +140,23 @@ transform = Transform3D(-3.16077, -1.68587e-07, -0.235188, -2.84217e-14, -8.4876
 [node name="Platform13" parent="." instance=ExtResource("3_mb5v4")]
 transform = Transform3D(-2.38419e-07, -2.38419e-07, -0.332606, -5.08803e-14, -8.48767, -2.98023e-08, -4.47, 1.27898e-13, -5.96046e-08, 16.1601, 40.5271, -4.21677)
 
-[node name="Platform14" parent="." instance=ExtResource("3_mb5v4")]
-transform = Transform3D(-2.38419e-07, -2.38419e-07, -0.332606, -5.08803e-14, -8.48767, -2.98023e-08, -4.47, 1.27898e-13, -5.96046e-08, 16.1601, 40.2122, 7.02048)
-
-[node name="Platform15" parent="." instance=ExtResource("3_mb5v4")]
-transform = Transform3D(-4.47, 1.23242e-13, -4.5066e-08, -5.08803e-14, -8.48767, -2.98023e-08, 4.33809e-07, 2.38419e-07, 0.332606, 14.0184, 40.2122, 9.07075)
+[node name="Platform18" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-4.47, 7.13687e-15, -7.46903e-08, -5.08803e-14, -0.491516, -4.9393e-08, 4.33809e-07, 1.38067e-08, 0.551246, 14.0184, 43.5412, 5.09207)
 
 [node name="Platform16" parent="." instance=ExtResource("3_mb5v4")]
-transform = Transform3D(-4.47002, 3.32754e-14, -5.54311e-07, -5.08805e-14, -2.29168, -3.66569e-07, 4.3381e-07, 6.43731e-08, 4.09105, 14.0184, 45.5884, 2.9563)
+transform = Transform3D(-4.47002, -6.12461e-08, 0, 3.90782e-07, -0.700574, 0, 0, 0, 1.28325, 13.8258, 45.8554, 2.64198)
 
 [node name="Platform17" parent="." instance=ExtResource("3_mb5v4")]
 transform = Transform3D(-12.2031, 3.32754e-14, -5.54311e-07, -1.38904e-13, -2.29168, -3.66568e-07, 1.1843e-06, 6.43731e-08, 4.09105, -23.6132, 50.688, 2.9563)
 
 [node name="spring" parent="." instance=ExtResource("11_5rcqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.243247, 8.06812, 17.155)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.243247, 8.06812, 20.8701)
 
 [node name="balloon" parent="." instance=ExtResource("12_t1wbj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9385, 19.8131, 19.849)
+
+[node name="balloon9" parent="." instance=ExtResource("12_t1wbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48759, 4.30517, 15.3367)
 
 [node name="balloon2" parent="." instance=ExtResource("12_t1wbj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9385, 26.8394, 19.849)
@@ -168,7 +168,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9385, 33.4639, 20.9693)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8597, 32.7163, 1.25977)
 
 [node name="balloon5" parent="." instance=ExtResource("12_t1wbj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5224, 39.0649, 0.226238)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6178, 39.0649, 0.742423)
 
 [node name="balloon6" parent="." instance=ExtResource("12_t1wbj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65519, 47.7881, 2.79209)
