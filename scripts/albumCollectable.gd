@@ -43,9 +43,10 @@ extends Node3D
 
 
 func _ready() -> void:
-	#if id >= albumNames.size():
-		#id = albumNames.size()-1
-	print(id)
+	if id >= albumNames.size():#U BITCHES DUMB
+		id = albumNames.size()-1
+	if id < 0:
+		id = 0
 	albumName = albumNames[id]
 	albumMaterial["shader_parameter/Texture"] = albumTextures[id]
 	
