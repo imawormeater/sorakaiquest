@@ -148,6 +148,9 @@ transform = Transform3D(20.0675, 0, 0, 0, 2.46815, 0, 0, 0, 15.1353, 9.72214, 20
 [node name="Node3D52" parent="." instance=ExtResource("9_xwr7t")]
 transform = Transform3D(2.90355, 0, 0, 0, 6.03687, 0, 0, 0, 15.1353, 1.10522, 16.429, 40.933)
 
+[node name="Node3D64" parent="." instance=ExtResource("9_xwr7t")]
+transform = Transform3D(2.90355, 0, 0, 0, 6.03687, 0, 0, 0, 15.1353, 3.10641, 16.429, 40.933)
+
 [node name="Node3D53" parent="." instance=ExtResource("9_xwr7t")]
 transform = Transform3D(2.90355, 0, 0, 0, 6.03687, 0, 0, 0, 15.1353, 18.2916, 16.429, 40.933)
 
@@ -171,7 +174,7 @@ environment = ExtResource("3_08ocq")
 script = ExtResource("4_6fffd")
 
 [node name="LevelSwitch" parent="." instance=ExtResource("5_jdotn")]
-transform = Transform3D(4.76148, 0, 0, 0, 1, 0, 0, 0, 1.33386, 10.3507, 14.2981, 43.8626)
+transform = Transform3D(7.2351, 0, 0, 0, 3.29524, 0, 0, 0, 1.33386, 9.6716, 16.2098, 43.8626)
 levelpath = "res://scenes/levels/test_level.tscn"
 
 [node name="Door" parent="." instance=ExtResource("7_hbggx")]
