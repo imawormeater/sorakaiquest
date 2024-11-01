@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dhofpy040oepx" path="res://objects/locked_door.tscn" id="7_hbggx"]
 [ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="7_ivm2k"]
 [ext_resource type="Texture2D" uid="uid://dqcbno8lejelk" path="res://assets/images/levelStuff/signPost.png" id="8_fhxt7"]
-[ext_resource type="PackedScene" uid="uid://bn35hu6xtwj7q" path="res://objects/key.tscn" id="9_wogw8"]
+[ext_resource type="PackedScene" uid="uid://bn35hu6xtwj7q" path="res://objects/equip/key.tscn" id="9_wogw8"]
 [ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://objects/basicassplatform.tscn" id="9_xwr7t"]
 [ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="10_qv8vy"]
 [ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="11_k5ba8"]

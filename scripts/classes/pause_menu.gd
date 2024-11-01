@@ -30,11 +30,7 @@ func refresh(playSound:bool = true) -> void:
 	if playSound:
 		pauseSound.play(0.06)
 	
-	var inhub:bool = GameManager.CurrentState.inHub
-	if inhub:
-		exitButton.text = "Main Menu"
-	else:
-		exitButton.text = "Exit to Hub"
+	exitButton.text = "Exit to Hub"
 		
 	if paused:
 		show()
@@ -62,6 +58,9 @@ func _on_exit_pressed() -> void:
 	hide()
 	GameManager.App.play_transition('circle',1)
 	await get_tree().create_timer(1).timeout
+	if !OS.is_debug_build():
+		GameManager.App.changeState(GameManager.App.MainMenu)
+		
 	if GameManager.CurrentState.inHub:
 		GameManager.App.changeState(GameManager.App.MainMenu)
 	else:
