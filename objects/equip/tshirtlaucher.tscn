@@ -1,10 +1,81 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1nam1mox4tq6"]
+[gd_scene load_steps=19 format=3 uid="uid://c1nam1mox4tq6"]
 
 [ext_resource type="Script" path="res://objects/equip/tshirtlaucher.gd" id="1_jiqu7"]
 [ext_resource type="PackedScene" uid="uid://cv8u5yn1kefiw" path="res://objects/interactable.tscn" id="2_h4khh"]
+[ext_resource type="PackedScene" uid="uid://8m6xxhtbk66d" path="res://assets/meshes/TSHIRTCANON.glb" id="2_ixftc"]
+[ext_resource type="Material" uid="uid://dncih1xkqoqnj" path="res://assets/materials/sparkle.tres" id="3_j0fok"]
 [ext_resource type="AudioStream" uid="uid://cbvkfqgwy6cqp" path="res://assets/sounds/tf2-grenade-launcher-shoot.mp3" id="3_ppbia"]
+[ext_resource type="Texture2D" uid="uid://dqjlg445bwmmf" path="res://assets/images/sparklesphere.png" id="4_opqy7"]
 
-[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_2suen"]
+[sub_resource type="Gradient" id="Gradient_tphlo"]
+offsets = PackedFloat32Array(0, 0.123932, 0.363248, 0.854701)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t5uoq"]
+gradient = SubResource("Gradient_tphlo")
+width = 100
+
+[sub_resource type="Curve" id="Curve_biebe"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, 8.7057, 0, 0, Vector2(1, 3), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ll7qv"]
+curve = SubResource("Curve_biebe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jbhjw"]
+lifetime_randomness = 0.53
+emission_shape_scale = Vector3(0.1, 0.1, 0.1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, -14, 0)
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_ll7qv")
+scale_over_velocity_max = 0.2
+color_ramp = SubResource("GradientTexture1D_t5uoq")
+
+[sub_resource type="QuadMesh" id="QuadMesh_18kjl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w0v4l"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_opqy7")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_guefo"]
+offsets = PackedFloat32Array(0, 0.123932, 0.363248, 0.854701)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gxghk"]
+gradient = SubResource("Gradient_guefo")
+width = 100
+
+[sub_resource type="Curve" id="Curve_gbup1"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, 8.7057, 0, 0, Vector2(1, 3), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jv2vs"]
+curve = SubResource("Curve_gbup1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o02i2"]
+emission_shape_scale = Vector3(0.1, 0.1, 0.1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.1
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_jv2vs")
+scale_over_velocity_max = 0.2
+color_ramp = SubResource("GradientTexture1D_gxghk")
 
 [node name="Equipable" type="Node3D" node_paths=PackedStringArray("interactable")]
 script = ExtResource("1_jiqu7")
@@ -12,9 +83,35 @@ interactable = NodePath("Interactable")
 
 [node name="Visual" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("TubeTrailMesh_2suen")
+[node name="TSHIRTCANON" parent="Visual" instance=ExtResource("2_ixftc")]
+transform = Transform3D(0.388155, 0, 0, 0, 0.388155, 0, 0, 0, 0.388155, -0.528552, -0.433149, -0.0148067)
+
+[node name="CollectSparkle" type="GPUParticles3D" parent="Visual"]
+transform = Transform3D(-0.999996, -0.00286224, 0, 0.00286224, -0.999996, 0, 0, 0, 1, -1.06127, 0.30133, -0.0100327)
+material_override = ExtResource("3_j0fok")
+emitting = false
+amount = 12
+lifetime = 0.65
+one_shot = true
+explosiveness = 1.0
+randomness = 0.4
+visibility_aabb = AABB(-0.30542, -0.303089, -0.301846, 0.61084, 0.606178, 0.603692)
+process_material = SubResource("ParticleProcessMaterial_jbhjw")
+draw_pass_1 = SubResource("QuadMesh_18kjl")
+
+[node name="Ring" type="GPUParticles3D" parent="Visual/CollectSparkle"]
+transform = Transform3D(-0.00870913, -0.999962, 0, 0.999962, -0.00870913, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_w0v4l")
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.37
+one_shot = true
+explosiveness = 1.0
+randomness = 0.4
+visibility_aabb = AABB(-0.30542, -0.303089, -0.301846, 0.61084, 0.606178, 0.603692)
+process_material = SubResource("ParticleProcessMaterial_o02i2")
+draw_pass_1 = SubResource("QuadMesh_18kjl")
 
 [node name="Interactable" parent="." node_paths=PackedStringArray("objectDepedency") instance=ExtResource("2_h4khh")]
 objectDepedency = NodePath("..")
@@ -22,4 +119,5 @@ functionName = "onEquip"
 
 [node name="shoot" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_ppbia")
+max_db = 1.563
 max_distance = 20.0

@@ -165,6 +165,9 @@ transform = Transform3D(-1.20991e-07, 4.54677, 2.26312, -1.43392e-07, -3.83647, 
 [node name="Platform57" parent="Platforms" instance=ExtResource("4_rt2f3")]
 transform = Transform3D(3.5632e-07, 2.27239e-14, 19.7, 7.12641e-07, -5.94654, 0, 8.15166, 5.19863e-07, -8.61115e-07, -84.97, 26.439, 118.531)
 
+[node name="Platform62" parent="Platforms" instance=ExtResource("4_rt2f3")]
+transform = Transform3D(7.91227e-08, 2.27239e-14, 6.70984, 1.58246e-07, -5.94654, 0, 1.81012, 5.19863e-07, -2.93297e-07, -95.975, 26.439, 121.993)
+
 [node name="Platform58" parent="Platforms" instance=ExtResource("4_rt2f3")]
 transform = Transform3D(3.5632e-07, 4.64012e-14, 3.94, 7.12641e-07, -12.1425, 0, 8.15166, 1.06153e-06, -1.72223e-07, -94.7011, 30.439, 118.531)
 
@@ -929,3 +932,11 @@ transform = Transform3D(2.60509, 0, 0, 0, 2.62961, 0, 0, 0, 1, 0, -0.289, 0)
 pixel_size = 0.0013
 billboard = 2
 texture = ExtResource("15_1seam")
+
+[node name="Checkpoint" parent="." instance=ExtResource("9_lwht0")]
+transform = Transform3D(1, 0, 0, 0, 4.93, 0, 0, 0, 10.65, -87.6373, 30.1257, 118.44)
+
+[node name="LevelSwitch2" parent="." instance=ExtResource("5_kp8aq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.322153, -98.4284, 30.2438, 121.389)
+levelpath = "res://scenes/levels/quest/sublevel3.tscn"
+subLevel = true
