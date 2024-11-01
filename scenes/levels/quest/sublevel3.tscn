@@ -113,6 +113,7 @@ transform = Transform3D(-1.19209e-07, 4.76837e-07, 0.338948, 4.3301e-15, -9.2693
 
 [node name="LevelSwitch" parent="Platforms" instance=ExtResource("14_uiflb")]
 transform = Transform3D(1.9, 0, 0, 0, 1, 0, 0, 0, 1.84776, 1.74968, 26.4145, 50.8546)
+levelpath = "res://scenes/levels/quest/1-1.tscn"
 goBackFromSubLevel = true
 
 [node name="Objects" type="Node3D" parent="."]

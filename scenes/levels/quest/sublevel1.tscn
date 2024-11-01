@@ -148,6 +148,7 @@ transform = Transform3D(14.4, 0, 0, 0, 7.2, 0, 0, 0, 1, -1.65149, 70.0736, 146.0
 
 [node name="LevelSwitch" parent="Objects" instance=ExtResource("6_hhgyg")]
 transform = Transform3D(3.63, 0, 0, 0, 1, 0, 0, 0, 3.48, -1.66885, 67.5279, 157.748)
+levelpath = "res://scenes/levels/quest/1-4.tscn"
 goBackFromSubLevel = true
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]

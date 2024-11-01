@@ -188,4 +188,5 @@ id = 10
 
 [node name="LevelSwitch" parent="." instance=ExtResource("12_qcl1p")]
 transform = Transform3D(1, 0, 0, 0, 1.3, 0, 0, 0, 1.8, -28.7208, 53.0707, 2.98725)
+levelpath = "res://scenes/levels/quest/1-3.tscn"
 goBackFromSubLevel = true
