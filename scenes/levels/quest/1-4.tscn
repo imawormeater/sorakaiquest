@@ -167,7 +167,7 @@ value = 0.1
 meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable58" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("14_tmjii")]
-transform = Transform3D(0.999886, 0, -0.0150791, 0, 1, 0, 0.0150791, 0, 0.999886, 63.185, 94.0192, -17.5482)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.185, 94.0192, -17.5482)
 value = 0.1
 meshToUse = NodePath("Visual/coin")
 
@@ -570,7 +570,10 @@ meshToUse = NodePath("Visual/coin")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6909, 71.0919, -19.7858)
 
 [node name="MoneyCollectable6" parent="MoneyHandler" instance=ExtResource("14_tmjii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.1205, 66.0843, -15.2908)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.1205, 66.0843, -12.2209)
+
+[node name="MoneyCollectable7" parent="MoneyHandler" instance=ExtResource("14_tmjii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.8492, 103.145, -9.71542)
 
 [node name="MoneyCollectable2" parent="MoneyHandler" instance=ExtResource("14_tmjii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3193, 68.0731, -19.7858)
@@ -620,11 +623,11 @@ transform = Transform3D(7.06686, 0, 0, 0, 17.2939, 0, 0, 0, 2.14937, 62.8424, 93
 transform = Transform3D(14.1413, 0, 0, 0, 17.2939, 0, 0, 0, 11.5651, 78.6852, 88.6243, -153.521)
 
 [node name="npc2" parent="." instance=ExtResource("15_3ipkx")]
-transform = Transform3D(0.90599, 0, 0, 0, 0.696997, 0, 0, 0, 0.335891, 10.3046, 32.8458, -9.57446)
+transform = Transform3D(0.90599, 0, 0, 0, 0.696997, 0, 0, 0, 0.335891, 12.9266, 32.8458, -8.70306)
 exportDialog = ["s:The [color=57C8DB]T-Shirt Canon[color=FFFFFF] is a useful tool for getting an extra push!", "s:Simply fire the canon and be launched in the opposite direction!"]
 
 [node name="Sprite3D" type="Sprite3D" parent="npc2"]
-transform = Transform3D(0.993308, 0, -0.0443489, 0, 1.01, 0, 0.115492, 0, 0.38143, 0, -0.164761, 0)
+transform = Transform3D(0.799998, 0, -0.2304, 0, 1.01, 0, 0.600001, 0, 0.307199, 0, -0.164761, 0)
 texture = ExtResource("16_xqkns")
 
 [node name="npc3" parent="." instance=ExtResource("15_3ipkx")]
@@ -639,6 +642,15 @@ texture = ExtResource("14_tn1pc")
 
 [node name="Equipable" parent="." instance=ExtResource("16_5f6cx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3264, 33.2827, -3.2662)
+
+[node name="Equipable2" parent="." instance=ExtResource("16_5f6cx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.84522, 67.3076, -19.2454)
+
+[node name="Equipable3" parent="." instance=ExtResource("16_5f6cx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.1541, 66.2189, -28.7479)
+
+[node name="Equipable4" parent="." instance=ExtResource("16_5f6cx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.1541, 94.07, -14.9726)
 
 [node name="Platform36" parent="." instance=ExtResource("16_45345")]
 transform = Transform3D(14.6538, 0, 0, 0, 10.4802, 0, 0, 0, 0.225388, 34.03, 69.9367, -15.7767)

@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/battle won.mp3-462ae85a3f9869b837fbbe6bbbdd35
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
