@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjseifr3p785h"]
+[gd_scene load_steps=16 format=3 uid="uid://bjseifr3p785h"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_4uglr"]
 [ext_resource type="AudioStream" uid="uid://ctx5nhlg31caj" path="res://assets/music/the_time_flys.mp3" id="2_3esjd"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="11_m7cy7"]
 [ext_resource type="PackedScene" uid="uid://0lu754qntb0m" path="res://objects/moneyCollectable.tscn" id="12_1x34o"]
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="13_ggvdg"]
+[ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="14_rgdix"]
+[ext_resource type="Texture2D" uid="uid://dbpcevwfv1vrs" path="res://assets/images/ev.png" id="15_mxfyc"]
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
 script = ExtResource("1_4uglr")
@@ -384,6 +386,16 @@ meshToUse = NodePath("Visual/coin")
 [node name="AlbumCollectable" parent="." instance=ExtResource("13_ggvdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.94911, 49.8729, -18.3487)
 id = 1
+
+[node name="npc2" parent="." instance=ExtResource("14_rgdix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1148, 47.5542, -17.0509)
+exportDialog = ["s:Hi Sorakai... I am a big fan. I'm the elusive [color=57C8DB]Ev-Sama.", "p:Why thank you!", "s:You scaled atop this big building. That shows how powerful you are.", "s:Great job. Truly. There is an album waiting for you.", "p:Couldn't you have grabbed it for me. Make my life a little easier...?", "s:This is a quest YOU must endure. Soz. Now go my boy!"]
+
+[node name="Sprite3D" type="Sprite3D" parent="npc2"]
+transform = Transform3D(2.60509, 0, 0, 0, 2.62961, 0, 0, 0, 1, 0, -0.289, 0)
+pixel_size = 0.0013
+billboard = 2
+texture = ExtResource("15_mxfyc")
 
 [connection signal="child_exiting_tree" from="MoneyHandler" to="MoneyHandler" method="_on_child_exiting_tree"]
 
