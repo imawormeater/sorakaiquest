@@ -24,6 +24,7 @@ func _process(_delta: float) -> void:
 
 func onAlbumCollect(_this:Node3D) -> void:
 	$AlbumCollectControl.visible = true
+	$AlbumCollectControl/AlbumTitle.text = "[center]" + _this.albumName
 	await get_tree().create_timer(GameManager.CurrentState.timeToCollect).timeout
 	$AlbumCollectControl.visible = false
 

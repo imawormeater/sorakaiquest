@@ -6,25 +6,25 @@
 [ext_resource type="Texture2D" uid="uid://bfnkcgoksqfjy" path="res://assets/images/album_albumcover.png" id="3_n8158"]
 [ext_resource type="AudioStream" uid="uid://vkq2kx0i2q5t" path="res://assets/sounds/windchimes.mp3" id="4_5he3m"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7aps4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eme4k"]
 render_priority = 0
 shader = ExtResource("2_ya50x")
-shader_parameter/UseFade = false
-shader_parameter/MinDistance = 0.2
-shader_parameter/MaxDistance = 5.0
+shader_parameter/UseFade = true
+shader_parameter/MinDistance = 0.645
+shader_parameter/MaxDistance = 0.87
 shader_parameter/dithersize = 6
-shader_parameter/ToonRampOffset = 0.363
+shader_parameter/ToonRampOffset = 0.36
 shader_parameter/ToonRampSmoothness = 0.0
-shader_parameter/ToonRampTinting = Color(0.560955, 0.560955, 0.560955, 1)
-shader_parameter/RimPower = 0.005
-shader_parameter/RimCutOff = 0.0
-shader_parameter/RimSmoothness = 0.0
-shader_parameter/RimLightBrightness = 0.0
-shader_parameter/SubSurfDistortion = 0.0
+shader_parameter/ToonRampTinting = Color(0.730403, 0.711878, 1, 1)
+shader_parameter/RimPower = 10.0
+shader_parameter/RimCutOff = 0.5
+shader_parameter/RimSmoothness = 0.05
+shader_parameter/RimLightBrightness = 50.0
+shader_parameter/SubSurfDistortion = 1.0
 shader_parameter/SubSurfTint = null
-shader_parameter/SubSurfBrightness = 0.0
-shader_parameter/SubSurfCutoff = 0.0
-shader_parameter/SubSurfSmoothness = 0.0
+shader_parameter/SubSurfBrightness = 3.0
+shader_parameter/SubSurfCutoff = 0.5
+shader_parameter/SubSurfSmoothness = 0.05
 shader_parameter/Texture = ExtResource("3_n8158")
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gsa8i"]
@@ -84,10 +84,10 @@ transform = Transform3D(0.306804, 0, 0, 0, 0.436611, 0, 0, 0, 0.436611, 0, -0.02
 [node name="Skeleton3D" parent="album/Armature" index="0"]
 bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, -2.11758e-22, 1)
 bones/1/position = Vector3(0.0866297, 0.916741, 0.980129)
-bones/1/rotation = Quaternion(0.701147, 0, 0, 0.713017)
+bones/1/rotation = Quaternion(0.995301, 0, 0, 0.0968307)
 
 [node name="Cube" parent="album/Armature/Skeleton3D" index="0"]
-material_override = SubResource("ShaderMaterial_7aps4")
+surface_material_override/0 = SubResource("ShaderMaterial_eme4k")
 
 [node name="AnimationTree" type="AnimationTree" parent="album"]
 root_motion_track = NodePath("Armature/Skeleton3D:Bone")
