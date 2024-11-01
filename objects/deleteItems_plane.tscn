@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdy17xfyr2owo"]
+
+[ext_resource type="Script" path="res://scripts/delete_items_plane.gd" id="1_uj8vv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n6adu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s8ah6"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.513726, 0.419608, 0.356863)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yjx4w"]
+material = SubResource("StandardMaterial3D_s8ah6")
+
+[node name="KillItems" type="Node3D"]
+script = ExtResource("1_uj8vv")
+
+[node name="DeathArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea"]
+shape = SubResource("BoxShape3D_n6adu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_yjx4w")
+
+[connection signal="body_entered" from="DeathArea" to="." method="_on_death_area_body_entered"]
