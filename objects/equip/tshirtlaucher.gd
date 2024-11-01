@@ -6,7 +6,6 @@ var used:bool = false
 
 var ogPos:Vector3 = Vector3.ZERO
 var ogParent:Node3D = null
-var jumpConnection
 
 @onready var shoot:AudioStreamPlayer3D = $shoot
 

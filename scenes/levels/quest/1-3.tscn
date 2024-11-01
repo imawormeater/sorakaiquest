@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dhofpy040oepx" path="res://objects/locked_door.tscn" id="7_hbggx"]
 [ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="7_ivm2k"]
 [ext_resource type="Texture2D" uid="uid://dqcbno8lejelk" path="res://assets/images/levelStuff/signPost.png" id="8_fhxt7"]
-[ext_resource type="PackedScene" uid="uid://bn35hu6xtwj7q" path="res://objects/key.tscn" id="9_wogw8"]
+[ext_resource type="PackedScene" uid="uid://bn35hu6xtwj7q" path="res://objects/equip/key.tscn" id="9_wogw8"]
 [ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://objects/basicassplatform.tscn" id="9_xwr7t"]
 [ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="10_qv8vy"]
 [ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="11_k5ba8"]
@@ -437,31 +437,30 @@ meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3279, 34.6355, -15.6687)
-value = 10.0
 
 [node name="MoneyCollectable2" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3279, 19.1141, 12.3323)
-value = 10.0
+value = 5.0
 
 [node name="MoneyCollectable4" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08775, 9.82779, 21.8064)
-value = 10.0
+value = 5.0
 
 [node name="MoneyCollectable5" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.889, 19.065, 24.2954)
-value = 10.0
+value = 2.0
 
 [node name="MoneyCollectable49" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6941, 6.3058, 30.8378)
-value = 10.0
+value = 5.0
 
 [node name="MoneyCollectable6" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8348, 23.0922, -7.5918)
-value = 10.0
+value = 5.0
 
 [node name="MoneyCollectable7" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.4447, 22.7162, 1.72435)
-value = 10.0
+value = 5.0
 
 [node name="MoneyCollectable3" parent="MoneyHandler" instance=ExtResource("12_3qvsf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.82878, 11.2037, 28.6219)
@@ -472,7 +471,7 @@ transform = Transform3D(8.7428, 0, 0, 0, 47.6259, 0, 0, 0, 8.814, 10.1791, 8.128
 
 [node name="npc" parent="." instance=ExtResource("7_ivm2k")]
 transform = Transform3D(0.90599, 0, 0, 0, 0.696997, 0, 0, 0, 0.335891, 7.46552, 14.4285, 30.3235)
-exportDialog = ["s:Passage is temporarily [color=FF0000]closed. [color=FFFFFF]Come back later.", "p:Seems like I need a way to open it..."]
+exportDialog = ["s:Passage is temporarily [color=D04140]closed. [color=FFFFFF]Come back later.", "p:Seems like I need a way to open it..."]
 
 [node name="Sprite3D" type="Sprite3D" parent="npc"]
 transform = Transform3D(0.802484, 0, -0.229122, 0, 1.01, 0, 0.596673, 0, 0.308154, 0, -0.164759, 0)
@@ -480,7 +479,7 @@ texture = ExtResource("8_fhxt7")
 
 [node name="npc2" parent="." instance=ExtResource("7_ivm2k")]
 transform = Transform3D(0.90599, 0, 0, 0, 0.696997, 0, 0, 0, 0.335891, 10.3046, 32.8458, -26.8932)
-exportDialog = ["s:[color=FF0000]TURN AROUND."]
+exportDialog = ["s:[color=D04140]TURN AROUND."]
 
 [node name="Sprite3D" type="Sprite3D" parent="npc2"]
 transform = Transform3D(0.993308, 0, -0.0443489, 0, 1.01, 0, 0.115492, 0, 0.38143, 0, -0.164761, 0)
@@ -502,7 +501,7 @@ transform = Transform3D(7.55805, 0, 0, 0, 2.99809, 0, 0, 0, 1, -39.2657, 25.3598
 
 [node name="npc4" parent="." instance=ExtResource("7_ivm2k")]
 transform = Transform3D(0.971877, 0, 0, 0, 0.971783, 0, 0, 0, 2.04314, -1.28579, 20.5954, 31.0419)
-exportDialog = ["s:Sorakai! It's me, [color=57C8DB]Blev-Sama!", "p:What are you doing up here [color=57C8DB]Blev-Sama?", "s:[color=D04140]I'm gonna jump.", "p:...", "p:What?", "s:What?"]
+exportDialog = ["s:Sorakai! It's me, [color=57C8DB]Blev-Sama!", "p:What are you doing up here [color=57C8DB]Blev-Sama?", "s:Isn't it obvious?", "s:[color=D04140]I'm gonna jump.", "p:...", "p:What?", "s:Hm?"]
 
 [node name="Sprite3D" type="Sprite3D" parent="npc4"]
 transform = Transform3D(2.60509, 0, 0, 0, 2.62961, 0, 0, 0, 1, 0, -0.289, 0)
