@@ -59,6 +59,7 @@ func _ready() -> void:
 	
 	if(Rank == rank.BAD):
 		resultText.text = "[center]I think it's my heart that is empty."
+		resultImage.texture = load("res://assets/images/ratingscreens/faillll.png")
 		#song.stream = load("res://assets/music/ranks/tryagain.wav")
 		#rankStinger.stream = load("res://assets/music/ranks/init/tryagainRank.mp3")
 		#resultMusic.stream = load("res://assets/music/ranks/results/tryagainResult.mp3")
@@ -67,15 +68,18 @@ func _ready() -> void:
 		rankStinger.stream = load("res://assets/music/ranks/init/okRank.mp3")
 		resultMusic.stream = load("res://assets/music/ranks/results/okResult.mp3")
 		resultText.text = "[center]Lets go get some more!"
+		resultImage.texture = load("res://assets/images/ratingscreens/okkkklig.png")
 	elif(Rank == rank.SUPERB or Rank == rank.PERFECT):
 		song.stream = load("res://assets/music/ranks/superb (remux).wav")
 		rankStinger.stream = load("res://assets/music/ranks/init/superbRank.mp3")
 		resultMusic.stream = load("res://assets/music/ranks/results/superbResult.mp3")
 		resultText.text = "[center]Lost and found!"
+		resultImage.texture = load("res://assets/images/ratingscreens/Goodjob.png")
 	elif(Rank == rank.PERFECT):
 		resultText.text = "[center]My collection is complete!"
+		resultImage.texture = load("res://assets/images/ratingscreens/perfectiopnm.png")
 		pass
-		
+	resultImage.size = Vector2(0.433,0.455)
 	judgementControl.hide()
 	resultControl.hide()
 	await get_tree().create_timer(2).timeout

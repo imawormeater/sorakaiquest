@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://odw1x4buac5j"]
+[gd_scene load_steps=20 format=3 uid="uid://odw1x4buac5j"]
 
 [ext_resource type="Script" path="res://scenes/states/end_screen.gd" id="1_sdb5c"]
 [ext_resource type="PackedScene" uid="uid://demg1ljadhtwn" path="res://scenes/states/titleScreen.tscn" id="2_v024c"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dsinsobrob438" path="res://assets/images/cutelogan.png" id="4_231hh"]
 [ext_resource type="Texture2D" uid="uid://cqdtwujgusr0" path="res://assets/images/ratingscreens/Goodjob.png" id="6_0x01m"]
 [ext_resource type="FontFile" uid="uid://c63riwf1oe6p4" path="res://assets/fonts/GothicA1-SemiBold.ttf" id="6_jn51s"]
+[ext_resource type="Texture2D" uid="uid://smwljtj7ysub" path="res://assets/images/loganface2.png" id="7_3sjb5"]
 [ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="7_fk1y7"]
 [ext_resource type="AudioStream" uid="uid://deyrwhrunbf05" path="res://assets/sounds/rhProceed.mp3" id="8_ijbad"]
 [ext_resource type="AudioStream" uid="uid://gdxoxu2xcro1" path="res://assets/music/ranks/rhResults.mp3" id="9_6qydc"]
@@ -237,7 +238,6 @@ libraries = {
 }
 
 [node name="Result" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -247,10 +247,21 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_left = 192.0
 offset_top = 110.0
+offset_right = 783.0
+offset_bottom = 462.0
+scale = Vector2(0.433, 0.455)
+pivot_offset = Vector2(0.5, 0.5)
+texture = ExtResource("6_0x01m")
+
+[node name="AHFIUDFSUIHFDSHUISFDHUISDFIUHSDHUIFDSF" type="TextureRect" parent="Result"]
+visible = false
+layout_mode = 0
+offset_left = 192.0
+offset_top = 110.0
 offset_right = 448.0
 offset_bottom = 270.0
 pivot_offset = Vector2(0.5, 0.5)
-texture = ExtResource("6_0x01m")
+texture = ExtResource("7_3sjb5")
 
 [node name="resultText" type="RichTextLabel" parent="Result"]
 layout_mode = 0
