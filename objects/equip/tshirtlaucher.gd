@@ -6,6 +6,9 @@ var used:bool = false
 
 var ogPos:Vector3 = Vector3.ZERO
 var ogParent:Node3D = null
+var jumpConnection
+
+@onready var shoot:AudioStreamPlayer3D = $shoot
 
 func _ready() -> void:
 	ogPos = self.global_position
@@ -15,20 +18,27 @@ func _ready() -> void:
 func onEquip() -> void:
 	sorakai = GameManager.CurrentState.Sorakai
 	sorakai.equip(self)
+	sorakai.onJump.connect(_onjumpyeah)
+	sorakai.canWall = false
 	interactable.enabled = false
 	
 func onUse() -> void:
 	if(!canUse): return
 	canUse = false
 	used = true
-	sorakai.jump()
+	#sorakai.jump()
 	sorakai.DEACEL_mult = 0.1
 	sorakai.velocity += get_viewport().get_camera_3d().transform.basis.z * launchPower
+	shoot.play()
 
 func revert() -> void:
 	canUse = true
 	used = false
 	sorakai.cantHoldJump = false
+
+func _onjumpyeah() -> void:
+	print("on jump")
+	canUse = true
 
 func _physics_process(_delta: float) -> void:
 	if sorakai == null: return
@@ -42,6 +52,10 @@ func _physics_process(_delta: float) -> void:
 
 func onUnequip() -> void:
 	interactable.enabled = true
+	if sorakai:
+		sorakai.onJump.disconnect(_onjumpyeah)
+		sorakai.canWall = true
+		sorakai.cantHoldJump = false
 	sorakai = null
 	canUse = false
 	used = false

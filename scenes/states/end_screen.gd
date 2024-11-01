@@ -60,9 +60,6 @@ func _ready() -> void:
 	if(Rank == rank.BAD):
 		resultText.text = "[center]I think it's my heart that is empty."
 		resultImage.texture = load("res://assets/images/ratingscreens/faillll.png")
-		#song.stream = load("res://assets/music/ranks/tryagain.wav")
-		#rankStinger.stream = load("res://assets/music/ranks/init/tryagainRank.mp3")
-		#resultMusic.stream = load("res://assets/music/ranks/results/tryagainResult.mp3")
 	elif(Rank == rank.OK):
 		song.stream = load("res://assets/music/ranks/ok (remux).wav")
 		rankStinger.stream = load("res://assets/music/ranks/init/okRank.mp3")
@@ -78,7 +75,7 @@ func _ready() -> void:
 	elif(Rank == rank.PERFECT):
 		resultText.text = "[center]My collection is complete!"
 		resultImage.texture = load("res://assets/images/ratingscreens/perfectiopnm.png")
-		pass
+		
 	resultImage.size = Vector2(0.433,0.455)
 	judgementControl.hide()
 	resultControl.hide()
