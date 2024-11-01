@@ -1,6 +1,8 @@
 class_name Logan
 extends CharacterBody3D
 
+signal onJump
+
 @export var camera:Camera3D
 @export var equippedItem:Equipable
 
@@ -204,6 +206,7 @@ func jump() -> void:
 	#if jumpAnimation >= 3.0:
 		#jumpAnimation = -555.0
 	jumpTimer = 0.0
+	onJump.emit()
 	
 #CHECKS FOR HANG STATE
 func checkHang() -> bool:
@@ -386,6 +389,7 @@ func _physics_process(delta: float) -> void:
 		changeFace('normal')
 	#FREE STATE (RUNNING, JUMPING, BASIC)
 	if equippedItem != null:
+		equipNode.global_rotation = visual.global_rotation
 		if Input.is_action_just_pressed("interact"):
 			equippedItem.onUse()
 	
@@ -675,5 +679,6 @@ func equip(thing:Equipable)	 -> void:
 	equippedItem.position = Vector3.ZERO
 	
 func unequip() -> void:
+	if equippedItem == null: return
 	equippedItem.onUnequip()
 	equippedItem = null
