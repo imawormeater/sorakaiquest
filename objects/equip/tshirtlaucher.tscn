@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1nam1mox4tq6"]
+[gd_scene load_steps=5 format=3 uid="uid://c1nam1mox4tq6"]
 
 [ext_resource type="Script" path="res://objects/equip/tshirtlaucher.gd" id="1_jiqu7"]
 [ext_resource type="PackedScene" uid="uid://cv8u5yn1kefiw" path="res://objects/interactable.tscn" id="2_h4khh"]
+[ext_resource type="AudioStream" uid="uid://cbvkfqgwy6cqp" path="res://assets/sounds/tf2-grenade-launcher-shoot.mp3" id="3_ppbia"]
 
 [sub_resource type="TubeTrailMesh" id="TubeTrailMesh_2suen"]
 
@@ -18,3 +19,7 @@ mesh = SubResource("TubeTrailMesh_2suen")
 [node name="Interactable" parent="." node_paths=PackedStringArray("objectDepedency") instance=ExtResource("2_h4khh")]
 objectDepedency = NodePath("..")
 functionName = "onEquip"
+
+[node name="shoot" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_ppbia")
+max_distance = 20.0

@@ -24,7 +24,7 @@ func set_bounce_power(height:float) -> void:
 
 func onBounce(body:Node3D) -> void:
 	if vardebounce: return
-	if not body.is_in_group("Player"): return
+	if not body is Logan: return
 	
 	body.springCombo += 1
 	if body.springCombo == 1:
@@ -36,6 +36,7 @@ func onBounce(body:Node3D) -> void:
 	debounce.start()
 	bounceSound.play()
 	body.velocity.y = bouncePower
+	body.onJump.emit()
 	body.jumpAnimation += 1.0
 	if body.jumpAnimation >= 3.0 or body.jumpAnimation == -1.0:
 		body.jumpAnimation = -555.0
