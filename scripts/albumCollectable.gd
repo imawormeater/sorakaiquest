@@ -43,15 +43,11 @@ extends Node3D
 
 
 func _ready() -> void:
-	#print("FUCK MY LIFE")
 	albumName = albumNames[id]
 	albumMaterial["shader_parameter/Texture"] = albumTextures[id]
-	print(albumTextures.size())
-	#$album/Armature/Skeleton3D/Cube.mesh.material.albedo_texture
 	
 	await get_tree().create_timer(0.2).timeout
 	if id in GameManager.CurrentState.collectedAlbums:
-		print("Byee")
 		self.queue_free()
 	hitbox.body_entered.connect(onhit)
 
