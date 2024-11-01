@@ -201,10 +201,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70849, 4.2524, 0.681699)
 
 [node name="AlbumCollectable2" parent="." instance=ExtResource("13_jb12y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.612, 45.0113, 22.5292)
+id = 5
 
 [node name="AlbumCollectable3" parent="." instance=ExtResource("13_jb12y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.612, 3.37024, -17.4925)
-id = 35
+id = 22
 endingAlbum = true
 
 [node name="npc" parent="." instance=ExtResource("14_4hmp0")]
