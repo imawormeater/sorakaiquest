@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://demg1ljadhtwn" path="res://scenes/states/titleScreen.tscn" id="2_v024c"]
 [ext_resource type="FontFile" uid="uid://csjw5posryyf3" path="res://assets/fonts/GothicA1-Bold.ttf" id="3_ig54g"]
 [ext_resource type="Texture2D" uid="uid://dsinsobrob438" path="res://assets/images/cutelogan.png" id="4_231hh"]
-[ext_resource type="Texture2D" uid="uid://byix24k02ayaj" path="res://assets/images/loganchara_loganchara_loganface1.png" id="5_pdckr"]
+[ext_resource type="Texture2D" uid="uid://cqdtwujgusr0" path="res://assets/images/ratingscreens/Goodjob.png" id="6_0x01m"]
 [ext_resource type="FontFile" uid="uid://c63riwf1oe6p4" path="res://assets/fonts/GothicA1-SemiBold.ttf" id="6_jn51s"]
 [ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="7_fk1y7"]
 [ext_resource type="AudioStream" uid="uid://deyrwhrunbf05" path="res://assets/sounds/rhProceed.mp3" id="8_ijbad"]
@@ -250,7 +250,7 @@ offset_top = 110.0
 offset_right = 448.0
 offset_bottom = 270.0
 pivot_offset = Vector2(0.5, 0.5)
-texture = ExtResource("5_pdckr")
+texture = ExtResource("6_0x01m")
 
 [node name="resultText" type="RichTextLabel" parent="Result"]
 layout_mode = 0
