@@ -635,14 +635,26 @@ func die() -> void:
 	canWallrun = false
 	canSlide = false
 	
+	get_tree().create_tween().tween_property(camera,"fov",75,0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	
 	GameManager.CurrentState.deathCount += 1
 	sfx.play_sound("Die")
 	await get_tree().create_timer(1).timeout
 	GameManager.App.play_transition("circle",1)
+	
+func _addalbumtohand(albumNode:Node3D) -> void:
+	albumNode.reparent($Visual/loganchara/Armature/Skeleton3D/HandAttachment)
+	albumNode.position = Vector3.ZERO
+	albumNode.album.rotate_z(PI/2)
+	albumNode.album.rotate_x(PI/2)
 
-func onAlbumCollect() -> void:
+func onAlbumCollect(albumNode:Node3D) -> void:
 	cameraOn = false
 	walkDust.emitting = false
+	call_deferred("_addalbumtohand",albumNode)
+	var tween:Tween = get_tree().create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(camera,"fov",75,0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 	state = States.Collecting
 	anim_st.travel("COLLECT")
@@ -653,6 +665,7 @@ func onAlbumStop() -> void:
 	process_mode = ProcessMode.PROCESS_MODE_INHERIT
 	visual.rotation = Vector3(0,visual.rotation.y,0)
 	state = States.Free
+	get_tree().create_tween().tween_property(camera,"fov",98.7,0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	velocity = Vector3.ZERO
 
 func equip(thing:Equipable)	 -> void:

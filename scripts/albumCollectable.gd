@@ -3,6 +3,7 @@ extends Node3D
 @export var id:int = 0
 @export var endingAlbum:bool = false
 @onready var hitbox := $Hitbox
+@onready var album := $album
 
 func _ready() -> void:
 	#print("FUCK MY LIFE")

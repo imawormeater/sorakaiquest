@@ -147,7 +147,7 @@ func on_album_collect(albumCollectable:Node3D) -> void:
 	collectedAlbums += [albumCollectable.id]
 	print(collectedAlbums)
 	
-	Sorakai.onAlbumCollect()
+	Sorakai.onAlbumCollect(albumCollectable)
 	get_tree().paused = true
 	
 	$AlbumCollectedSong.play()
