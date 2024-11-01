@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bewmhwavb5esy"]
+
+[ext_resource type="Script" path="res://scenes/states/intro_cutscene.gd" id="1_1ccyd"]
+[ext_resource type="PackedScene" uid="uid://demg1ljadhtwn" path="res://scenes/states/titleScreen.tscn" id="2_gp4nf"]
+[ext_resource type="Texture2D" uid="uid://bypj8evnjmdee" path="res://assets/images/sdgfikgfdigm,ort5iuh6549u865489u64Untitled.jpg" id="3_vwfrm"]
+[ext_resource type="VideoStream" path="res://assets/videos/Credits.ogv" id="4_u5xfh"]
+
+[node name="GameState" type="Node2D"]
+script = ExtResource("1_1ccyd")
+gameState = ExtResource("2_gp4nf")
+stream = ExtResource("4_u5xfh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(237.533, 162.25)
+scale = Vector2(0.429293, 0.429293)
+texture = ExtResource("3_vwfrm")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+scale = Vector2(0.5, 0.665)
+stream = ExtResource("4_u5xfh")

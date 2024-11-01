@@ -99,6 +99,10 @@ _data = {
 resource_name = "fpstimer"
 script/source = "extends Label
 
+func _ready() -> void:
+	if !OS.is_debug_build():
+		self.queue_free()
+
 func _physics_process(_delta: float) -> void:
 	text = \"FPS: \" + str(Engine.get_frames_per_second()) + \"\\n\" + \"MEM: \" + str(OS.get_static_memory_usage()/1048576.0).pad_decimals(2) + \" MB\"
 "
