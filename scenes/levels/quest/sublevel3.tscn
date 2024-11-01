@@ -1,0 +1,154 @@
+[gd_scene load_steps=17 format=3 uid="uid://qqe2160v7tl6"]
+
+[ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_d3rcr"]
+[ext_resource type="AudioStream" uid="uid://b76cal5qpclw5" path="res://assets/music/BotB+23564+A-zu-ra+-+Heartless+Castle.vt.mp3" id="2_wwpn0"]
+[ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://objects/basicassplatform.tscn" id="3_87kfe"]
+[ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="4_hn8is"]
+[ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="5_wjhh2"]
+[ext_resource type="Texture2D" uid="uid://dqcbno8lejelk" path="res://assets/images/levelStuff/signPost.png" id="6_btqd4"]
+[ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="8_8pihn"]
+[ext_resource type="Script" path="res://scripts/skybox_rotater.gd" id="9_d6dvk"]
+[ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="13_s6d3w"]
+[ext_resource type="PackedScene" uid="uid://cabix5vgaakof" path="res://objects/level_switcher.tscn" id="14_uiflb"]
+
+[sub_resource type="Gradient" id="Gradient_hd120"]
+colors = PackedColorArray(3.27289e-06, 0.764161, 0.819618, 1, 0.382252, 0.340751, 0.973535, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_raoc1"]
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0ukpx"]
+seamless = true
+color_ramp = SubResource("Gradient_hd120")
+noise = SubResource("FastNoiseLite_raoc1")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wly41"]
+panorama = SubResource("NoiseTexture2D_0ukpx")
+
+[sub_resource type="Sky" id="Sky_itxqy"]
+sky_material = SubResource("PanoramaSkyMaterial_wly41")
+
+[sub_resource type="Environment" id="Environment_3qrnf"]
+background_mode = 2
+sky = SubResource("Sky_itxqy")
+ambient_light_source = 3
+reflected_light_source = 1
+
+[node name="Level" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
+script = ExtResource("1_d3rcr")
+Name = "test level"
+Song = ExtResource("2_wwpn0")
+Logan_Spawn = NodePath("loganSpawn")
+
+[node name="Platforms" type="Node3D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(11.6615, 0, 0, 0, 2.97722, 0, 0, 0, 12.6497, 0, 0, 1)
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(3.49845, 0, 0, 0, 2.97722, 0, 0, 0, 2.52994, 0, 0, 14)
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(3.49845, 0, 0, 0, 6.17955, 0, 0, 0, 2.52994, 0, 2.97228, 19.742)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(3.49845, 0, 0, 0, 6.17955, 0, 0, 0, 2.52994, 0, 7.65862, 16.103)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(3.49845, 0, 0, 0, 4.63467, -0.293537, 0, 8.02748, 0.169474, 0, 13.2901, 28.9402)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(3.49845, 0, 0, 0, -4.76837e-07, -0.338948, 0, 9.26933, -2.98023e-08, 0, 15.1887, 17.8511)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(3.49845, 0, 0, 0, -9.26933, 3.72529e-08, 0, -4.76837e-07, -0.338948, 0, 19.7104, 13.3779)
+
+[node name="Platform10" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(3.49845, 0, 0, 0, 8.82013e-07, 0.338948, 0, -9.26933, 5.20688e-08, 0, 24.7104, 24.3779)
+
+[node name="Platform12" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(3.49845, 0, 0, 0, -9.76276, 1.43359, 0, -5.63653, -2.48305, 0, 28.7135, 24.6258)
+
+[node name="Platform13" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(-7.41633e-08, -2.86102e-07, -0.338948, -4.28182e-08, -5.5616, 2.98023e-08, -1.95913, 2.65095e-07, 7.7802e-09, 1.80565, 27.424, 24.3779)
+
+[node name="Platform15" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(-9.59975, 6.89247e-07, 2.25961e-08, -2.09809e-07, -14.4602, 2.98023e-08, 7.83018e-07, 7.43866e-07, 0.338947, -0.187383, 31.424, 25.3779)
+
+[node name="Platform17" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(-2.5438e-07, -4.4632e-07, -0.338947, -1.46866e-07, -8.67609, 2.98023e-08, -6.71982, 4.13548e-07, 7.7802e-09, -0.187383, 35.3757, 23.3779)
+
+[node name="Platform19" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(-6.86826e-07, -1.29433e-08, -0.338947, -3.96539e-07, -0.251606, 2.98023e-08, -18.1435, 1.19929e-08, 7.7802e-09, 1.79038, 38.5204, 34.4595)
+
+[node name="Platform20" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(-6.86826e-09, -1.61027e-07, -3.84366, -3.96539e-09, -3.13024, 3.37958e-07, -0.181435, 1.49204e-07, 8.82274e-08, 1.79038, 27.5204, 52.79)
+
+[node name="Platform22" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(-6.86826e-09, -1.61027e-07, -3.84366, -3.96539e-09, -3.13024, 3.37958e-07, -0.181435, 1.49204e-07, 8.82274e-08, 1.79038, 27.5204, 48.9981)
+
+[node name="Platform21" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(-0.181435, 1.49204e-07, 2.56239e-07, -3.96539e-09, -3.13024, 3.37958e-07, 1.4799e-08, 1.61027e-07, 3.84366, 3.60824, 27.5204, 50.8847)
+
+[node name="Platform23" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(-0.181435, 1.49204e-07, 2.56239e-07, -3.96539e-09, -3.13024, 3.37958e-07, 1.4799e-08, 1.61027e-07, 3.84366, -0.0879195, 27.5204, 50.8847)
+
+[node name="Platform18" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(-2.1804e-07, -4.4632e-07, -0.338947, -1.25885e-07, -8.67609, 2.98023e-08, -5.75985, 4.13548e-07, 7.7802e-09, 3.25394, 36.748, 23.3779)
+
+[node name="Platform16" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(-9.59975, 2.75699e-07, 2.25961e-08, -2.09809e-07, -5.78406, 2.98023e-08, 7.83018e-07, 2.97546e-07, 0.338947, -0.187383, 35.424, 21.5582)
+
+[node name="Platform14" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(-7.41633e-08, -5.20706e-07, -0.338948, -4.28182e-08, -10.1221, 2.98023e-08, -1.95913, 4.82473e-07, 7.7802e-09, -2.04349, 29.5629, 26.3779)
+
+[node name="Platform11" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(3.49845, 0, 0, 0, 6.17408e-08, 0.338948, 0, -0.648853, 5.20688e-08, 0, 24.7104, 24.3779)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(-1.19209e-07, 4.76837e-07, 0.338948, 4.3301e-15, -9.26933, 3.72529e-08, 3.49845, 4.26326e-14, 1.49012e-08, 1.67404, 19.7104, 17.4933)
+
+[node name="Platform9" parent="Platforms" instance=ExtResource("3_87kfe")]
+transform = Transform3D(-1.19209e-07, 4.76837e-07, 0.338948, 4.3301e-15, -9.26933, 3.72529e-08, 3.49845, 4.26326e-14, 1.49012e-08, -1.64224, 19.7104, 17.4933)
+
+[node name="LevelSwitch" parent="Platforms" instance=ExtResource("14_uiflb")]
+transform = Transform3D(1.9, 0, 0, 0, 1, 0, 0, 0, 1.84776, 1.74968, 26.4145, 50.8546)
+goBackFromSubLevel = true
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="MoneyHandler" type="Node3D" parent="Objects"]
+script = ExtResource("4_hn8is")
+
+[node name="npc" parent="Objects" instance=ExtResource("5_wjhh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16848, 2.85199, 3.51075)
+exportDialog = ["s:This is a [color=blue]sublevel![/color]", "s:These levels are pretty hard, so keep trying.", "s:There is one in each level, so explore!"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Objects/npc"]
+transform = Transform3D(0.914507, 0, -0.300023, 0, 0.877505, 0, 0.287624, 0, 0.953932, 0.174029, -0.265824, -0.380584)
+shaded = true
+texture = ExtResource("6_btqd4")
+
+[node name="DeathPlane" parent="Objects" instance=ExtResource("8_8pihn")]
+transform = Transform3D(302.412, 0, 0, 0, 1, 0, 0, 0, 351.232, -12.3183, -3.09586, -2.7479)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.25882, 0.965926, 0, -0.965926, -0.258818, 0, 15.9898, -5.65541)
+light_color = Color(0.257824, 0.610274, 0.871948, 1)
+light_energy = 0.959
+light_indirect_energy = 2.423
+light_angular_distance = 3.93
+shadow_enabled = true
+shadow_opacity = 0.6
+shadow_blur = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3qrnf")
+script = ExtResource("9_d6dvk")
+
+[node name="loganSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18036, -4.16234)
+
+[node name="AlbumCollectable" parent="." instance=ExtResource("13_s6d3w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.84215, 39.2516, 42.3029)
+id = 9

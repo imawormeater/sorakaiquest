@@ -168,7 +168,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9385, 33.4639, 20.9693)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8597, 32.7163, 1.25977)
 
 [node name="balloon5" parent="." instance=ExtResource("12_t1wbj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1448, 39.0649, 0.226238)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5224, 39.0649, 0.226238)
 
 [node name="balloon6" parent="." instance=ExtResource("12_t1wbj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65519, 47.7881, 2.79209)

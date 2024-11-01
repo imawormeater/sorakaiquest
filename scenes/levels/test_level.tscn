@@ -136,6 +136,11 @@ transform = Transform3D(1.05422, 0.00259632, -0.00615383, -0.00275313, 0.998136,
 levelpath = "res://scenes/levels/quest/sublevel2.tscn"
 subLevel = true
 
+[node name="LevelSwitch6" parent="Objects" instance=ExtResource("8_bsmop")]
+transform = Transform3D(1.05422, 0.00259632, -0.00615383, -0.00275313, 0.998136, -0.0109773, 0.00253571, 0.00430889, 2.54655, -16.5493, 0.501049, 25.4965)
+levelpath = "res://scenes/levels/quest/sublevel3.tscn"
+subLevel = true
+
 [node name="LevelSwitch2" parent="Objects" instance=ExtResource("8_bsmop")]
 transform = Transform3D(3.65528, 0, 0, 0, 1, 0, 0, 0, 2.54221, 0.848166, 0.501049, 32.2863)
 levelpath = "res://scenes/levels/test_level_4.tscn"
