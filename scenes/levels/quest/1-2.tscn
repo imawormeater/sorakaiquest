@@ -184,7 +184,7 @@ transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 15.5515, 41.9516,
 transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 17.5624, 41.9696, -13.7002)
 
 [node name="MoneyCollectable32" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
-transform = Transform3D(0.999067, 0, 0.0441076, 0, 1.00004, 0, -0.0441094, 0, 0.999027, 17.6519, 42.5654, -8.47587)
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 17.6519, 42.5654, -8.47587)
 
 [node name="MoneyCollectable33" parent="MoneyHandler" instance=ExtResource("12_1x34o")]
 transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 12.9366, 43.9878, -10.3723)
@@ -324,7 +324,7 @@ value = 0.25
 meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable65" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_1x34o")]
-transform = Transform3D(0.999068, 0, 0.0440727, 0, 1.00004, 0, -0.0440745, 0, 0.999028, 11.9556, 45.6864, -10.4474)
+transform = Transform3D(1.00004, 0, 0, 0, 1.00004, 0, 0, 0, 1, 11.9556, 45.6864, -10.4474)
 value = 0.25
 meshToUse = NodePath("Visual/coin")
 

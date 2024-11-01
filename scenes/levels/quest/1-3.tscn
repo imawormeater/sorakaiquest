@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://ch6e826o82op"]
+[gd_scene load_steps=24 format=3 uid="uid://ch6e826o82op"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_awjy4"]
-[ext_resource type="AudioStream" uid="uid://dr480fcl7ltkd" path="res://assets/music/a VICious groove.mp3" id="2_1hub8"]
-[ext_resource type="Environment" uid="uid://bn8ohqm75mqkj" path="res://assets/materials/ursc/test_env_dusk.tres" id="3_08ocq"]
+[ext_resource type="AudioStream" uid="uid://dcjspuf7b0cpg" path="res://assets/music/Badlands  Sunset (visualizer).mp3" id="2_sbay3"]
 [ext_resource type="Script" path="res://scripts/skybox_rotater.gd" id="4_6fffd"]
 [ext_resource type="PackedScene" uid="uid://cabix5vgaakof" path="res://objects/level_switcher.tscn" id="5_jdotn"]
 [ext_resource type="PackedScene" uid="uid://dhofpy040oepx" path="res://objects/locked_door.tscn" id="7_hbggx"]
@@ -19,15 +18,42 @@
 [ext_resource type="PackedScene" uid="uid://dxjqbclf6hso1" path="res://objects/checkPoint.tscn" id="17_c20vm"]
 [ext_resource type="Texture2D" uid="uid://d1j473nv4d2um" path="res://assets/images/blev.png" id="18_qohc1"]
 
+[sub_resource type="Gradient" id="Gradient_lpay4"]
+offsets = PackedFloat32Array(0, 0.997585)
+colors = PackedColorArray(0.0574507, 0.0600768, 0.0712178, 1, 0.0472453, 0.0765841, 0.13105, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g33gn"]
+noise_type = 0
+frequency = 0.0138
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_blx1n"]
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_lpay4")
+noise = SubResource("FastNoiseLite_g33gn")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fxxtg"]
+panorama = SubResource("NoiseTexture2D_blx1n")
+
+[sub_resource type="Sky" id="Sky_n7np8"]
+sky_material = SubResource("PanoramaSkyMaterial_fxxtg")
+
+[sub_resource type="Environment" id="Environment_1wd0k"]
+background_mode = 2
+sky = SubResource("Sky_n7np8")
+ambient_light_source = 3
+ambient_light_color = Color(0.0344688, 0.113894, 0.288254, 1)
+reflected_light_source = 2
+
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
 script = ExtResource("1_awjy4")
 Name = "test level"
-Song = ExtResource("2_1hub8")
+Song = ExtResource("2_sbay3")
 Logan_Spawn = NodePath("loganSpawn")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.826341, 0.52806, -0.195738, 0.0290086, 0.387013, 0.921618, 0.562423, 0.755892, -0.335123, 0, 15.9898, -5.65541)
-light_color = Color(0.804743, 0.804743, 0.804743, 1)
+light_color = Color(0.417676, 0.550109, 0.725801, 1)
 light_energy = 2.836
 shadow_enabled = true
 shadow_opacity = 0.15
@@ -169,13 +195,9 @@ transform = Transform3D(7.36959, 0, 0, 0, 4.59406, 0, 0, 0, 2.04314, 10.3158, 19
 [node name="loganSpawn" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.1536, 43.0945, -23.0553)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("3_08ocq")
-script = ExtResource("4_6fffd")
-
 [node name="LevelSwitch" parent="." instance=ExtResource("5_jdotn")]
 transform = Transform3D(7.2351, 0, 0, 0, 3.29524, 0, 0, 0, 1.33386, 9.6716, 16.2098, 43.8626)
-levelpath = "res://scenes/levels/test_level.tscn"
+levelpath = "res://scenes/levels/quest/1-4.tscn"
 
 [node name="Door" parent="." instance=ExtResource("7_hbggx")]
 transform = Transform3D(-4.35074e-08, 0, 6.32603, 0, 3.98133, 0, -0.995332, 0, -2.7652e-07, 10.3922, 15.3502, 32.5971)
@@ -511,3 +533,7 @@ transform = Transform3D(2.60509, 0, 0, 0, 2.62961, 0, 0, 0, 1, 0, -0.289, 0)
 pixel_size = 0.0013
 billboard = 2
 texture = ExtResource("18_qohc1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1wd0k")
+script = ExtResource("4_6fffd")
