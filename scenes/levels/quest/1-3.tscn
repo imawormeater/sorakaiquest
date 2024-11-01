@@ -251,7 +251,7 @@ value = 0.1
 meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable48" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("12_3qvsf")]
-transform = Transform3D(0.998664, 0.0516736, 0, -0.0516736, 0.998664, 0, 0, 0, 1, 7.61396, 6.38192, 30.9377)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.61396, 6.38192, 30.9377)
 value = 0.1
 meshToUse = NodePath("Visual/coin")
 
