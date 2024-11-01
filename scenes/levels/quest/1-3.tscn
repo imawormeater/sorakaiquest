@@ -20,7 +20,7 @@
 
 [sub_resource type="Gradient" id="Gradient_lpay4"]
 offsets = PackedFloat32Array(0, 0.997585)
-colors = PackedColorArray(0.0574507, 0.0600768, 0.0712178, 1, 0.0472453, 0.0765841, 0.13105, 1)
+colors = PackedColorArray(0.103508, 0.122815, 0.160024, 1, 0.112337, 0.203111, 0.284315, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g33gn"]
 noise_type = 0
@@ -53,7 +53,7 @@ Logan_Spawn = NodePath("loganSpawn")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.826341, 0.52806, -0.195738, 0.0290086, 0.387013, 0.921618, 0.562423, 0.755892, -0.335123, 0, 15.9898, -5.65541)
-light_color = Color(0.417676, 0.550109, 0.725801, 1)
+light_color = Color(0.314692, 0.535097, 0.82364, 1)
 light_energy = 2.836
 shadow_enabled = true
 shadow_opacity = 0.15
