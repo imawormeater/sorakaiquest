@@ -102,8 +102,6 @@ var jumpAnimation := 1.0
 
 var anim_st:AnimationNodeStateMachinePlayback
 
-var currentKey:Node3D
-
 func setCorrectJumpVariables() -> void:
 	jump_velo = ((2.0 * JUMPHEIGHT) / JUMPPEAKTIME)
 	jump_grav = ((-2.0 * JUMPHEIGHT) / (JUMPPEAKTIME * JUMPPEAKTIME))
@@ -124,12 +122,6 @@ func _ready() -> void:
 	setCorrectJumpVariables()
 	animationtree.active = true
 	anim_st = animationtree.get("parameters/playback")
-	
-	#for key in get_tree().get_nodes_in_group("Keys"):
-	#	key.key_touched.connect(key_touched)
-	
-	#for lockedDoor in get_tree().get_nodes_in_group("LockedDoors"):
-	#	lockedDoor.lockedDoor_touched.connect(lockedDoor_touched)
 		
 	await get_tree().create_timer(0.5,false).timeout #invincibility when respawn
 	dying = false
@@ -139,9 +131,7 @@ func _process(delta: float) -> void:#Camera shit
 			if Input.is_action_just_pressed("debug1") and state != States.Noclip:
 				state = States.Noclip
 	var _lerp_speed:float = 1-pow(0.000000000005,delta)
-	#if currentKey:
-		#currentKey.global_transform = currentKey.global_transform.interpolate_with(followPoint.global_transform,_lerp_speed * 0.2)
-		
+			
 	if disabledCamera: return
 	
 	camera_deg[1] = clamp(camera_deg[1],-PI/3,PI/3)
@@ -423,10 +413,10 @@ func _physics_process(delta: float) -> void:
 			
 		velocity.x = _tempVelocity.x
 		velocity.z = _tempVelocity.y
-		if pressedActionInAir:
+		if Input.is_action_just_pressed("movement_action"):
 			velocity.y = -15
-		else:
-			velocity.y = clampf(velocity.y,fall_grav * JUMPDESCENTTIME * 1.1,9999)
+		
+		velocity.y = clampf(velocity.y,fall_grav * JUMPDESCENTTIME * 1.1,9999)
 
 		move_and_slide()
 		
@@ -630,18 +620,6 @@ func die() -> void:
 	await get_tree().create_timer(1).timeout
 	GameManager.App.play_transition("circle",1)
 
-func key_touched(key:Node3D) -> void:
-	if not currentKey:
-		currentKey = key
-		sfx.play_sound("Pickup")
-	
-func lockedDoor_touched(door:Node3D) -> void:
-	if currentKey:
-		currentKey.queue_free()
-		door.queue_free()
-		
-		currentKey = null
-		
 func onAlbumCollect() -> void:
 	cameraOn = false
 	walkDust.emitting = false
@@ -667,11 +645,3 @@ func equip(thing:Equipable)	 -> void:
 func unequip() -> void:
 	equippedItem.onUnequip()
 	equippedItem = null
-func refresh() -> void:
-	currentKey = null
-	
-	for key in get_tree().get_nodes_in_group("Keys"):
-		key.key_touched.connect(key_touched)
-	
-	for lockedDoor in get_tree().get_nodes_in_group("LockedDoors"):
-		lockedDoor.lockedDoor_touched.connect(lockedDoor_touched)
