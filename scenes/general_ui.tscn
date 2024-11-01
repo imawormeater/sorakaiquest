@@ -157,3 +157,4 @@ scroll_active = false
 
 [node name="AlbumCollected" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_n1ns2")
+volume_db = -7.355
