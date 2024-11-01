@@ -101,14 +101,11 @@ script = ExtResource("13_sg036")
 [node name="loganSpawn" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18036, -4.16234)
 
-[node name="Platform" parent="." instance=ExtResource("3_mb5v4")]
-transform = Transform3D(0.1, 0, 0, 0, 3.1, 0, 0, 0, 8.2, 1.86413, 6.26875, 11.2538)
-
 [node name="Platform2" parent="." instance=ExtResource("3_mb5v4")]
 transform = Transform3D(4.47, 0, 0, 0, 3.1, 0, 0, 0, 2.97885, -0.362471, 6.26875, 16.0714)
 
 [node name="Platform3" parent="." instance=ExtResource("3_mb5v4")]
-transform = Transform3D(4.47, 0, 0, 0, 0.93, 0, 0, 0, 4.17039, -0.362471, 13.4437, 12.7485)
+transform = Transform3D(4.47, 0, 0, 0, 0.93, 0, 0, 0, 4.17039, -0.362471, 12.8429, 12.7485)
 
 [node name="Platform4" parent="." instance=ExtResource("3_mb5v4")]
 transform = Transform3D(4.47, 0, 0, 0, 6.54913, 0, 0, 0, 0.216823, 1.65186, 16.2181, 7.85418)
@@ -132,22 +129,25 @@ transform = Transform3D(-4.47, 0, -7.15255e-08, 2.06477e-07, 4.24384, 0.288045, 
 transform = Transform3D(-4.47, 7.72094e-14, -7.15255e-08, 2.06476e-07, -4.24384, 0.288045, 1.19209e-07, 7.35054, 0.166303, 7.43744, 34.3722, -9.8288)
 
 [node name="Platform11" parent="." instance=ExtResource("3_mb5v4")]
-transform = Transform3D(-4.47, 7.72094e-14, -7.15255e-08, -2.84217e-14, -8.48767, -2.98023e-08, 2.38419e-07, 2.38419e-07, 0.332606, 7.43744, 40.5271, -13.3702)
+transform = Transform3D(-4.47, 7.72094e-14, -7.15255e-08, -2.84217e-14, -8.48767, -2.98023e-08, 2.38419e-07, 2.38419e-07, 0.332606, 7.43744, 40.5271, -16.2423)
 
 [node name="Platform12" parent="." instance=ExtResource("3_mb5v4")]
-transform = Transform3D(-3.16077, -1.68587e-07, -0.235188, -2.84217e-14, -8.48767, -2.98023e-08, -3.16077, 1.68587e-07, 0.235188, 14.6607, 40.5271, -11.2881)
+transform = Transform3D(-3.16077, -1.68587e-07, -0.235188, -2.84217e-14, -8.48767, -2.98023e-08, -3.16077, 1.68587e-07, 0.235188, 14.2128, 40.5271, -14.3663)
 
 [node name="Platform13" parent="." instance=ExtResource("3_mb5v4")]
-transform = Transform3D(-2.38419e-07, -2.38419e-07, -0.332606, -5.08803e-14, -8.48767, -2.98023e-08, -4.47, 1.27898e-13, -5.96046e-08, 16.1601, 40.5271, -4.21677)
-
-[node name="Platform14" parent="." instance=ExtResource("3_mb5v4")]
-transform = Transform3D(-2.38419e-07, -2.38419e-07, -0.332606, -5.08803e-14, -8.48767, -2.98023e-08, -4.47, 1.27898e-13, -5.96046e-08, 16.1601, 40.2122, 7.02048)
+transform = Transform3D(-2.38419e-07, -2.38419e-07, -0.332606, -5.08803e-14, -8.48767, -2.98023e-08, -4.47, 1.27898e-13, -5.96046e-08, 16.1601, 40.5271, -8.07573)
 
 [node name="Platform15" parent="." instance=ExtResource("3_mb5v4")]
 transform = Transform3D(-4.47, 1.23242e-13, -4.5066e-08, -5.08803e-14, -8.48767, -2.98023e-08, 4.33809e-07, 2.38419e-07, 0.332606, 14.0184, 40.2122, 9.07075)
 
 [node name="Platform16" parent="." instance=ExtResource("3_mb5v4")]
-transform = Transform3D(-4.47002, 3.32754e-14, -5.54311e-07, -5.08805e-14, -2.29168, -3.66569e-07, 4.3381e-07, 6.43731e-08, 4.09105, 14.0184, 45.5884, 2.9563)
+transform = Transform3D(-4.47002, 8.869e-15, -2.68462e-07, -5.08805e-14, -0.610809, -1.77536e-07, 4.3381e-07, 1.71576e-08, 1.98137, 12.3959, 46.2858, 2.82472)
+
+[node name="Platform19" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-4.47002, 8.869e-15, -3.80954e-07, -5.08805e-14, -0.610809, -2.51927e-07, 4.3381e-07, 1.71576e-08, 2.8116, 7.46518, 36.3116, -14.8297)
+
+[node name="Platform18" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-4.47002, 8.869e-15, -9.51934e-08, -5.08805e-14, -0.610809, -6.29519e-08, 4.3381e-07, 1.71576e-08, 0.702567, 13.8843, 44.8542, 4.49012)
 
 [node name="Platform17" parent="." instance=ExtResource("3_mb5v4")]
 transform = Transform3D(-12.2031, 3.32754e-14, -5.54311e-07, -1.38904e-13, -2.29168, -3.66568e-07, 1.1843e-06, 6.43731e-08, 4.09105, -23.6132, 50.688, 2.9563)
@@ -157,6 +157,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.243247, 8.06812, 17.155)
 
 [node name="balloon" parent="." instance=ExtResource("12_t1wbj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9385, 19.8131, 19.849)
+
+[node name="balloon11" parent="." instance=ExtResource("12_t1wbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.415931, 6.64946, 9.35722)
+
+[node name="balloon12" parent="." instance=ExtResource("12_t1wbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.415931, 7.57204, 12.1223)
 
 [node name="balloon2" parent="." instance=ExtResource("12_t1wbj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9385, 26.8394, 19.849)
@@ -168,19 +174,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9385, 33.4639, 20.9693)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8597, 32.7163, 1.25977)
 
 [node name="balloon5" parent="." instance=ExtResource("12_t1wbj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5224, 39.0649, 0.226238)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.569, 39.0649, 0.226238)
+
+[node name="balloon10" parent="." instance=ExtResource("12_t1wbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7994, 39.0649, 5.53968)
+
+[node name="balloon9" parent="." instance=ExtResource("12_t1wbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5224, 39.0649, -3.93054)
 
 [node name="balloon6" parent="." instance=ExtResource("12_t1wbj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65519, 47.7881, 2.79209)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04263, 47.7881, 2.79209)
 
 [node name="balloon7" parent="." instance=ExtResource("12_t1wbj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7427, 49.0553, 2.79209)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35526, 49.0553, 2.79209)
 
 [node name="balloon8" parent="." instance=ExtResource("12_t1wbj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.40932, 50.2602, 2.79209)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0219, 50.2602, 2.79209)
 
 [node name="Checkpoint" parent="." instance=ExtResource("8_lx8ox")]
-transform = Transform3D(9.5, 0, 0, 0, 5.3, 0, 0, 0, 2.5, 7.55509, 35.8549, -11.2576)
+transform = Transform3D(9.5, 0, 0, 0, 5.3, 0, 0, 0, 2.5, 7.55509, 37.6377, -14.655)
 
 [node name="AlbumCollectable" parent="." instance=ExtResource("10_xv8qc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1881, 52.8667, 2.55992)
@@ -188,5 +200,5 @@ id = 10
 
 [node name="LevelSwitch" parent="." instance=ExtResource("12_qcl1p")]
 transform = Transform3D(1, 0, 0, 0, 1.3, 0, 0, 0, 1.8, -28.7208, 53.0707, 2.98725)
-levelpath = "res://scenes/levels/quest/1-3.tscn"
+levelpath = "res://scenes/levels/quest/1-2.tscn"
 goBackFromSubLevel = true
