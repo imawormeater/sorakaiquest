@@ -130,6 +130,12 @@ transform = Transform3D(13.1, 0, 0, 0, 6.2, 0, 0, 0, 1, -1.97581, 29.3544, 50.94
 [node name="DeathPlane" parent="Objects" instance=ExtResource("8_phoac")]
 transform = Transform3D(302.412, 0, 0, 0, 1, 0, 0, 0, 351.232, -12.3183, -3.09586, -2.7479)
 
+[node name="DeathPlane2" parent="Objects" instance=ExtResource("8_phoac")]
+transform = Transform3D(184.334, 0, 0, 0, 1, 0, 0, 0, 258.308, -12.3183, 12.4153, 167.071)
+
+[node name="DeathPlane3" parent="Objects" instance=ExtResource("8_phoac")]
+transform = Transform3D(184.334, 0, 0, 0, 1, 0, 0, 0, 258.308, -12.3183, 47.0693, 216.018)
+
 [node name="AlbumCollectable" parent="Objects" instance=ExtResource("10_abrum")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.84983, 71.0433, 150.245)
 id = 15
