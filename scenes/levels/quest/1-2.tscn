@@ -41,10 +41,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.21617, 0.351428, 31.275)
 environment = ExtResource("3_q6w0s")
 script = ExtResource("4_qu2p0")
 
-[node name="LevelSwitch" parent="." instance=ExtResource("5_4bo0q")]
-transform = Transform3D(4.76148, 0, 0, 0, 1, 0, 0, 0, 2.83563, -10.0569, 0.221125, 21.2372)
-levelpath = "res://scenes/levels/quest/1-3.tscn"
-
 [node name="Platforms" type="Node3D" parent="."]
 
 [node name="plains4" parent="Platforms" instance=ExtResource("6_4st38")]
@@ -140,7 +136,16 @@ transform = Transform3D(4.34622, 0, 0, 0, 10.5262, -3.55881, 0, 15.812, 2.36913,
 transform = Transform3D(4.34622, 0, 0, 0, -0.342766, -5.04809, 0, -0.363912, 4.75476, -6.38088, 18.0706, 9.93642)
 
 [node name="Node3D7" parent="Platforms" instance=ExtResource("9_twkp4")]
-transform = Transform3D(8.34427, 0, 0, 0, 0.965095, 0, 0, 0, 3.99499, -2.38274, 9.64603, 13.3658)
+transform = Transform3D(8.34427, 0, 0, 0, 0.965095, 0, 0, 0, 4.74584, -2.38274, 9.64603, 13.3658)
+
+[node name="Node3D9" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(0.697425, 0, 0, 0, 2.93121, 0, 0, 0, 0.661117, -1.07717, 11.5, 12.2105)
+
+[node name="Node3D22" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(2.49087, 0, 0, 0, 0.667472, 0, 0, 0, 0.661117, 0.1997, 13.1771, 12.2121)
+
+[node name="Node3D16" parent="Platforms" instance=ExtResource("9_twkp4")]
+transform = Transform3D(0.697425, 0, 0, 0, 2.93121, 0, 0, 0, 0.661117, 1.40997, 11.5, 12.2105)
 
 [node name="Node3D10" parent="Platforms" instance=ExtResource("9_twkp4")]
 transform = Transform3D(4.17905, 0, 0, 0, 2.7054, 0, 0, 0, 4.04588, -6.26938, 13.5218, -10.9825)
@@ -640,8 +645,12 @@ billboard = 2
 texture = ExtResource("16_wpn5v")
 
 [node name="LevelSwitch2" parent="." instance=ExtResource("5_4bo0q")]
-transform = Transform3D(1.97712, 0.0040039, -0.00136211, -0.00516331, 1.53927, -0.00242975, 0.00475556, 0.00664494, 0.56366, 14.0012, 47.7976, -13.0473)
+transform = Transform3D(2.15886, 0.00400486, -0.00136181, -0.00563794, 1.53964, -0.00242921, 0.00519271, 0.00664653, 0.563535, 14.0012, 47.7976, -13.0473)
 levelpath = "res://scenes/levels/quest/1-3.tscn"
+
+[node name="LevelSwitch3" parent="." instance=ExtResource("5_4bo0q")]
+transform = Transform3D(1.12624, 0.00395907, -0.000974067, -0.00294121, 1.52204, -0.00173755, 0.00270894, 0.00657054, 0.403083, 0.269931, 11.272, 12.5842)
+levelpath = "res://scenes/levels/quest/sublevel2.tscn"
 
 [node name="balloon5" parent="." instance=ExtResource("17_v8vma")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3139, 38.2232, -21.6545)
