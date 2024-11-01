@@ -78,13 +78,11 @@ texture = ExtResource("7_s0tii")
 [node name="DeathPlane" parent="Objects" instance=ExtResource("9_t6nw6")]
 transform = Transform3D(302.412, 0, 0, 0, 1, 0, 0, 0, 351.232, -12.3183, -3.09586, -2.7479)
 
-[node name="AlbumCollectable" parent="Objects" instance=ExtResource("10_xv8qc")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.84983, 71.0433, 150.245)
-id = 15
+[node name="DeathPlane2" parent="Objects" instance=ExtResource("9_t6nw6")]
+transform = Transform3D(30.2412, 0, 0, 0, -0.2, 0, 0, 0, 35.1232, 15.7796, 27.9207, -2.7479)
 
-[node name="LevelSwitch" parent="Objects" instance=ExtResource("12_qcl1p")]
-transform = Transform3D(3.63, 0, 0, 0, 1, 0, 0, 0, 3.48, -1.66885, 67.5279, 157.748)
-goBackFromSubLevel = true
+[node name="DeathPlane3" parent="Objects" instance=ExtResource("9_t6nw6")]
+transform = Transform3D(50.3676, 0, 0, 0, -0.2, 0, 0, 0, 35.1232, -23.3538, 42.4539, -2.7479)
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.239456, 0.453701, 0.85838, 0.463691, -0.830198, 0.309455, 0.853025, 0.323922, -0.409173, 0, 15.9898, -5.65541)
