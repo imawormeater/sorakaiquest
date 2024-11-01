@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b0lkmrk437kiy"]
+[gd_scene load_steps=23 format=3 uid="uid://b0lkmrk437kiy"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_q228h"]
 [ext_resource type="AudioStream" uid="uid://b1c2svuetr1yj" path="res://assets/music/deathmatch.ogg" id="2_qihrs"]
@@ -12,8 +12,9 @@
 [ext_resource type="Script" path="res://scripts/skybox_rotater.gd" id="11_f00vt"]
 [ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="12_2hhil"]
 [ext_resource type="AudioStream" uid="uid://cu7ty4ay2nlw5" path="res://assets/sounds/mario64ambience.ogg" id="12_qqygi"]
-[ext_resource type="PackedScene" uid="uid://cni3lqkh187ir" path="res://objects/wallrunPlatform.tscn" id="14_m7qd4"]
+[ext_resource type="PackedScene" path="res://objects/wallrunPlatform.tscn" id="14_m7qd4"]
 [ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="14_pa3im"]
+[ext_resource type="Texture2D" uid="uid://u1qhjc2sk53o" path="res://assets/images/deny.png" id="15_1seam"]
 
 [sub_resource type="TextMesh" id="TextMesh_2bgju"]
 text = "LOGANS HOUSE"
@@ -918,3 +919,13 @@ bus = &"Ambience"
 [node name="LevelSwitch" parent="." instance=ExtResource("5_kp8aq")]
 transform = Transform3D(2.4, 0, 0, 0, 1, 0, 0, 0, 2.5, -98.5614, 34.3598, 118.667)
 levelpath = "res://scenes/levels/quest/1-2.tscn"
+
+[node name="npc2" parent="." instance=ExtResource("14_pa3im")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10135, 45.4948, 92.3973)
+exportDialog = ["s:Hello Sorakai, im [color=57C8DB]Cunty Danny!", "p:What makes you say that...?", "s:Just take one look at me. What am I serving?", "p:...What happened to your cute and fluffy paws?...", "p:And didn't I lose my Spirit Phone album already. This is getting old.", "s:This is whats called a [color=57C8DB]\"soft reboot\"[/color]... Just roll with it my bruh!"]
+
+[node name="Sprite3D" type="Sprite3D" parent="npc2"]
+transform = Transform3D(2.60509, 0, 0, 0, 2.62961, 0, 0, 0, 1, 0, -0.289, 0)
+pixel_size = 0.0013
+billboard = 2
+texture = ExtResource("15_1seam")
