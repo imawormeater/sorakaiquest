@@ -620,7 +620,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.94911, 49.8729, -18.3487)
 id = 1
 
 [node name="npc2" parent="." instance=ExtResource("14_rgdix")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1148, 47.5542, -17.0509)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39747, 47.5542, -15.5844)
 exportDialog = ["s:Hi Sorakai... I am a big fan. I'm the elusive [color=57C8DB]Ev-Sama.", "p:Why thank you!", "s:You scaled atop this big building. That shows how powerful you are.", "s:Great job. Truly. There is an album waiting for you.", "p:Couldn't you have grabbed it for me? Make my life a little easier...?", "s:This is a quest YOU must endure. Soz. Now go my boy!"]
 
 [node name="Sprite3D" type="Sprite3D" parent="npc2"]
