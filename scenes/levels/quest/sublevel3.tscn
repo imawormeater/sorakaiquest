@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://qqe2160v7tl6"]
+[gd_scene load_steps=17 format=3 uid="uid://c3xoti506fccm"]
 
 [ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_d3rcr"]
 [ext_resource type="AudioStream" uid="uid://b76cal5qpclw5" path="res://assets/music/BotB+23564+A-zu-ra+-+Heartless+Castle.vt.mp3" id="2_wwpn0"]

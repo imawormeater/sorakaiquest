@@ -117,8 +117,17 @@ transform = Transform3D(-3.18681, 0, 0, 0, -4.42179, 0, 0, 0, -0.840319, 0, 36.1
 [node name="Platform27" parent="Platforms" instance=ExtResource("4_rt2f3")]
 transform = Transform3D(-3.18681, 0, 0, 0, -4.42179, 0, 0, 0, -0.840319, 0, 31.7447, 80.4225)
 
-[node name="Platform28" parent="Platforms" instance=ExtResource("4_rt2f3")]
-transform = Transform3D(-3.18681, 0, 0, 0, -4.42179, 0, 0, 0, -6.1689, 0, 31.7447, 87.2177)
+[node name="Platform44" parent="Platforms" instance=ExtResource("4_rt2f3")]
+transform = Transform3D(-1.09813, 0, 0, 0, -4.42179, 0, 0, 0, -6.1689, -1.13956, 31.7447, 87.2177)
+
+[node name="Platform63" parent="Platforms" instance=ExtResource("4_rt2f3")]
+transform = Transform3D(-1.09813, 0, 0, 0, -4.42179, 0, 0, 0, -6.1689, 1.02339, 31.7447, 87.2177)
+
+[node name="Platform64" parent="Platforms" instance=ExtResource("4_rt2f3")]
+transform = Transform3D(-1.09813, 0, 0, 0, -4.42179, 0, 0, 0, -2.49314, -0.0747379, 31.7447, 85.3856)
+
+[node name="Platform65" parent="Platforms" instance=ExtResource("4_rt2f3")]
+transform = Transform3D(-1.09813, 0, 0, 0, -1.65705, 0, 0, 0, -3.60517, -0.0747379, 33.1193, 88.4285)
 
 [node name="Platform29" parent="Platforms" instance=ExtResource("4_rt2f3")]
 transform = Transform3D(-0.535539, 0, 0, 0, -10.3793, 0, 0, 0, -3.22027, -1.39911, 39.0752, 88.6304)
@@ -253,8 +262,8 @@ transform = Transform3D(-8.03991e-09, 0, -8.97473, 0, 7.49795, 0, 0.183932, 0, -
 [node name="Objects" type="Node3D" parent="."]
 
 [node name="LevelSwitch" parent="Objects" instance=ExtResource("5_kp8aq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6462, 0.298487, 2.19827)
-levelpath = "res://scenes/levels/test_level.tscn"
+transform = Transform3D(1, 0, 0, 0, 1.3574, 0, 0, 0, 1, 0.0361032, 31.1712, 88.4477)
+levelpath = "res://scenes/levels/quest/sublevel1.tscn"
 
 [node name="Checkpoint" parent="Objects" instance=ExtResource("9_lwht0")]
 transform = Transform3D(22.7792, 0, 0, 0, 2.99809, 0, 0, 0, 1, 0.169326, 22.3175, 37.612)

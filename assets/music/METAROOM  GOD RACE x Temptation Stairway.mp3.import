@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dinkdniyw32hx"
+path="res://.godot/imported/METAROOM  GOD RACE x Temptation Stairway.mp3-488a23014b257b7cc417f22ce32ae197.mp3str"
+
+[deps]
+
+source_file="res://assets/music/METAROOM  GOD RACE x Temptation Stairway.mp3"
+dest_files=["res://.godot/imported/METAROOM  GOD RACE x Temptation Stairway.mp3-488a23014b257b7cc417f22ce32ae197.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
