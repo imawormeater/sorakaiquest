@@ -81,6 +81,15 @@ transform = Transform3D(4.23661, 0, 0, 0, 0.509489, 0, 0, 0, 1.23281, 14.0572, 4
 [node name="Node3D28" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
 transform = Transform3D(3.60144, 0, 0, 0, 0.676602, 0, 0, 0, 2.9677, 8.60118, 22.9114, -9.99902)
 
+[node name="Node3D45" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
+transform = Transform3D(7.56244, 0, 0, 0, 15.1493, 0, 0, 0, 1.12171, 7.88258, 19.4377, -12.2822)
+
+[node name="Node3D43" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
+transform = Transform3D(6.63575, 0, 0, 0, 0.676602, 0, 0, 0, 2.9677, 11.9546, 21.7341, -20.7105)
+
+[node name="Node3D44" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
+transform = Transform3D(0.735239, 0, 0, 0, 2.56586, 0, 0, 0, 2.9677, 14.934, 23.0456, -20.7105)
+
 [node name="Node3D31" parent="Platforms/bigtower" instance=ExtResource("9_twkp4")]
 transform = Transform3D(4.18227, 0, 0, 0, 0.676602, 0, 0, 0, 1.65701, 8.11457, 35.3732, -10.0215)
 
@@ -669,6 +678,9 @@ transform = Transform3D(0.999027, 0, 0.0441076, 0, 1, 0, -0.0441076, 0, 0.999027
 
 [node name="balloon11" parent="." instance=ExtResource("17_v8vma")]
 transform = Transform3D(0.999027, 0, 0.0441076, 0, 1, 0, -0.0441076, 0, 0.999027, 1.78045, 21.7401, -10.3156)
+
+[node name="balloon12" parent="." instance=ExtResource("17_v8vma")]
+transform = Transform3D(0.999027, 0, 0.0441076, 0, 1, 0, -0.0441076, 0, 0.999027, 4.06621, 21.7401, -18.639)
 
 [node name="balloon13" parent="." instance=ExtResource("17_v8vma")]
 transform = Transform3D(0.999027, 0, 0.0441076, 0, 1, 0, -0.0441076, 0, 0.999027, 19.9385, 28.5552, -10.8855)
