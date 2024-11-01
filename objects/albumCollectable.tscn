@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bifrthircxn0s"]
+[gd_scene load_steps=18 format=3 uid="uid://bifrthircxn0s"]
 
 [ext_resource type="PackedScene" uid="uid://bqlwecme8btlk" path="res://assets/meshes/album.glb" id="1_ao33w"]
 [ext_resource type="Script" path="res://scripts/albumCollectable.gd" id="1_jjrsg"]
 [ext_resource type="Shader" path="res://assets/materials/celshaded.gdshader" id="2_ya50x"]
 [ext_resource type="Texture2D" uid="uid://bfnkcgoksqfjy" path="res://assets/images/album_albumcover.png" id="3_n8158"]
 [ext_resource type="AudioStream" uid="uid://vkq2kx0i2q5t" path="res://assets/sounds/windchimes.mp3" id="4_5he3m"]
+[ext_resource type="Material" uid="uid://dncih1xkqoqnj" path="res://assets/materials/sparkle.tres" id="6_orr5i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eme4k"]
 resource_local_to_scene = true
@@ -39,42 +40,40 @@ states/Idle/node = SubResource("AnimationNodeAnimation_gsa8i")
 states/Idle/position = Vector2(417, 83)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_6lc00")]
 
-[sub_resource type="Curve" id="Curve_0mthh"]
-_data = [Vector2(0, 0), 0.0, 9.89635, 0, 0, Vector2(0.25816, 0.871062), 0.0568, 0.0568, 0, 0, Vector2(1, 0), -1.34559, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_gc3xe"]
-curve = SubResource("Curve_0mthh")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k3j50"]
-emission_shape = 3
-emission_box_extents = Vector3(-0.185, 0.5, 0.5)
-velocity_pivot = Vector3(0, 1, 0)
-direction = Vector3(0, 1, 0)
-spread = 3.956
-initial_velocity_min = 0.1
-initial_velocity_max = 0.5
-gravity = Vector3(0, 0, 0)
-scale_min = 0.0
-scale_max = 0.1
-scale_curve = SubResource("CurveTexture_gc3xe")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0lt1i"]
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-grow_amount = 0.696
-
-[sub_resource type="QuadMesh" id="QuadMesh_wuwmo"]
-material = SubResource("StandardMaterial3D_0lt1i")
-size = Vector2(0.1, 0.1)
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_pnd5y"]
 radius = 0.591969
+
+[sub_resource type="Gradient" id="Gradient_oaigj"]
+offsets = PackedFloat32Array(0, 0.123932, 0.363248, 0.854701)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t5uoq"]
+gradient = SubResource("Gradient_oaigj")
+width = 100
+
+[sub_resource type="Curve" id="Curve_vgd34"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, 8.7057, 0, 0, Vector2(0.248092, 1.85839), 0.0, 0.0, 0, 0, Vector2(0.366412, 1.33386), 0.0, 0.0, 0, 0, Vector2(0.538168, 1.82753), 0.0, 0.0, 0, 0, Vector2(0.671756, 1.27215), 0.0, 0.0, 0, 0, Vector2(0.854962, 1.5807), 0.0, 0.0, 0, 0, Vector2(1, 0), -27.9825, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_ybjpx"]
+curve = SubResource("Curve_vgd34")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kkmy7"]
+lifetime_randomness = 0.53
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 0.1
+radial_accel_max = 0.2
+scale_min = 0.3
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_ybjpx")
+scale_over_velocity_max = 0.2
+color_ramp = SubResource("GradientTexture1D_t5uoq")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ha86g"]
 
 [node name="AlbumCollectable" type="Node3D"]
 script = ExtResource("1_jjrsg")
@@ -85,7 +84,7 @@ transform = Transform3D(0.306804, 0, 0, 0, 0.436611, 0, 0, 0, 0.436611, 0, -0.02
 [node name="Skeleton3D" parent="album/Armature" index="0"]
 bones/0/rotation = Quaternion(-2.98023e-08, 1.19209e-07, -2.11758e-22, 1)
 bones/1/position = Vector3(0.0866297, 0.916741, 0.980129)
-bones/1/rotation = Quaternion(0.213821, 0, 0, 0.976873)
+bones/1/rotation = Quaternion(0.85734, 0, 0, 0.514751)
 
 [node name="Cube" parent="album/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_eme4k")
@@ -100,15 +99,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.451702, 0)
 light_indirect_energy = 0.0
 omni_range = 2.124
 
-[node name="Sparkles" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.254948, 0)
-amount = 5
-process_material = SubResource("ParticleProcessMaterial_k3j50")
-draw_pass_1 = SubResource("QuadMesh_wuwmo")
-
 [node name="chimes" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_5he3m")
 volume_db = -10.667
+max_db = -3.826
 autoplay = true
 max_distance = 15.0
 bus = &"Ambience"
@@ -121,5 +115,15 @@ priority = 15
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444996, 0)
 shape = SubResource("SphereShape3D_pnd5y")
+
+[node name="IdleSparkle" type="GPUParticles3D" parent="."]
+transform = Transform3D(1.34093, 0, 0, 0, 2.12127, 0, 0, 0, 2.12127, -0.0100803, 0.421706, 0.0934315)
+material_override = ExtResource("6_orr5i")
+amount = 2
+lifetime = 2.12
+randomness = 0.4
+visibility_aabb = AABB(-0.30542, -0.303089, -0.301846, 0.61084, 0.606178, 0.603692)
+process_material = SubResource("ParticleProcessMaterial_kkmy7")
+draw_pass_1 = SubResource("QuadMesh_ha86g")
 
 [editable path="album"]

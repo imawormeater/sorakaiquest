@@ -1,0 +1,145 @@
+[gd_scene load_steps=22 format=3 uid="uid://dmw7lhelchm26"]
+
+[ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_byaye"]
+[ext_resource type="AudioStream" uid="uid://dr480fcl7ltkd" path="res://assets/music/a VICious groove.mp3" id="2_2utje"]
+[ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://objects/basicassplatform.tscn" id="3_vmtdy"]
+[ext_resource type="Script" path="res://scripts/skybox_rotater.gd" id="5_hh3tj"]
+[ext_resource type="PackedScene" uid="uid://cabix5vgaakof" path="res://objects/level_switcher.tscn" id="6_yawwb"]
+[ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="8_4o2vp"]
+[ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="10_atjda"]
+[ext_resource type="PackedScene" uid="uid://cy6j2ail7h7vt" path="res://objects/spring.tscn" id="11_ms3b5"]
+[ext_resource type="PackedScene" uid="uid://bmlr6c778pobt" path="res://objects/balloon.tscn" id="12_yifyy"]
+[ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="13_7pjvr"]
+[ext_resource type="PackedScene" uid="uid://0lu754qntb0m" path="res://objects/moneyCollectable.tscn" id="14_tmjii"]
+[ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="15_3ipkx"]
+[ext_resource type="Texture2D" uid="uid://qg8aue0vcd3e" path="res://assets/images/zooper2.png" id="15_ym1c7"]
+[ext_resource type="PackedScene" uid="uid://c1nam1mox4tq6" path="res://objects/equip/tshirtlaucher.tscn" id="16_5f6cx"]
+[ext_resource type="Texture2D" uid="uid://dqcbno8lejelk" path="res://assets/images/levelStuff/signPost.png" id="16_xqkns"]
+
+[sub_resource type="Gradient" id="Gradient_ddb7p"]
+colors = PackedColorArray(0.658132, 0.771447, 1, 1, 0.211049, 0.244197, 0.320162, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n8bq1"]
+noise_type = 4
+frequency = 0.0054
+offset = Vector3(0, 37.27, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lk4ug"]
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_ddb7p")
+noise = SubResource("FastNoiseLite_n8bq1")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_41u0p"]
+panorama = SubResource("NoiseTexture2D_lk4ug")
+
+[sub_resource type="Sky" id="Sky_7p6bm"]
+sky_material = SubResource("PanoramaSkyMaterial_41u0p")
+
+[sub_resource type="Environment" id="Environment_m70n0"]
+background_mode = 2
+sky = SubResource("Sky_7p6bm")
+ambient_light_source = 3
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
+script = ExtResource("1_byaye")
+Name = "test level"
+Song = ExtResource("2_2utje")
+Logan_Spawn = NodePath("loganSpawn")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.826341, 0.52806, -0.195738, 0.0290086, 0.387013, 0.921618, 0.562423, 0.755892, -0.335123, 0, 28.3529, -5.65541)
+light_color = Color(0.804743, 0.804743, 0.804743, 1)
+light_energy = 2.836
+shadow_enabled = true
+shadow_opacity = 0.15
+shadow_blur = 0.051
+sky_mode = 1
+
+[node name="loganSpawn" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.1536, 33.2527, 4.52035)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m70n0")
+script = ExtResource("5_hh3tj")
+
+[node name="LevelSwitch" parent="." instance=ExtResource("6_yawwb")]
+transform = Transform3D(7.2351, 0, 0, 0, 3.29524, 0, 0, 0, 1.33386, 9.6716, 33.5303, -32.5535)
+levelpath = "res://scenes/levels/test_level.tscn"
+
+[node name="DeathPlane2" parent="." instance=ExtResource("8_4o2vp")]
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 240.044, -7.02946, 4.20365, 45.2114)
+
+[node name="AlbumCollectable" parent="." instance=ExtResource("10_atjda")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.5629, 32.6843, -24.0262)
+id = 3
+
+[node name="spring5" parent="." instance=ExtResource("11_ms3b5")]
+transform = Transform3D(1.67586e-07, 0.00104375, 1.40911, 1.41687e-07, 0.182417, -0.00806403, -1.37088, 1.89815e-08, 1.71427e-07, -5.00783, 35.6126, -32.2765)
+bounceHeight = 6.0
+
+[node name="balloon" parent="." instance=ExtResource("12_yifyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.84113, 33.0632, -25.0905)
+
+[node name="MoneyHandler" type="Node3D" parent="."]
+script = ExtResource("13_7pjvr")
+
+[node name="MoneyCollectable34" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("14_tmjii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8413, 32.3866, -19.8678)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable35" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("14_tmjii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.842, 32.3866, -19.8678)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable36" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("14_tmjii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.842, 32.3866, -20.8678)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable37" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("14_tmjii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.36992, 32.3866, -19.8678)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable38" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("14_tmjii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.37061, 32.3866, -19.8678)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable39" parent="MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("14_tmjii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.37495, 32.3866, -20.8678)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable" parent="MoneyHandler" instance=ExtResource("14_tmjii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.80053, 33.9393, -25.062)
+
+[node name="Node3D41" parent="." instance=ExtResource("3_vmtdy")]
+transform = Transform3D(8.7428, 0, 0, 0, 47.6259, 0, 0, 0, 8.814, 10.1791, 8.12807, -23.6513)
+
+[node name="Node3D42" parent="." instance=ExtResource("3_vmtdy")]
+transform = Transform3D(7.06686, 0, 0, 0, 47.6259, 0, 0, 0, 20.1383, 10.1791, 8.12807, -0.742283)
+
+[node name="npc2" parent="." instance=ExtResource("15_3ipkx")]
+transform = Transform3D(0.90599, 0, 0, 0, 0.696997, 0, 0, 0, 0.335891, 10.3046, 32.8458, -9.57446)
+exportDialog = ["s:The [color=57C8DB]T-Shirt Canon[color=FFFFFF] is a useful tool for getting an extra push!", "s:Simply fire the canon and be launched in the opposite direction!"]
+
+[node name="Sprite3D" type="Sprite3D" parent="npc2"]
+transform = Transform3D(0.993308, 0, -0.0443489, 0, 1.01, 0, 0.115492, 0, 0.38143, 0, -0.164761, 0)
+texture = ExtResource("16_xqkns")
+
+[node name="npc3" parent="." instance=ExtResource("15_3ipkx")]
+transform = Transform3D(0.90599, 0, 0, 0, 0.696997, 0, 0, 0, 0.335891, 8.38978, 32.8543, -1.01256)
+exportDialog = ["s:Sorakai. My son. Its been too long...", "p:Dad... is that... you?", "s:Yes son, it is me. [color=57C8DB]GrayHeadedGamer.", "s:I am bestowing upon you, my greatest tool.", "s:[color=57C8DB]The T-Shirt Canon.", "p:Kewl!"]
+
+[node name="Sprite3D" type="Sprite3D" parent="npc3"]
+transform = Transform3D(2.60509, 0, 0, 0, 2.62961, 0, 0, 0, 1, 0, -0.289, 0)
+pixel_size = 0.0013
+billboard = 2
+texture = ExtResource("15_ym1c7")
+
+[node name="Equipable" parent="." instance=ExtResource("16_5f6cx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3264, 33.2827, -3.2662)
