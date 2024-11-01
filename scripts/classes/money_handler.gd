@@ -7,8 +7,15 @@ var _rotation:float = 0
 func _ready() -> void:
 	for i:Node3D in get_children():
 		_checkAndAppendDollar(i)
+	
+	await get_tree().create_timer(0.1).timeout
+	GameManager.CurrentState.new_level_loaded.connect(levelLoaded)
 		
 	
+func levelLoaded() -> void:
+	kromer.clear()
+	for i:Node3D in get_children():
+		_checkAndAppendDollar(i)
 
 func _physics_process(delta: float) -> void:
 	_rotation = fmod(_rotation + delta,2*PI)
@@ -27,7 +34,8 @@ func _on_child_exiting_tree(node: Node) -> void:
 func _checkAndAppendDollar(i:Node3D) -> void:
 	if i is moneyCollectable:
 		var m:moneyCollectable = i as moneyCollectable
-		kromer.append(m)
+		if !m in kromer:
+			kromer.append(m)
 	
 func _moneyUpdate(m:moneyCollectable,playerPosition:Vector3) -> void:
 	if (m.global_position-playerPosition).length() > 30:

@@ -308,7 +308,7 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2.365, 66.0305, -3.7234
 
 [node name="AlbumCollectable" parent="Objects" instance=ExtResource("9_lp2dx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.0148, 73.2537, 22.3409)
-id = 1
+id = 16
 
 [node name="Checkpoint" parent="Objects" instance=ExtResource("8_b71s2")]
 transform = Transform3D(7.05266, 0, 0, 0, 2.85697, 0, 0, 0, 5.44513, 0.127182, 84.2207, -4.84214)
