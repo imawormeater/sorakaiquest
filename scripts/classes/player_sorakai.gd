@@ -98,6 +98,7 @@ var jumpAnimation := 1.0
 @onready var sfx := $PlayerSFX
 @onready var followPoint := $Visual/loganchara/FollowPoint
 @onready var equipNode := $Equip
+@onready var attractHitbox := $AttractionHitbox
 
 @export var _face_mat: String
 @onready var face:ShaderMaterial = character_mesh.get(_face_mat)
@@ -391,8 +392,20 @@ func _physics_process(delta: float) -> void:
 	if equippedItem != null:
 		equipNode.global_rotation = visual.global_rotation
 		if Input.is_action_just_pressed("interact"):
-			equippedItem.onUse()
-	
+			var uGay:bool = false
+			
+			if GameManager.CurrentState.Dialog.active:
+				uGay = true
+			for i:Area3D in attractHitbox.get_overlapping_areas():
+				if i.is_in_group("interactable"):
+					var a:interactComp = i.get_parent()
+					if a.enabled && a.canInteract: 
+						uGay = true
+						break
+			
+			if uGay == false:
+				equippedItem.onUse()
+
 	if state == States.Free:
 		var pitch := get_pitch(get_floor_normal())
 		set_momentum(pitch,delta,onFloor,input_dir,velocityMag)
@@ -533,7 +546,7 @@ func _physics_process(delta: float) -> void:
 		visual.look_at(global_position + foward)
 		move_and_slide()
 		if not wallRideCast.is_colliding() or is_on_floor() or velocityMag < 1 or foward.length() == 0 or pressedAction:
-			print(velocityMag)
+			#print(velocityMag)
 			character_mesh.scale = Vector3.ONE
 			character_mesh.rotation = Vector3.ZERO
 			state = States.Free
@@ -677,6 +690,7 @@ func equip(thing:Equipable)	 -> void:
 	equippedItem = thing
 	equippedItem.reparent(equipNode)
 	equippedItem.position = Vector3.ZERO
+	equippedItem.rotation = Vector3.ZERO
 	
 func unequip() -> void:
 	if equippedItem == null: return

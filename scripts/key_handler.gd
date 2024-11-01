@@ -89,6 +89,5 @@ func onlevelLoaded() -> void:
 
 
 func _on_key_area_area_entered(area: Area3D) -> void:
-	print(area)
 	if area.is_in_group("deathPlane"):
 		call_deferred("onlevelLoaded")

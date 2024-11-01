@@ -8,6 +8,11 @@ var ogPos:Vector3 = Vector3.ZERO
 var ogParent:Node3D = null
 
 @onready var shoot:AudioStreamPlayer3D = $shoot
+@onready var visual:Node3D = $Visual
+@onready var timer:Timer = $Timer
+
+@onready var p1:GPUParticles3D = $Visual/CollectSparkle
+@onready var p2:GPUParticles3D = $Visual/CollectSparkle/Ring
 
 func _ready() -> void:
 	ogPos = self.global_position
@@ -23,12 +28,16 @@ func onEquip() -> void:
 	
 func onUse() -> void:
 	if(!canUse): return
+	if sorakai.state != sorakai.States.Free:
+		sorakai.jump()
+		sorakai.state = sorakai.States.Free
 	canUse = false
 	used = true
-	#sorakai.jump()
 	sorakai.DEACEL_mult = 0.1
 	sorakai.velocity += get_viewport().get_camera_3d().transform.basis.z * launchPower
 	shoot.play()
+	p1.emitting = true
+	p2.emitting = true
 
 func revert() -> void:
 	canUse = true
@@ -36,13 +45,13 @@ func revert() -> void:
 	sorakai.cantHoldJump = false
 
 func _onjumpyeah() -> void:
-	print("on jump")
 	canUse = true
 
 func _physics_process(_delta: float) -> void:
 	if sorakai == null: return
 	if(sorakai.is_on_floor()):
-		revert()
+		sorakai.cantHoldJump = false
+		used = false
 	if(used):
 		sorakai.cantHoldJump = true
 		sorakai.DEACEL_mult = 0.1

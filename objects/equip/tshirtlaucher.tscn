@@ -82,12 +82,13 @@ script = ExtResource("1_jiqu7")
 interactable = NodePath("Interactable")
 
 [node name="Visual" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="TSHIRTCANON" parent="Visual" instance=ExtResource("2_ixftc")]
-transform = Transform3D(0.388155, 0, 0, 0, 0.388155, 0, 0, 0, 0.388155, -0.528552, -0.433149, -0.0148067)
+transform = Transform3D(5.96046e-08, 0, 0.388155, 0, 0.388155, 0, -0.388155, 0, 5.96046e-08, 1.01646e-07, -0.39611, 0.792693)
 
 [node name="CollectSparkle" type="GPUParticles3D" parent="Visual"]
-transform = Transform3D(-0.999996, -0.00286224, 0, 0.00286224, -0.999996, 0, 0, 0, 1, -1.06127, 0.30133, -0.0100327)
+transform = Transform3D(-0.00286211, 0.999996, -4.37114e-08, -8.75475e-08, 4.3461e-08, 1, 0.999996, 0.00286211, 8.74228e-08, -0.0612699, 0.359431, 1.416)
 material_override = ExtResource("3_j0fok")
 emitting = false
 amount = 12
@@ -121,3 +122,10 @@ functionName = "onEquip"
 stream = ExtResource("3_ppbia")
 max_db = 1.563
 max_distance = 20.0
+bus = &"SFX"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
