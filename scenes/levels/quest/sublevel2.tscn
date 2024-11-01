@@ -1,0 +1,193 @@
+[gd_scene load_steps=21 format=3 uid="uid://4bnr0qradygw"]
+
+[ext_resource type="Script" path="res://scripts/classes/level_class.gd" id="1_fopye"]
+[ext_resource type="AudioStream" uid="uid://crl8t16yby32v" path="res://assets/music/vanishing_paradise.mp3" id="2_wqs3n"]
+[ext_resource type="PackedScene" uid="uid://cmxve7621cy05" path="res://objects/basicassplatform.tscn" id="3_mb5v4"]
+[ext_resource type="Script" path="res://scripts/classes/money_handler.gd" id="4_nij1g"]
+[ext_resource type="PackedScene" uid="uid://bq5lxvda1l3e0" path="res://objects/NPC.tscn" id="5_f2keb"]
+[ext_resource type="Texture2D" uid="uid://dkxoiu6q77w0r" path="res://assets/images/levelStuff/fbruh.png" id="6_gnbpr"]
+[ext_resource type="Texture2D" uid="uid://qg8aue0vcd3e" path="res://assets/images/zooper2.png" id="7_s0tii"]
+[ext_resource type="PackedScene" uid="uid://dxjqbclf6hso1" path="res://objects/checkPoint.tscn" id="8_lx8ox"]
+[ext_resource type="PackedScene" uid="uid://dk2kgih28mjyc" path="res://objects/death_plane.tscn" id="9_t6nw6"]
+[ext_resource type="PackedScene" uid="uid://bifrthircxn0s" path="res://objects/albumCollectable.tscn" id="10_xv8qc"]
+[ext_resource type="PackedScene" uid="uid://cy6j2ail7h7vt" path="res://objects/spring.tscn" id="11_5rcqo"]
+[ext_resource type="PackedScene" uid="uid://cabix5vgaakof" path="res://objects/level_switcher.tscn" id="12_qcl1p"]
+[ext_resource type="PackedScene" uid="uid://bmlr6c778pobt" path="res://objects/balloon.tscn" id="12_t1wbj"]
+[ext_resource type="Script" path="res://scripts/skybox_rotater.gd" id="13_sg036"]
+
+[sub_resource type="Gradient" id="Gradient_ytdr2"]
+colors = PackedColorArray(0.0495586, 0.394037, 0.325928, 1, 0.94, 0.71957, 0.3102, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tatii"]
+noise_type = 2
+frequency = 0.0194
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dm4rb"]
+seamless = true
+color_ramp = SubResource("Gradient_ytdr2")
+noise = SubResource("FastNoiseLite_tatii")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_n811w"]
+panorama = SubResource("NoiseTexture2D_dm4rb")
+
+[sub_resource type="Sky" id="Sky_wny6v"]
+sky_material = SubResource("PanoramaSkyMaterial_n811w")
+
+[sub_resource type="Environment" id="Environment_wej2t"]
+background_mode = 2
+sky = SubResource("Sky_wny6v")
+ambient_light_source = 3
+reflected_light_source = 1
+
+[node name="Level" type="Node3D" node_paths=PackedStringArray("Logan_Spawn")]
+script = ExtResource("1_fopye")
+Name = "test level"
+Song = ExtResource("2_wqs3n")
+Logan_Spawn = NodePath("loganSpawn")
+
+[node name="Platforms" type="Node3D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("3_mb5v4")]
+transform = Transform3D(11.6615, 0, 0, 0, 2.97722, 0, 0, 0, 12.6497, 0, 0, 1)
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="MoneyHandler" type="Node3D" parent="Objects"]
+script = ExtResource("4_nij1g")
+
+[node name="npc" parent="Objects" instance=ExtResource("5_f2keb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83732, 2.80694, 3.51075)
+exportDialog = ["s:I might be an [color=green]expert jumper-[/color]", "s:I can't trust those balloons.", "s:Never trust air to stop your fall!"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Objects/npc"]
+transform = Transform3D(0.465, 0, 0, 0, 0.4, 0, 0, 0, 1, 0.174029, -0.265824, -0.380584)
+billboard = 2
+shaded = true
+texture = ExtResource("6_gnbpr")
+
+[node name="npc2" parent="Objects" instance=ExtResource("5_f2keb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4303, 52.9463, 1.97614)
+exportDialog = ["s:guys i jumped"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Objects/npc2"]
+transform = Transform3D(0.465, 0, 0, 0, 0.4, 0, 0, 0, 1, 0.174028, -0.00701904, -0.380584)
+billboard = 2
+shaded = true
+texture = ExtResource("7_s0tii")
+
+[node name="DeathPlane" parent="Objects" instance=ExtResource("9_t6nw6")]
+transform = Transform3D(302.412, 0, 0, 0, 1, 0, 0, 0, 351.232, -12.3183, -3.09586, -2.7479)
+
+[node name="AlbumCollectable" parent="Objects" instance=ExtResource("10_xv8qc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.84983, 71.0433, 150.245)
+id = 15
+
+[node name="LevelSwitch" parent="Objects" instance=ExtResource("12_qcl1p")]
+transform = Transform3D(3.63, 0, 0, 0, 1, 0, 0, 0, 3.48, -1.66885, 67.5279, 157.748)
+goBackFromSubLevel = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.239456, 0.453701, 0.85838, 0.463691, -0.830198, 0.309455, 0.853025, 0.323922, -0.409173, 0, 15.9898, -5.65541)
+light_color = Color(0.926387, 0.77153, 0.584203, 1)
+light_energy = 1.159
+light_indirect_energy = 4.633
+light_angular_distance = 3.93
+shadow_enabled = true
+shadow_opacity = 0.6
+shadow_blur = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wej2t")
+script = ExtResource("13_sg036")
+
+[node name="loganSpawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18036, -4.16234)
+
+[node name="Platform" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(0.1, 0, 0, 0, 3.1, 0, 0, 0, 8.2, 1.86413, 6.26875, 11.2538)
+
+[node name="Platform2" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(4.47, 0, 0, 0, 3.1, 0, 0, 0, 2.97885, -0.362471, 6.26875, 16.0714)
+
+[node name="Platform3" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(4.47, 0, 0, 0, 0.93, 0, 0, 0, 4.17039, -0.362471, 13.4437, 12.7485)
+
+[node name="Platform4" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(4.47, 0, 0, 0, 6.54913, 0, 0, 0, 0.216823, 1.65186, 16.2181, 7.85418)
+
+[node name="Platform5" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(3.16077, 0, -0.153317, 0, 6.54913, 0, 3.16077, 0, 0.153317, 5.28146, 16.2181, 9.35364)
+
+[node name="Platform6" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-3.16077, 0, -2.35188, 0, 0.654913, 0, 3.16077, 0, -2.35188, 7.43744, 19.4856, 14.4606)
+
+[node name="Platform7" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-4.47, 0, -7.15255e-08, 0, 8.48767, 0, -2.38419e-07, 0, -0.332606, 7.43744, 23.1537, 22.5176)
+
+[node name="Platform8" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-4.47, 0, -7.15255e-08, 0, 8.48767, 0, -2.38419e-07, 0, -0.332606, 7.43744, 32.4656, 17.5718)
+
+[node name="Platform9" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-4.47, 0, -7.15255e-08, 2.06477e-07, 4.24384, 0.288045, -1.19209e-07, 7.35054, -0.166303, 7.43744, 34.3722, 14.0414)
+
+[node name="Platform10" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-4.47, 7.72094e-14, -7.15255e-08, 2.06476e-07, -4.24384, 0.288045, 1.19209e-07, 7.35054, 0.166303, 7.43744, 34.3722, -9.8288)
+
+[node name="Platform11" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-4.47, 7.72094e-14, -7.15255e-08, -2.84217e-14, -8.48767, -2.98023e-08, 2.38419e-07, 2.38419e-07, 0.332606, 7.43744, 40.5271, -13.3702)
+
+[node name="Platform12" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-3.16077, -1.68587e-07, -0.235188, -2.84217e-14, -8.48767, -2.98023e-08, -3.16077, 1.68587e-07, 0.235188, 14.6607, 40.5271, -11.2881)
+
+[node name="Platform13" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-2.38419e-07, -2.38419e-07, -0.332606, -5.08803e-14, -8.48767, -2.98023e-08, -4.47, 1.27898e-13, -5.96046e-08, 16.1601, 40.5271, -4.21677)
+
+[node name="Platform14" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-2.38419e-07, -2.38419e-07, -0.332606, -5.08803e-14, -8.48767, -2.98023e-08, -4.47, 1.27898e-13, -5.96046e-08, 16.1601, 40.2122, 7.02048)
+
+[node name="Platform15" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-4.47, 1.23242e-13, -4.5066e-08, -5.08803e-14, -8.48767, -2.98023e-08, 4.33809e-07, 2.38419e-07, 0.332606, 14.0184, 40.2122, 9.07075)
+
+[node name="Platform16" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-4.47002, 3.32754e-14, -5.54311e-07, -5.08805e-14, -2.29168, -3.66569e-07, 4.3381e-07, 6.43731e-08, 4.09105, 14.0184, 45.5884, 2.9563)
+
+[node name="Platform17" parent="." instance=ExtResource("3_mb5v4")]
+transform = Transform3D(-12.2031, 3.32754e-14, -5.54311e-07, -1.38904e-13, -2.29168, -3.66568e-07, 1.1843e-06, 6.43731e-08, 4.09105, -23.6132, 50.688, 2.9563)
+
+[node name="spring" parent="." instance=ExtResource("11_5rcqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.243247, 8.06812, 17.155)
+
+[node name="balloon" parent="." instance=ExtResource("12_t1wbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9385, 19.8131, 19.849)
+
+[node name="balloon2" parent="." instance=ExtResource("12_t1wbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9385, 26.8394, 19.849)
+
+[node name="balloon3" parent="." instance=ExtResource("12_t1wbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9385, 33.4639, 20.9693)
+
+[node name="balloon4" parent="." instance=ExtResource("12_t1wbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8597, 32.7163, 1.25977)
+
+[node name="balloon5" parent="." instance=ExtResource("12_t1wbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1448, 39.0649, 0.226238)
+
+[node name="balloon6" parent="." instance=ExtResource("12_t1wbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65519, 47.7881, 2.79209)
+
+[node name="balloon7" parent="." instance=ExtResource("12_t1wbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7427, 49.0553, 2.79209)
+
+[node name="balloon8" parent="." instance=ExtResource("12_t1wbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.40932, 50.2602, 2.79209)
+
+[node name="Checkpoint" parent="." instance=ExtResource("8_lx8ox")]
+transform = Transform3D(9.5, 0, 0, 0, 5.3, 0, 0, 0, 2.5, 7.55509, 35.8549, -11.2576)
+
+[node name="AlbumCollectable" parent="." instance=ExtResource("10_xv8qc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1881, 52.8667, 2.55992)
+id = 10
+
+[node name="LevelSwitch" parent="." instance=ExtResource("12_qcl1p")]
+transform = Transform3D(1, 0, 0, 0, 1.3, 0, 0, 0, 1.8, -28.7208, 53.0707, 2.98725)
+goBackFromSubLevel = true
