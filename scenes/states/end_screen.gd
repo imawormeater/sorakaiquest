@@ -46,11 +46,11 @@ func _ready() -> void:
 	print(percentage)
 		
 	Rank = rank.BAD
-	if(percentage >= 0.7):
+	if(percentage >= 0.5):
 		Rank = rank.OK
-	if(percentage >= 0.9):
+	if(percentage >= 0.8):
 		Rank = rank.SUPERB
-	if(percentage == 1):
+	if(endParams["AlbumsCollect"] == endParams["AmmountAlbums"]):
 		Rank = rank.PERFECT
 	
 	var format_string:String = "You collected $%s.\nYou collected %s/%s albums.\nAnd you died %s times."
@@ -66,13 +66,14 @@ func _ready() -> void:
 		resultMusic.stream = load("res://assets/music/ranks/results/okResult.mp3")
 		resultText.text = "[center]Lets go get some more!"
 		resultImage.texture = load("res://assets/images/ratingscreens/okkkklig.png")
-	elif(Rank == rank.SUPERB or Rank == rank.PERFECT):
+	else:
 		song.stream = load("res://assets/music/ranks/superb (remux).wav")
 		rankStinger.stream = load("res://assets/music/ranks/init/superbRank.mp3")
 		resultMusic.stream = load("res://assets/music/ranks/results/superbResult.mp3")
 		resultText.text = "[center]Lost and found!"
 		resultImage.texture = load("res://assets/images/ratingscreens/Goodjob.png")
-	elif(Rank == rank.PERFECT):
+		
+	if(Rank == rank.PERFECT):
 		resultText.text = "[center]My collection is complete!"
 		resultImage.texture = load("res://assets/images/ratingscreens/perfectiopnm.png")
 		

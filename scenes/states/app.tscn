@@ -109,7 +109,7 @@ func _physics_process(_delta: float) -> void:
 
 [node name="App" type="Node"]
 script = ExtResource("1_d1n4j")
-firstState = ExtResource("2_w6e81")
+firstState = ExtResource("3_r3ptw")
 PlayState = ExtResource("2_w6e81")
 MainMenu = ExtResource("3_r3ptw")
 EndState = ExtResource("4_uqtmo")

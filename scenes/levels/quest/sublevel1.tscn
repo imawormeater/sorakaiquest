@@ -125,7 +125,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14838, 2.34137, 5.56287)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81705, 28.2399, 52.1321)
 
 [node name="Checkpoint" parent="Objects" instance=ExtResource("17_ivuvi")]
-transform = Transform3D(13.1, 0, 0, 0, 6.2, 0, 0, 0, 1, -1.97581, 29.3544, 50.9472)
+transform = Transform3D(17.7433, 0, 0, 0, 12.6801, 0, 0, 0, 3.3685, -1.44008, 29.3544, 50.9472)
 
 [node name="DeathPlane" parent="Objects" instance=ExtResource("8_phoac")]
 transform = Transform3D(302.412, 0, 0, 0, 1, 0, 0, 0, 351.232, -12.3183, -3.09586, -2.7479)
@@ -138,7 +138,7 @@ transform = Transform3D(184.334, 0, 0, 0, 1, 0, 0, 0, 258.308, -12.3183, 47.0693
 
 [node name="AlbumCollectable" parent="Objects" instance=ExtResource("10_abrum")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.84983, 71.0433, 150.245)
-id = 15
+id = 10
 
 [node name="Checkpoint4" parent="Objects" instance=ExtResource("17_ivuvi")]
 transform = Transform3D(15.1, 0, 0, 0, 7.68, 0, 0, 0, 1, -1.76435, 69.9298, 146.094)

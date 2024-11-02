@@ -230,11 +230,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.188, 25.2471, -12.2476)
 
 [node name="AlbumCollectable" parent="." instance=ExtResource("13_lalpn")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.4682, 14.8987, 37.2817)
-id = 3
+id = 5
 
 [node name="AlbumCollectable2" parent="." instance=ExtResource("13_lalpn")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 10.9648, 6.41767, 32.2856)
-id = 7
+id = 6
 
 [node name="spring3" parent="." instance=ExtResource("13_bq5sy")]
 transform = Transform3D(-1.37088, 2.29288e-08, 1.17908e-07, 2.06498e-07, 0.1585, 0.697573, -1.43673e-08, 0.0903048, -1.22436, 10.388, 18.5805, 12.1183)

@@ -28,7 +28,7 @@ var allCollectedMoney := 0.0
 
 var collectedAlbums:Array[int] = []
 var numberOfAlbums:int = 0
-var totalAlbums:int = 22#TODO
+var totalAlbums:int = 14#TODO
 var timeToCollect:float = 3.6
 var deathCount:int = 0
 

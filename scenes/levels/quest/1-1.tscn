@@ -174,9 +174,6 @@ transform = Transform3D(-1.20991e-07, 4.54677, 2.26312, -1.43392e-07, -3.83647, 
 [node name="Platform57" parent="Platforms" instance=ExtResource("4_rt2f3")]
 transform = Transform3D(3.5632e-07, 2.27239e-14, 19.7, 7.12641e-07, -5.94654, 0, 8.15166, 5.19863e-07, -8.61115e-07, -84.97, 26.439, 118.531)
 
-[node name="Platform62" parent="Platforms" instance=ExtResource("4_rt2f3")]
-transform = Transform3D(7.91227e-08, 2.27239e-14, 6.70984, 1.58246e-07, -5.94654, 0, 1.81012, 5.19863e-07, -2.93297e-07, -95.975, 26.439, 121.993)
-
 [node name="Platform58" parent="Platforms" instance=ExtResource("4_rt2f3")]
 transform = Transform3D(3.5632e-07, 4.64012e-14, 3.94, 7.12641e-07, -12.1425, 0, 8.15166, 1.06153e-06, -1.72223e-07, -94.7011, 30.439, 118.531)
 
@@ -264,6 +261,7 @@ transform = Transform3D(-8.03991e-09, 0, -8.97473, 0, 7.49795, 0, 0.183932, 0, -
 [node name="LevelSwitch" parent="Objects" instance=ExtResource("5_kp8aq")]
 transform = Transform3D(1, 0, 0, 0, 1.3574, 0, 0, 0, 1, -0.0507956, 31.1712, 88.4477)
 levelpath = "res://scenes/levels/quest/sublevel3.tscn"
+subLevel = true
 
 [node name="Checkpoint" parent="Objects" instance=ExtResource("9_lwht0")]
 transform = Transform3D(22.7792, 0, 0, 0, 2.99809, 0, 0, 0, 1, 0.169326, 22.3175, 37.612)
@@ -325,10 +323,6 @@ script = ExtResource("9_jxhij")
 
 [node name="MoneyCollectable" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0120375, 16.979, 28.3803)
-value = 10.0
-
-[node name="MoneyCollectable2" parent="Objects/MoneyHandler" instance=ExtResource("10_02m7t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27295, 37.2011, 43.6307)
 value = 10.0
 
 [node name="MoneyCollectable3" parent="Objects/MoneyHandler" node_paths=PackedStringArray("meshToUse") instance=ExtResource("10_02m7t")]
@@ -945,7 +939,6 @@ texture = ExtResource("15_1seam")
 [node name="Checkpoint" parent="." instance=ExtResource("9_lwht0")]
 transform = Transform3D(1, 0, 0, 0, 4.93, 0, 0, 0, 10.65, -87.6373, 30.1257, 118.44)
 
-[node name="LevelSwitch2" parent="." instance=ExtResource("5_kp8aq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.322153, -98.4284, 30.2438, 121.389)
-levelpath = "res://scenes/levels/quest/sublevel3.tscn"
-subLevel = true
+[node name="AlbumCollectable" parent="." instance=ExtResource("12_2hhil")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.35013, 37.1088, 42.9618)
+id = 17

@@ -259,6 +259,9 @@ transform = Transform3D(2.89679e-07, 16.206, -7.45058e-09, 5.6821, 8.0248e-07, 1
 [node name="Platform61" parent="Platforms" instance=ExtResource("3_ruhnf")]
 transform = Transform3D(2.89679e-07, 4.36257, -7.45058e-09, -4.96745e-07, -2.70029e-07, 0.353021, 5.6821, 2.16023e-07, 3.0862e-08, 60.4147, 72.69, 22.2371)
 
+[node name="Platform62" parent="Platforms" instance=ExtResource("3_ruhnf")]
+transform = Transform3D(2.89679e-07, 1.74503, -7.7188e-08, -4.96745e-07, -1.08012e-07, 3.6573, 5.6821, 8.64092e-08, 3.1973e-07, 63.4268, 74.3882, 22.2371)
+
 [node name="Platform36" parent="Platforms" instance=ExtResource("3_ruhnf")]
 transform = Transform3D(3.1738, 0, 0, 0, 3.71707, 0, 0, 0, 1.48893, 1.4221, 64.172, -4.35252)
 
@@ -307,7 +310,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0843815, 39.3605, -12.6956
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 2.365, 66.0305, -3.72342)
 
 [node name="AlbumCollectable" parent="Objects" instance=ExtResource("9_lp2dx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.0148, 73.2537, 22.3409)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.0148, 73.4033, 22.3409)
 id = 16
 
 [node name="Checkpoint" parent="Objects" instance=ExtResource("8_b71s2")]
@@ -455,6 +458,16 @@ meshToUse = NodePath("Visual/coin")
 
 [node name="MoneyCollectable18" parent="Collectables" node_paths=PackedStringArray("meshToUse") instance=ExtResource("8_37msg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07935, 24.1708, 4.19748)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable73" parent="Collectables" node_paths=PackedStringArray("meshToUse") instance=ExtResource("8_37msg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07935, 24.1708, 5.98478)
+value = 0.1
+meshToUse = NodePath("Visual/coin")
+
+[node name="MoneyCollectable74" parent="Collectables" node_paths=PackedStringArray("meshToUse") instance=ExtResource("8_37msg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07935, 24.1708, 7.96169)
 value = 0.1
 meshToUse = NodePath("Visual/coin")
 
@@ -680,10 +693,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26011, 42.6339, -8.70854)
 value = 0.1
 meshToUse = NodePath("Visual/coin")
 
-[node name="MoneyCollectable17" parent="Collectables" instance=ExtResource("8_37msg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.111229, 28.6121, 7.70714)
-value = 10.0
-
 [node name="LevelSwitch" parent="." instance=ExtResource("12_myhkx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.2298, 73.9496, 22.9051)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.54304, 65.1609, 73.9496, 22.1591)
 goBackFromSubLevel = true
+
+[node name="AlbumCollectable" parent="." instance=ExtResource("9_lp2dx")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -0.124604, 29.4987, 7.6829)
+id = 20

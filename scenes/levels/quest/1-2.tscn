@@ -637,11 +637,11 @@ meshToUse = NodePath("Visual/coin")
 
 [node name="AlbumCollectable" parent="." instance=ExtResource("13_ggvdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.94911, 49.8729, -18.3487)
-id = 1
+id = 2
 
 [node name="AlbumCollectable2" parent="." instance=ExtResource("13_ggvdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1265, 23.3891, -22.407)
-id = 2
+id = 3
 
 [node name="npc2" parent="." instance=ExtResource("14_rgdix")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39747, 47.5542, -15.5844)

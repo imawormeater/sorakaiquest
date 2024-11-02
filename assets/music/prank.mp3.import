@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/prank.mp3-969e764f296d2f71fe720c8adf1f8c92.mp
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

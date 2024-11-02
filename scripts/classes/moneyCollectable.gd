@@ -22,6 +22,7 @@ func _ready() -> void:
 
 func deleteSelf() -> void:
 	visual.hide()
+	$NearRange.queue_free()
 	$IdleSparkle.hide()
 	$CollectSparkle.emitting = true
 	$CollectSparkle/Ring.emitting = true

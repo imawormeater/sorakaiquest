@@ -20,6 +20,7 @@ func levelLoaded() -> void:
 func _physics_process(delta: float) -> void:
 	_rotation = fmod(_rotation + delta,2*PI)
 	for i:moneyCollectable in kromer:
+		if GameManager.CurrentState.name != "MainGameState": return#ok godot
 		if GameManager.CurrentState.Sorakai == null:
 			return
 		if i != null:

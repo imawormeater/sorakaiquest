@@ -151,8 +151,8 @@ environment = SubResource("Environment_3qrnf")
 script = ExtResource("9_d6dvk")
 
 [node name="loganSpawn" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18036, -4.16234)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18036, 1.65838)
 
 [node name="AlbumCollectable" parent="." instance=ExtResource("13_s6d3w")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.84215, 39.2516, 42.3029)
-id = 9
+id = 1
