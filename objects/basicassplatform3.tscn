@@ -26,4 +26,5 @@ material = SubResource("StandardMaterial3D_ub2pf")
 shape = SubResource("BoxShape3D_7l7bp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+visibility_range_end = 150.0
 mesh = SubResource("BoxMesh_aphmx")

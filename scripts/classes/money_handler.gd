@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 		if GameManager.CurrentState.Sorakai == null:
 			return
 		if i != null:
-			_moneyUpdate(i,GameManager.CurrentState.Sorakai.global_position)
+			_moneyUpdate(i)
 
 
 func _on_child_exiting_tree(node: Node) -> void:
@@ -38,10 +38,6 @@ func _checkAndAppendDollar(i:Node3D) -> void:
 		if !m in kromer:
 			kromer.append(m)
 	
-func _moneyUpdate(m:moneyCollectable,playerPosition:Vector3) -> void:
-	if (m.global_position-playerPosition).length() > 30:
-		m.visible = false
-		return
-	m.visible = true
+func _moneyUpdate(m:moneyCollectable) -> void:
 	m.visual.position.y = sin(GameManager.sinTick*2)/9
 	m.visual.rotation.y = _rotation

@@ -1,13 +1,39 @@
-[gd_scene load_steps=9 format=3 uid="uid://bn35hu6xtwj7q"]
+[gd_scene load_steps=11 format=3 uid="uid://bn35hu6xtwj7q"]
 
-[ext_resource type="Texture2D" uid="uid://dh4lvqcs1ktj" path="res://assets/images/keyColor.png" id="1_kro43"]
 [ext_resource type="Script" path="res://scripts/key_handler.gd" id="1_n3xml"]
 [ext_resource type="ArrayMesh" uid="uid://b1nc7ng2qo8ku" path="res://assets/meshes/sorakaiKeyy.obj" id="3_a4rlb"]
+[ext_resource type="Shader" path="res://assets/materials/celshaded.gdshader" id="3_qxkkl"]
 [ext_resource type="PackedScene" uid="uid://cv8u5yn1kefiw" path="res://objects/interactable.tscn" id="4_eant1"]
 [ext_resource type="AudioStream" uid="uid://6c5nbau5t1sw" path="res://assets/sounds/wind up n throw.mp3" id="5_6ac82"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atabq"]
-albedo_texture = ExtResource("1_kro43")
+[sub_resource type="Gradient" id="Gradient_dj12r"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 0.7245, 0.13, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t4ny6"]
+gradient = SubResource("Gradient_dj12r")
+width = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5u1n"]
+render_priority = 0
+shader = ExtResource("3_qxkkl")
+shader_parameter/UseFade = false
+shader_parameter/MinDistance = 0.2
+shader_parameter/MaxDistance = 5.0
+shader_parameter/dithersize = 6
+shader_parameter/ToonRampOffset = 0.564
+shader_parameter/ToonRampSmoothness = 0.306
+shader_parameter/ToonRampTinting = null
+shader_parameter/RimPower = 0.68
+shader_parameter/RimCutOff = 0.098
+shader_parameter/RimSmoothness = 0.05
+shader_parameter/RimLightBrightness = 8.454
+shader_parameter/SubSurfDistortion = 1.0
+shader_parameter/SubSurfTint = null
+shader_parameter/SubSurfBrightness = 3.0
+shader_parameter/SubSurfCutoff = 0.5
+shader_parameter/SubSurfSmoothness = 0.05
+shader_parameter/Texture = SubResource("GradientTexture1D_t4ny6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ht8u"]
 
@@ -25,9 +51,10 @@ lock_rotation = true
 
 [node name="Key" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_atabq")
+cast_shadow = 0
 mesh = ExtResource("3_a4rlb")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_l5u1n")
 
 [node name="keyCollision" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(0.61, 0, 0, 0, 0.61, 0, 0, 0, 0.61, 0.00375366, 0.0314941, -0.0549315)

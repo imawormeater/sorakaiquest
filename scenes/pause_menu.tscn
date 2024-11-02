@@ -146,7 +146,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_kemgr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_28jp4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_kemgr")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kemgr")
-text = "Exit to Hub"
+text = "Main Menu"
 
 [node name="Resume" type="Button" parent="."]
 anchors_preset = 8

@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dw40p48fqbsl2"]
+[gd_scene load_steps=73 format=3 uid="uid://dw40p48fqbsl2"]
 
 [ext_resource type="Script" path="res://scripts/classes/player_sorakai.gd" id="1_6cmhp"]
 [ext_resource type="ArrayMesh" uid="uid://csjqnycfeybq" path="res://assets/meshes/smoke.obj" id="3_50lya"]
@@ -13,6 +13,7 @@
 [ext_resource type="Theme" uid="uid://ddus5rq1nvkdk" path="res://assets/materials/theme_test.tres" id="10_rqa4o"]
 [ext_resource type="Script" path="res://scripts/collection_hitbox.gd" id="11_dg1fv"]
 [ext_resource type="FontFile" uid="uid://ibuondk6mqev" path="res://assets/fonts/IwataMaruGothicW55-B.ttf" id="11_kxjv2"]
+[ext_resource type="AudioStream" uid="uid://bmc4gqbwsdlht" path="res://assets/sounds/sn_boing.wav" id="12_5or2d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_62ypt"]
 radius = 0.3
@@ -418,46 +419,45 @@ draw_pass_1 = ExtResource("3_50lya")
 transform = Transform3D(0.000715101, 0, 0.0831059, 0, 0.083109, 0, -0.0831059, 0, 0.000715101, 0, -0.744453, -0.257608)
 
 [node name="Armature" parent="Visual/loganchara" index="0"]
-transform = Transform3D(3.72083, 0, 0, 0, 3.72083, 0, 0, 0, 3.72083, -2.62473, 11.738, 0.0415326)
+transform = Transform3D(3.72083, 0, 0, 0, 3.72083, 0, 0, 0, 3.72083, -2.62473, 11.7934, 0.0415326)
 
 [node name="Skeleton3D" parent="Visual/loganchara/Armature" index="0"]
-bones/0/position = Vector3(-0.0543279, -1.23784, -0.304354)
-bones/0/rotation = Quaternion(0.947521, 0.299193, -0.11061, 0.021287)
-bones/0/scale = Vector3(1.00537, 1.00082, 0.991988)
+bones/0/position = Vector3(-0.0543279, -1.22823, -0.304354)
+bones/0/rotation = Quaternion(0.981965, -0.151848, -0.108584, -0.0299522)
+bones/0/scale = Vector3(0.999684, 0.989272, 1.00321)
 bones/1/position = Vector3(-1.09187e-07, 0.641317, 5.84397e-08)
-bones/1/rotation = Quaternion(-0.00825788, 0.112336, 0.0420686, 0.992745)
-bones/2/rotation = Quaternion(0.523208, 0.475661, -0.523208, 0.475661)
-bones/3/position = Vector3(-0.045908, -1.23784, 0.337209)
-bones/3/rotation = Quaternion(0.91393, -0.393754, -0.0984009, 0.00282483)
-bones/3/scale = Vector3(1.00705, 0.998932, 0.992189)
+bones/1/rotation = Quaternion(0.0461615, 0.102746, 0.509143, 0.85328)
+bones/2/rotation = Quaternion(0.197171, 0.679061, -0.197171, 0.679061)
+bones/3/position = Vector3(-0.045908, -1.22823, 0.337209)
+bones/3/rotation = Quaternion(0.899673, 0.423229, -0.102948, 0.0294505)
+bones/3/scale = Vector3(0.995981, 0.993168, 1.00313)
 bones/4/position = Vector3(4.94864e-08, 0.641317, -1.19599e-07)
-bones/4/rotation = Quaternion(0.0324425, 0.107866, 0.394148, 0.912118)
+bones/4/rotation = Quaternion(-0.0103132, 0.112166, 0.0238875, 0.993349)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.308676, 0.636175, -0.308677, 0.636175)
-bones/6/position = Vector3(-0.0721774, -1.2882, 0.0030211)
+bones/5/rotation = Quaternion(0.488203, 0.515148, -0.485939, 0.510043)
+bones/6/position = Vector3(-0.0781444, -1.29266, -0.00108112)
 bones/6/rotation = Quaternion(-7.69188e-09, 1.2031e-07, -0.00781089, 0.99997)
-bones/6/scale = Vector3(1, 1.00755, 0.990785)
+bones/6/scale = Vector3(0.999997, 0.988759, 1.00339)
 bones/7/position = Vector3(1.00828e-08, 0.80456, 1.1236e-09)
-bones/7/rotation = Quaternion(-0.00516199, -0.055507, -0.0798195, 0.995249)
+bones/7/rotation = Quaternion(-0.00565776, -0.055466, -0.0917298, 0.994222)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(-4.2094e-08, 0.702747, 1.8348e-09)
-bones/8/rotation = Quaternion(0.0039987, 0.0556008, 0.0854218, 0.994784)
+bones/8/rotation = Quaternion(0.00495636, 0.0554897, 0.102613, 0.99316)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/position = Vector3(0.0271018, 0.48289, 0.197012)
-bones/9/rotation = Quaternion(-0.120704, 0.413013, 0.838847, -0.333447)
+bones/9/rotation = Quaternion(0.103729, 0.472763, 0.849969, 0.208058)
 bones/9/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(-0.322079, 0.180459, 0.342669, 0.863874)
+bones/10/rotation = Quaternion(-0.295686, 0.184644, -0.0993666, 0.931989)
 bones/11/rotation = Quaternion(-0.100787, 0.96615, 0.153133, 0.181509)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(0.0181026, 0.588216, 0.807416, -0.0418799)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/rotation = Quaternion(0.20999, 0.781056, 0.23008, 0.54122)
 bones/14/position = Vector3(-0.000460571, 0.48935, -0.170338)
-bones/14/rotation = Quaternion(0.634451, -0.690039, 0.335217, -0.0945932)
-bones/14/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(0.842401, -0.0891845, 0.17645, -0.50127)
 bones/15/position = Vector3(2.05921e-07, 0.650187, 7.57266e-08)
-bones/15/rotation = Quaternion(-0.0965477, -0.0356668, -0.322872, 0.940829)
-bones/16/rotation = Quaternion(-0.1534, 0.531879, 0.119215, -0.824234)
+bones/15/rotation = Quaternion(0.340687, 0.0963355, -0.407266, 0.841894)
+bones/16/rotation = Quaternion(-0.168839, 0.639771, 0.107749, -0.742009)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/rotation = Quaternion(-0.761307, -0.00813957, 0.273992, 0.5876)
 bones/17/scale = Vector3(1, 1, 1)
@@ -469,7 +469,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_ouxd8")
 surface_material_override/1 = SubResource("ShaderMaterial_2nnn4")
 
 [node name="HandAttachment" type="BoneAttachment3D" parent="Visual/loganchara/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.750576, -0.657644, 0.0643881, -0.542277, -0.556465, 0.641439, -0.379584, -0.50777, -0.761406, -1.03215, -0.200573, -0.756484)
+transform = Transform3D(-0.00245684, 0.950297, -0.311317, 0.863011, 0.151912, 0.458023, 0.489691, -0.271503, -0.83263, 0.680151, -0.50609, -0.966544)
 bone_name = "LPalm"
 bone_idx = 16
 
@@ -550,6 +550,13 @@ top_level = true
 v_offset = 0.28
 current = true
 fov = 98.7
+
+[node name="SuperJump2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_5or2d")
+volume_db = -16.0
+pitch_scale = 1.17
+bus = &"SFX"
+metadata/StopOtherSounds = false
 
 [node name="PlayerSFX" parent="." instance=ExtResource("7_0u647")]
 

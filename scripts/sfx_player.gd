@@ -19,7 +19,7 @@ func play_sound_into(_name:String,next_name:String) -> void:
 	if stream.get_meta("StopOtherSounds") == true:
 		stop_all_sounds()
 	stream.play()
-	await get_tree().create_timer(stream.stream.get_length()).timeout
+	await get_tree().create_timer(stream.stream.get_length()/stream.pitch_scale).timeout
 	if stream.playing:
 		stream2.play()
 	

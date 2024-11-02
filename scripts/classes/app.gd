@@ -35,13 +35,6 @@ func _ready() -> void:
 	changeState(firstState)
 	GameManager.App = self
 
-
-
-func _process(_delta: float) -> void:
-	pass
-	#if Input.is_action_just_pressed("ui_home"):
-	#	$CanvasLayer/VideoStreamPlayer.play()
-
 func play_transition(which:String,speed:float) -> void:
 	if inTransition:
 		push_warning("Attempted Transition Failed, already in Transition")

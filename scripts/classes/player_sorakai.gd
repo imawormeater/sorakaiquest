@@ -99,6 +99,7 @@ var jumpAnimation := 1.0
 @onready var followPoint := $Visual/loganchara/FollowPoint
 @onready var equipNode := $Equip
 @onready var attractHitbox := $AttractionHitbox
+@onready var superjump := $SuperJump2
 
 @export var _face_mat: String
 @onready var face:ShaderMaterial = character_mesh.get(_face_mat)
@@ -201,6 +202,7 @@ func jump() -> void:
 	jumpbuffer = -1
 	visual.rotation.x = 0
 	visual.rotation.z = 0
+	sfx.stop_sound("Wallride")
 	anim_st.travel("Jump")
 	sfx.play_sound("Jump")
 	jumpAnimation += 1.0
@@ -472,6 +474,7 @@ func _physics_process(delta: float) -> void:
 			SPEED += slideSpeed
 			velocity -= (visual.global_basis.z*slideSpeed)
 			state = States.Slide
+			sfx.play_sound_into("Slidebegin","Sliding")
 			anim_st.travel("DropSlide")
 		return
 	#WALL RIDE STATE
@@ -552,6 +555,7 @@ func _physics_process(delta: float) -> void:
 			state = States.Free
 			wallrideDebounce = wallrideInit
 			anim_st.travel("Fall")
+			sfx.stop_sound("Wallride")
 		if not pressingJump:
 			character_mesh.scale = Vector3.ONE
 			character_mesh.rotation = Vector3.ZERO
@@ -561,6 +565,7 @@ func _physics_process(delta: float) -> void:
 			jump()
 			velocity += (wallNormal*5)
 			baseDEACEL = 0.45
+			sfx.stop_sound("Wallride")
 		return
 	if state == States.Slide:
 		$PlayerHitbox.disabled = true
@@ -593,6 +598,9 @@ func _physics_process(delta: float) -> void:
 		
 		if (pressedJump && onFloor) || (coyotejump > 0 && pressedJump):
 			jump()
+			sfx.stop_sound("Slidebegin")
+			sfx.stop_sound("Sliding")
+			
 			#if(pressedAction):
 			#	velocity.y += jump_velo/4
 			#	SPEED = baseSPEED
@@ -601,7 +609,10 @@ func _physics_process(delta: float) -> void:
 			forcedHoldJump = true
 			jump()
 			velocity.y += jump_velo/3 #NOW ITS SUPER. FUCK YOU DANNY
+			superjump.play(0.05)
 			SPEED = baseSPEED * 0.7
+			sfx.stop_sound("Slidebegin")
+			sfx.stop_sound("Sliding")
 	
 		move_and_slide()
 		
@@ -610,12 +621,16 @@ func _physics_process(delta: float) -> void:
 		if (SPEED <= 2):
 			state = States.Free
 			SPEED = baseSPEED
+			sfx.stop_sound("Slidebegin")
+			sfx.stop_sound("Sliding")
 			return
 			
 		if onFloor != is_on_floor() and velocity.y < 0:#was on floor but now not
 			coyotejump = coyotejumpInit
 		
 		if !(onFloor):
+			sfx.stop_sound("Slidebegin")
+			sfx.stop_sound("Sliding")
 			state = States.Free
 		return
 		

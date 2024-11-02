@@ -39,6 +39,7 @@ func update_settings() -> void:
 		
 	Engine.max_fps = settings.maxfps
 	
+	if OS.get_name() == "Web": return
 	if settings.vsync:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ADAPTIVE)
 	else:

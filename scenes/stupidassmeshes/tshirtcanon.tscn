@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://blqbg7dw76hrt"]
+
+[ext_resource type="PackedScene" uid="uid://8m6xxhtbk66d" path="res://assets/meshes/TSHIRTCANON.glb" id="1_0egmf"]
+
+[node name="TSHIRTCANON" instance=ExtResource("1_0egmf")]
+
+[node name="Cylinder" parent="." index="0"]
+cast_shadow = 0
+gi_mode = 0

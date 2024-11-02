@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://objects/equip/tshirtlaucher.gd" id="1_jiqu7"]
 [ext_resource type="PackedScene" uid="uid://cv8u5yn1kefiw" path="res://objects/interactable.tscn" id="2_h4khh"]
-[ext_resource type="PackedScene" uid="uid://8m6xxhtbk66d" path="res://assets/meshes/TSHIRTCANON.glb" id="2_ixftc"]
 [ext_resource type="Material" uid="uid://dncih1xkqoqnj" path="res://assets/materials/sparkle.tres" id="3_j0fok"]
 [ext_resource type="AudioStream" uid="uid://cbvkfqgwy6cqp" path="res://assets/sounds/tf2-grenade-launcher-shoot.mp3" id="3_ppbia"]
+[ext_resource type="PackedScene" uid="uid://blqbg7dw76hrt" path="res://scenes/stupidassmeshes/tshirtcanon.tscn" id="4_bkjb5"]
 [ext_resource type="Texture2D" uid="uid://dqjlg445bwmmf" path="res://assets/images/sparklesphere.png" id="4_opqy7"]
 
 [sub_resource type="Gradient" id="Gradient_tphlo"]
@@ -84,9 +84,6 @@ interactable = NodePath("Interactable")
 [node name="Visual" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="TSHIRTCANON" parent="Visual" instance=ExtResource("2_ixftc")]
-transform = Transform3D(5.96046e-08, 0, 0.388155, 0, 0.388155, 0, -0.388155, 0, 5.96046e-08, 1.01646e-07, -0.39611, 0.792693)
-
 [node name="CollectSparkle" type="GPUParticles3D" parent="Visual"]
 transform = Transform3D(-0.00286211, 0.999996, -4.37114e-08, -8.75475e-08, 4.3461e-08, 1, 0.999996, 0.00286211, 8.74228e-08, -0.0612699, 0.359431, 1.416)
 material_override = ExtResource("3_j0fok")
@@ -113,6 +110,9 @@ randomness = 0.4
 visibility_aabb = AABB(-0.30542, -0.303089, -0.301846, 0.61084, 0.606178, 0.603692)
 process_material = SubResource("ParticleProcessMaterial_o02i2")
 draw_pass_1 = SubResource("QuadMesh_18kjl")
+
+[node name="TSHIRTCANON" parent="Visual" instance=ExtResource("4_bkjb5")]
+transform = Transform3D(-1.696e-08, 0, 0.388, 0, 0.388, 0, -0.388, 0, -1.696e-08, 0, -0.396, 0.793)
 
 [node name="Interactable" parent="." node_paths=PackedStringArray("objectDepedency") instance=ExtResource("2_h4khh")]
 objectDepedency = NodePath("..")

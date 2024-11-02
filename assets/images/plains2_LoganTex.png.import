@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhh4whrmonk5a"
 path.s3tc="res://.godot/imported/plains2_LoganTex.png-32e74f6a821d2bb93f80a27064aba4e7.s3tc.ctex"
+path.etc2="res://.godot/imported/plains2_LoganTex.png-32e74f6a821d2bb93f80a27064aba4e7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/images/plains2_LoganTex.png"
-dest_files=["res://.godot/imported/plains2_LoganTex.png-32e74f6a821d2bb93f80a27064aba4e7.s3tc.ctex"]
+dest_files=["res://.godot/imported/plains2_LoganTex.png-32e74f6a821d2bb93f80a27064aba4e7.s3tc.ctex", "res://.godot/imported/plains2_LoganTex.png-32e74f6a821d2bb93f80a27064aba4e7.etc2.ctex"]
 
 [params]
 

@@ -12,6 +12,7 @@ colors = PackedColorArray(0.61676, 0.058232, 0.211483, 1, 0.615686, 0.0588235, 0
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_e2k4r"]
 gradient = SubResource("Gradient_dp6ns")
+width = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_frt6s"]
 render_priority = 0
@@ -59,15 +60,16 @@ resource = ExtResource("2_csb5q")
 transform = Transform3D(0.388899, 0, 0, 0, 0.388899, 0, 0, 0, 0.388899, 0, -0.618945, 0)
 
 [node name="Skeleton3D" parent="balloonmesh/Armature" index="0"]
-bones/0/position = Vector3(0, -0.319554, 0)
+bones/0/position = Vector3(0, -0.320626, 0)
 bones/0/scale = Vector3(0.986217, 0.986217, 0.986217)
-bones/2/rotation = Quaternion(-0.00293172, -1.45996e-15, 5.08037e-09, 0.999996)
-bones/2/scale = Vector3(1.05393, 1.05393, 1.05393)
+bones/2/rotation = Quaternion(-0.00355417, -2.51549e-15, 5.08034e-09, 0.999994)
+bones/2/scale = Vector3(1.05436, 1.05436, 1.05436)
 bones/3/rotation = Quaternion(-1.45438e-25, -7.10543e-15, 6.10013e-19, 1)
-bones/3/scale = Vector3(0.982339, 0.982339, 0.982339)
+bones/3/scale = Vector3(0.981954, 0.981954, 0.981954)
 
 [node name="Cylinder" parent="balloonmesh/Armature/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_frt6s")
+visibility_range_end = 100.0
 
 [node name="AnimationTree" type="AnimationTree" parent="balloonmesh"]
 tree_root = SubResource("AnimationNodeStateMachine_ch6cw")

@@ -118,10 +118,13 @@ func reload_player() -> void:
 	new_level_loaded.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if (Engine.max_fps < 60 and !Engine.max_fps == 0):
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_page_up"):
+		print("Hey")
+		print_orphan_nodes()
+	if (delta > 1.0/60.0):
 		smoother.add_exclude_node(Sorakai)
-	elif smoother.excludes != []:
+	else:
 		smoother.remove_exclude_node(Sorakai)
 
 func play_dialog(speaker:Speaker) -> void:
@@ -144,6 +147,7 @@ func _on_receive_money(dollar:moneyCollectable) -> void:
 	loganGetMoney.emit(dictInfo)
 
 func on_album_collect(albumCollectable:Node3D) -> void:
+	GameManager.canPause = false
 	collectedAlbums += [albumCollectable.id]
 	print(collectedAlbums)
 	
@@ -159,7 +163,7 @@ func on_album_collect(albumCollectable:Node3D) -> void:
 	numberOfAlbums = collectedAlbums.size()
 	
 	albumCollectable.deleteSelf()
-
+	GameManager.canPause = true
 
 func _on_game_paused(_paused:bool) -> void:
 	pass # Replace with function body.

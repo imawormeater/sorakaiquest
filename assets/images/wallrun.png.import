@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjm4dri0ofwyf"
 path.s3tc="res://.godot/imported/wallrun.png-13c75aaa6a5fef9cc660e6623daa6d57.s3tc.ctex"
+path.etc2="res://.godot/imported/wallrun.png-13c75aaa6a5fef9cc660e6623daa6d57.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/images/wallrun.png"
-dest_files=["res://.godot/imported/wallrun.png-13c75aaa6a5fef9cc660e6623daa6d57.s3tc.ctex"]
+dest_files=["res://.godot/imported/wallrun.png-13c75aaa6a5fef9cc660e6623daa6d57.s3tc.ctex", "res://.godot/imported/wallrun.png-13c75aaa6a5fef9cc660e6623daa6d57.etc2.ctex"]
 
 [params]
 

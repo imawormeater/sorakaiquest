@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3vx6qtg1beyp"
 path.s3tc="res://.godot/imported/uiStar.png-fe890994e91081b92a3779e35b8796c1.s3tc.ctex"
+path.etc2="res://.godot/imported/uiStar.png-fe890994e91081b92a3779e35b8796c1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/images/uiStar.png"
-dest_files=["res://.godot/imported/uiStar.png-fe890994e91081b92a3779e35b8796c1.s3tc.ctex"]
+dest_files=["res://.godot/imported/uiStar.png-fe890994e91081b92a3779e35b8796c1.s3tc.ctex", "res://.godot/imported/uiStar.png-fe890994e91081b92a3779e35b8796c1.etc2.ctex"]
 
 [params]
 

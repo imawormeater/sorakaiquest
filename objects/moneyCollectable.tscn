@@ -122,9 +122,8 @@ scale_curve = SubResource("CurveTexture_jv2vs")
 scale_over_velocity_max = 0.2
 color_ramp = SubResource("GradientTexture1D_t5uoq")
 
-[node name="MoneyCollectable" type="Node3D" node_paths=PackedStringArray("meshToUse") groups=["Collectable"]]
+[node name="MoneyCollectable" type="Node3D" groups=["Collectable"]]
 script = ExtResource("1_ylbw0")
-meshToUse = NodePath("Visual/bill")
 
 [node name="NearRange" type="Area3D" parent="."]
 collision_layer = 4
@@ -142,15 +141,19 @@ visible = false
 
 [node name="coin" parent="Visual/coin" index="0"]
 material_override = SubResource("ShaderMaterial_xv0nd")
+visibility_range_end = 30.0
 
 [node name="bill" parent="Visual" instance=ExtResource("3_hfkx2")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.00244844, -0.477812, 0.0337853)
 
 [node name="bill" parent="Visual/bill" index="0"]
 material_override = SubResource("ShaderMaterial_k8xax")
+visibility_range_end = 30.0
 
 [node name="IdleSparkle" type="GPUParticles3D" parent="."]
 material_override = ExtResource("6_ip1ok")
+gi_mode = 0
+visibility_range_end = 30.0
 amount = 2
 lifetime = 2.12
 randomness = 0.4
@@ -161,6 +164,8 @@ draw_pass_1 = SubResource("QuadMesh_oaps2")
 [node name="CollectSparkle" type="GPUParticles3D" parent="."]
 transform = Transform3D(-0.00870913, -0.999962, 0, 0.999962, -0.00870913, 0, 0, 0, 1, 0, 0, 0)
 material_override = ExtResource("6_ip1ok")
+gi_mode = 0
+visibility_range_end = 30.0
 emitting = false
 amount = 5
 lifetime = 0.65
@@ -174,6 +179,7 @@ draw_pass_1 = SubResource("QuadMesh_oaps2")
 [node name="Ring" type="GPUParticles3D" parent="CollectSparkle"]
 transform = Transform3D(-0.00870913, -0.999962, 0, 0.999962, -0.00870913, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_8n6gb")
+gi_mode = 0
 emitting = false
 amount = 1
 lifetime = 0.37

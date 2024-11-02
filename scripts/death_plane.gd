@@ -13,7 +13,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	body.die()
 	await get_tree().create_timer(timeTilDead,false).timeout
 	active = null
-	GameManager.CurrentState.reload_player()
+	if GameManager.CurrentState.Sorakai.dying:
+		GameManager.CurrentState.reload_player()
 
 func _process(_delta: float) -> void:
 	if active == null: return

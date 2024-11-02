@@ -30,7 +30,7 @@ func refresh(playSound:bool = true) -> void:
 	if playSound:
 		pauseSound.play(0.06)
 	
-	exitButton.text = "Exit to Hub"
+	#exitButton.text = "Main Menu"
 		
 	if paused:
 		show()
@@ -48,6 +48,7 @@ func _on_restart_pressed() -> void:
 	refresh()
 	if Input.is_key_pressed(KEY_SHIFT):
 		GameManager.CurrentState.currentLevel.CurrentCheckpoint = null
+	GameManager.CurrentState.deathCount += 1
 	GameManager.CurrentState.reload_player()
 
 

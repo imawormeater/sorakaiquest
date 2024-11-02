@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d1j473nv4d2um"
 path.s3tc="res://.godot/imported/blev.png-731783b1835f2bea5dca22d60aac38c6.s3tc.ctex"
+path.etc2="res://.godot/imported/blev.png-731783b1835f2bea5dca22d60aac38c6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/images/blev.png"
-dest_files=["res://.godot/imported/blev.png-731783b1835f2bea5dca22d60aac38c6.s3tc.ctex"]
+dest_files=["res://.godot/imported/blev.png-731783b1835f2bea5dca22d60aac38c6.s3tc.ctex", "res://.godot/imported/blev.png-731783b1835f2bea5dca22d60aac38c6.etc2.ctex"]
 
 [params]
 
